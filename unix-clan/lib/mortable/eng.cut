@@ -1,0 +1,94 @@
+lXs Special Text file saves all fonts LxS
+@Font:	CAfont:13:0
+@UTF8
+% Each search string starts with '+' for including or '-' for excluding
+% Each label for the columns in the output is surrounded by "
+% Lines preceded by % are comments
+% Rules preceded by # are not displayed in the output
+
+% These markers specify the nature of the following string
+% # prefix marker
+% | part-of-speech marker
+% ; stem of the word marker
+% - suffix marker
+% & nonconcatenated morpheme marker
+% = English translation for the stem marker
+% @ replacement word preceding [: ...] code marker
+% * error code inside [* ...] code marker
+% followed, optionally, by - or + and immediately followed by either one:
+%     *        find any match
+%     %        erase any match
+%     string   find "string"
+% o erase all other elements not specified by user
+%     o%    erase all other elements
+%     o~    erase postclitic element, if present
+%     o$    erase preclitic element, if present
+% ,		separates alternative elements
+% Postclitic AND Preclitic exception:
+%   Find postclitics with specific Morphosyntactic marker example:
+%       |*,~|*   OR   ;*,~;*
+%   Find preclitic with specific Morphosyntactic marker example:
+%       |*,$|*   OR   ;*,$;*
+%     *        find any match
+%     string   find "string"
+
+% rules can be specified in long form "+|aux +|aux:*" or short form "+|aux,|aux:*"
+
+% the following rules are exclusive, as indicated by word "OR"
+% the rules are applied one by one from top to button
+% when a rule matches, then the remaining rules in the list are ignored
+% rules are considered non-exclusive, if the OR is missing
+
+# OR
+
+% the following rules are non-exclusive, as indicated by word "AND"
+% each one of following rules is applied independently of the other rules
+
+AND
+
++|adj,|adj:*	"adj,adj:*"
++|adv,|adv:*	"adv,adv:*"
++|co		"co"
++|conj,|conj:*	"conj,conj:*"
++|coord,|coord:*	"coord,coord:*"
++|det:art	"det:art"
++|det:dem	"det:dem"
++|det:int	"det:int"
++|det:num	"det:num"
++|det:poss	"det:poss"
++|inf		"inf"
++|n,|n:* -|n:gerund	"n,n:*"
++|n:gerund	"n:gerund"
++|neg		"neg"
++|part*		"part*"
++|prep		"prep"
++|pro:dem	"pro:dem"
++|pro:exist	"pro:exist"
++|pro:indef	"pro:indef"
++|pro:int    	"pro:int"
++|pro:obj	"pro:obj"
++|pro:per	"pro:per"
++|pro:poss	"pro:poss"
++|pro:refl	"pro:refl"
++|pro:rel	"pro:rel"
++|pro:sub	"pro:sub"
++|qn		"qn"
++|aux		"aux"
++|cop		"cop"
++|mod		"modal" 
++|mod:aux	"mod:aux"
++|v		"v" 
+
++&13S -*m:vun*	"*&13S"
++&3S -*m:vun*	"*&3S"
++-3S -*m:03s*	"*-3S"
++&PAST -*m:base:ed -*m:=ed	"*&PAST"
++-PAST -*m:0ed -*m:=ed		"*-PAST"
++&PASTP -*m:base:en -*m:=en -*m:sub:en	"*&PASTP"
++-PASTP -*m:=en	"*-PASTP"
++-PRESP -*m:0ing	"*-PRESP"
++|adj,-CP		"adj|*-CP"
++|adj,-SP		"adj|*-SP"
++|n,|n:*,&PL -*m:base:s* -*m:=s	"n*|*&PL"
++|n,|n:*,-PL -*m:0s* -*m:=s*	"n*|*-PL"
++|n,|n:*,-POSS -*m:0's -*m:0s'	"n*|*-POSS"

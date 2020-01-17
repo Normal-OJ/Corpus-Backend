@@ -1,0 +1,98 @@
+@UTF8
+# Comments marker
+# Obligatory Headers
+@Begin
+@Languages:	*
+@Participants:	Target\_Child Target\_Adult Child Mother Father Brother
+		Sister Sibling Grandfather Grandmother Relative
+		Participant Therapist Informant Subject Investigator Partner
+		Boy Girl Adult Teenager Male Female 
+		Visitor Friend Playmate Caretaker
+		Environment Group Unidentified Uncertain Other
+		Text Media PlayRole LENA
+		Justice Attorney Doctor Nurse Student Teacher
+		Host Guest Leader Member Narrator Speaker Audience
+@Options:	heritage IPA CA CA-Unicode multi bullets notarget dummy mismatch
+@ID:	@d<yy;> @d<yy;mm.> @d<yy;mm.dd>
+	@e<White> @e<Black> @e<Latino> @e<Asian> @e<Pacific> @e<Native> @e<Multiple>  @e<Unknown>
+	@s<WC> @s<UC> @s<MC> @s<LI>
+@Media:	audio video missing unlinked notrans
+@Angles:	*
+@End
+
+# Optional Participant Headers
+@Birth of #:	@d<dd-lll-yyyy>
+@Birthplace of #:	*
+@L1 of #:	*
+
+# Optional File Description Headers
+@Location:	*
+@Number:	1 2 3 4 5 more audience
+@Recording Quality:	1 2 3 4 5
+@Room Layout:	*
+@Tape Location:	*
+@Time Duration:	@t<hh:mm-hh:mm> @t<hh:mm:ss-hh:mm:ss> @t<hh:mm:ss>
+@Time Start:	@t<hh:mm:ss> @t<mm:ss>
+@Transcriber:	*
+@Transcription:	eye_dialect partial full detailed coarse checked anonymized
+@Videos:	*
+@Warning:	* [*] "*
+
+# Local Changeable Headers
+@Activities:	* = "* -
+@Bck:	*
+@Bg
+@Bg:	* = $* -
+@Blank
+@Comment:	[IGN]
+@Date:	@d<dd-lll-yyyy> -
+@Eg
+@Eg:	* = $* -
+@G:	* = -* -
+@New Episode
+@Page:	*
+@Situation:	* "* - ["] [?]
+@T:	*
+
+# Main Line
+*:	* , [x _*] [- _*] [+ _*] [^ *] *_*# *-_*
+	+... +/. +!? +//. +/? +"/. +". +//? +..? +.
+	+" +^ +< +, ++ +≋ +≈
+	`_* *- :
+	[!] [!!] [=! _*] [= _*] [=? _*] [?] [: _*] [:: _*] [\*] [\* _*] [\% _*]
+	[# _*] [e]
+	[>*] [<*] [/] [//] [///] [/-] [/?] [^c] [^c _*]
+	&_* &{l=\% &}l=\% 0_* '_* /_* //_* ///_*
+	*@a *@b *@c *@d *@e *@f *@fp *@g *@i *@k *@l *@n *@nv *@o *@p
+	*@q *@s *@s:* *@s$* *@si *@sl *@sas *@t *@u *@wp *@x *@z:*
+	+@c +@f +@n +@s +@s:* +@si +@sl +@sas +@t +-_*
+
+# Dependent Tiers
+%act:	* [_*] $=* "* '* /* ( ) : -*
+%add:	* $=*
+%alt:	* [_*]
+%cnl:	* \** [UTD] +... +/. +!? +//. +/? +"/. +". +//? +..? +.
+%cod:	* $* +* |*
+%coh:	* $*
+%com:	* `* ~* !* @* #* $* %* ^* &* \** -* _* =* +* {*} [*] \* |* :* ;* "* '* <*> ,* .* ?* /*
+%def:	* $* =
+%eng:	* [_*] "_* +... +/. +!? +//. +/? +"/. +". +" +^ +< +, ++ +//? +..? # "
+%err:	* [?] $_* $=_* = ; /* "_* '_* [_*]
+%exp:	* [_*] "* '* = $=*
+%fac:	*
+%flo:	* '* /* [UTD] +... +/. +!? +//. +/? +"/. +". +//? +..? +.
+%gls:	* [_*] '* #
+%gpx:	* $* "* #*
+%gra:	*
+%grt:	*
+%int:	* $* "* \%* \**
+%mod:	* \** #
+%mor:	* \** [UTD] +... +/. +!? +//. +/? +"/. +". +//? +..? +.
+%ort:	* [_*] "* +... +/. +!? +//. +/? +"/. +". +" +^ +< +, ++ +//? +..? =* &* #*
+%par:	* $* "*
+%pho:	* \** #* '* =* ^* <* > [/] [//] $* [\*] [+ *] /* @* &* |* [-UTD]
+%sin:	* $*
+%sit:	* $* "* '* - : = (* 
+%spa:	* $*
+%tim:	@t<hh:mm:ss> @t<mm:ss> @t<hh:mm:ss-hh:mm:ss> @t<hh:mm-hh:mm> @t<ss>
+%trn:	* \** [UTD] +... +/. +!? +//. +/? +"/. +". +//? +..? +.

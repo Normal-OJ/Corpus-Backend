@@ -1,0 +1,68 @@
+@UTF8
+Command			Function
+
+al
+alias d | u		show aliases in file(s) "0aliases.cut", "aliases.cut"
+			d: opens default "CLAN/lib/fixes/0aliases.cut" file.
+			u: opens user's "CLAN/lib/aliases.cut" file.
+
+"name of alias"		shows usage and other information for that alias
+
+bat
+batch FILENAME		runs a batchfile
+
+cd ..			move up one directory
+cd FolderName		change to a folder within current directory
+cd HardDiskName:	move to top level
+
+copy [-luctqr] source destination
+			copy files
+			-l changes filenames to lowercase
+			-u changes filenames to uppercase
+			-cMSWD changes creator to MSWD, etc.
+			-tTEXT changes file type to TEXT
+			-q verification
+			-r recursive
+	For example file name aki12_boofoo.cha:
+	    copy aki*_*.cha \1*.cha
+	Will create file: 12.cha
+	    copy aki*_*.cha \2*.cha
+	Will create to file: boofoo.cha
+
+rm
+del [-qr] filename	delete file
+			-q verification
+			-r recursive
+
+dir	[-rn]		show contents of current directory
+			-r recursive
+			-n show ONLY items which do not match
+
+info			list all current CLAN settings and commands
+
+list			lists the files currently under the @ sign
+
+ren [-luctfqr] oldfile newfile
+			rename file
+			-l changes filenames to lowercase
+			-u changes filenames to uppercase
+			-cMCED changes creator to MCED for CLAN, -cMSWD for Word, etc.
+			-tTEXT changes file type to TEXT
+			-f rename even if the new file does already exist
+			-q verification
+			-r recursive
+	For example file name aki12_boofoo.cha:
+	    ren aki*_*.cha \1*.cha
+	Will rename to file: 12.cha
+	    ren aki*_*.cha \2*.cha
+	Will rename to file: boofoo.cha
+
+rmdir [-qr] dir		delete directory, if empty
+			-q verification
+			-r recursive
+
+ty
+type filename		open file in CLAN editor
+
+Left and right arrows move the cursor left and right on the command line.
+Up and down arrows rotate through the previous commands.

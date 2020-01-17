@@ -1,0 +1,49 @@
+@UTF8
+dss +l0
+ipsyn +l0
+% Lines preceded by % are comments
+% Each search string starts with '+' for including or '-' for excluding
+% Each label for the columns in the output is surrounded by either " or '
+% Rules can be specified in long form "+|n +|n:*" or short form "+|n,|n:*"
+% These markers specify the nature of the following string
+% # prefix marker
+% | part-of-speech marker
+% ; stem of the word marker
+% - suffix marker
+% & nonconcatenated morpheme marker
+% = English translation for the stem marker
+% @ replacement word preceding [: ...] code marker
+% * error code inside [* ...] code marker
+% followed, optionally, by - or + and immediately followed by either one:
+%     *        find any match
+%     %        erase any match
+%     string   find "string"
+% o erase all other elements not specified by user
+%     o%    erase all other elements
+%     o~    erase postclitic element, if present
+%     o$    erase preclitic element, if present
+% ,		separates alternative elements
+% Postclitic AND Preclitic exception:
+%   Find postclitics with specific Morphosyntactic marker example:
+%       |*,~|*   OR   ;*,~;*
+%   Find preclitic with specific Morphosyntactic marker example:
+%       |*,$|*   OR   ;*,$;*
+%     *        find any match
+%     string   find "string"
+
++|adj		"adj"
++|cl		"cl"
++|conn		"conn"
++|det		"det"
++|loc		"loc"
++|n		"n"
++|num		"num"
++|pro		"pro"
++|sfp		"sfp"
++|v		"v"
++|v:aux		"v:aux"
++|wh		"wh"
++|v:dirc	"v:dirc"
++&DIM		"DIM"
+
+

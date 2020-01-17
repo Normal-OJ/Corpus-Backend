@@ -1,0 +1,34 @@
+@UTF8
+; sample attribs file for reformatting WaveSurfer files to CHAT
+; the first is for the Litman data, the second for Stuttgart
+; temp -re +dattribs.cut -opcl *
+; Columns format:
+
+;Tier begin time string: litman
+TBTS	#_
+
+;"Chat Speaker"	"Original tag litman"
+*SPE		student
+*TUT		tutor
+
+;"Orig tag"	"Related to"	"Chat tier name"
+goal		student		cod
+tsem		student		com
+
+
+;Tier begin time string BW
+TBTS	\*
+
+;"Chat Speaker"	"Original tag BW"
+*CHI		trans
+*ADU		transNW
+
+;"Orig tag BW"	"Related to"	"Chat tier name"
+cv		trans		xsyl
+marks		trans		xvow
+noise		trans		xnv
+phones-cover	trans		xcov
+phones		trans		xpho
+stress		trans		xstr
+sylstr		trans		xsst
+

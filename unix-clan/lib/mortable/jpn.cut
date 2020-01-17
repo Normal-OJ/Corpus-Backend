@@ -1,0 +1,95 @@
+@UTF8
+% Each search string starts with '+' for including or '-' for excluding
+% Each label for the columns in the output is surrounded by either " or '
+% Lines preceded by % are comments
+% Rules preceded by # are not displayed in the output
+% These markers specify the nature of the following string
+% # prefix marker
+% | part-of-speech marker
+% r stem of the word marker
+% - suffix marker
+% & nonconcatenated morpheme marker
+% = English translation for the stem marker
+% @ replacement word preceding [: ...] code marker
+% * error code inside [* ...] code marker
+% o all other elements not specified by user
+% followed by - or + and/or the following
+%	*		find any match
+%	%		erase any match
+%	string		find "string"
+% , the comma separates alternative elements 
+% Exception:
+%   ~ postclitic OR $ preclitic
+% followed by
+%     Morpho-elements 	find words with preclitic OR postclitic Morpho elements
+%     % 		if preclitic OR postclitic is present, then erase it
+% if you want to get the actual count of the items found instead of percentage,
+% then do not put the % character at the beginning of the column label
+% for example: +|*:wh	"*:wh" instean of "% *:wh"
+% rules can be specified in long form "+|aux +|aux:*" or short form "+|aux,|aux:*"
+% the following rules are exclusive, as indicated by word "OR"
+% the rules are applied one by one from top to button
+% when a rule matches, then the remaining rules in the list are ignored
+% rules are considered non-exclusive, if the OR is missing
+%
+% JMOR06 Japanese
+%
+OR
++|n			"% n"
++|n:an			"n:an"
++|n:vn			"n:vn"
++|v:v,|v:c,|v:ir 	"verb"
++|*:sub	 		"v:sub"
++|v:cop			"v:cop"
++|adj			"adj"
++|adn			"adn"
++|adv			"adv"
++|ptl:case		"ptl:case"
++|ptl:post		"ptl:post"
++|ptl:top		"ptl:top"
++|ptl:foc		"ptl:foc"
++|ptl:attr		"ptl:attr"
++|ptl:coo		"ptl:coo"
++|ptl:quot		"ptl:quot"
++|ptl:fina		"ptl:fina"
++|ptl:conj		"ptl:conj"
++|conj			"conj"
++|ptl:snr		"ptl:snr"
++|smod			"smod"
++|n:fml			"n:fml"
++|*:dem			"*:dem"
++|*:indef		"*:indef"
++|*:prs			"*:prs"
++|*:wh			"*:wh"
++|num			"num"
++|n:mot			"n:mot"
++|adj:mot		"adj:mot"
++|n:vn:mot		"vn:mot"
+% the following rules are non-exclusive, as indicated by word "AND"
+% each one of following rules is applied independently of the other rules
+AND
+# +|v:v,|v:c,|v:ir,|adj		"v,adj"
++&PRES,-PRES		"PRES"
++&PAST,-PAST		"PAST"
++-CONN			"CONN"
++-CONN&wa		"CONN&wa"
++-HORT			"HORT"
++-ADV			"ADV"
++&GER,-GER		"GER"
++-COND:ba		"COND:ba"
++-COND:tara		"COND:tara"
++-CONC			"CONC"
++-ALT			"ALT"
++-IMP:te		"IMP:te"
++-IMP:nasai		"IMP:nasai"
++-IMP:te		"IMP:te"
++-NEG&IMP:na		"NEG&IMP:na"
++-NEG&OBL		"NEG&OBL"
++-NEG,&NEG		"NEG"
++-ASP			"ASP"
++-DESID			"DESID"
++-POL			"POL"
++-CAUS			"CAUS"
++-PASS			"PASS"
++-POT			"POT"
++-COMPL			"COMPL"

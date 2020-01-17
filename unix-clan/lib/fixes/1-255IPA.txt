@@ -1,0 +1,1022 @@
+lXs Special Text file saves all fonts LxS
+@Font:	Monaco:24:0
+0x1=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x2=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x3=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x4=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x5=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x6=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x7=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x8=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x9=
+@Font:	IPATimes:24:0
+o	
+@Font:	Monaco:24:0
+0xa=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0xb=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0xc=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0xd=
+@Font:	IPATimes:24:0
+o
+
+@Font:	Monaco:24:0
+0xe=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0xf=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x10=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x11=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x12=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x13=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x14=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x15=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x16=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x17=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x18=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x19=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x1a=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x1b=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x1c=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x1d=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x1e=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x1f=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x20=
+@Font:	IPATimes:24:0
+o 
+@Font:	Monaco:24:0
+0x21=
+@Font:	IPATimes:24:0
+o!
+@Font:	Monaco:24:0
+0x22=
+@Font:	IPATimes:24:0
+o"
+@Font:	Monaco:24:0
+0x23=
+@Font:	IPATimes:24:0
+o#
+@Font:	Monaco:24:0
+0x24=
+@Font:	IPATimes:24:0
+o$
+@Font:	Monaco:24:0
+0x25=
+@Font:	IPATimes:24:0
+o%
+@Font:	Monaco:24:0
+0x26=
+@Font:	IPATimes:24:0
+o&
+@Font:	Monaco:24:0
+0x27=
+@Font:	IPATimes:24:0
+o'
+@Font:	Monaco:24:0
+0x28=
+@Font:	IPATimes:24:0
+o(
+@Font:	Monaco:24:0
+0x29=
+@Font:	IPATimes:24:0
+o)
+@Font:	Monaco:24:0
+0x2a=
+@Font:	IPATimes:24:0
+o*
+@Font:	Monaco:24:0
+0x2b=
+@Font:	IPATimes:24:0
+o+
+@Font:	Monaco:24:0
+0x2c=
+@Font:	IPATimes:24:0
+o,
+@Font:	Monaco:24:0
+0x2d=
+@Font:	IPATimes:24:0
+o-
+@Font:	Monaco:24:0
+0x2e=
+@Font:	IPATimes:24:0
+o.
+@Font:	Monaco:24:0
+0x2f=
+@Font:	IPATimes:24:0
+o/
+@Font:	Monaco:24:0
+0x30=
+@Font:	IPATimes:24:0
+o0
+@Font:	Monaco:24:0
+0x31=
+@Font:	IPATimes:24:0
+o1
+@Font:	Monaco:24:0
+0x32=
+@Font:	IPATimes:24:0
+o2
+@Font:	Monaco:24:0
+0x33=
+@Font:	IPATimes:24:0
+o3
+@Font:	Monaco:24:0
+0x34=
+@Font:	IPATimes:24:0
+o4
+@Font:	Monaco:24:0
+0x35=
+@Font:	IPATimes:24:0
+o5
+@Font:	Monaco:24:0
+0x36=
+@Font:	IPATimes:24:0
+o6
+@Font:	Monaco:24:0
+0x37=
+@Font:	IPATimes:24:0
+o7
+@Font:	Monaco:24:0
+0x38=
+@Font:	IPATimes:24:0
+o8
+@Font:	Monaco:24:0
+0x39=
+@Font:	IPATimes:24:0
+o9
+@Font:	Monaco:24:0
+0x3a=
+@Font:	IPATimes:24:0
+o:
+@Font:	Monaco:24:0
+0x3b=
+@Font:	IPATimes:24:0
+o;
+@Font:	Monaco:24:0
+0x3c=
+@Font:	IPATimes:24:0
+o<
+@Font:	Monaco:24:0
+0x3d=
+@Font:	IPATimes:24:0
+o=
+@Font:	Monaco:24:0
+0x3e=
+@Font:	IPATimes:24:0
+o>
+@Font:	Monaco:24:0
+0x3f=
+@Font:	IPATimes:24:0
+o?
+@Font:	Monaco:24:0
+0x40=
+@Font:	IPATimes:24:0
+o@
+@Font:	Monaco:24:0
+0x41=
+@Font:	IPATimes:24:0
+oA
+@Font:	Monaco:24:0
+0x42=
+@Font:	IPATimes:24:0
+oB
+@Font:	Monaco:24:0
+0x43=
+@Font:	IPATimes:24:0
+oC
+@Font:	Monaco:24:0
+0x44=
+@Font:	IPATimes:24:0
+oD
+@Font:	Monaco:24:0
+0x45=
+@Font:	IPATimes:24:0
+oE
+@Font:	Monaco:24:0
+0x46=
+@Font:	IPATimes:24:0
+oF
+@Font:	Monaco:24:0
+0x47=
+@Font:	IPATimes:24:0
+oG
+@Font:	Monaco:24:0
+0x48=
+@Font:	IPATimes:24:0
+oH
+@Font:	Monaco:24:0
+0x49=
+@Font:	IPATimes:24:0
+oI
+@Font:	Monaco:24:0
+0x4a=
+@Font:	IPATimes:24:0
+oJ
+@Font:	Monaco:24:0
+0x4b=
+@Font:	IPATimes:24:0
+oK
+@Font:	Monaco:24:0
+0x4c=
+@Font:	IPATimes:24:0
+oL
+@Font:	Monaco:24:0
+0x4d=
+@Font:	IPATimes:24:0
+oM
+@Font:	Monaco:24:0
+0x4e=
+@Font:	IPATimes:24:0
+oN
+@Font:	Monaco:24:0
+0x4f=
+@Font:	IPATimes:24:0
+oO
+@Font:	Monaco:24:0
+0x50=
+@Font:	IPATimes:24:0
+oP
+@Font:	Monaco:24:0
+0x51=
+@Font:	IPATimes:24:0
+oQ
+@Font:	Monaco:24:0
+0x52=
+@Font:	IPATimes:24:0
+oR
+@Font:	Monaco:24:0
+0x53=
+@Font:	IPATimes:24:0
+oS
+@Font:	Monaco:24:0
+0x54=
+@Font:	IPATimes:24:0
+oT
+@Font:	Monaco:24:0
+0x55=
+@Font:	IPATimes:24:0
+oU
+@Font:	Monaco:24:0
+0x56=
+@Font:	IPATimes:24:0
+oV
+@Font:	Monaco:24:0
+0x57=
+@Font:	IPATimes:24:0
+oW
+@Font:	Monaco:24:0
+0x58=
+@Font:	IPATimes:24:0
+oX
+@Font:	Monaco:24:0
+0x59=
+@Font:	IPATimes:24:0
+oY
+@Font:	Monaco:24:0
+0x5a=
+@Font:	IPATimes:24:0
+oZ
+@Font:	Monaco:24:0
+0x5b=
+@Font:	IPATimes:24:0
+o[
+@Font:	Monaco:24:0
+0x5c=
+@Font:	IPATimes:24:0
+o\
+@Font:	Monaco:24:0
+0x5d=
+@Font:	IPATimes:24:0
+o]
+@Font:	Monaco:24:0
+0x5e=
+@Font:	IPATimes:24:0
+o^
+@Font:	Monaco:24:0
+0x5f=
+@Font:	IPATimes:24:0
+o_
+@Font:	Monaco:24:0
+0x60=
+@Font:	IPATimes:24:0
+o`
+@Font:	Monaco:24:0
+0x61=
+@Font:	IPATimes:24:0
+oa
+@Font:	Monaco:24:0
+0x62=
+@Font:	IPATimes:24:0
+ob
+@Font:	Monaco:24:0
+0x63=
+@Font:	IPATimes:24:0
+oc
+@Font:	Monaco:24:0
+0x64=
+@Font:	IPATimes:24:0
+od
+@Font:	Monaco:24:0
+0x65=
+@Font:	IPATimes:24:0
+oe
+@Font:	Monaco:24:0
+0x66=
+@Font:	IPATimes:24:0
+of
+@Font:	Monaco:24:0
+0x67=
+@Font:	IPATimes:24:0
+og
+@Font:	Monaco:24:0
+0x68=
+@Font:	IPATimes:24:0
+oh
+@Font:	Monaco:24:0
+0x69=
+@Font:	IPATimes:24:0
+oi
+@Font:	Monaco:24:0
+0x6a=
+@Font:	IPATimes:24:0
+oj
+@Font:	Monaco:24:0
+0x6b=
+@Font:	IPATimes:24:0
+ok
+@Font:	Monaco:24:0
+0x6c=
+@Font:	IPATimes:24:0
+ol
+@Font:	Monaco:24:0
+0x6d=
+@Font:	IPATimes:24:0
+om
+@Font:	Monaco:24:0
+0x6e=
+@Font:	IPATimes:24:0
+on
+@Font:	Monaco:24:0
+0x6f=
+@Font:	IPATimes:24:0
+oo
+@Font:	Monaco:24:0
+0x70=
+@Font:	IPATimes:24:0
+op
+@Font:	Monaco:24:0
+0x71=
+@Font:	IPATimes:24:0
+oq
+@Font:	Monaco:24:0
+0x72=
+@Font:	IPATimes:24:0
+or
+@Font:	Monaco:24:0
+0x73=
+@Font:	IPATimes:24:0
+os
+@Font:	Monaco:24:0
+0x74=
+@Font:	IPATimes:24:0
+ot
+@Font:	Monaco:24:0
+0x75=
+@Font:	IPATimes:24:0
+ou
+@Font:	Monaco:24:0
+0x76=
+@Font:	IPATimes:24:0
+ov
+@Font:	Monaco:24:0
+0x77=
+@Font:	IPATimes:24:0
+ow
+@Font:	Monaco:24:0
+0x78=
+@Font:	IPATimes:24:0
+ox
+@Font:	Monaco:24:0
+0x79=
+@Font:	IPATimes:24:0
+oy
+@Font:	Monaco:24:0
+0x7a=
+@Font:	IPATimes:24:0
+oz
+@Font:	Monaco:24:0
+0x7b=
+@Font:	IPATimes:24:0
+o{
+@Font:	Monaco:24:0
+0x7c=
+@Font:	IPATimes:24:0
+o|
+@Font:	Monaco:24:0
+0x7d=
+@Font:	IPATimes:24:0
+o}
+@Font:	Monaco:24:0
+0x7e=
+@Font:	IPATimes:24:0
+o~
+@Font:	Monaco:24:0
+0x7f=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0x80=
+@Font:	IPATimes:24:0
+oÄ
+@Font:	Monaco:24:0
+0x81=
+@Font:	IPATimes:24:0
+oÅ
+@Font:	Monaco:24:0
+0x82=
+@Font:	IPATimes:24:0
+oÇ
+@Font:	Monaco:24:0
+0x83=
+@Font:	IPATimes:24:0
+oÉ
+@Font:	Monaco:24:0
+0x84=
+@Font:	IPATimes:24:0
+oÑ
+@Font:	Monaco:24:0
+0x85=
+@Font:	IPATimes:24:0
+oÖ
+@Font:	Monaco:24:0
+0x86=
+@Font:	IPATimes:24:0
+oÜ
+@Font:	Monaco:24:0
+0x87=
+@Font:	IPATimes:24:0
+oá
+@Font:	Monaco:24:0
+0x88=
+@Font:	IPATimes:24:0
+oà
+@Font:	Monaco:24:0
+0x89=
+@Font:	IPATimes:24:0
+oâ
+@Font:	Monaco:24:0
+0x8a=
+@Font:	IPATimes:24:0
+oä
+@Font:	Monaco:24:0
+0x8b=
+@Font:	IPATimes:24:0
+oã
+@Font:	Monaco:24:0
+0x8c=
+@Font:	IPATimes:24:0
+oå
+@Font:	Monaco:24:0
+0x8d=
+@Font:	IPATimes:24:0
+oç
+@Font:	Monaco:24:0
+0x8e=
+@Font:	IPATimes:24:0
+oé
+@Font:	Monaco:24:0
+0x8f=
+@Font:	IPATimes:24:0
+oè
+@Font:	Monaco:24:0
+0x90=
+@Font:	IPATimes:24:0
+oê
+@Font:	Monaco:24:0
+0x91=
+@Font:	IPATimes:24:0
+oë
+@Font:	Monaco:24:0
+0x92=
+@Font:	IPATimes:24:0
+oí
+@Font:	Monaco:24:0
+0x93=
+@Font:	IPATimes:24:0
+oì
+@Font:	Monaco:24:0
+0x94=
+@Font:	IPATimes:24:0
+oî
+@Font:	Monaco:24:0
+0x95=
+@Font:	IPATimes:24:0
+oï
+@Font:	Monaco:24:0
+0x96=
+@Font:	IPATimes:24:0
+oñ
+@Font:	Monaco:24:0
+0x97=
+@Font:	IPATimes:24:0
+oó
+@Font:	Monaco:24:0
+0x98=
+@Font:	IPATimes:24:0
+oò
+@Font:	Monaco:24:0
+0x99=
+@Font:	IPATimes:24:0
+oô
+@Font:	Monaco:24:0
+0x9a=
+@Font:	IPATimes:24:0
+oö
+@Font:	Monaco:24:0
+0x9b=
+@Font:	IPATimes:24:0
+oõ
+@Font:	Monaco:24:0
+0x9c=
+@Font:	IPATimes:24:0
+oú
+@Font:	Monaco:24:0
+0x9d=
+@Font:	IPATimes:24:0
+où
+@Font:	Monaco:24:0
+0x9e=
+@Font:	IPATimes:24:0
+oû
+@Font:	Monaco:24:0
+0x9f=
+@Font:	IPATimes:24:0
+oü
+@Font:	Monaco:24:0
+0xa0=
+@Font:	IPATimes:24:0
+o†
+@Font:	Monaco:24:0
+0xa1=
+@Font:	IPATimes:24:0
+o°
+@Font:	Monaco:24:0
+0xa2=
+@Font:	IPATimes:24:0
+o¢
+@Font:	Monaco:24:0
+0xa3=
+@Font:	IPATimes:24:0
+o£
+@Font:	Monaco:24:0
+0xa4=
+@Font:	IPATimes:24:0
+o§
+@Font:	Monaco:24:0
+0xa5=
+@Font:	IPATimes:24:0
+o•
+@Font:	Monaco:24:0
+0xa6=
+@Font:	IPATimes:24:0
+o¶
+@Font:	Monaco:24:0
+0xa7=
+@Font:	IPATimes:24:0
+oß
+@Font:	Monaco:24:0
+0xa8=
+@Font:	IPATimes:24:0
+o®
+@Font:	Monaco:24:0
+0xa9=
+@Font:	IPATimes:24:0
+o©
+@Font:	Monaco:24:0
+0xaa=
+@Font:	IPATimes:24:0
+o™
+@Font:	Monaco:24:0
+0xab=
+@Font:	IPATimes:24:0
+o´
+@Font:	Monaco:24:0
+0xac=
+@Font:	IPATimes:24:0
+o¨
+@Font:	Monaco:24:0
+0xad=
+@Font:	IPATimes:24:0
+o≠
+@Font:	Monaco:24:0
+0xae=
+@Font:	IPATimes:24:0
+oÆ
+@Font:	Monaco:24:0
+0xaf=
+@Font:	IPATimes:24:0
+oØ
+@Font:	Monaco:24:0
+0xb0=
+@Font:	IPATimes:24:0
+o∞
+@Font:	Monaco:24:0
+0xb1=
+@Font:	IPATimes:24:0
+o±
+@Font:	Monaco:24:0
+0xb2=
+@Font:	IPATimes:24:0
+o≤
+@Font:	Monaco:24:0
+0xb3=
+@Font:	IPATimes:24:0
+o≥
+@Font:	Monaco:24:0
+0xb4=
+@Font:	IPATimes:24:0
+o¥
+@Font:	Monaco:24:0
+0xb5=
+@Font:	IPATimes:24:0
+oµ
+@Font:	Monaco:24:0
+0xb6=
+@Font:	IPATimes:24:0
+o∂
+@Font:	Monaco:24:0
+0xb7=
+@Font:	IPATimes:24:0
+o∑
+@Font:	Monaco:24:0
+0xb8=
+@Font:	IPATimes:24:0
+o∏
+@Font:	Monaco:24:0
+0xb9=
+@Font:	IPATimes:24:0
+oπ
+@Font:	Monaco:24:0
+0xba=
+@Font:	IPATimes:24:0
+o∫
+@Font:	Monaco:24:0
+0xbb=
+@Font:	IPATimes:24:0
+oª
+@Font:	Monaco:24:0
+0xbc=
+@Font:	IPATimes:24:0
+oº
+@Font:	Monaco:24:0
+0xbd=
+@Font:	IPATimes:24:0
+oΩ
+@Font:	Monaco:24:0
+0xbe=
+@Font:	IPATimes:24:0
+oæ
+@Font:	Monaco:24:0
+0xbf=
+@Font:	IPATimes:24:0
+oø
+@Font:	Monaco:24:0
+0xc0=
+@Font:	IPATimes:24:0
+o¿
+@Font:	Monaco:24:0
+0xc1=
+@Font:	IPATimes:24:0
+o¡
+@Font:	Monaco:24:0
+0xc2=
+@Font:	IPATimes:24:0
+o¬
+@Font:	Monaco:24:0
+0xc3=
+@Font:	IPATimes:24:0
+o√
+@Font:	Monaco:24:0
+0xc4=
+@Font:	IPATimes:24:0
+oƒ
+@Font:	Monaco:24:0
+0xc5=
+@Font:	IPATimes:24:0
+o≈
+@Font:	Monaco:24:0
+0xc6=
+@Font:	IPATimes:24:0
+o∆
+@Font:	Monaco:24:0
+0xc7=
+@Font:	IPATimes:24:0
+o«
+@Font:	Monaco:24:0
+0xc8=
+@Font:	IPATimes:24:0
+o»
+@Font:	Monaco:24:0
+0xc9=
+@Font:	IPATimes:24:0
+o…
+@Font:	Monaco:24:0
+0xca=
+@Font:	IPATimes:24:0
+o 
+@Font:	Monaco:24:0
+0xcb=
+@Font:	IPATimes:24:0
+oÀ
+@Font:	Monaco:24:0
+0xcc=
+@Font:	IPATimes:24:0
+oÃ
+@Font:	Monaco:24:0
+0xcd=
+@Font:	IPATimes:24:0
+oÕ
+@Font:	Monaco:24:0
+0xce=
+@Font:	IPATimes:24:0
+oŒ
+@Font:	Monaco:24:0
+0xcf=
+@Font:	IPATimes:24:0
+oœ
+@Font:	Monaco:24:0
+0xd0=
+@Font:	IPATimes:24:0
+o–
+@Font:	Monaco:24:0
+0xd1=
+@Font:	IPATimes:24:0
+o—
+@Font:	Monaco:24:0
+0xd2=
+@Font:	IPATimes:24:0
+o“
+@Font:	Monaco:24:0
+0xd3=
+@Font:	IPATimes:24:0
+o”
+@Font:	Monaco:24:0
+0xd4=
+@Font:	IPATimes:24:0
+o‘
+@Font:	Monaco:24:0
+0xd5=
+@Font:	IPATimes:24:0
+o’
+@Font:	Monaco:24:0
+0xd6=
+@Font:	IPATimes:24:0
+o÷
+@Font:	Monaco:24:0
+0xd7=
+@Font:	IPATimes:24:0
+o◊
+@Font:	Monaco:24:0
+0xd8=
+@Font:	IPATimes:24:0
+oÿ
+@Font:	Monaco:24:0
+0xd9=
+@Font:	IPATimes:24:0
+oŸ
+@Font:	Monaco:24:0
+0xda=
+@Font:	IPATimes:24:0
+o⁄
+@Font:	Monaco:24:0
+0xdb=
+@Font:	IPATimes:24:0
+o€
+@Font:	Monaco:24:0
+0xdc=
+@Font:	IPATimes:24:0
+o‹
+@Font:	Monaco:24:0
+0xdd=
+@Font:	IPATimes:24:0
+o›
+@Font:	Monaco:24:0
+0xde=
+@Font:	IPATimes:24:0
+oﬁ
+@Font:	Monaco:24:0
+0xdf=
+@Font:	IPATimes:24:0
+oﬂ
+@Font:	Monaco:24:0
+0xe0=
+@Font:	IPATimes:24:0
+o‡
+@Font:	Monaco:24:0
+0xe1=
+@Font:	IPATimes:24:0
+o·
+@Font:	Monaco:24:0
+0xe2=
+@Font:	IPATimes:24:0
+o‚
+@Font:	Monaco:24:0
+0xe3=
+@Font:	IPATimes:24:0
+o„
+@Font:	Monaco:24:0
+0xe4=
+@Font:	IPATimes:24:0
+o‰
+@Font:	Monaco:24:0
+0xe5=
+@Font:	IPATimes:24:0
+oÂ
+@Font:	Monaco:24:0
+0xe6=
+@Font:	IPATimes:24:0
+oÊ
+@Font:	Monaco:24:0
+0xe7=
+@Font:	IPATimes:24:0
+oÁ
+@Font:	Monaco:24:0
+0xe8=
+@Font:	IPATimes:24:0
+oË
+@Font:	Monaco:24:0
+0xe9=
+@Font:	IPATimes:24:0
+oÈ
+@Font:	Monaco:24:0
+0xea=
+@Font:	IPATimes:24:0
+oÍ
+@Font:	Monaco:24:0
+0xeb=
+@Font:	IPATimes:24:0
+oÎ
+@Font:	Monaco:24:0
+0xec=
+@Font:	IPATimes:24:0
+oÏ
+@Font:	Monaco:24:0
+0xed=
+@Font:	IPATimes:24:0
+oÌ
+@Font:	Monaco:24:0
+0xee=
+@Font:	IPATimes:24:0
+oÓ
+@Font:	Monaco:24:0
+0xef=
+@Font:	IPATimes:24:0
+oÔ
+@Font:	Monaco:24:0
+0xf0=
+@Font:	IPATimes:24:0
+o
+@Font:	Monaco:24:0
+0xf1=
+@Font:	IPATimes:24:0
+oÒ
+@Font:	Monaco:24:0
+0xf2=
+@Font:	IPATimes:24:0
+oÚ
+@Font:	Monaco:24:0
+0xf3=
+@Font:	IPATimes:24:0
+oÛ
+@Font:	Monaco:24:0
+0xf4=
+@Font:	IPATimes:24:0
+oÙ
+@Font:	Monaco:24:0
+0xf5=
+@Font:	IPATimes:24:0
+oı
+@Font:	Monaco:24:0
+0xf6=
+@Font:	IPATimes:24:0
+oˆ
+@Font:	Monaco:24:0
+0xf7=
+@Font:	IPATimes:24:0
+o˜
+@Font:	Monaco:24:0
+0xf8=
+@Font:	IPATimes:24:0
+o¯
+@Font:	Monaco:24:0
+0xf9=
+@Font:	IPATimes:24:0
+o˘
+@Font:	Monaco:24:0
+0xfa=
+@Font:	IPATimes:24:0
+o˙
+@Font:	Monaco:24:0
+0xfb=
+@Font:	IPATimes:24:0
+o˚
+@Font:	Monaco:24:0
+0xfc=
+@Font:	IPATimes:24:0
+o¸
+@Font:	Monaco:24:0
+0xfd=
+@Font:	IPATimes:24:0
+o˝
+@Font:	Monaco:24:0
+0xfe=
+@Font:	IPATimes:24:0
+o˛
+@Font:	Monaco:24:0
+0xff=
+@Font:	IPATimes:24:0
+oˇ

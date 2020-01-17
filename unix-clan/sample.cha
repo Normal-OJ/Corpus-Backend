@@ -1,0 +1,73 @@
+@UTF8
+@Begin
+@Languages:	eng
+@Participants:	MOT Kelly Mother, CHI Nicolette Target_Child
+@ID:	eng|sample|CHI|1;10.04|female|||Target_Child|||
+@ID:	eng|sample|MOT|||adolescent||Mother|||
+@Date:	03-MAY-1987
+*MOT:	hey Nicky [^c] wanna [: want to] see [* 4] what other
+	neat toys there are ?
+%mor:	co|hey n:prop|Nicky v|want inf|to v|see pro:int|what qn|other
+	adj|neat n|toy-PL adv|there cop|be&PRES ?
+%gra:	1|3|COM 2|3|SUBJ 3|0|ROOT 4|5|INF 5|3|XCOMP 6|11|LINK 7|9|QUANT 8|9|MOD
+	9|11|JCT 10|11|SUBJ 11|5|COMP 12|3|PUNCT
+%spa:	$INI:sel:in $RFI:tes:ve
+*CHI:	yeah . [+ Q]
+%mor:	co|yeah .
+%gra:	1|0|INCROOT 2|1|PUNCT
+%spa:	$RES:sel:ve $DES:tes:ve
+@Bg:	reading
+*MOT:	you wanna [: want to] see (.) a [* 0] more [///] toys ?
+%mor:	pro:per|you v|want inf|to v|see det:art|a n|toy-PL ?
+%gra:	1|2|SUBJ 2|0|ROOT 3|4|INF 4|2|XCOMP 5|6|DET 6|4|OBJ 7|2|PUNCT
+%err:	a = some $LEX
+%spa:	$RDE:sel:non $RFI:xxx:in
+*CHI:	yeah . [+ Q]
+%mor:	co|yeah .
+%gra:	1|0|INCROOT 2|1|PUNCT
+%spa:	$RES:sel:in $DES:tes:non
+%add:	mot
+*MOT:	oh (.) I see .
+%mor:	co|oh pro:sub|I v|see .
+%gra:	1|3|COM 2|3|SUBJ 3|0|ROOT 4|3|PUNCT
+%spa:	$INI:xxx:non $CR:sel:in
+@Eg:	reading
+*CHI:	Mommy .
+%mor:	n:prop|Mommy .
+%gra:	1|0|INCROOT 2|1|PUNCT
+%spa:	$RFA:sel:non $DES:sel:non $INI:sel:non
+@Bg:	play
+*MOT:	what's that ?
+%mor:	pro:int|what~cop|be&3S pro:dem|that ?
+%gra:	1|2|SUBJ 2|0|ROOT 3|2|PRED 4|2|PUNCT
+%act:	pulls out chalk board
+%spa:	$CON:sel:ve $RFI:xxx:ve
+*CHI:	what's that ? [+ I]
+%mor:	pro:int|what~cop|be&3S pro:dem|that ?
+%gra:	1|2|SUBJ 2|0|ROOT 3|2|PRED 4|2|PUNCT
+%spa:	$IMI:sel:ve $CON:sel:in
+*MOT:	is there any delicious cha:lk ?
+%mor:	cop|be&3S adv|there qn|any adj|delicious n|chalk ?
+%gra:	1|0|ROOT 2|1|JCT 3|5|QUANT 4|5|MOD 5|1|PRED 6|1|PUNCT
+%spa:	$INI:sel:non $RFI:tes:in
+@Eg:	play
+*CHI:	neat chalk chalk .
+%mor:	adj|neat n|chalk n|chalk .
+%gra:	1|3|MOD 2|3|MOD 3|0|INCROOT 4|3|PUNCT
+%spa:	$CON:sel:in $RES:tes:in
+*MOT:	oh (.) that's some toys .
+%mor:	co|oh pro:dem|that~cop|be&3S qn|some n|toy-PL .
+%gra:	1|3|COM 2|3|SUBJ 3|0|ROOT 4|5|QUANT 5|3|PRED 6|3|PUNCT
+%act:	takes out plastic container
+%spa:	$CON:sel:in $REP:xxx:non
+*CHI:	xxx . [+ V]
+%act:	starts to eat the chalk
+*MOT:	don't you eat wonderful blackboard chalk .
+%mor:	mod|do~neg|not pro:per|you v|eat adj|wonder-FULL
+	n|+adj|black+n|board n|chalk .
+%gra:	1|4|AUX 2|1|NEG 3|4|SUBJ 4|0|ROOT 5|7|MOD 6|7|MOD 7|4|OBJ 8|4|PUNCT
+%spa:	$RFI:tes:non $PRO:tes:ve
+*MOT:	it's not good to want chalk .
+%mor:	pro:per|it~cop|be&3S neg|not adj|good inf|to v|want n|chalk .
+%gra:	1|2|SUBJ 2|0|ROOT 3|2|NEG 4|2|PRED 5|6|INF 6|4|XCOMP 7|6|OBJ 8|2|PUNCT
+@End

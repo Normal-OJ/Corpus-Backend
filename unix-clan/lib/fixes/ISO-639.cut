@@ -1,0 +1,111 @@
+@UTF8
+# Format is as follows:
+# List one language code separated by tab,
+# at the end followed by Capitalized language name.
+# Language name can have spaces in it, for example: Manado Malay
+jam	Jamaican Creole
+mar	Marathi
+dyo	Jola-Fonyi
+kur	Kurdish
+wuu	Wu Chinese
+vec	Venetian
+ist	Istriot
+wol	Wolof
+tzh	Tzeltal
+xho	Xhosa
+hak	Hakka Chinese
+qom	Toba Guaicuruan
+yuw	Yau
+grn	Guarani
+sot	Southern Sotho
+taq	Tamasheq
+kin	Kinyarwanda
+bos	Bosnian
+bul	Bulgarian
+hin	Hindi
+guj	Gujarati
+que	Quechua
+crl	Northern East Cree
+far	Fataleka
+gla	Scottish Gaelic
+hat	Haitian Creole
+esk	Northwest Alaska Inupiatun
+jbe	Judeo-Berber
+tgl	Tagalog
+arn	Mapudungun; Mapuche
+tku	Upper Necaxa Totonac
+fin	Finnish
+ces	Czech
+pan	Punjabi
+eus	Basque
+cym	Welsh
+ceb	Cebuano
+hil	Hiligaynon
+nhz	Nahuatl
+yua	Yucateco
+xmm	Manado Malay
+mop	Mopan
+min	TaiwanMinChinese
+zho	MandarinChinese
+gan	GanChinese
+czh	HuizhouChinese
+cjy	JinyuChinese
+lzh	LiteraryChinese
+czo	MinZhongChinese
+mnp	MinBeiChinese
+cdo	MinDongChinese
+nan	MinNanChinese
+cpx	PuXianChinese
+wuu	WuChinese
+hsn	XiangChinese
+yue	YueCantonese
+hks	Hong Kong Sign Language
+vie	Vietnamese
+slv	Slovenian
+lat	Latin
+kan	Kannada
+cat	Catalan
+est	Estonian
+nor	Norwegian
+yid	Yiddish
+nep	Nepali
+heb	Hebrew
+isl	Icelandic
+kor	Korean
+swa	Swahili
+nld	Dutch
+ara	Arabic
+tur	Turkish
+swe	Swedish
+sun	Sundanese
+dan	Danish
+hun	Hungarian
+ron	Romanian
+hrv	Croatian
+ukr	Ukrainian
+rus	Russian
+mzr	Mambila
+srp	Serbian
+lit	Lithuanian
+pol	Polish
+fas	Persian
+gle	Irish
+ind	Indonesian
+jav	Javanese
+tha	Thai
+kik	Kikuyu
+afr	Afrikaans
+bak	Bashkir
+sme	Northern Sami
+tam	Tamil
+glg	Galician
+haw	Hawaiian
+und	Undetermined
+por	Portuguese
+ell	Greek
+jpn	Japanese
+spa	Spanish
+fra	French
+deu	German
+ita	Italian
+eng	English

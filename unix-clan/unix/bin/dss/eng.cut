@@ -1,0 +1,118 @@
+@UTF8
+#Points:  IP |PP |MV |SV |NG |CNJ|IR |WHQ|
+#         a   b   c   d   e   f   g   h
+
+STARTRULES: +punc +indef-pns +per-pns +noun-phrases +main-verbs +secondary-verbs +negatives +conjunctions +interrogative-reversal +wh-question
+
+RULENAME: punc
+ FOCUS: .+?
+ POINTS: 
+
+RULENAME: indef-pns (A)
+ FOCUS: pro|it+pro:dem|that+pro:dem|this
+ POINTS: A1
+ FOCUS: qn|no+pro:indef|some+qn|more+pro:indef|one*+det:num|two+pro:indef|other*+qn|another+pro:indef|something+pro:indef|someone+pro:indef|somebody
+ POINTS: A3
+ FOCUS: pro:indef|nothing+pro:indef|nobody+pro:indef|none+(qn|no^pro:indef|one)
+ POINTS: A4
+ FOCUS: qn|any+pro:indef|anything+pro:indef|anybody+pro:indef|anyone+qn|every+pro:indef|everything+pro:indef|everybody+pro:indef|everyone+qn|both+qn|few+qn|many+qn|each+qn|several+qn|most+adj|least+adj|last+adj|second+adj|third
+ POINTS: A7
+
+# Z rules-   noun phrases
+# these rules are used in conjunction with C or D to assign C or D points
+# they do not assign their own points
+# note- this should come after per-pns rule
+
+RULENAME: noun-phrases (Z)
+ FOCUS: det*^adj*^n*
+ POINTS: Z
+ FOCUS: det*^n*
+ POINTS: Z
+ FOCUS: art^adj*^n*
+ POINTS: Z
+ FOCUS: art^n*
+ POINTS: Z
+ FOCUS: n*
+ POINTS: Z
+
+RULENAME: per-pns (B)
+ FOCUS: pro:sub|I+pro:obj|me+pro:poss|mine+det:poss|my+pro|you+det:poss|your+pro:poss|yours
+ POINTS: B1
+ FOCUS: pro:sub|he+pro:obj|him+det:poss|his+pro:sub|she+det:poss|her+pro:poss|hers
+ POINTS: B2
+ FOCUS: pro:sub|we+pro:obj|us+det:poss|our+pro:poss|ours+pro:sub|they+pro:obj|them+det:poss|their+pro:dem|these+pro:dem|those
+ POINTS: B3
+ FOCUS: pro:refl|myself+pro:refl|yourself+pro:refl|himself+pro:refl|herself+pro:refl|itself+pro:refl|themselves+pro:refl|ourselves
+ POINTS: B5
+ FOCUS: pro:int|who+pro:int|whom+pro:int|whose+pro:int|what+pro:int|which+pro:int|that+(adv:int|how^qn|much)
+ POINTS: B6
+ FOCUS: adj|own+pro:refl|oneself+pro:int|whichever+pro:int|whoever+pro:int|whatever
+ POINTS: B7
+
+RULENAME: main-verbs (C)
+ FOCUS: (v|get*^part|*PASTP)+(aux|be*^part|*PASTP)+(mod|must^v|*)+(mod|shall^v|*)+(aux|have^part|*&PASTP)+(aux|have^v|get&PAST)
+ POINTS: C7
+ FOCUS: (v|*-PAST)+(v|*-3S)+(v|*&PAST)+(cop|be&1S)+(cop|be&2S)+(cop|be&PRES)+(cop|be&PAST&13S)+(cop|be&PAST)+(aux|be&1S)+(aux|be&2S)+(aux|be&PRES)+(aux|be&PAST&13S)+(aux|be&PAST)
+ POINTS: C2
+ FOCUS: (mod|can^v|*)+(mod|will^v|*)+(mod|may^v|*)+(mod|do^v|*)+(mod|do^neg|not^v|*)+(mod|do^v|*)
+ POINTS: C4
+ FOCUS: (mod|could^v|*)+(mod|will&COND^v|*)+(mod|should^v|*)+(mod|might^v|*)+(mod|could^cop|*)+(mod|will&COND^cop|*)+(mod|should^cop|*)+(mod|might^cop|*)+(mod|do&3S^v|*)+(mod|do&PAST^v|*)
+ POINTS: C6
+ FOCUS: (v|*)+(cop|be&3S)+(aux|be&3S^v|*-PRESP)
+ POINTS: C1
+ FOCUS: (aux|have*^aux|be&PASTP^v|*-PRESP)+(mod|*^aux|have^v|*PAST)+(aux|*^aux|be^v|*-PRESP)
+ POINTS: C8
+
+RULENAME: secondary-verbs (D)
+ FOCUS: (v|want^inf|to)+(*|go-PRESP^inf|to)+mod:aux|gotta+(v|let^pro:obj|me)+(v|let^pro:obj|us)
+ POINTS: D2
+ FOCUS: (v|*^inf|to)
+ POINTS: D3
+ FOCUS: (n|*^part|*-PRESP)+(n|*^part|*PASTP)
+ POINTS: D4
+ FOCUS: (v|*^pro:obj|*^inf|to)+(v|*^pro|*^inf|to)+(v|*^n:prop|*^inf|to)+(*|have&PAST^inf|to^v|*)+(v|*^pro|*^v|*)+(v|*^pro:obj|*^v|*)+(v|*^n|*^v|*)+(pro:int^inf|to^v|*)
+ POINTS: D5
+ FOCUS: (inf|to^aux|get^part|*PASTP)+(inf|to^aux|be^part|*PASTP)
+ POINTS: D7
+ FOCUS: n:gerund|*
+ POINTS: D8
+
+RULENAME: negatives (E)
+ FOCUS: (pro*^cop|be&3S^neg|not)+(pro*^aux|be&3S^neg|not)
+ POINTS: E1
+ FOCUS: (mod|can^neg|not)+(mod|do^neg|not)
+ POINTS: E4
+ FOCUS: (aux|be&3S^neg|not)+(cop|*&3S^neg|not)+(mod|will^neg|not)
+ POINTS: E5
+ FOCUS: (aux|*^neg|not^v|*)+(mod|*^neg|not^v|*)+(aux|*^neg|not^part|*)+(mod|*^neg|not^part|*)+(mod|*^neg|not^cop|*)+(cop|*^neg|not)
+ POINTS: E7
+
+RULENAME: conjunctions (F)
+ FOCUS: coord|and
+ POINTS: F3
+ FOCUS: conj|but+conj|so+conj|if+coord|or
+ POINTS: F5
+ FOCUS: conj|because
+ POINTS: F6
+ FOCUS: conj|*+prep|than+(prep|as^adj|*^adv|as)+prep|like
+ POINTS: F8
+
+RULENAME: interrogative-reversal (G)
+ FOCUS: (cop|be*^neg|not^pro|*)+(cop|be*^neg|not^n|*)+(cop|be*^pro|*)+(cop|be*^n|*)
+ POINTS: G1
+ FOCUS: (aux|be*^pro|*^v|*)+(aux|be*^n|*^v|*)
+ POINTS: G4
+ FOCUS: (mod|do*^pro*|*^v|*)+(mod*|do*^n|*^v|*)+(mod*|do*^n:*|*^v|*)+(mod|can^pro*|*^v|*)+(mod|can^n|*^v|*)+(mod|can^n:*|*^v|*)
+ POINTS: G6
+ FOCUS: (aux|have*^pro*|*^part|*)+(aux|have*^n*|*^part|*)+(mod|*^pro*|*^aux|have*^part|*)+(mod|*^n*|*^aux|have*^part|*)
+ POINTS: G8
+
+RULENAME: wh-question (H)
+ FOCUS: pro:int|who+pro:int|what+(pro:int|what^n|*)+(adv:int|where)+(adv:int|how^qn|*)+(pro:int|what^*^prep|for)
+ POINTS: H2
+ FOCUS: (adv:int|when^adv:int|how)+(adv:int|how^adj|*)
+ POINTS: H4
+ FOCUS: adv:int|why+adv:int|how_about
+ POINTS: H7
+ FOCUS: pro:int|whose+pro:int|which+(pro:int^n|*)
+ POINTS: H8

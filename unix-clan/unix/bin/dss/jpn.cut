@@ -1,0 +1,3068 @@
+@UTF8
+#Release 2009 05 29  
+# (updated 2011jul8) 
+# (updated 2013mar26; adapted to JMOR06)   
+#
+#Points:  |VM|VL|ADJ|COP|CNJ|NP|CASFQ|ADV|SMOD|FINP|
+#              A     B   C        D     E     F        G         H           I        J        
+#+vmiddle +vlast +vadj +adjnoun +cop +comp +conj +conj-ptl +np +case-ptl +foc-ptl +adv +final-ptl +smod
+#   
+#######################################################################
+STARTRULES: +punc +nphrase +adjnoun +cop +comp +vmiddle +vlast +vadj +conj +case-foc-quot-ptl +adv +final-ptl +smod
+#######################################################################
+RULENAME: punc
+ FOCUS: .+?
+ POINTS: 
+
+###############################################################################
+#  elaborated noun phrase  F  #       (combinations before isolated use)
+###############################################################################
+RULENAME: nphrase
+#to exclude "no da" constructions###
+ FOCUS: ptl:snr|no=SNR^v:cop|* 
+ POINTS: 
+
+#### N+no+(N)  F2
+# Papa no (kutsu)  F2
+ FOCUS: ptl:attr|no=GEN
+ POINTS: F2 
+
+#### A+N  F2
+# oishikunai gohan  F2
+ FOCUS: adj|*-NEG-PRES*^n*|*
+ POINTS: F2 C3
+# oishii gohan  F2
+ FOCUS: adj|*-PRES*^n*|*
+ POINTS: F2 C1
+# okkii gohan  F2
+ FOCUS: adj:*|*-PRES*^n*|*
+ POINTS: F2 C1
+# oishikatta gohan F2
+ FOCUS: adj|*-PAST*^n*|*
+ POINTS: F2 C1
+
+#### N to N  F3
+# gohan to raisu   F3
+ FOCUS: ptl:coo|to=and
+ POINTS: F3
+
+#### adn + ^n*|    F3 
+# ookina hito ; konna hito  F3
+ FOCUS: adn|*^n*|*+adn|*^ptl:fina|ne*^n*|*+adn*|*^n*|*+adn*|*^ptl:fina|ne*^n*|*
+ POINTS: F3
+
+#### cop + ^n*|  F3
+# janai hito  D3 F3
+ FOCUS: v:cop|de&wa-NEG-PRES=be^n*|*
+ POINTS: D3 F3
+
+# datta hito  D4 F3
+ FOCUS: v:cop|da-PAST=be^n*|*
+ POINTS: D4 F3
+
+#### verben + ^n*|  F3
+# taberaretakunakatta   B1 A1 A2 A4 F3
+ FOCUS: *PASS-DESID-NEG-PAST*^n*|*
+ FOCUS: v:v:sub|i-PASS-DESID-NEG-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A2 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-DESID-NEG-PAST=come^n*|*+v:c:sub|ik-PASS-DESID-NEG-PAST=go^n*|*
+ POINTS: B1 A2 A1 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-DESID-NEG-PAST=give^n*|*+v:v:sub|mi-PASS-DESID-NEG-PAST=try^n*|*+v:c:sub|ok-PASS-DESID-NEG-PAST=put^n*|*
+ POINTS: B1 A3 A1 A2 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-DESID-NEG-PAST=get^n*|*
+ POINTS: B1 A5 A1 A2 A4 F3
+ FOCUS: v:*|*PASS-DESID-NEG-PAST*^n*|*
+ POINTS: B1 A1 A2 A4 F3
+FOCUS: v:*|*ASP-PASS-DESID-NEG-PAST*^n*|*
+ POINTS: B1 A1 A1 A2 A4 F3
+# taberaretakunai  B1 A1 A2 A4 F3
+### FOCUS: *PASS-DESID-NEG-PRES*^n*|*
+ FOCUS: v:v:sub|i-PASS-DESID-NEG-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A2 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-DESID-NEG-PRES=come^n*|*+v:c:sub|ik-PASS-DESID-NEG-PRES=go^n*|*
+ POINTS: B1 A2 A1 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-DESID-NEG-PRES=give^n*|*+v:v:sub|mi-PASS-DESID-NEG-PRES=try^n*|*+v:c:sub|ok-PASS-DESID-NEG-PRES=put^n*|*
+ POINTS: B1 A3 A1 A2 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-DESID-NEG-PRES=get^n*|*
+ POINTS: B1 A5 A1 A2 A4 F3
+ FOCUS: v:*|*PASS-DESID-NEG-PRES*^n*|*
+ POINTS: B1 A1 A2 A4 F3
+ FOCUS: v:*|*ASP-PASS-DESID-NEG-PRES*^n*|*
+ POINTS: B1 A1 A1 A2 A4 F3
+# taberaretakatta  B1 A2 A4 F3
+### FOCUS: *PASS-DESID-PAST*^n*|*
+ FOCUS: v:v:sub|i-PASS-DESID-PAST=ASP^n*|*
+ POINTS: B1 A1 A2 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-DESID-PAST=come^n*|*+v:c:sub|ik-PASS-DESID-PAST=go^n*|*
+ POINTS: B1 A2 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-DESID-PAST=give^n*|*+v:v:sub|mi-PASS-DESID-PAST=try^n*|*+v:c:sub|ok-PASS-DESID-PAST=put^n*|*
+ POINTS: B1 A3 A2 A4 F3
+ FOCUS: v:v:sub|kure-PASS-DESID-PAST=give^n*|*+v:c:sub|moraw-PASS-DESID-PAST=get^n*|*
+ POINTS: B1 A5 A2 A4 F3
+ FOCUS: v:*|*PASS-DESID-PAST*^n*|*
+ POINTS: B1 A2 A4 F3
+ FOCUS: v:*|*ASP-PASS-DESID-PAST*^n*|*
+ POINTS: B1 A1 A2 A4 F3
+# taberaretai  B1 A2 A4 F3
+
+### FOCUS: *PASS-DESID-PRES*^n*|*
+ FOCUS: v:v:sub|i-PASS-DESID-PRES=ASP^n*|*
+ POINTS: B1 A1 A2 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-DESID-PRES=come^n*|*+v:c:sub|ik-PASS-DESID-PRES=go^n*|*
+ POINTS: B1 A2 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-DESID-PRES=give^n*|*+v:v:sub|mi-PASS-DESID-PRES=try^n*|*+v:c:sub|ok-PASS-DESID-PRES=put^n*|*
+ POINTS: B1 A3 A2 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-DESID-PRES=get^n*|*
+ POINTS: B1 A5 A2 A4 F3
+ FOCUS: v:*|*ASP-PASS-DESID-PRES*^n*|*
+ POINTS: B1 A1 A2 A4 F3
+FOCUS: v:*|*PASS-DESID-PRES*^n*|*
+ POINTS: B1 A2 A4 F3
+# taberarechawanakatta   B1 A1 A1 A1 A4 F3
+### FOCUS: *PASS-COMPL-NEG-PAST*^n*|*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-PAST=come^n*|*+v:c:sub|ik-PASS-COMPL-NEG-PAST=go^n*|*
+ POINTS: B1 A2 A1 A1 A4 F3
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-PAST=give^n*|*+v:v:sub|mi-PASS-COMPL-NEG-PAST=try^n*|*+v:c:sub|ok-PASS-COMPL-NEG-PASTput^n*|*
+ POINTS: B1 A3 A1 A1 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-PAST=get^n*|*
+ POINTS: B1 A5 A1 A1 A4 F3
+ FOCUS: v:*|*ASP-PASS-COMPL-NEG-PAST*^n*|*
+ POINTS: B1 A1 A1 A1 A4 F3
+ FOCUS: v:*|*PASS-COMPL-NEG-PAST*^n*|*
+ POINTS: B1 A1 A1 A4 F3
+# taberarechawanai  B1 A1 A1 A4 F3
+### FOCUS: *PASS-COMPL-NEG-PRES*^n*|*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-PRES=come^n*|*+v:c:sub|ik-PASS-COMPL-NEG-PRES=go^n*|*
+ POINTS: B1 A2 A1 A1 A4 F3
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-PRES=give^n*|*+v:v:sub|mi-PASS-COMPL-NEG-PRES=try^n*|*+v:c:sub|ok-PASS-COMPL-NEG-PRES=put^n*|*
+ POINTS: B1 A3 A1 A1 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-PRES=get^n*|*
+ POINTS: B1 A5 A1 A1 A4 F3
+ FOCUS: v:*|*ASP-PASS-COMPL-NEG-PRES*^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:*|*PASS-COMPL-NEG-PRES*^n*|*
+ POINTS: B1 A1 A4 F3
+# taberarechaimashita  B1 A1 A1 A2 A4 F3
+### FOCUS: *PASS-COMPL-POL-PAST*^n*|*
+ FOCUS: v:v:sub|i-PASS-COMPL-POL-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A2 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL-PAST=come^n*|*+v:c:sub|ik-PASS-COMPL-POL-PAST=go^n*|*
+ POINTS: B1 A2 A1 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-COMPL-POL-PAST=give^n*|*+v:v:sub|mi-PASS-COMPL-POL-PAST=try^n*|*+v:c:sub|ok-PASS-COMPL-POL-PAST=put^n*|*
+ POINTS: B1 A3 A1 A2 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL-PAST=get^n*|*
+ POINTS: B1 A5 A1 A2 A4 F3
+ FOCUS: v:*|*ASP-PASS-COMPL-POL-PAST*^n*|*
+ POINTS: B1 A1 A1 A2 A4 F3
+ FOCUS: v:*|*PASS-COMPL-POL-PAST*^n*|*
+ POINTS: B1 A1 A2 A4 F3
+# taberarechaimasu  B1 A1 A2 A4 F3
+### FOCUS: *PASS-COMPL-POL-PRES*^n*|*
+ FOCUS: v:v:sub|i-PASS-COMPL-POL-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A2 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL-PRES=come^n*|*+v:c:sub|ik-PASS-COMPL-POL-PRES=go^n*|*
+ POINTS: B1 A2 A1 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-COMPL-POL-PRES=give^n*|*+v:v:sub|mi-PASS-COMPL-POL-PRES=try^n*|*+v:c:sub|ok-PASS-COMPL-POL-PRES=put^n*|*
+ POINTS: B1 A3 A1 A2 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL-PRES=get^n*|*
+ POINTS: B1 A5 A1 A2 A4 F3
+ FOCUS: v:*|*ASP-PASS-COMPL-POL-PRES*^n*|*
+ POINTS: B1 A1 A1 A2 A4 F3
+ FOCUS: v:*|*PASS-COMPL-POL-PRES*^n*|*
+ POINTS: B1 A1 A2 A4 F3
+# taberarechatta  B1 A1 A4 F3
+### FOCUS: *PASS-COMPL-PAST*^n*|*
+ FOCUS: v:v:sub|i-PASS-COMPL-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-COMPL-PAST=come^n*|*+v:c:sub|ik-PASS-COMPL-PAST=go^n*|*
+ POINTS: B1 A2 A1 A4 F3
+ FOCUS: v:v:sub|age-PASS-COMPL-PAST=give^n*|*+v:v:sub|mi-PASS-COMPL-PAST=try^n*|*+v:c:sub|ok-PASS-COMPL-PAST=put^n*|*
+ POINTS: B1 A3 A1 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-COMPL-PAST=get^n*|*
+ POINTS: B1 A5 A1 A4 F3
+ FOCUS: v:*|*ASP-PASS-COMPL-PAST*^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:*|*PASS-COMPL-PAST*^n*|*
+ POINTS: B1 A1 A4 F3
+# taberarechau  B1 A1 A4 F3
+### FOCUS: *PASS-COMPL-PRES*^n*|*
+ FOCUS: v:v:sub|i-PASS-COMPL-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-COMPL-PRES=come^n*|*+v:c:sub|ik-PASS-COMPL-PRES=go^n*|*
+ POINTS: B1 A2 A1 A4 F3
+ FOCUS: v:v:sub|age-PASS-COMPL-PRES=give^n*|*+v:v:sub|mi-PASS-COMPL-PRES=try^n*|*+v:c:sub|ok-PASS-COMPL-PRES=put^n*|*
+ POINTS: B1 A3 A1 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-COMPL-PRES=get^n*|*
+ POINTS: B1 A5 A1 A4 F3
+ FOCUS: v:*|*ASP-PASS-COMPL-PRES*^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:*|*PASS-COMPL-PRES*^n*|*
+ POINTS: B1 A1 A4 F3
+# taberarenakatta   B1 A1 A4 F3
+### FOCUS: *PASS-NEG-PAST*^n*|*
+ FOCUS: v:v:sub|i-PASS-NEG-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-NEG-PAST=come^n*|*+v:c:sub|ik-PASS-NEG-PAST=go^n*|*
+ POINTS: B1 A2 A1 A4 F3
+ FOCUS: v:v:sub|age-PASS-NEG-PAST=give^n*|*+v:v:sub|mi-PASS-NEG-PAST=try^n*|*+v:c:sub|ok-PASS-NEG-PAST=put^n*|*
+ POINTS: B1 A3 A1 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-NEG-PAST=get^n*|*
+ POINTS: B1 A5 A1 A4 F3
+ FOCUS: v:*|*ASP-PASS-NEG-PAST*^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:*|*PASS-NEG-PAST*^n*|*
+ POINTS: B1 A1 A4 F3
+# taberarenai  B1 A1 A4 F3
+### FOCUS: *PASS-NEG-PRES*^n*|*
+ FOCUS: v:v:sub|i-PASS-NEG-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-NEG-PRES=come^n*|*+v:c:sub|ik-PASS-NEG-PRES=go^n*|*
+ POINTS: B1 A2 A1 A4 F3
+ FOCUS: v:v:sub|age-PASS-NEG-PRES=give^n*|*+v:v:sub|mi-PASS-NEG-PRES=try^n*|*+v:c:sub|ok-PASS-NEG-PRES=put^n*|*
+ POINTS: B1 A3 A1 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-NEG-PRES=get^n*|*
+ POINTS: B1 A5 A1 A4 F3
+ FOCUS: v:*|*ASP-PASS-NEG-PRES*^n*|*
+ POINTS: B1 A1 A1 A4 F3
+ FOCUS: v:*|*PASS-NEG-PRES*^n*|*
+ POINTS: B1 A1 A4 F3
+# taberaremashita  B1 A2 A4 F3
+### FOCUS: *PASS-POL-PAST*^n*|*
+ FOCUS: v:v:sub|i-PASS-POL-PAST=ASP^n*|*
+ POINTS: B1 A2 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-POL-PAST=come^n*|*+v:c:sub|ik-PASS-POL-PAST=go^n*|*
+ POINTS: B1 A2 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-POL-PAST=give^n*|*+v:v:sub|mi-PASS-POL-PAST~try^n*|*+v:c:sub|ok-PASS-POL-PAST=put^n*|*
+ POINTS: B1 A2 A3 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-POL-PAST=get^n*|*
+ POINTS: B1 A2 A5 A4 F3
+ FOCUS: v:*|*ASP-PASS-POL-PAST*^n*|*
+ POINTS: B1 A1 A2 A4 F3
+ FOCUS: v:*|*PASS-POL-PAST*^n*|*
+ POINTS: B1 A2 A4 F3
+# taberareta  B1 A4 F3
+### FOCUS: *PASS-PAST*^n*|*
+ FOCUS: v:v:sub|i-PASS-PAST=ASP^n*|*
+ POINTS: B1 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-PAST=come^n*|*+v:c:sub|ik-PASS-PAST=go^n*|*
+ POINTS: B1 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-PAST=give^n*|*+v:v:sub|mi-PASS-PAST=try^n*|*+v:c:sub|ok-PASS-PAST=put^n*|*
+ POINTS: B1 A3 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-PAST=get^n*|*
+ POINTS: B1 A5 A4 F3
+ FOCUS: v:*|*ASP-PASS-PAST*^n*|*
+ POINTS: B1 A1 A4 F3
+ FOCUS: v:*|*PASS-PAST*^n*|*
+ POINTS: B1 A4 F3
+# taberareru  B1 A4 F3
+### FOCUS: *PASS-PRES*^n*|*
+ FOCUS: v:v:sub|i-PASS-PRES=ASP^n*|*
+ POINTS: B1 A1 A4 F3
+ FOCUS: v:ir:sub|ku-PASS-PRES=come^n*|*+v:c:sub|ik-PASS-PRES=go^n*|*
+ POINTS: B1 A2 A4 F3
+ FOCUS: v:v:sub|age-PASS-PRES=give^n*|*+v:v:sub|mi-PASS-PRES=try^n*|*+v:c:sub|ok-PASS-PRES=put^n*|*
+ POINTS: B1 A3 A4 F3
+ FOCUS: v:c:sub|moraw-PASS-PRES=get^n*|*
+ POINTS: B1 A5 A4 F3
+ FOCUS: v:*|*PASS-ASP-PRES*^n*|*
+ POINTS: B1 A1 A4 F3
+ FOCUS: v:*|*PASS-PRES*^n*|*
+ POINTS: B1 A4 F3
+# tabe(ra)rechawanakatta   B1 A1 A1 A1 A2 F3
+### FOCUS: *POT-COMPL-NEG-PAST*^n*|*
+ FOCUS: v:v:sub|i-POT-COMPL-NEG-PAST=ASP^n*|*+v:v:sub|i-POT:contr-COMPL-NEG-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG-PAST=come^n*|*+v:c:sub|ik-POT-COMPL-NEG-PAST=go^n*|*
+ POINTS: B1 A2 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ar-POT-COMPL-NEG-PAST=be^n*|*+v:v:sub|age-POT-COMPL-NEG-PAST=give^n*|*+v:v:sub|age-POT:contr-COMPL-NEG-PAST=give^n*|*+v:v:sub|mi-POT-COMPL-NEG-PAST=try^n*|*+v:v:sub|mi-POT:contr-COMPL-NEG-PAST=try^n*|*+v:c:sub|ok-POT-COMPL-NEG-PAST=put^n*|*
+ POINTS: B1 A3 A1 A1 A2 F3
+ FOCUS: v:v:sub|kure-POT-COMPL-NEG-PAST=give^n*|*+v:v:sub|kure-POT:contr-COMPL-NEG-PAST=give^n*|*+v:c:sub|moraw-POT-COMPL-NEG-PAST=get^n*|*
+ POINTS: B1 A5 A1 A1 A2 F3
+ FOCUS: v:*|*POT-COMPL-NEG-PAST^n*|*+v:*|*POT:contr-COMPL-NEG-PAST*^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:*|*POT-COMPL-ASP-NEG-PAST^n*|*+v:*|*POT:contr-COMPL-ASP-NEG-PAST*^n*|*
+ POINTS: B1 A1 A1 A1 A2 F3
+# tabe(ra)rechawanai  B1 A1 A1 A2 F3
+### FOCUS: *POT-COMPL-NEG-PRES*^n*|*
+ FOCUS: v:v:sub|i-POT-COMPL-NEG-PRES=ASP^n*|*+v:v:sub|i-POT:contr-COMPL-NEG-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG-PRES=come^n*|*+v:c:sub|ik-POT-COMPL-NEG-PRES=go^n*|*
+ POINTS: B1 A2 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ar&POT-COMPL-NEG-PRES=be^n*|*+v:v:sub|age-POT-COMPL-NEG-PRES=give^n*|*+v:v:sub|age-POT:contr-COMPL-NEG-PRES=give^n*|*+v:v:sub|mi-POT-COMPL-NEG-PRES=try^n*|*+v:v:sub|mi-POT:contr-COMPL-NEG-PRES=try^n*|*+v:c:sub|ok-POT-COMPL-NEG-PRES=put^n*|*
+ POINTS: B1 A3 A1 A1 A2 F3
+ FOCUS: v:v:sub|kure-POT-PRES=give^n*|*+v:v:sub|kure-POT:contr-COMPL-NEG-PRES=give^n*|*+v:c:sub|moraw-POT-COMPL-NEG-PRES=get^n*|*
+ POINTS: B1 A5 A1 A1 A2 F3
+ FOCUS: v:*|*POT-COMPL-ASP-NEG-PRES*^n*|*+v:*|*POT:contr-COMPL-ASP-NEG-PRES*^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:*|*POT-COMPL-NEG-PRES*^n*|*+v:*|*POT:contr-COMPL-NEG-PRES*^n*|*
+ POINTS: B1 A1 A2 F3
+# tabe(ra)rechaimashita  B1 A1 A1 A2 A2 F3
+### FOCUS: *POT-COMPL-POL-PAST^n*|*
+ FOCUS: v:v:sub|i-POT-COMPL-POL-PAST=ASP^n*|*+v:v:sub|i-POT:contr-COMPL-POL-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A2 A2 F3
+ FOCUS: v:ir:sub|ku-POT-COMPL-POL-PAST=come^n*|*+v:c:sub|ik-POT-COMPL-POL-PAST=go^n*|*
+ POINTS: B1 A2 A1 A2 A2 F3
+ FOCUS: v:v:sub|age-POT-COMPL-POL-PAST=give^n*|*+v:v:sub|age-POT:contr-COMPL-POL-PAST=give^n*|*+v:v:sub|mi-POT-COMPL-POL-PAST=try^n*|*+v:v:sub|mi-POT:contr-COMPL-POL-PAST=try^n*|*+v:c:sub|ok-POT-COMPL-POL-PAST=put^n*|*
+ POINTS: B1 A3 A1 A2 A2 F3
+ FOCUS: v:v:sub|kure-POT-COMPL-POL-PAST=give^n*|*+v:v:sub|kure-POT:contr-COMPL-POL-PAST=give^n*|*+v:c:sub|moraw-POT-COMPL-POL-PAST=get^n*|*
+ POINTS: B1 A5 A1 A2 A2 F3
+ FOCUS: v:*|*POT-ASP-COMPL-POL-PAST^n*|*+v:*|*POT:contr-ASP-COMPL-POL-PAST^n*|*
+ POINTS: B1 A1 A1 A2 A2 F3
+ FOCUS: v:*|*POT-COMPL-POL-PAST^n*|*+v:*|*POT:contr-COMPL-POL-PAST^n*|*
+ POINTS: B1 A1 A2 A2 F3
+# tabe(ra)rechatta  B1 A1 A2 F3
+### FOCUS: *POT-COMPL-PAST^n*|*
+ FOCUS: v:v:sub|i-POT-COMPL-PAST=ASP^n*|*+v:v:sub|i-POT:contr-COMPL-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POT-COMPL-PAST=come^n*|*+v:c:sub|ik-POT-COMPL-PAST=go^n*|*
+ POINTS: B1 A2 A1 A2 F3
+ FOCUS: v:v:sub|age-POT-COMPL-PAST=give^n*|*+v:v:sub|age-POT:contr-COMPL-PAST=give^n*|*+v:v:sub|mi-POT-COMPL-PAST=try^n*|*+v:v:sub|mi-POT:contr-COMPL-PAST=try^n*|*+v:c:sub|ok-POT-COMPL-PAST=put^n*|*
+ POINTS: B1 A3 A1 A2 F3
+ FOCUS: v:v:sub|kure-POT-COMPL-PAST=give^n*|*+v:v:sub|kure-POT:contr-COMPL-PAST=give^n*|*+v:c:sub|moraw-POT-COMPL-PAST=get^n*|*
+ POINTS: B1 A5 A1 A2 F3
+ FOCUS: v:*|*POT-ASP-COMPL-PAST^n*|*+v:*|*POT:contr-ASP-COMPL-PAST^n*|*
+ POINTS: B1 A1 A1 A2 F3
+FOCUS: v:*|*POT-COMPL-PAST^n*|*+v:*|*POT:contr-COMPL-PAST^n*|*
+ POINTS: B1 A1 A2 F3
+# tabe(ra)rechau  B1 A1 A2 F3
+### FOCUS: *POT-COMPL-PRES*^n*|*
+ FOCUS: v:v:sub|i-POT-COMPL-PRES=ASP^n*|*+v:v:sub|i-POT:contr-COMPL-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POT-COMPL-PRES=come^n*|*+v:c:sub|ik-POT-COMPL-PRES=go^n*|*
+ POINTS: B1 A2 A1 A2 F3
+ FOCUS: v:v:sub|age-POT-COMPL-PRES=give^n*|*+v:v:sub|age-POT:contr-COMPL-PRES=give^n*|*+v:v:sub|mi-POT-COMPL-PRES=try^n*|*+v:v:sub|mi-POT:contr-COMPL-PRES=try^n*|*+v:c:sub|ok-POT-COMPL-PRES=put^n*|*
+ POINTS: B1 A3 A1 A2 F3
+ FOCUS: v:v:sub|kure-POT-COMPL-PRES=give^n*|*+v:v:sub|kure-POT:contr-COMPL-PRES=give^n*|*+v:c:sub|moraw-POT-COMPL-PRES=get^n*|*
+ POINTS: B1 A5 A1 A2 F3
+ FOCUS: v:*|*POT-ASP-COMPL-PRES*^n*|*+v:*|*POT:contr-ASP-COMPL-PRES*^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:*|*POT-COMPL-PRES*^n*|*+v:*|*POT:contr-COMPL-PRES*^n*|*
+ POINTS: B1 A1 A2 F3
+# tabe(ra)renakatta   B1 A1 A2 F3
+### FOCUS: *POT-NEG-PAST^n*|*
+ FOCUS: v:v:sub|i-POT-NEG-PAST=ASP^n*|*+v:v:sub|i-POT:contr-NEG-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POT-NEG-PAST=come^n*|*+v:c:sub|ik-POT-NEG-PAST=go^n*|*
+ POINTS: B1 A2 A1 A2 F3
+ FOCUS: v:v:sub|age-POT-NEG-PAST=give^n*|*+v:v:sub|age-POT:contr-NEG-PAST=give^n*|*+v:v:sub|mi-POT-NEG-PAST=try^n*|*+v:v:sub|mi-POT:contr-NEG-PAST=try^n*|*+v:c:sub|ok-POT-NEG-PAST=put^n*|*
+ POINTS: B1 A3 A1 A2 F3
+ FOCUS: v:v:sub|kure-POT-NEG-PAST=give^n*|*+v:v:sub|kure-POT:contr-NEG-PAST=give^n*|*+v:c:sub|moraw-POT-NEG-PAST=get^n*|*
+ POINTS: B1 A5 A1 A2 F3
+ FOCUS: v:*|*POT-ASP-NEG-PAST^n*|*+v:*|*POT:contr-ASP-NEG-PAST^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:*|*POT-NEG-PAST^n*|*+v:*|*POT:contr-NEG-PAST^n*|*
+ POINTS: B1 A1 A2 F3
+# tabe(ra)renai  B1 A1 A2 F3
+### FOCUS: *POT-NEG-PRES*^n*|*
+ FOCUS: v:v:sub|i-POT-NEG-PRES=ASP^n*|*+v:v:sub|i-POT:contr-NEG-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POT-NEG-PRES=come^n*|*+v:c:sub|ik-POT-NEG-PRES=go^n*|*
+ POINTS: B1 A2 A1 A2 F3
+ FOCUS: v:v:sub|age-POT-NEG-PRES=give^n*|*+v:v:sub|age-POT:contr-NEG-PRES=give^n*|*+v:v:sub|mi-POT-NEG-PRES=try^n*|*+v:v:sub|mi-POT:contr-NEG-PRES=try^n*|*+v:c:sub|ok-POT-NEG-PRES=put^n*|*
+ POINTS: B1 A3 A1 A2 F3
+ FOCUS: v:v:sub|kure-POT-NEG-PRES=give^n*|*+v:v:sub|kure-POT:contr-NEG-PRES=give^n*|*+v:c:sub|moraw-POT-NEG-PRES=get^n*|*
+ POINTS: B1 A5 A1 A2 F3
+ FOCUS: v:*|*POT-ASP-NEG-PRES*^n*|*+v:*|*POT:contr-ASP-NEG-PRES*^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:*|*POT-NEG-PRES*^n*|*+v:*|*POT:contr-NEG-PRES*^n*|*
+ POINTS: B1 A1 A2 F3
+# tabe(ra)remashita  B1 A2 A2 F3
+### FOCUS: *POT-POL-PAST^n*|*
+ FOCUS: v:v:sub|i-POT-POL-PAST=ASP^n*|*+v:v:sub|i-POT:contr-POL-PAST=ASP^n*|*
+ POINTS: B1 A1 A2 A2 F3
+ FOCUS: v:ir:sub|ku-POT-POL-PAST=come^n*|*+v:c:sub|ik-POT-POL-PAST=go^n*|*
+ POINTS: B1 A2 A2 A2 F3
+ FOCUS: v:v:sub|age-POT-POL-PAST=give^n*|*+v:v:sub|age-POT:contr-POL-PAST=give^n*|*+v:v:sub|mi-POT-POL-PAST=try^n*|*+v:v:sub|mi-POT:contr-POL-PAST=try^n*|*+v:c:sub|ok-POT-POL-PAST=put^n*|*
+ POINTS: B1 A3 A2 A2 F3
+ FOCUS: v:v:sub|kure-POT-POL-PAST=give^n*|*+v:v:sub|kure-POT:contr-POL-PAST=give^n*|*+v:c:sub|moraw-POT-POL-PAST=get^n*|*
+ POINTS: B1 A5 A2 A2 F3
+ FOCUS: v:*|*POT-ASP-POL-PAST^n*|*+v:*|*POT:contr-ASP-POL-PAST^n*|*
+ POINTS: B1 A1 A2 A2 F3
+ FOCUS: v:*|*POT-POL-PAST^n*|*+v:*|*POT:contr-POL-PAST^n*|*
+ POINTS: B1 A2 A2 F3
+# tabe(ra)reta  B1 A2 F3
+### FOCUS: *POT-PAST^n*|*
+ FOCUS: v:v:sub|i-POT-PAST=ASP^n*|*+v:v:sub|i-POT:contr-PAST=ASP^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POT-PAST=come^n*|*+v:c:sub|ik-POT-PAST=go^n*|*
+ POINTS: B1 A2 A2 F3
+ FOCUS: v:v:sub|age-POT-PAST=give^n*|*+v:v:sub|age-POT:contr-PAST=give^n*|*+v:v:sub|mi-POT-PAST=try^n*|*+v:v:sub|mi-POT:contr-PAST=try^n*|*+v:c:sub|ok-POT-PAST=put^n*|*
+ POINTS: B1 A3 A2 F3
+ FOCUS: v:v:sub|kure-POT-PAST=give^n*|*+v:v:sub|kure-POT:contr-PAST=give^n*|*+v:c:sub|moraw-POT-PAST=get^n*|*
+ POINTS: B1 A5 A2 F3
+ FOCUS: v:*|*POT-ASP-PAST^n*|*+v:*|*POT:contr-ASP-PAST^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:*|*POT-PAST^n*|*+v:*|*POT:contr-PAST^n*|*
+ POINTS: B1 A2 F3
+# tabe(ra)reru  B1 A2 F3
+### FOCUS: *POT-PRES*^n*|*
+ FOCUS: v:v:sub|i-POT-PRES=ASP^n*|*+v:v:sub|i-POT:contr-PRES=ASP^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POT-PRES=come^n*|*+v:c:sub|ik-POT-PRES=go^n*|*
+ POINTS: B1 A2 A2 F3
+ FOCUS: v:v:sub|age-POT-PRES=give^n*|*+v:v:sub|age-POT:contr-PRES=give^n*|*+v:v:sub|mi-POT-PRES=try^n*|*+v:v:sub|mi-POT:contr-PRES=try^n*|*+v:c:sub|ok-POT-PRES=put^n*|*
+ POINTS: B1 A3 A2 F3
+ FOCUS: v:v:sub|kure-POT-PRES=give^n*|*+v:v:sub|kure-POT:contr-PRES=give^n*|*+v:c:sub|moraw-POT-PRES=get^n*|*
+ POINTS: B1 A5 A2 F3
+ FOCUS: v:*|*POT-ASP-PRES*^n*|*+v:*|*POT:contr-ASP-PRES*^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:*|*POT-PRES*^n*|*+v:*|*POT:contr-PRES*^n*|*
+ POINTS: B1 A2 F3
+# tabetakunakatta   B1 A1 A2 F3
+### FOCUS: *DESID-NEG-PAST^n*|*
+ FOCUS: v:v:sub|i-DESID-NEG-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-DESID-NEG-PAST=come^n*|*+v:c:sub|ik-DESID-NEG-PAST=go^n*|*
+ POINTS: B1 A2 A1 A2 F3
+ FOCUS: v:v:sub|mi-DESID-NEG-PAST=try^n*|*+v:c:sub|ok-DESID-NEG-PAST=put^n*|*
+ POINTS: B1 A3 A1 A2 F3
+ FOCUS: v:c:sub|moraw-DESID-NEG-PAST=get^n*|*
+ POINTS: B1 A5 A1 A2 F3
+ FOCUS: v:*|*ASP-DESID-NEG-PAST^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:*|*DESID-NEG-PAST^n*|*
+ POINTS: B1 A1 A2 F3
+# tabenai  B1 A1 A2 F3
+### FOCUS: *DESID-NEG-PRES*^n*|*
+ FOCUS: v:v:sub|i-DESID-NEG-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-DESID-NEG-PRES=come^n*|*+v:c:sub|ik-DESID-NEG-PRES=go^n*|*
+ POINTS: B1 A2 A1 A2 F3
+ FOCUS: v:v:sub|age-DESID-NEG-PRES=give^n*|*+v:v:sub|mi-DESID-NEG-PRES=try^n*|*+v:c:sub|ok-DESID-NEG-PRES=put^n*|*
+ POINTS: B1 A3 A1 A2 F3
+ FOCUS: v:c:sub|moraw-DESID-NEG-PRES=get^n*|*
+ POINTS: B1 A5 A1 A2 F3
+ FOCUS: v:*|*ASP-DESID-NEG-PRES*^n*|*
+ POINTS: B1 A1 A1 A2 F3
+ FOCUS: v:*|*DESID-NEG-PRES*^n*|*
+ POINTS: B1 A1 A2 F3
+# tabetakatta  B1 A2 F3
+### FOCUS: *DESID-PAST^n*|*
+ FOCUS: v:v:sub|i-DESID-PAST=ASP^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-DESID-PAST=come^n*|*+v:c:sub|ik-DESID-PAST=go^n*|*
+ POINTS: B1 A2 A2 F3
+ FOCUS: v:v:sub|age-DESID-PAST=give^n*|*+v:v:sub|mi-DESID-PAST=try^n*|*+v:c:sub|ok-DESID-PAST=put^n*|*
+ POINTS: B1 A3 A2 F3
+ FOCUS: v:v:sub|kure-DESID-PAST=give^n*|*+v:c:sub|moraw-DESID-PAST=get^n*|*
+ POINTS: B1 A5 A2 F3
+ FOCUS: v:*|*ASP-DESID-PAST^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:*|*DESID-PAST^n*|*
+ POINTS: B1 A2 F3
+# tabetai  B1 A2 F3
+### FOCUS: *DESID-PRES*^n*|*
+ FOCUS: v:v:sub|i-DESID-PRES=ASP^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-DESID-PRES=come^n*|*+v:c:sub|ik-DESID-PRES=go^n*|*
+ POINTS: B1 A2 A2 F3
+ FOCUS: v:v:sub|age-DESID-PRES=give^n*|*+v:v:sub|mi-DESID-PRES=try^n*|*+v:c:sub|ok-DESID-PRES=put^n*|*
+ POINTS: B1 A3 A2 F3
+ FOCUS: v:c:sub|moraw-DESID-PRES=get^n*|*
+ POINTS: B1 A5 A2 F3
+ FOCUS: v:*|*ASP-DESID-PRES*^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:*|*DESID-PRES*^n*|*
+ POINTS: B1 A2 F3
+# tabechawanakatta   B1 A1 A1 A1 F3
+### FOCUS: *COMPL-NEG-PAST^n*|*
+ FOCUS: v:v:sub|i-COMPL-NEG-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 A1 F3
+ FOCUS: v:ir:sub|ku-COMPL-NEG-PAST=come^n*|*+v:c:sub|ik-COMPL-NEG-PAST=go^n*|*
+ POINTS: B1 A2 A1 A1 F3
+ FOCUS: v:ir:sub|ar-COMPL-NEG-PAST=be^n*|*+v:v:sub|age-COMPL-NEG-PAST=give^n*|*+v:v:sub|mi-COMPL-NEG-PAST=try^n*|*+v:c:sub|ok-COMPL-NEG-PAST=put^n*|*
+ POINTS: B1 A3 A1 A1 F3
+ FOCUS: v:v:sub|kure-COMPL-NEG-PAST=give^n*|*+v:c:sub|moraw-COMPL-NEG-PAST=get^n*|*
+ POINTS: B1 A5 A1 A1 F3
+ FOCUS: v:*|*COMPL-ASP-NEG-PAST^n*|*
+ POINTS: B1 A1 A1 A1 F3
+ FOCUS: v:*|*COMPL-NEG-PAST^n*|*
+ POINTS: B1 A1 A1 F3
+# tabechawanai  B1 A1 A1 F3
+### FOCUS: *COMPL-NEG-PRES*^n*|*
+ FOCUS: v:v:sub|i-COMPL-NEG-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 A1 F3
+ FOCUS: v:ir:sub|ku-COMPL-NEG-PRES=come^n*|*+v:c:sub|ik-COMPL-NEG-PRES=go^n*|*
+ POINTS: B1 A2 A1 A1 F3
+ FOCUS: v:ir:sub|ar&COMPL-NEG-PRES=be^n*|*+v:v:sub|age-COMPL-NEG-PRES=give^n*|*+v:v:sub|mi-COMPL-NEG-PRES=try^n*|*+v:c:sub|ok-COMPL-NEG-PRES=put^n*|*
+ POINTS: B1 A3 A1 A1 F3
+ FOCUS: v:v:sub|kure-COMPL-NEG-PRES=give^n*|*+v:c:sub|moraw-COMPL-NEG-PRES=get^n*|*
+ POINTS: B1 A5 A1 A1 F3
+ FOCUS: v:*|*COMPL-ASP-NEG-PRES*^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:*|*COMPL-NEG-PRES*^n*|*
+ POINTS: B1 A1 F3
+# tabechatta  B1 A1 F3
+### FOCUS: *COMPL-PAST^n*|*
+ FOCUS: v:v:sub|i-COMPL-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:ir:sub|ku-COMPL-PAST=come^n*|*+v:c:sub|ik-COMPL-PAST=go^n*|*
+ POINTS: B1 A2 A1 F3
+ FOCUS: v:v:sub|age-COMPL-PAST=give^n*|*+v:v:sub|mi-COMPL-PAST=try^n*|*+v:c:sub|ok-COMPL-PAST=put^n*|*
+ POINTS: B1 A3 A1 F3
+ FOCUS: v:v:sub|kure-COMPL-PAST=give^n*|*+v:c:sub|moraw-COMPL-PAST=get^n*|*
+ POINTS: B1 A5 A1 F3
+ FOCUS: v:*|*ASP-COMPL-PAST^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:*|*COMPL-PAST^n*|*
+ POINTS: B1 A1 F3
+# tabechau  B1 A1 F3
+### FOCUS: *COMPL-PRES*^n*|*
+ FOCUS: v:v:sub|i-COMPL-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:ir:sub|ku-COMPL-PRES=come^n*|*+v:c:sub|ik-COMPL-PRES=go^n*|*
+ POINTS: B1 A2 A1 F3
+ FOCUS: v:ir:sub|ar-COMPL-PRES=be^n*|*+v:v:sub|age-COMPL-PRES=give^n*|*+v:v:sub|mi-COMPL-PRES=try^n*|*+v:c:sub|ok-COMPL-PRES=put^n*|*
+ POINTS: B1 A3 A1 F3
+ FOCUS: v:v:sub|kure-COMPL-PRES=give^n*|*+v:c:sub|moraw-COMPL-PRES=get^n*|*
+ POINTS: B1 A5 A1 F3
+ FOCUS: v:*|*COMPL-ASP-PRES*^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:*|*COMPL-PRES*^n*|*
+ POINTS: B1 A1 F3
+# tabemashita  B1 A2
+### FOCUS: *POL-PAST^n*|*
+ FOCUS: v:v:sub|i-POL-PAST=ASP^n*|*
+ POINTS: B1 A1 A2 F3
+ FOCUS: v:ir:sub|ku-POL-PAST=come^n*|*+v:c:sub|ik-POL-PAST=go^n*|*
+ POINTS: B1 A2 A2
+ FOCUS: v:ir:sub|ar-POL-PAST=be^n*|*+v:v:sub|age-POL-PAST=give^n*|*+v:v:sub|mi-POL-PAST=try^n*|*+v:c:sub|ok-POL-PAST=put^n*|*
+ POINTS: B1 A3 A2
+ FOCUS: v:v:sub|kure-POL-PAST=give^n*|*+v:c:sub|moraw-POL-PAST=get^n*|*
+ POINTS: B1 A5 A2
+ FOCUS: v:*|*ASP-POL-PAST^n*|*
+ POINTS: B1 A1 A2
+ FOCUS: v:*|*POL-PAST^n*|*
+ POINTS: B1 A2
+# tabenakatta   B1 A1 F3
+### FOCUS: *NEG-PAST^n*|*
+ FOCUS: v:v:sub|i-NEG-PAST=ASP^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:ir:sub|ku-NEG-PAST=come^n*|*+v:c:sub|ik-NEG-PAST=go^n*|*
+ POINTS: B1 A2 A1 F3
+ FOCUS: v:ir:sub|ar-NEG-PAST=be^n*|*+v:v:sub|age-NEG-PAST=give^n*|*+v:v:sub|mi-NEG-PAST=try^n*|*+v:c:sub|ok-NEG-PAST=put^n*|*
+ POINTS: B1 A3 A1 F3
+ FOCUS: v:v:sub|kure-NEG-PAST=give^n*|*+v:c:sub|moraw-NEG-PAST=get^n*|*
+ POINTS: B1 A5 A1 F3
+ FOCUS: v:*|*ASP-NEG-PAST^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:*|*NEG-PAST^n*|*
+ POINTS: B1 A1 F3
+# tabenai  B1 A1 F3
+### FOCUS: *NEG-PRES*^n*|*
+ FOCUS: v:v:sub|i-NEG-PRES=ASP^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:ir:sub|ku-NEG-PRES=come^n*|*+v:c:sub|ik-NEG-PRES=go^n*|*
+ POINTS: B1 A2 A1 F3
+ FOCUS: v:ir:sub|ar&NEG-PRES=be^n*|*+v:v:sub|age-NEG-PRES=give^n*|*+v:v:sub|mi-NEG-PRES=try^n*|*+v:c:sub|ok-NEG-PRES=put^n*|*
+ POINTS: B1 A3 A1 F3
+ FOCUS: v:v:sub|kure-NEG-PRES=give^n*|*+v:c:sub|moraw-NEG-PRES=get^n*|*
+ POINTS: B1 A5 A1 F3
+ FOCUS: v:*|*ASP-NEG-PRES*^n*|*
+ POINTS: B1 A1 A1 F3
+ FOCUS: v:*|*NEG-PRES*^n*|*
+ POINTS: B1 A1 F3
+# tabeta  B1
+### FOCUS: *PAST^n*|*
+ FOCUS: v:v:sub|i-PAST=ASP^n*|*
+ POINTS: B1 A1 F3
+ FOCUS: v:ir:sub|ku-PAST=come^n*|*+v:c:sub|ik-PAST=go^n*|*
+ POINTS: B1 A2 F3
+ FOCUS: v:ir:sub|ar-PAST=be^n*|*+v:v:sub|age-PAST=give^n*|*+v:v:sub|mi-PAST=try^n*|*+v:c:sub|ok-PAST=put^n*|*
+ POINTS: B1 A3 F3
+ FOCUS: v:v:sub|kure-PAST=give^n*|*+v:c:sub|moraw-PAST=get^n*|*
+ POINTS: B1 A5 F3
+ FOCUS: v:*|*ASP-PAST^n*|*
+ POINTS: B1 A1 F3
+ FOCUS: v:*|*PAST^n*|*
+ POINTS: B1 F3
+# taberu  B1 
+### FOCUS: *PRES*^n*|*
+ FOCUS: v:v:sub|i-PRES=ASP^n*|*
+ POINTS: B1 A1 F3
+ FOCUS: v:ir:sub|ku-PRES=come^n*|*+v:c:sub|ik-PRES=go^n*|*
+ POINTS: B1 A2 F3
+ FOCUS: v:ir:sub|ar-PRES=be^n*|*+v:v:sub|age-PRES=give^n*|*+v:v:sub|mi-PRES=try^n*|*+v:c:sub|ok-PRES=put^n*|*
+ POINTS: B1 A3 F3
+ FOCUS: v:v:sub|kure-PRES=give^n*|*+v:c:sub|moraw-PRES=get^n*|*
+ POINTS: B1 A5 F3
+ FOCUS: v:*|*ASP-PRES*^n*|*
+ POINTS: B1 A1 F3
+ FOCUS: v:*|*PRES*^n*|*
+ POINTS: B1 F3
+
+
+#### AN+na+N   F5 
+# kiree na hito F5
+ FOCUS: n:an|*^v:cop|da&PRES:na=be^n*|*
+ POINTS: D4 F5
+
+#### V+ SNR
+#######first exclude noda
+# chigatteru no da  (no SNR point)
+ FOCUS: v:c|*ASP-PRES*^ptl:snr|no=SNR^*v:cop|*+v:v|*ASP-PRES*^ptl:snr|no=SNR^*v:cop|*+v:ir|*ASP-PRES*^ptl:snr|no=SNR^*v:cop|*+v:ir:sub|su*-PRES*^ptl:snr|no=SNR^*v:cop|*
+ POINTS: B1 A1 D1
+# chigau no da  (no SNR point)
+ FOCUS: v:c|*-PRES*^ptl:snr|no=SNR^*v:cop|*+v:v|*-PRES*^ptl:snr|no=SNR^*v:cop|*+v:ir|*-PRES*^ptl:snr|no=SNR^*v:cop|*+v:ir:sub|su*-PRES*^ptl:snr|no=SNR^*v:cop|*
+ POINTS: B1 D1
+# chigatteta no da  (no SNR point)
+ FOCUS: v:c|*ASP-PAST*^ptl:snr|no=SNR^*v:cop|*+v:v|*ASP-PAST*^ptl:snr|no=SNR^*v:cop|*+v:ir|*ASP-PAST*^ptl:snr|no=SNR^*v:cop|*+v:ir:sub|su-ASP-PAST*^ptl:snr|no=SNR^*v:cop|*
+ POINTS: B1 A1 D1
+# chigatta no da  (no SNR point)
+ FOCUS: v:c|*-PAST*^ptl:snr|no=SNR^*v:cop|*+v:v|*-PAST*^ptl:snr|no=SNR^*v:cop|*+v:ir|*-PAST*^ptl:snr|no=SNR^*v:cop|*+v:ir:sub|su*-PAST*^ptl:snr|no=SNR^*v:cop|*
+ POINTS: B1 D1 
+# chigattenai no da  (no SNR point)
+ FOCUS: v:c|*ASP-NEG-PRES*^ptl:snr|no=SNR^*v:cop|*+v:v|*ASP-NEG-PRES*^ptl:snr|no=SNR^*v:cop|*+v:ir|*ASP-NEG-PRES*^ptl:snr|no=SNR^*v:cop|*+v:ir:sub|su-ASP-NEG-PRES*^ptl:snr|no=SNR^*v:cop|*
+ POINTS: B1 A1 A1 D1
+# chigawanai no da  (no SNR point)
+ FOCUS: v:c|*NEG-PRES*^ptl:snr|no=SNR^*v:cop|*+v:v|*NEG-PRES*^ptl:snr|no=SNR^*v:cop|*+v:ir|*NEG-PRES*^ptl:snr|no=SNR^*v:cop|*NEG+v:ir:sub|su-NEG-PRES*^ptl:snr|no=SNR^*v:cop|*
+ POINTS: B1 A1 D1
+# chigattenakatta no da  (no SNR point)
+ FOCUS: v:c|*ASP-NEG-PAST*^ptl:snr|no=SNR^*v:cop|*+v:v|*ASP-NEG-PAST*^ptl:snr|no=SNR^*v:cop|*+v:ir|*ASP-NEG-PAST*^ptl:snr|no=SNR^*v:cop|*+v:ir:sub|su*-ASP-NEG-PAST*^ptl:snr|no=SNR^*v:cop|*
+ POINTS: B1 A1 A1 D1
+# chigawanakatta no da  (no SNR point)
+ FOCUS: v:c|*NEG-PAST*^ptl:snr|no=SNR^*v:cop|*+v:v|*NEG-PAST*^ptl:snr|no=SNR^*v:cop|*+v:ir|*NEG-PAST*^ptl:snr|no=SNR^*v:cop|*NEG-+v:ir:sub|su-NEG-PAST*^ptl:snr|no=SNR^*v:cop|*
+ POINTS: B1 A1 D1
+
+# chigau no (ga) atta  F5
+ FOCUS: v:c|*-PRES*^ptl:snr|no=SNR^*+v:v|*-PRES*^ptl:snr|no=SNR^*+v:ir|*-PRES*^ptl:snr|no=SNR^*+v:ir:sub|su*-PRES*^ptl:snr|no=SNR^*
+ POINTS: F5 B1
+
+###############################################################################
+#  verb middle inflection  A  
+###############################################################################
+RULENAME: vmiddle
+################################################## PASS
+# taberareru  (pass)  A4
+# taberaretai  A2 A4
+# taberaretakunakatta   B1 A1 A2 A4
+### FOCUS: *PASS-DESID-NEG-PAST*
+ FOCUS: v:v:sub|i-PASS-DESID-NEG-PAST=ASP
+ POINTS: B1 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-NEG-PAST=come+v:c:sub|ik-PASS-DESID-NEG-PAST=go
+ POINTS: B1 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-NEG-PAST=give+v:v:sub|mi-PASS-DESID-NEG-PAST=try+v:c:sub|ok-PASS-DESID-NEG-PAST=put
+ POINTS: B1 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-NEG-PAST=get
+ POINTS: B1 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-NEG-PAST*
+ POINTS: B1 A1 A2 A4
+
+# taberaretakunai  B1 A1 A2 A4
+### FOCUS: *PASS-DESID-NEG-PRES*
+ FOCUS: v:v:sub|i-PASS-DESID-NEG-PASP
+ POINTS: B1 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-NEG-PRES=come+v:c:sub|ik-PASS-DESID-NEG-PRES=go
+ POINTS: B1 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-NEG-PRES=give+v:v:sub|mi-PASS-DESID-NEG-PRES=try+v:c:sub|ok-PASS-DESID-NEG-PRES=put
+ POINTS: B1 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-NEG-PRES=get
+ POINTS: B1 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-NEG-PRES*
+ POINTS: B1 A1 A2 A4
+# taberaretakunakute  B2 A1 A2 A4
+### FOCUS *PASS-DESID-NEG-CONN* 
+ FOCUS: v:v:sub|i-PASS-DESID-NEG-CONN=ASP
+ POINTS: B2 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-NEG-CONN=come+v:c:sub|ik-PASS-DESID-NEG-CONN=go
+ POINTS: B2 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-NEG-CONN=give+v:v:sub|mi-PASS-DESID-NEG-CONN=try+v:c:sub|ok-PASS-DESID-NEG-CONN=put
+ POINTS: B2 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-NEG-CONN=get
+ POINTS: B2 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-NEG-CONN=*+v:*|*PASS-DESID-NEG-CONN
+ POINTS: B2 A1 A2 A4
+# taberaretakunakaroo  B2 A1 A2 A4
+### FOCUS *PASS-DESID-NEG-HORT*
+ FOCUS: v:v:sub|i-PASS-DESID-NEG-HORT=ASP
+ POINTS: B2 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-NEG-HORT=come+v:c:sub|ik-PASS-DESID-NEG-HORT=go
+ POINTS: B2 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-NEG-HORT=give+v:v:sub|mi-PASS-DESID-NEG-HORT=try+v:c:sub|ok-PASS-DESID-NEG-HORT=put
+ POINTS: B2 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-NEG-HORT=get
+ POINTS: B2 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-NEG-HORT*
+ POINTS: B2 A1 A2 A4
+# taberaretakunakattara taberaretakunakereba B3 A1 A2 A4
+### FOCUS *PASS-DESID-NEG-COND:tara* PASS-DESID-NEG:COND:ba*
+ FOCUS: v:v:sub|i-PASS-DESID-NEG-COND:*
+ POINTS: B3 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-NEG-COND:*+v:c:sub|ik-PASS-DESID-NEG-COND:*
+ POINTS: B3 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-NEG-COND:*+v:v:sub|mi-PASS-DESID-NEG-COND:*+v:c:sub|ok-PASS-DESID-NEG-COND:*
+ POINTS: B3 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-NEG-COND:*
+ POINTS: B3 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-NEG-COND:*
+ POINTS: B3 A1 A2 A4
+
+# other endings for sub-verbs  B0 A1 A2 A4
+### FOCUS: *v:sub|*PASS-DESID-NEG*
+ FOCUS: v:v:sub|i-PASS-DESID-NEG*
+ POINTS: A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-NEG*+v:ir:sub|ku&PASS-DESID-NEG*
+ POINTS: A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-NEG*+v:v:sub|mi-PASS-DESID-NEG*+v:c:sub|ok-PASS-DESID-NEG*
+ POINTS: A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-NEG*
+ POINTS: A5 A1 A2 A4
+ FOCUS: v:*|*-PASS-DESID-NEG*
+ POINTS: A1 A2 A4
+
+# taberaretakatta  B1 A2 A4
+### FOCUS: *PASS-DESID-PAST*
+ FOCUS: v:v:sub|i-PASS-DESID-PAST=ASP
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-PAST=come+v:c:sub|ik-PASS-DESID-PAST=go
+ POINTS: B1 A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-PAST=give+v:v:sub|mi-PASS-DESID-PAST=try+v:c:sub|ok-PASS-DESID-PAST=put
+ POINTS: B1 A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-PAST=get+v:v:sub|kure-PASS-DESID-PAST=give
+ POINTS: B1 A5 A2 A4
+ FOCUS: v:*|*PASS-ASP-DESID-PAST*
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-PAST*
+ POINTS: B1 A2 A4
+# taberaretai  B1 A2 A4
+### FOCUS: *PASS-DESID-PRES*
+ FOCUS: v:v:sub|i-PASS-DESID-PRES=ASP
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-PRES=come+v:c:sub|ik-PASS-DESID-PRES=go
+ POINTS: B1 A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-PRES=give+v:v:sub|mi-PASS-DESID-PRES=try+v:c:sub|ok-PASS-DESID-PRES=put
+ POINTS: B1 A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-PRES=get
+ POINTS: B1 A5 A2 A4
+ FOCUS: v:*|*PASS-ASP-DESID-PRES*
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-PRES*
+ POINTS: B1 A2 A4
+# taberaretakute  B2  A2 A4
+### FOCUS *PASS-DESID-CONN* 
+ FOCUS: v:v:sub|i-PASS-DESID-CONN=ASP
+ POINTS: B2 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-CONN=come+v:c:sub|ik-PASS-DESID-CONN=go
+ POINTS: B2 A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-CONN=give+v:v:sub|mi-PASS-DESID-CONN=try+v:c:sub|ok-PASS-DESID-CONN=put
+ POINTS: B2 A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-CONN=get
+ POINTS: B2 A5 A2 A4
+ FOCUS: v:*|*PASS-ASP-DESID-CONN=*+v:*|*PASS-ASP-DESID-CONN
+ POINTS: B2 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-CONN=*+v:*|*PASS-DESID-CONN
+ POINTS: B2 A2 A4
+# taberaretakattara taberaretakereba B3 A2 A4
+### FOCUS *PASS-DESID-COND:tara* PASS-DESID-COND:ba*
+ FOCUS: v:v:sub|i-PASS-DESID-COND:*
+ POINTS: B3 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID-COND:*+v:c:sub|ik-PASS-DESID-COND:*
+ POINTS: B3 A2 A4 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID-COND:*+v:v:sub|mi-PASS-DESID-COND:*+v:c:sub|ok-PASS-DESID-COND:*
+ POINTS: B3 A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-DESID-COND:*
+ POINTS: B3 A5 A2 A4
+ FOCUS: v:*|*PASS-ASP-DESID-COND:*
+ POINTS: B3 A1 A2 A4
+ FOCUS: v:*|*PASS-DESID-COND:*
+ POINTS: B3 A2 A4
+
+# other endings for sub-verbs  B0 A2 A4
+### FOCUS: *v:sub*PASS-DESID
+ FOCUS: v:v:sub|i-PASS-DESID*
+ POINTS: A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-DESID*
+ POINTS: A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-DESID*+v:v:sub|mi-PASS-DESID*+v:c:sub|ok-PASS-DESID*
+ POINTS: A3 A2 A4
+ FOCUS: v:v:sub|kure-PASS-DESID*+v:c:sub|moraw-PASS-DESID*
+ POINTS: A5 A2 A4
+ FOCUS: v*|*-PASS-ASP-DESID*
+ POINTS:  A2 A1 A4
+ FOCUS: v*|*-PASS-DESID*
+ POINTS:  A2 A4
+
+# taberarechawanakatta   B1 A1 A1 A1 A4
+### FOCUS: *PASS-COMPL-NEG-PAST*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-PAST=ASP
+ POINTS: B1 A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-PAST=come+v:c:sub|ik-PASS-COMPL-NEG-PAST=go
+ POINTS: B1 A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-PAST=give+v:v:sub|mi-PASS-COMPL-NEG-PAST=try+v:c:sub|ok-PASS-COMPL-NEG-PAST=put
+ POINTS: B1 A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-PAST=get
+ POINTS: B1 A5 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG-PAST*
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG-PAST*
+ POINTS: B1 A1 A1 A1 A4
+# taberarechawanai  B1 A1 A1 A4
+### FOCUS: *PASS-COMPL-NEG-PRES*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-PRES=ASP
+ POINTS: B1 A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-PRES=come+v:c:sub|ik-PASS-COMPL-NEG-PRES=go
+ POINTS: B1 A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-PRES=give+v:v:sub|mi-PASS-COMPL-NEG-PRES=try+v:c:sub|ok-PASS-COMPL-NEG-PRES=put
+ POINTS: B1 A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-PRES=get
+ POINTS: B1 A5 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG-PRES*
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG-PRES*
+ POINTS: B1 A1 A4
+# taberarechawanaide!  B1 A1 A4
+### FOCUS: *PASS-COMPL-NEG-IMP:de*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-IMP:de=ASP
+ POINTS: B1 A1  A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-IMP:de=come+v:c:sub|ik-PASS-COMPL-NEG-IMP:de=go
+ POINTS: B1 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-IMP:de=give+v:v:sub|mi-PASS-COMPL-NEG-IMP:de=try+v:c:sub|ok-PASS-COMPL-NEG-IMP:de=put
+ POINTS: B1 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-IMP:de=get
+ POINTS: B1 A5 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG-IMP:de*
+ POINTS: B1 A1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG-IMP:de*
+ POINTS: B1 A1 A1 A4
+# taberarechawanakute  B2 A1 A1 A4
+### FOCUS *PASS-COMPL-NEG-CONN* 
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-CONN=ASP
+ POINTS: B2 A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-CONN=come+v:c:sub|ik-PASS-COMPL-NEG-CONN=go
+ POINTS: B2 A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-CONN=give+v:v:sub|mi-PASS-COMPL-NEG-CONN=try+v:c:sub|ok-PASS-COMPL-NEG-CONN=put
+ POINTS: B2 A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-CONN=get
+ POINTS: B2 A5 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG-CONN=*
+ POINTS: B2 A1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG-CONN=*
+ POINTS: B2 A1 A1 A4
+# taberarechawanakaroo  B2 A1 A1 A4
+### FOCUS *PASS-COMPL-NEG-HORT*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-HORT=ASP
+ POINTS: B2 A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-HORT=come+v:c:sub|ik-PASS-COMPL-NEG-HORT=go
+ POINTS: B2 A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-HORT=give+v:v:sub|mi-PASS-COMPL-NEG-HORT=try+v:c:sub|ok-PASS-COMPL-NEG-HORT=put
+ POINTS: B2 A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-HORT=get
+ POINTS: B2 A5 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG-HORT*
+ POINTS: B2 A1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG-HORT*
+ POINTS: B2 A1 A1A4
+# taberarechawanakattara taberarechaenakereba B3 A1 A1 A4
+### FOCUS *PASS-COMPL-NEG-COND:tara* PASS-COMPL-NEG:COND:ba*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-COND:*
+ POINTS: B3 A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-COND:*+v:c:sub|ik-PASS-COMPL-NEG-COND:*
+ POINTS: B3 A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-COND:*+v:v:sub|mi-PASS-COMPL-NEG-COND:*+v:c:sub|ok-PASS-COMPL-NEG-COND:*
+ POINTS: B3 A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-COND:*
+ POINTS: B3 A5 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG-COND:*
+ POINTS: B3 A1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG-COND:*
+ POINTS: B3 A1 A1 A4
+# taberarechawanakucha (ikenai)     B4 A1 A4
+### FOCUS *PASS-COMPL-NEG-CONN&wa
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG-CONN&wa=ASP
+ POINTS: B4 A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG-CONN&wa=come+v:c:sub|ik-PASS-COMPL-NEG-CONN&wa=go
+ POINTS: B4 A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG-CONN&wa=give+v:v:sub|mi-PASS-COMPL-NEG-CONN&wa=try+v:c:sub|ok-PASS-COMPL-NEG-CONN&wa=put
+ POINTS: B4 A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG-CONN&wa=get
+ POINTS: B4 A5 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG-CONN&wa*
+ POINTS: B4 A1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG-CONN&wa*
+ POINTS: B4 A1 A1 A4
+# taberarechawanaide     B4 A1 A4
+### FOCUS *PASS-COMPL-NEG&IMP:de
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG&IMP:de=ASP
+ POINTS: B4 A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG&IMP:de=come+v:c:sub|ik-PASS-COMPL-NEG&IMP:de=go
+ POINTS: B4 A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG&IMP:de=give+v:v:sub|mi-PASS-COMPL-NEG&IMP:de=try+v:c:sub|ok-PASS-COMPL-NEG&IMP:de=put
+ POINTS: B4 A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG&IMP:de=get
+ POINTS: B4 A5 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG&IMP:de*
+ POINTS: B4 A1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG&IMP:de*
+ POINTS: B4 A1 A1 A4
+# taberarechawanakucha!     B5 A1 A1 A4
+### FOCUS *PASS-COMPL-NEG&OBL*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG&OBL=ASP
+ POINTS: B5 A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG&OBL=come+v:c:sub|ik-PASS-COMPL-NEG&OBL=go
+ POINTS: B5 A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG&OBL=give+v:v:sub|mi-PASS-COMPL-NEG&OBL=try+v:c:sub|ok-PASS-COMPL-NEG&OBL=put
+ POINTS: B5 A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG&OBL=get
+ POINTS: B5 A5 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-NEG&OBL*
+ POINTS: B5 A1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-NEG&OBL*
+ POINTS: B5 A1 A1 A4
+
+# other endings for sub-verbs  B0 A1 A1 A4
+### FOCUS: *v:sub|*PASS-COMPL-NEG*
+ FOCUS: v:v:sub|i-PASS-COMPL-NEG*
+ POINTS: A1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-NEG*+v:ir:sub|ku&PASS-COMPL-NEG*
+ POINTS: A2 A1 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-NEG*+v:v:sub|mi-PASS-COMPL-NEG*+v:c:sub|ok-PASS-COMPL-NEG*
+ POINTS: A3 A1 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-NEG*
+ POINTS: A5 A1 A1 A4
+ FOCUS: v:*|*-PASS-COMPL-ASP-NEG*
+ POINTS: A1 A1 A1 A4
+ FOCUS: v:*|*-PASS-COMPL-NEG*
+ POINTS: A1 A1 A4
+
+
+# taberarechaimasen  B1 A1 A1  A2 A4
+### FOCUS: *PASS-COMPL-POL-NEG*
+ FOCUS: v:v:sub|i-PASS-COMPL-POL-NEG:n&PRES=ASP
+ POINTS: B1 A1 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL-NEG:n&PRES=come+v:c:sub|ik-PASS-COMPL-POL-NEG:n&PRES=go
+ POINTS: B1 A2 A1 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-POL-NEG:n&PRES=give+v:v:sub|mi-PASS-COMPL-POL-NEG:n&PRES=try+v:c:sub|ok-PASS-COMPL-POL-NEG:n&PRES=put
+ POINTS: B1 A3 A1 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL-NEG:n&PRES=get
+ POINTS: B1 A5 A1 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A2 A4
+# taberarechaimashita  B1 A1 A1 A2 A4
+### FOCUS: *PASS-COMPL-POL-PAST*
+ FOCUS: v:v:sub|i-PASS-COMPL-POL-PAST=ASP
+ POINTS: B1 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL-PAST=come+v:c:sub|ik-PASS-COMPL-POL-PAST=go
+ POINTS: B1 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-POL-PAST=give+v:v:sub|mi-PASS-COMPL-POL-PAST=try+v:c:sub|ok-PASS-COMPL-POL-PAST=put
+ POINTS: B1 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL-PAST=get
+ POINTS: B1 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-POL-PAST*
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-POL-PAST*
+ POINTS: B1 A1 A1 A2 A4
+# taberarechaimasu  B1 A1 A4
+### FOCUS: *PASS-COMPL-POL-PRES*
+ FOCUS: v:v:sub|i-PASS-COMPL-POL-PRES=ASP
+ POINTS: B1 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL-PRES=come+v:c:sub|ik-PASS-COMPL-POL-PRES=go
+ POINTS: B1 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-POL-PRES=give+v:v:sub|mi-PASS-COMPL-POL-PRES=try+v:c:sub|ok-PASS-COMPL-POL-PRES=put
+ POINTS: B1 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL-PRES=get
+ POINTS: B1 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-POL-PRES*
+ POINTS: B1 A1 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-POL-PRES*
+ POINTS: B1 A1 A2 A4
+# taberarechaimashite  B2  A1 A2 A4
+### FOCUS *PASS-COMPL-POL-CONN* 
+ FOCUS: v:v:sub|i-PASS-COMPL-POL-CONN=ASP
+ POINTS: B2 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL-CONN=come+v:c:sub|ik-PASS-COMPL-POL-CONN=go
+ POINTS: B2 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-POL-CONN=give+v:v:sub|mi-PASS-COMPL-POL-CONN=try+v:c:sub|ok-PASS-COMPL-POL-CONN=put
+ POINTS: B2 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL-CONN=get
+ POINTS: B2 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-POL-CONN=*
+ POINTS: B2 A1 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-POL-CONN=*
+ POINTS: B2 A1 A2 A4
+# taberarechaimashoo  B2 A1 A4
+### FOCUS *PASS-COMPL-POL-HORT*
+ FOCUS: v:v:sub|i-PASS-COMPL-POL-HORT=ASP
+ POINTS: B2 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL-HORT=come+v:c:sub|ik-PASS-COMPL-POL-HORT=go
+ POINTS: B2 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-POL-HORT=give+v:v:sub|mi-PASS-COMPL-POL-HORT=try+v:c:sub|ok-PASS-COMPL-POL-HORT=put
+ POINTS: B2 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL-HORT=get
+ POINTS: B2 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-POL-HORT*
+ POINTS: B2 A1 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-POL-HORT*
+ POINTS: B2 A1 A2 A4
+# taberarechaimashitara B3 A1 A4
+### FOCUS *PASS-COMPL-POL-COND:tara* 
+ FOCUS: v:v:sub|i-PASS-COMPL-POL-COND:tara=ASP
+ POINTS: B3 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL-COND:tara=come+v:c:sub|ik-PASS-COMPL-POL-COND:tara=go
+ POINTS: B3 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-POL-COND:tara=give+v:v:sub|mi-PASS-COMPL-POL-COND:tara=try+v:c:sub|ok-PASS-COMPL-POL-COND:tara=put
+ POINTS: B3 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL-COND:tara=get
+ POINTS: B3 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-POL-COND:tara*
+ POINTS: B3 A1 A1 A2 A4
+ FOCUS: v:*|*PASS-COMPL-POL-COND:tara*
+ POINTS: B3 A1 A2 A4
+
+# other endings for sub-verbs  B0 A1 A4
+### FOCUS: *v:sub*PASS-COMPL-POL*
+ FOCUS: v:v:sub|i-PASS-COMPL-POL*
+ POINTS: A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-POL*+v:ir:sub|ku&PASS-COMPL-POL*
+ POINTS: A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-POL*+v:v:sub|mi-PASS-COMPL-POL*+v:c:sub|ok-PASS-COMPL-POL*
+ POINTS: A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-POL*
+ POINTS: A5 A1 A2 A4
+
+# taberarechatta  B1 A1 A4
+### FOCUS: *PASS-COMPL-PAST*
+ FOCUS: v:v:sub|i-PASS-COMPL-PAST=ASP
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-PAST=come+v:c:sub|ik-PASS-COMPL-PAST=go
+ POINTS: B1 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-PAST=give+v:v:sub|mi-PASS-COMPL-PAST=try+v:c:sub|ok-PASS-COMPL-PAST=put
+ POINTS: B1 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-PAST=get
+ POINTS: B1 A5 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-PAST*
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-PAST*
+ POINTS: B1 A1 A4
+# taberarechau  B1 A1 A4
+### FOCUS: *PASS-COMPL-PRES*
+ FOCUS: v:v:sub|i-PASS-COMPL-PRES=ASP
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-PRES=come+v:c:sub|ik-PASS-COMPL-PRES=go
+ POINTS: B1 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-PRES=give+v:v:sub|mi-PASS-COMPL-PRES=try+v:c:sub|ok-PASS-COMPL-PRES=put
+ POINTS: B1 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-PRES=get
+ POINTS: B1 A5 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-PRES*
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-PRES*
+ POINTS: B1 A1 A4
+# taberarechatte  B1 A1 A1 A4
+### FOCUS: *PASS-COMPL-IMP:te*
+ FOCUS: v:v:sub|i-PASS-COMPL-IMP:te=ASP
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-IMP:te=come+v:c:sub|ik-PASS-COMPL-IMP:te=go
+ POINTS: B1 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-IMP:te=give+v:v:sub|mi-PASS-COMPL-IMP:te=try+v:c:sub|ok-PASS-COMPL-IMP:te=put
+ POINTS: B1 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-IMP:te=get
+ POINTS: B1 A5 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-IMP:te*
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-IMP:te*
+ POINTS: B1 A1 A4
+# taberarechainasai  B1 A1 A4
+### FOCUS: *PASS-COMPL-IMP:nasai*
+ FOCUS: v:v:sub|i-PASS-COMPL-IMP:nasai=ASP
+ POINTS: B1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-IMP:nasai=come+v:c:sub|ik-PASS-COMPL-IMP:nasai=go
+ POINTS: B1 A2 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-IMP:nasai=give+v:v:sub|mi-PASS-COMPL-IMP:nasai=try+v:c:sub|ok-PASS-COMPL-IMP:nasai=put
+ POINTS: B1 A3 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-IMP:nasai=get
+ POINTS: B1 A5 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-IMP:nasai*
+ POINTS: B1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-IMP:nasai*
+ POINTS: B1 A4
+# taberarechatte  B2  A1 A4
+### FOCUS *PASS-COMPL-CONN* 
+ FOCUS: v:v:sub|i-PASS-COMPL-CONN=ASP
+ POINTS: B2 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-CONN=come+v:c:sub|ik-PASS-COMPL-CONN=go
+ POINTS: B2 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-CONN=give+v:v:sub|mi-PASS-COMPL-CONN=try+v:c:sub|ok-PASS-COMPL-CONN=put
+ POINTS: B2 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-CONN=get
+ POINTS: B2 A5 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-CONN=*
+ POINTS: B2 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-CONN=*
+ POINTS: B2 A1 A4
+# taberarechaoo  B2 A1 A4
+### FOCUS *PASS-COMPL-HORT*
+ FOCUS: v:v:sub|i-PASS-COMPL-HORT=ASP
+ POINTS: B2 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-HORT=come+v:c:sub|ik-PASS-COMPL-HORT=go
+ POINTS: B2 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-HORT=give+v:v:sub|mi-PASS-COMPL-HORT=try+v:c:sub|ok-PASS-COMPL-HORT=put
+ POINTS: B2 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-HORT=get
+ POINTS: B2 A5 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-HORT*
+ POINTS: B2 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-HORT*
+ POINTS: B2 A1 A4
+# taberarechattara taberarechaeba B3 A1 A4
+### FOCUS *PASS-COMPL-COND:tara* PASS-COMPL-COND:ba*
+ FOCUS: v:v:sub|i-PASS-COMPL-COND:*
+ POINTS: B3 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL-COND:*+v:c:sub|ik-PASS-COMPL-COND:*
+ POINTS: B3 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL-COND:*+v:v:sub|mi-PASS-COMPL-COND:*+v:c:sub|ok-PASS-COMPL-COND:*
+ POINTS: B3 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL-COND:*
+ POINTS: B3 A5 A1 A4
+ FOCUS: v:*|*PASS-COMPL-ASP-COND:*
+ POINTS: B3 A1 A1 A4
+ FOCUS: v:*|*PASS-COMPL-COND:*
+ POINTS: B3 A1 A4
+# taberarechai (nagara)   A1 A4 B4
+ FOCUS: v:*|*PASS-COMPL-ASP-GER=*
+ POINTS: A1 A1 A4 B4
+ FOCUS: v:*|*PASS-COMPL-GER=*
+ POINTS: A1 A4 B4
+
+# other endings for sub-verbs  B0 A1 A4
+### FOCUS: *v:sub*PASS-COMPL
+ FOCUS: v:v:sub|i-PASS-COMPL*
+ POINTS: A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COMPL*+v:ir:sub|ku&PASS-COMPL*
+ POINTS: A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-COMPL*+v:v:sub|mi-PASS-COMPL*+v:c:sub|ok-PASS-COMPL*
+ POINTS: A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-COMPL*
+ POINTS: A5 A1 A4 
+ FOCUS: v*|*-PASS-COMPL-ASP-*
+ POINTS: A1 A1 A4
+ FOCUS: v*|*-PASS-COMPL-*
+ POINTS: A1 A4
+
+# taberarenakatta   B1 A1 A4
+### FOCUS: *PASS-NEG-PAST*
+ FOCUS: v:v:sub|i-PASS-NEG-PAST=ASP
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-NEG-PAST=come+v:c:sub|ik-PASS-NEG-PAST=go
+ POINTS: B1 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-NEG-PAST=give+v:v:sub|mi-PASS-NEG-PAST=try+v:c:sub|ok-PASS-NEG-PAST=put
+ POINTS: B1 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-NEG-PAST=get
+ POINTS: B1 A5 A1 A4
+ FOCUS: v:*|*PASS-ASP-NEG-PAST*
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:*|*PASS-NEG-PAST*
+ POINTS: B1 A1 A4
+# taberarenai  B1 A1 A4
+### FOCUS: *PASS-NEG-PRES*
+ FOCUS: v:v:sub|i-PASS-NEG-PRES=ASP
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-NEG-PRES=come+v:c:sub|ik-PASS-NEG-PRES=go
+ POINTS: B1 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-NEG-PRES=give+v:v:sub|mi-PASS-NEG-PRES=try+v:c:sub|ok-PASS-NEG-PRES=put
+ POINTS: B1 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-NEG-PRES=get
+ POINTS: B1 A5 A1 A4
+ FOCUS: v:*|*PASS-ASP-NEG-PRES*
+ POINTS: B1 A1 A1 A4
+ FOCUS: v:*|*PASS-NEG-PRES*
+ POINTS: B1 A1 A4
+# taberarenakute  B2 A1 A4
+### FOCUS *PASS-NEG-CONN* 
+ FOCUS: v:v:sub|i-PASS-NEG-CONN=ASP
+ POINTS: B2 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-NEG-CONN=come+v:c:sub|ik-PASS-NEG-CONN=go
+ POINTS: B2 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-NEG-CONN=give+v:v:sub|mi-PASS-NEG-CONN=try+v:c:sub|ok-PASS-NEG-CONN=put
+ POINTS: B2 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-NEG-CONN=get
+ POINTS: B2 A5 A1 A4
+ FOCUS: v:*|*PASS-NEG-CONN=*
+ POINTS: B2 A1 A4
+ FOCUS: v:*|*PASS-ASP-NEG-CONN=*
+ POINTS: B2 A1 A1 A4
+# taberarenakaroo  B2 A1 A4
+### FOCUS *PASS-NEG-HORT*
+ FOCUS: v:v:sub|i-PASS-NEG-HORT=ASP
+ POINTS: B2 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-NEG-HORT=come+v:c:sub|ik-PASS-NEG-HORT=go
+ POINTS: B2 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-NEG-HORT=give+v:v:sub|mi-PASS-NEG-HORT=try+v:c:sub|ok-PASS-NEG-HORT=put
+ POINTS: B2 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-NEG-HORT=get
+ POINTS: B2 A5 A1 A4
+ FOCUS: v:*|*PASS-ASP-NEG-HORT*
+ POINTS: B2 A1 A1 A4
+ FOCUS: v:*|*PASS-NEG-HORT*
+ POINTS: B2 A1 A4
+# taberarenakattara taberarenakereba B3 A1 A4
+### FOCUS *PASS-NEG-COND:tara* PASS-NEG:COND:ba*
+ FOCUS: v:v:sub|i-PASS-NEG-COND:*
+ POINTS: B3 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-NEG-COND:*+v:c:sub|ik-PASS-NEG-COND:*
+ POINTS: B3 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-NEG-COND:*+v:v:sub|mi-PASS-NEG-COND:*+v:c:sub|ok-PASS-NEG-COND:*
+ POINTS: B3 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-NEG-COND:*
+ POINTS: B3 A5 A1 A4
+ FOCUS: v:*|*PASS-ASP-NEG-COND:*
+ POINTS: B3 A1 A1 A4
+ FOCUS: v:*|*PASS-NEG-COND:*
+ POINTS: B3 A1 A4
+# taberarenakucha (ikenai)     B4 A1 A4
+### FOCUS *PASS-NEG-CONN&wa
+ FOCUS: v:v:sub|i-PASS-NEG-CONN&wa=ASP
+ POINTS: B4 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-NEG-CONN&wa=come+v:c:sub|ik-PASS-NEG-CONN&wa=go
+ POINTS: B4 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-NEG-CONN&wa=give+v:v:sub|mi-PASS-NEG-CONN&wa=try+v:c:sub|ok-PASS-NEG-CONN&wa=put
+ POINTS: B4 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-NEG-CONN&wa=get
+ POINTS: B4 A5 A1 A4
+ FOCUS: v:*|*PASS-ASP-NEG-CONN&wa=*
+ POINTS: B4 A1 A1 A4
+ FOCUS: v:*|*PASS-NEG-CONN&wa=*
+ POINTS: B4 A1 A4
+# taberarenakucha!     B5 A1 A4
+### FOCUS *PASS-NEG&OBL*
+ FOCUS: v:v:sub|i-PASS-NEG&OBL=ASP
+ POINTS: B5 A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-NEG&OBL=come+v:c:sub|ik-PASS-NEG&OBL=go
+ POINTS: B5 A2 A1 A4
+ FOCUS: v:v:sub|age-PASS-NEG&OBL=give+v:v:sub|mi-PASS-NEG&OBL=try+v:c:sub|ok-PASS-NEG&OBL=put
+ POINTS: B5 A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-NEG&OBL=get
+ POINTS: B5 A5 A1 A4
+ FOCUS: v:*|*PASS-ASP-NEG&OBL=*
+ POINTS: B5 A1 A1 A4
+ FOCUS: v:*|*PASS-NEG&OBL=*
+ POINTS: B5 A1 A4
+
+# other endings for sub-verbs  B0 A1 A4
+### FOCUS: *v:sub|*PASS-NEG*
+ FOCUS: v:v:sub|i-PASS-NEG*
+ POINTS: A1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-NEG*+v:ir:sub|ku&PASS-NEG*
+ POINTS: A2 A1 A4
+ FOCUS: v:ir:sub|ar&PASS-NEG*=be+v:v:sub|age-PASS-NEG*+v:v:sub|mi-PASS-NEG*+v:c:sub|ok-PASS-NEG*
+ POINTS: A3 A1 A4
+ FOCUS: v:c:sub|moraw-PASS-NEG*
+ POINTS: A5 A1 A4
+ FOCUS: v:*|*-PASS-ASP-NEG*
+ POINTS: A1 A1 A4
+ FOCUS: v:*|*-PASS-NEG*
+ POINTS: A1 A4
+
+# taberaremasen  B1 A1 A2 A4
+### FOCUS: *PASS-POL-NEG*
+ FOCUS: v:v:sub|i-PASS-POL-NEG:n&PRES=ASP
+ POINTS: B1 A1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-POL-NEG:n&PRES=come+v:c:sub|ik-PASS-POL-NEG:n&PRES=go
+ POINTS: B1 A2 A1 A2 A4
+ FOCUS: v:v:sub|age-PASS-POL-NEG:n&PRES=give+v:v:sub|mi-PASS-POL-NEG:n&PRES=try+v:c:sub|ok-PASS-POL-NEG:n&PRES=put
+ POINTS: B1 A3 A1 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-POL-NEG:n&PRES=get
+ POINTS: B1 A5 A1 A2 A4
+ FOCUS: v:*|*PASS-ASP-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A2 A4
+ FOCUS: v:*|*PASS-POL-NEG:n&PRES*
+ POINTS: B1 A1 A2 A4
+# taberaremashita  B1 A2 A4
+### FOCUS: *PASS-POL-PAST*
+ FOCUS: v:v:sub|i-PASS-POL-PAST=ASP
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-POL-PAST=come+v:c:sub|ik-PASS-POL-PAST=go
+ POINTS: B1 A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-POL-PAST=give+v:v:sub|mi-PASS-POL-PAST=try+v:c:sub|ok-PASS-POL-PAST=put
+ POINTS: B1 A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-POL-PAST=get
+ POINTS: B1 A5 A2 A4
+ FOCUS: v:*|*PASS-ASP-POL-PAST*
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:*|*PASS-POL-PAST*
+ POINTS: B1 A2 A4
+# taberaremasu  B1 A2 A4
+### FOCUS: *PASS-POL-PRES*
+ FOCUS: v:v:sub|i-PASS-POL-PRES=ASP
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-POL-PRES=come+v:c:sub|ik-PASS-POL-PRES=go
+ POINTS: B1 A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-POL-PRES=give+v:v:sub|mi-PASS-POL-PRES=try+v:c:sub|ok-PASS-POL-PRES=put
+ POINTS: B1 A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-POL-PRES=get
+ POINTS: B1 A5 A2 A4
+ FOCUS: v:*|*PASS-ASP-POL-PRES*
+ POINTS: B1 A1 A2 A4
+ FOCUS: v:*|*PASS-POL-PRES*
+ POINTS: B1 A2 A4
+# taberaremashite  B2 A2 A4
+### FOCUS *PASS-POL-CONN* 
+ FOCUS: v:v:sub|i-PASS-POL-CONN=ASP
+ POINTS: B2 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-POL-CONN=come+v:c:sub|ik-PASS-POL-CONN=go
+ POINTS: B2 A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-POL-CONN=give+v:v:sub|mi-PASS-POL-CONN=try+v:c:sub|ok-PASS-POL-CONN=put
+ POINTS: B2 A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-POL-CONN=get
+ POINTS: B2 A5 A2 A4
+ FOCUS: v:*|*PASS-ASP-POL-CONN=*
+ POINTS: B2 A1 A2 A4
+ FOCUS: v:*|*PASS-POL-CONN=*
+ POINTS: B2 A2 A4
+# taberaremashitara B3 A4
+### FOCUS *PASS-POL-COND:tara* 
+ FOCUS: v:v:sub|i-PASS-POL-COND:tara=ASP
+ POINTS: B3 A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-POL-COND:tara=come+v:c:sub|ik-PASS-POL-COND:tara=go
+ POINTS: B3 A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-POL-COND:tara=give+v:v:sub|mi-PASS-POL-COND:tara=try+v:c:sub|ok-PASS-POL-COND:tara=put
+ POINTS: B3 A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-POL-COND:tara=get
+ POINTS: B3 A5 A2 A4
+ FOCUS: v:*|*PASS-ASP-POL-COND:tara*
+ POINTS: B3 A1 A2 A4
+ FOCUS: v:*|*PASS-POL-COND:tara*
+ POINTS: B3 A2 A4
+
+# other endings for sub-verbs  B0
+### FOCUS: *v:sub*PASS-POL*
+ FOCUS: v:v:sub|i-PASS-POL*
+ POINTS: A1 A2 A4
+ FOCUS: v:ir:sub|ku-PASS-POL*+v:ir:sub|ku&PASS-POL*
+ POINTS: A2 A2 A4
+ FOCUS: v:v:sub|age-PASS-POL*+v:v:sub|mi-PASS-POL*+v:c:sub|ok-PASS-POL*
+ POINTS: A3 A2 A4
+ FOCUS: v:c:sub|moraw-PASS-POL*
+ POINTS: A5 A2 A4
+
+
+# taberareru  (pass)  A4
+# taberareta  B1 A4
+### FOCUS: *PASS-PAST*
+ FOCUS: v:v:sub|i-PASS-PAST=ASP
+ POINTS: B1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-PAST=come+v:c:sub|ik-PASS-PAST=go
+ POINTS: B1 A2 A4
+ FOCUS: v:v:sub|age-PASS-PAST=give+v:v:sub|mi-PASS-PAST=try+v:c:sub|ok-PASS-PAST=put
+ POINTS: B1 A3 A4
+ FOCUS: v:c:sub|moraw-PASS-PAST=get
+ POINTS: B1 A5 A4
+ FOCUS: v:*|*PASS-ASP-PAST*
+ POINTS: B1 A1 A4
+ FOCUS: v:*|*PASS-PAST*
+ POINTS: B1 A4
+# taberareru  B1 A4
+### FOCUS: *PASS-PRES*
+ FOCUS: v:v:sub|i-PASS-PRES=ASP
+ POINTS: B1 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-PRES=come+v:c:sub|ik-PASS-PRES=go
+ POINTS: B1 A2 A4
+ FOCUS: v:v:sub|age-PASS-PRES=give+v:v:sub|mi-PASS-PRES=try+v:c:sub|ok-PASS-PRES=put
+ POINTS: B1 A3 A4
+ FOCUS: v:c:sub|moraw-PASS-PRES=get
+ POINTS: B1 A5 A4
+ FOCUS: v:*|*PASS-ASP-PRES*
+ POINTS: B1 A1 A4
+ FOCUS: v:*|*PASS-PRES*
+ POINTS: B1 A4
+# taberarete  B2 A4
+### FOCUS *PASS-CONN* 
+ FOCUS: v:v:sub|i-PASS-CONN=ASP
+ POINTS: B2 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-CONN=come+v:c:sub|ik-PASS-CONN=go
+ POINTS: B2 A2 A4
+ FOCUS: v:v:sub|age-PASS-CONN=give+v:v:sub|mi-PASS-CONN=try+v:c:sub|ok-PASS-CONN=put
+ POINTS: B2 A3 A4
+ FOCUS: v:c:sub|moraw-PASS-CONN=get
+ POINTS: B2 A5 A4
+ FOCUS: v:*|*PASS-ASP-CONN=*
+ POINTS: B2 A1 A4
+ FOCUS: v:*|*PASS-CONN=*
+ POINTS: B2 A4
+# taberaretara taberarereba B3 A4
+### FOCUS *PASS-COND:tara* PASS-COND:ba*
+ FOCUS: v:v:sub|i-PASS-COND:*
+ POINTS: B3 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-COND:*+v:c:sub|ik-PASS-COND:*
+ POINTS: B3 A2 A4
+ FOCUS: v:v:sub|age-PASS-COND:*+v:v:sub|mi-PASS-COND:*+v:c:sub|ok-PASS-COND:*
+ POINTS: B3 A3 A4
+ FOCUS: v:c:sub|moraw-PASS-COND:*
+ POINTS: B3 A5 A4
+ FOCUS: v:*|*PASS-ASP-COND:*
+ POINTS: B3 A1 A4
+ FOCUS: v:*|*PASS-COND:*
+ POINTS: B3 A4
+# taberarecha   B4 A4
+### FOCUS *PASS-CONN&wa
+ FOCUS: v:v:sub|i-PASS-CONN&wa=ASP
+ POINTS: B4 A1 A4
+ FOCUS: v:ir:sub|ku-PASS-CONN&wa=come+v:c:sub|ik-PASS-CONN&wa=go
+ POINTS: B4 A2 A4
+ FOCUS: v:v:sub|age-PASS-CONN&wa=give+v:v:sub|mi-PASS-CONN&wa=try+v:c:sub|ok-PASS-CONN&wa=put
+ POINTS: B4 A3 A4
+ FOCUS: v:c:sub|moraw-PASS-CONN&wa=get
+ POINTS: B4 A5 A4
+ FOCUS: v:*|*PASS-ASP-CONN&wa*
+ POINTS: B4 A1 A4
+ FOCUS: v:*|*PASS-CONN&wa*
+ POINTS: B4 A4
+
+# other endings for sub-verbs  B0 A4
+### FOCUS: *v:sub*PASS
+ FOCUS: v:v:sub|i-PASS*
+ POINTS: A1 A4
+ FOCUS: v:ir:sub|ku-PASS*
+ POINTS: A2 A4
+ FOCUS: v:v:sub|age-PASS*+v:v:sub|mi-PASS*+v:c:sub|ok-PASS*
+ POINTS: A3 A4
+ FOCUS: v:c:sub|moraw-PASS*
+ POINTS: A5 A4
+ FOCUS: v*|*-PASS&GER=*
+ POINTS:  A4 B4
+ FOCUS: v*|*-PASS-ASP-*
+ POINTS:  A4 A1
+ FOCUS: v*|*-PASS-*
+ POINTS:  A4
+
+
+################################################## POT
+# tabe(ra)reru  (pot)  A2
+# tabe(ra)rechau  A2
+# tabe(ra)rechawanakatta   B1 A1 A1 A1 A2
+### FOCUS: *POT-COMPL-NEG-PAST*
+ FOCUS: v:v:sub|i-POT-COMPL-NEG-PAST=ASP+v:v:sub|i-POT:contr-COMPL-NEG-PAST=ASP
+ POINTS: B1 A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG-PAST=come+v:c:sub|ik-POT-COMPL-NEG-PAST=go
+ POINTS: B1 A2 A1 A1 A2
+ FOCUS: v:ir:sub|ar-POT-COMPL-NEG-PAST=be+v:v:sub|age-POT-COMPL-NEG-PAST=give+v:v:sub|age-POT:contr-COMPL-NEG-PAST=give+v:v:sub|mi-POT-COMPL-NEG-PAST=try+v:v:sub|mi-POT:contr-COMPL-NEG-PAST=try+v:c:POT-COMPL-NEG-PAST=put
+ POINTS: B1 A3 A1 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-NEG-PAST=give+v:c:sub|moraw-POT-COMPL-NEG-PAST=get
+ POINTS: B1 A5 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-NEG-PAST*+v:*|*POT:contr-COMPL-ASP-NEG-PAST*
+ POINTS: B1 A1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-NEG-PAST*+v:*|*POT:contr-COMPL-NEG-PAST*
+ POINTS: B1 A1 A1 A2
+# tabe(ra)rechawanai  B1 A1 A1 A2
+### FOCUS: *POT-COMPL-NEG-PRES*
+ FOCUS: v:v:sub|i-POT-COMPL-NEG-PRES=ASP+v:v:sub|i-POT:contr-COMPL-NEG-PRES=ASP
+ POINTS: B1 A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG-PRES=come+v:c:sub|ik-POT-COMPL-NEG-PRES=go
+ POINTS: B1 A2 A1 A1 A2
+ FOCUS: v:ir:sub|ar&POT-COMPL-NEG-PRES=be+v:v:sub|age-POT-COMPL-NEG-PRES=give+v:v:sub|age-POT:contr-COMPL-NEG-PRES=give+v:v:sub|mi-POT-COMPL-NEG-PRES=try+v:v:sub|mi-POT:contr-COMPL-NEG-PRES=try+v:c:sub|ok-POT-COMPL-NEG-PRES=put
+ POINTS: B1 A3 A1 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-NEG-PRES=give+v:v:sub|kure-POT:contr-COMPL-NEG-PRES=give+v:c:sub|moraw-POT-COMPL-NEG-PRES=get
+ POINTS: B1 A5 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-NEG-PRES*+v:*|*POT:contr-COMPL-ASP-NEG-PRES*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-NEG-PRES*+v:*|*POT:contr-COMPL-NEG-PRES*
+ POINTS: B1 A1 A2
+# tabe(ra)rechawanakute  B2 A1 A1 A2
+### FOCUS *POT-COMPL-NEG-CONN* 
+ FOCUS: v:v:sub|i-POT-COMPL-NEG-CONN=ASP+v:v:sub|i-POT:contr-COMPL-NEG-CONN=ASP
+ POINTS: B2 A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG-CONN=come+v:c:sub|ik-POT-COMPL-NEG-CONN=go
+ POINTS: B2 A2 A1 A1 A2
+ FOCUS: v:ir:sub|ar&POT-COMPL-NEG-CONN=be+v:v:sub|age-POT-COMPL-NEG-CONN=give+v:v:sub|age-POT:contr-COMPL-NEG-CONN=give+v:v:sub|mi-POT-COMPL-NEG-CONN=try+v:v:sub|mi-POT:contr-COMPL-NEG-CONN=try+v:c:sub|ok-POT-COMPL-NEG-CONN=put
+ POINTS: B2 A3 A1 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-NEG-CONN=give+v:v:sub|kure-POT:contr-COMPL-NEG-CONN=give+v:c:sub|moraw-POT-COMPL-NEG-CONN=get
+ POINTS: B2 A5 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-NEG-CONN=*+v:*|*POT:contr-COMPL-ASP-NEG-CONN=*
+ POINTS: B2 A1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-NEG-CONN=*+v:*|*POT:contr-COMPL-NEG-CONN=*
+ POINTS: B2 A1 A1 A2
+# tabe(ra)rechawanakaroo  B2 A1 A1 A2
+### FOCUS *POT-COMPL-NEG-HORT*
+ FOCUS: v:v:sub|i-POT-COMPL-NEG-HORT=ASP+v:v:sub|i-POT:contr-COMPL-NEG-HORT=ASP
+ POINTS: B2 A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG-HORT=come+v:c:sub|ik-POT-COMPL-NEG-HORT=go
+ POINTS: B2 A2 A1 A1 A2
+ FOCUS: v:v:sub|age-POT-COMPL-NEG-HORT=give+v:v:sub|age-POT:contr-COMPL-NEG-HORT=give+v:v:sub|mi-POT-COMPL-NEG-HORT=try+v:v:sub|mi-POT:contr-COMPL-NEG-HORT=try+v:c:sub|ok-POT-COMPL-NEG-HORT=put
+ POINTS: B2 A3 A1 A1 A2
+ FOCUS: v:c:sub|moraw-POT-COMPL-NEG-HORT=get
+ POINTS: B2 A5 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-NEG-HORT*+v:*|*POT:contr-COMPL-ASP-NEG-HORT*
+ POINTS: B2 A1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-NEG-HORT*+v:*|*POT:contr-COMPL-NEG-HORT*
+ POINTS: B2 A1 A1 A2
+# tabe(ra)rechawanakattara tabe(ra)rechaenakereba B3 A1 A1 A2
+### FOCUS *POT-COMPL-NEG-COND:tara* POT-COMPL-NEG:COND:ba*
+ FOCUS: v:v:sub|i-POT-COMPL-NEG-COND:*+v:v:sub|i-POT:contr-COMPL-NEG-COND:*
+ POINTS: B3 A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG-COND:*+v:c:sub|ik-POT-COMPL-NEG-COND:*
+ POINTS: B3 A2 A1 A1 A2
+ FOCUS: v:ir:sub|ar&POT-COMPL-NEG-COND:*+v:v:sub|age-POT-COMPL-NEG-COND:*+v:v:sub|age-POT:contr-COMPL-NEG-COND:*+v:v:sub|mi-POT-COMPL-NEG-COND:*+v:v:sub|mi-POT:contr-COMPL-NEG-COND:*+v:c:sub|ok-POT-COMPL-NEG-COND:*
+ POINTS: B3 A3 A1 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-NEG-COND:*+v:v:sub|kure-POT:contr-COMPL-NEG-COND:*+v:c:sub|moraw-POT-COMPL-NEG-COND:*
+ POINTS: B3 A5 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-NEG-COND:*+v:*|*POT:contr-COMPL-ASP-NEG-COND:*
+ POINTS: B3 A1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-NEG-COND:*+v:*|*POT:contr-COMPL-NEG-COND:*
+ POINTS: B3 A1 A1 A2
+# tabe(ra)rechawanakucha (ikenai)     B4 A1 A2
+### FOCUS *POT-COMPL-NEG-CONN&wa
+ FOCUS: v:v:sub|i-POT-COMPL-NEG-CONN&wa=ASP+v:v:sub|i-POT:contr-COMPL-NEG-CONN&wa=ASP
+ POINTS: B4 A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG-CONN&wa=come+v:c:sub|ik-POT-COMPL-NEG-CONN&wa=go
+ POINTS: B4 A2 A1 A1 A2
+ FOCUS: v:ir:sub|ar&POT-COMPL-NEG-CONN&wa=be+v:v:sub|age-POT-COMPL-NEG-CONN&wa=give+v:v:sub|age-POT:contr-COMPL-NEG-CONN&wa=give+v:v:sub|mi-POT-COMPL-NEG-CONN&wa=try+v:v:sub|mi-POT:contr-COMPL-NEG-CONN&wa=try+v:c:sub|ok-POT-COMPL-NEG-CONN&wa=put
+ POINTS: B4 A3 A1 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-NEG-CONN&wa=give+v:v:sub|kure-POT:contr-COMPL-NEG-CONN&wa=give+v:c:sub|moraw-POT-COMPL-NEG-CONN&wa=get
+ POINTS: B4 A5 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-NEG-CONN&wa*+v:*|*POT:contr-COMPL-ASP-NEG-CONN&wa*
+ POINTS: B4 A1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-NEG-CONN&wa*+v:*|*POT:contr-COMPL-NEG-CONN&wa*
+ POINTS: B4 A1 A1 A2
+# tabe(ra)rechawanakucha!     B5 A1 A1 A2
+### FOCUS *POT-COMPL-NEG&OBL*
+ FOCUS: v:v:sub|i-POT-COMPL-NEG&OBL=ASP+v:v:sub|i-POT:contr-COMPL-NEG&OBL=ASP
+ POINTS: B5 A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG&OBL=come+v:c:sub|ik-POT-COMPL-NEG&OBL=go
+ POINTS: B5 A2 A1 A1 A2
+ FOCUS: v:ir:sub|ar&POT-COMPL-NEG&OBL=be+v:v:sub|age-POT-COMPL-NEG&OBL=give+v:v:sub|age-POT:contr-COMPL-NEG&OBL=give+v:v:sub|mi-POT-COMPL-NEG&OBL=try+v:v:sub|mi-POT:contr-COMPL-NEG&OBL=try+v:c:sub|ok-POT-COMPL-NEG&OBL=put
+ POINTS: B5 A3 A1 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-NEG&OBL=give+v:v:sub|kure-POT:contr-COMPL-NEG&OBL=give+v:c:sub|moraw-POT-COMPL-NEG&OBL=get
+ POINTS: B5 A5 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-NEG&OBL*+v:*|*POT:contr-COMPL-ASP-NEG&OBL*
+ POINTS: B5 A1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-NEG&OBL*+v:*|*POT:contr-COMPL-NEG&OBL*
+ POINTS: B5 A1 A1 A2
+
+# other endings for sub-verbs  B0 A1 A1 A2
+### FOCUS: *v:sub|*POT-COMPL-NEG*
+ FOCUS: v:v:sub|i-POT-COMPL-NEG*+v:v:sub|i-POT:contr-COMPL-NEG*
+ POINTS: A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-NEG*+v:ir:sub|ku&POT-COMPL-NEG*
+ POINTS: A2 A1 A1 A2
+ FOCUS: v:v:sub|age-POT-COMPL-NEG*+v:v:sub|age-POT:contr-COMPL-NEG*+v:v:sub|mi-POT-COMPL-NEG*+v:v:sub|mi-POT:contr-COMPL-NEG*+v:c:sub|ok-POT-COMPL-NEG*
+ POINTS: A3 A1 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-NEG*+v:v:sub|kure-POT:contr-COMPL-NEG*+v:c:sub|moraw-POT-COMPL-NEG*
+ POINTS: A5 A1 A1 A2
+ FOCUS: v:*|*-POT-COMPL-ASP-NEG*
+ POINTS: A1 A1 A1 A2
+ FOCUS: v:*|*-POT-COMPL-NEG*
+ POINTS: A1 A1 A2
+
+# tabe(ra)rechaimasen  B1 A1 A1 A2 A2
+### FOCUS: *POT-COMPL-POL-NEG*
+ FOCUS: v:v:sub|i-POT-COMPL-POL-NEG:n&PRES=ASP+v:v:sub|i-POT:contr-COMPL-POL-NEG:n&PRES=ASP
+ POINTS: B1 A1 A1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-POL-NEG:n&PRES=come+v:c:sub|ik-POT-COMPL-POL-NEG:n&PRES=go
+ POINTS: B1 A2 A1 A1 A2 A2
+ FOCUS: v:v:sub|age-POT-COMPL-POL-NEG:n&PRES=give+v:v:sub|age-POT:contr-COMPL-POL-NEG:n&PRES=give+v:v:sub|mi-POT-COMPL-POL-NEG:n&PRES=try+v:v:sub|mi-POT:contr-COMPL-POL-NEG:n&PRES=try+v:c:sub|ok-POT-COMPL-POL-NEG:n&PRES=put
+ POINTS: B1 A3 A1 A1 A2 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-POL-NEG:n&PRES=give+v:v:sub|kure-POT:contr-COMPL-POL-NEG:n&PRES=give+v:c:sub|moraw-POT-COMPL-POL-NEG:n&PRES=get
+ POINTS: B1 A5 A1 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-ASP-POL-NEG:n&PRES*+v:*|*POT:contr-COMPL-ASP-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-POL-NEG:n&PRES*+v:*|*POT:contr-COMPL-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A2 A2
+# tabe(ra)rechaimashita  B1 A1 A1 A2 A2
+### FOCUS: *POT-COMPL-POL-PAST*
+ FOCUS: v:v:sub|i-POT-COMPL-POL-PAST=ASP+v:v:sub|i-POT:contr-COMPL-POL-PAST=ASP
+ POINTS: B1 A1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-POL-PAST=come+v:c:sub|ik-POT-COMPL-POL-PAST=go
+ POINTS: B1 A2 A1 A2 A2
+ FOCUS: v:v:sub|age-POT-COMPL-POL-PAST=give+v:v:sub|age-POT:contr-COMPL-POL-PAST=give+v:v:sub|mi-POT-COMPL-POL-PAST=try+v:v:sub|mi-POT:contr-COMPL-POL-PAST=try+v:c:sub|ok-POT-COMPL-POL-PAST=put
+ POINTS: B1 A3 A1 A2 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-POL-PAST=give+v:v:sub|kure-POT:contr-COMPL-POL-PAST=give+v:c:sub|moraw-POT-COMPL-POL-PAST=get
+ POINTS: B1 A5 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-ASP-POL-PAST*+v:*|*POT:contr-COMPL-ASP-POL-PAST*
+ POINTS: B1 A1 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-POL-PAST*+v:*|*POT:contr-COMPL-POL-PAST*
+ POINTS: B1 A1 A2 A2
+# tabe(ra)rechaimasu  B1 A1 A2 A2
+### FOCUS: *POT-COMPL-POL-PRES*
+ FOCUS: v:v:sub|i-POT-COMPL-POL-PRES=ASP+v:v:sub|i-POT:contr-COMPL-POL-PRES=ASP
+ POINTS: B1 A1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-POL-PRES=come+v:c:sub|ik-POT-COMPL-POL-PRES=go
+ POINTS: B1 A2 A1 A2 A2
+ FOCUS: v:v:sub|age-POT-COMPL-POL-PRES=give+v:v:sub|age-POT:contr-COMPL-POL-PRES=give+v:v:sub|mi-POT-COMPL-POL-PRES=try+v:v:sub|mi-POT:contr-COMPL-POL-PRES=try+v:c:sub|ok-POT-COMPL-POL-PRES=put
+ POINTS: B1 A3 A1 A2 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-POL-PRES=give+v:v:sub|kure-POT:contr-COMPL-POL-PRES=give+v:c:sub|moraw-POT-COMPL-POL-PRES=get
+ POINTS: B1 A5 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-ASP-POL-PRES*+v:*|*POT:contr-COMPL-ASP-POL-PRES*
+ POINTS: B1 A1 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-POL-PRES*+v:*|*POT:contr-COMPL-POL-PRES*
+ POINTS: B1 A1 A2 A2
+# tabe(ra)rechaimashite  B2  A1 A2 A2
+### FOCUS *POT-COMPL-POL-CONN* 
+ FOCUS: v:v:sub|i-POT-COMPL-POL-CONN=ASP+v:v:sub|i-POT:contr-COMPL-POL-CONN=ASP
+ POINTS: B2 A1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-POL-CONN=come+v:c:sub|ik-POT-COMPL-POL-CONN=go
+ POINTS: B2 A2 A1 A2 A2
+ FOCUS: v:v:sub|age-POT-COMPL-POL-CONN=give+v:v:sub|age-POT:contr-COMPL-POL-CONN=give+v:v:sub|mi-POT-COMPL-POL-CONN=try+v:v:sub|mi-POT:contr-COMPL-POL-CONN=try+v:c:sub|ok-POT-COMPL-POL-CONN=put
+ POINTS: B2 A3 A1 A2 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-POL-CONN=give+v:v:sub|kure-POT:contr-COMPL-POL-CONN=give+v:c:sub|moraw-POT-COMPL-POL-CONN=get
+ POINTS: B2 A5 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-ASP-POL-CONN=*+v:*|*POT:contr-COMPL-ASP-POL-CONN=*
+ POINTS: B2 A1 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-POL-CONN=*+v:*|*POT:contr-COMPL-POL-CONN=*
+ POINTS: B2 A1 A2 A2
+# tabe(ra)rechaimashitara B3 A1 A2 A2
+### FOCUS *POT-COMPL-POL-COND:tara* 
+ FOCUS: v:v:sub|i-POT-COMPL-POL-COND:tara=ASP+v:v:sub|i-POT+-COMPL-POL-COND:tara=ASP
+ POINTS: B3 A1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-POL-COND:tara=come+v:c:sub|ik-POT-COMPL-POL-COND:tara=go
+ POINTS: B3 A2 A1 A2 A2
+ FOCUS: v:v:sub|age-POT-COMPL-POL-COND:tara=give+v:v:sub|age-POT:contr-COMPL-POL-COND:tara=give+v:v:sub|mi-POT-COMPL-POL-COND:tara=try+v:v:sub|mi-POT:contr-COMPL-POL-COND:tara=try+v:c:sub|ok-POT-COMPL-POL-COND:tara=put
+ POINTS: B3 A3 A1 A2 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-POL-COND:tara=give+v:v:sub|kure-POT:contr-COMPL-POL-COND:tara=give+v:c:sub|moraw-POT-COMPL-POL-COND:tara=get
+ POINTS: B3 A5 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-ASP-POL-COND:tara*+v:*|*POT:contr-COMPL-ASP-POL-COND:tara*
+ POINTS: B3 A1 A1 A2 A2
+ FOCUS: v:*|*POT-COMPL-POL-COND:tara*+v:*|*POT:contr-COMPL-POL-COND:tara*
+ POINTS: B3 A1 A2 A2
+
+# other endings for sub-verbs  B0 A1 A2 A2
+### FOCUS: *v:sub*POT-COMPL-POL*
+ FOCUS: v:v:sub|i-POT-COMPL-POL*+v:v:sub|i-POT:contr-COMPL-POL*
+ POINTS: A1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-POL*+v:ir:sub|ku&POT-COMPL-POL*
+ POINTS: A2 A1 A2 A2
+ FOCUS: v:v:sub|age-POT-COMPL-POL*+v:v:sub|age-POT:contr-COMPL-POL*+v:v:sub|mi-POT-COMPL-POL*+v:v:sub|mi-POT:contr-COMPL-POL*+v:c:sub|ok-POT-COMPL-POL*
+ POINTS: A3 A1 A2 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-POL*+v:v:sub|kure-POT:contr-COMPL-POL*+v:c:sub|moraw-POT-COMPL-POL*
+ POINTS: A5 A1 A2 A2
+
+# tabe(ra)rechatta  B1 A1 A2
+### FOCUS: *POT-COMPL-PAST*
+ FOCUS: v:v:sub|i-POT-COMPL-PAST=ASP+v:v:sub|i-POT:contr-COMPL-PAST=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-PAST=come+v:c:sub|ik-POT-COMPL-PAST=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-COMPL-PAST=give+v:v:sub|age-POT:contr-COMPL-PAST=give+v:v:sub|mi-POT-COMPL-PAST=try+v:v:sub|mi-POT:contr-COMPL-PAST=try+v:c:POT-COMPL-PAST=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-PAST=give+v:v:sub|kure-POT:contr-COMPL-PAST=give+v:c:sub|moraw-POT-COMPL-PAST=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-PAST*+v:*|*POT:contr-COMPL-ASP-PAST*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-PAST*+v:*|*POT:contr-COMPL-PAST*
+ POINTS: B1 A1 A2
+# tabe(ra)rechau  B1 A1 A2
+### FOCUS: *POT-COMPL-PRES*
+ FOCUS: v:v:sub|i-POT-COMPL-PRES=ASP+v:v:sub|i-POT:contr-COMPL-PRES=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-PRES=come+v:c:sub|ik-POT-COMPL-PRES=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-COMPL-PRES=give+v:v:sub|age-POT:contr-COMPL-PRES=give+v:v:sub|mi-POT-COMPL-PRES=try+v:v:sub|mi-POT:contr-COMPL-PRES=try+v:c:sub|ok-POT-COMPL-PRES=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-PRES=give+v:v:sub|kure-POT:contr-COMPL-PRES=give+v:c:sub|moraw-POT-COMPL-PRES=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-PRES*+v:*|*POT:contr-COMPL-ASP-PRES*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-PRES*+v:*|*POT:contr-COMPL-PRES*
+ POINTS: B1 A1 A2
+# tabe(ra)rechatte  B2  A1 A2
+### FOCUS *POT-COMPL-CONN* 
+ FOCUS: v:v:sub|i-POT-COMPL-CONN=ASP+v:v:sub|i-POT:contr-COMPL-CONN=ASP
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-CONN=come+v:c:sub|ik-POT-COMPL-CONN=go
+ POINTS: B2 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-COMPL-CONN=give+v:v:sub|age-POT:contr-COMPL-CONN=give+v:v:sub|mi-POT-COMPL-CONN=try+v:v:sub|mi-POT:contr-COMPL-CONN=try+v:c:sub|ok-POT-COMPL-CONN=put
+ POINTS: B2 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-CONN=give+v:v:sub|kure-POT:contr-COMPL-CONN=give+v:c:sub|moraw-POT-COMPL-CONN=get
+ POINTS: B2 A5 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-CONN=*+v:*|*POT:contr-COMPL-ASP-CONN=*
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-CONN=*+v:*|*POT:contr-COMPL-CONN=*
+ POINTS: B2 A1 A2
+# tabe(ra)rechattara tabe(ra)rechaeba B3 A1 A2
+### FOCUS *POT-COMPL-COND:tara* POT-COMPL-COND:ba*
+ FOCUS: v:v:sub|i-POT-COMPL-COND:*+v:v:sub|i-POT:contr-COMPL-COND:*
+ POINTS: B3 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL-COND:*+v:c:sub|ik-POT-COMPL-COND:*
+ POINTS: B3 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-COMPL-COND:*+v:v:sub|age-POT:contr-COMPL-COND:*+v:v:sub|mi-POT-COMPL-COND:*+v:v:sub|mi-POT:contr-COMPL-COND:*+v:c:sub|ok-POT-COMPL-COND:*
+ POINTS: B3 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL-COND:*+v:v:sub|kure-POT:contr-COMPL-COND:*+v:c:sub|moraw-POT-COMPL-COND:*
+ POINTS: B3 A5 A1 A2
+ FOCUS: v:*|*POT-COMPL-ASP-COND:*+v:*|*POT:contr-COMPL-ASP-COND:*
+ POINTS: B3 A1 A1 A2
+ FOCUS: v:*|*POT-COMPL-COND:*+v:*|*POT:contr-COMPL-COND:*
+ POINTS: B3 A1 A2
+
+# other endings for sub-verbs  B0 A1 A2
+### FOCUS: *v:sub*POT-COMPL
+ FOCUS: v:v:sub|i-POT-COMPL*+v:v:sub|i-POT:contr-COMPL*
+ POINTS: A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COMPL*+v:ir:sub|ku&POT-COMPL*
+ POINTS: A2 A1 A2
+ FOCUS: v:v:sub|age-POT-COMPL*+v:v:sub|age-POT:contr-COMPL*+v:v:sub|mi-POT-COMPL*+v:v:sub|mi-POT:contr-COMPL*+v:c:sub|ok-POT-COMPL*
+ POINTS: A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-COMPL*+v:v:sub|kure-POT:contr-COMPL*+v:c:sub|moraw-POT-COMPL*
+ POINTS: A5 A1 A2
+
+ FOCUS: v*|*-POT-COMPL-ASP-*
+ POINTS: A1 A1 A2
+ FOCUS: v*|*-POT-COMPL-*
+ POINTS: A1 A2
+
+# tabe(ra)renai  A2
+# tabe(ra)renakatta   B1 A1 A2
+### FOCUS: *POT-NEG-PAST*
+ FOCUS: v:v:sub|i-POT-NEG-PAST=ASP+v:v:sub|i-POT:contr-NEG-PAST=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-NEG-PAST=come+v:c:sub|ik-POT-NEG-PAST=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-NEG-PAST=give+v:v:sub|age-POT:contr-NEG-PAST=give+v:v:sub|mi-POT-NEG-PAST=try+v:v:sub|mi-POT:contr-NEG-PAST=try+v:c:sub|ok-POT-NEG-PAST=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-NEG-PAST=give+v:v:sub|kure-POT:contr-NEG-PAST=give+v:c:sub|moraw-POT-NEG-PAST=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*POT-ASP-NEG-PAST*+v:*|*POT:contr-NEG-ASP-PAST*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*POT-NEG-PAST*+v:*|*POT:contr-NEG-PAST*
+ POINTS: B1 A1 A2
+# tabe(ra)renai  B1 A1 A2
+### FOCUS: *POT-NEG-PRES*
+ FOCUS: v:v:sub|i-POT-NEG-PRES=ASP+v:v:sub|i-POT:contr-NEG-PRES=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-NEG-PRES=come+v:c:sub|ik-POT-NEG-PRES=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-NEG-PRES=give+v:v:sub|age-POT:contr-NEG-PRES=give+v:v:sub|mi-POT-NEG-PRES=try+v:v:sub|mi-POT:contr-NEG-PRES=try+v:c:sub|ok-POT-NEG-PRES=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-NEG-PRES=give+v:v:sub|kure-POT:contr-NEG-PRES=give+v:c:sub|moraw-POT-NEG-PRES=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*POT-ASP-NEG-PRES*+v:*|*POT:contr-ASP-NEG-PRES*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*POT-NEG-PRES*+v:*|*POT:contr-NEG-PRES*
+ POINTS: B1 A1 A2
+# tabe(ra)renakute  B2 A1 A2
+### FOCUS *POT-NEG-CONN* 
+ FOCUS: v:v:sub|i-POT-NEG-CONN=ASP+v:v:sub|i-POT:contr-NEG-CONN=ASP
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-NEG-CONN=come+v:c:sub|ik-POT-NEG-CONN=go
+ POINTS: B2 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-NEG-CONN=give+v:v:sub|age-POT:contr-NEG-CONN=give+v:v:sub|mi-POT-NEG-CONN=try+v:v:sub|mi-POT:contr-NEG-CONN=try+v:c:sub|ok-POT-NEG-CONN=put
+ POINTS: B2 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-NEG-CONN=give+v:v:sub|kure-POT:contr-NEG-CONN=give+v:c:sub|moraw-POT-NEG-CONN=get
+ POINTS: B2 A5 A1 A2
+ FOCUS: v:*|*POT-ASP-NEG-CONN=*+v:*|*POT:contr-NEG-ASP-CONN=*
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:*|*POT-NEG-CONN=*+v:*|*POT:contr-NEG-CONN=*
+ POINTS: B2 A1 A2
+# tabe(ra)renakaroo  B2 A1 A2
+### FOCUS *POT-NEG-HORT*
+ FOCUS: v:v:sub|i-POT-NEG-HORT=ASP+v:v:sub|i-POT:contr-NEG-HORT=ASP
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-NEG-HORT=come+v:c:sub|ik-POT-NEG-HORT=go
+ POINTS: B2 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-NEG-HORT=give+v:v:sub|age-POT:contr-NEG-HORT=give+v:v:sub|mi-POT-NEG-HORT=try+v:v:sub|mi-POT:contr-NEG-HORT=try+v:c:sub|ok-POT-NEG-HORT=put
+ POINTS: B2 A3 A1 A2
+ FOCUS: v:c:sub|moraw-POT-NEG-HORT=get
+ POINTS: B2 A5 A1 A2
+ FOCUS: v:*|*POT-ASP-NEG-HORT*+v:*|*POT:contr-ASP-NEG-HORT*
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:*|*POT-NEG-HORT*+v:*|*POT:contr-NEG-HORT*
+ POINTS: B2 A1 A2
+# tabe(ra)renakattara tabe(ra)renakereba B3 A1 A2
+### FOCUS *POT-NEG-COND:tara* POT-NEG:COND:ba*
+ FOCUS: v:v:sub|i-POT-NEG-COND:*+v:v:sub|i-POT:contr-NEG-COND:*
+ POINTS: B3 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-NEG-COND:*+v:c:sub|ik-POT-NEG-COND:*
+ POINTS: B3 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-NEG-COND:*+v:v:sub|age-POT:contr-NEG-COND:*+v:v:sub|mi-POT-NEG-COND:*+v:v:sub|mi-POT:contr-NEG-COND:*+v:c:sub|ok-POT-NEG-COND:*
+ POINTS: B3 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-NEG-COND:*+v:v:sub|kure-POT:contr-NEG-COND:*+v:c:sub|moraw-POT-NEG-COND:*
+ POINTS: B3 A5 A1 A2
+ FOCUS: v:*|*POT-ASP-NEG-COND:*+v:*|*POT:contr-ASP-NEG-COND:*
+ POINTS: B3 A1 A1 A2
+ FOCUS: v:*|*POT-NEG-COND:*+v:*|*POT:contr-NEG-COND:*
+ POINTS: B3 A1 A2
+# tabe(ra)renakucha (ikenai)     B4 A1 A2
+### FOCUS *POT-NEG-CONN&wa
+ FOCUS: v:v:sub|i-POT-NEG-CONN&wa=ASP+v:v:sub|i-POT:contr-NEG-CONN&wa=ASP
+ POINTS: B4 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-NEG-CONN&wa=come+v:c:sub|ik-POT-NEG-CONN&wa=go
+ POINTS: B4 A2 A1 A2
+ FOCUS: v:v:sub|age-POT-NEG-CONN&wa=give+v:v:sub|age-POT:contr-NEG-CONN&wa=give+v:v:sub|mi-POT-NEG-CONN&wa=try+v:v:sub|mi-POT:contr-NEG-CONN&wa=try+v:c:sub|ok-POT-NEG-CONN&wa=put
+ POINTS: B4 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-NEG-CONN&wa=give+v:v:sub|kure-POT:contr-NEG-CONN&wa=give+v:c:sub|moraw-POT-NEG-CONN&wa=get
+ POINTS: B4 A5 A1 A2
+ FOCUS: v:*|*POT-ASP-NEG-CONN&wa*+v:*|*POT:contr-ASP-NEG-CONN&wa*
+ POINTS: B4 A1 A1 A2
+ FOCUS: v:*|*POT-NEG-CONN&wa*+v:*|*POT:contr-NEG-CONN&wa*
+ POINTS: B4 A1 A2
+# tabe(ra)renakucha!     B5 A1 A2
+### FOCUS *POT-NEG&OBL*
+ FOCUS: v:v:sub|i-POT-NEG&OBL=ASP+v:v:sub|i-POT:contr-NEG&OBL=ASP
+ POINTS: B5 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-NEG&OBL=come+v:c:sub|ik-POT-NEG&OBL=go
+ POINTS: B5 A2 A1 A2
+ FOCUS:  v:v:sub|age-POT-NEG&OBL=give+v:v:sub|age-POT:contr-NEG&OBL=give+v:v:sub|mi-POT-NEG&OBL=try+v:v:sub|mi-POT:contr-NEG&OBL=try+v:c:sub|ok-POT-NEG&OBL=put
+ POINTS: B5 A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-NEG&OBL=give+v:v:sub|kure-POT:contr-NEG&OBL=give+v:c:sub|moraw-POT-NEG&OBL=get
+ POINTS: B5 A5 A1 A2
+ FOCUS: v:*|*POT-ASP-NEG&OBL*+v:*|*POT:contr-ASP-NEG&OBL*
+ POINTS: B5 A1 A1 A2
+ FOCUS: v:*|*POT-NEG&OBL*+v:*|*POT:contr-NEG&OBL*
+ POINTS: B5 A1 A2
+
+# other endings for sub-verbs  B0 A1 A2
+### FOCUS: *v:sub|*POT-NEG*
+ FOCUS: v:v:sub|i-POT-NEG*+v:v:sub|i-POT:contr-NEG*
+ POINTS: A1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-NEG*+v:ir:sub|ku&POT-NEG*
+ POINTS: A2 A1 A2
+ FOCUS: v:v:sub|age-POT-NEG*+v:v:sub|age-POT:contr-NEG*+v:v:sub|mi-POT-NEG*+v:v:sub|mi-POT:contr-NEG*+v:c:sub|ok-POT-NEG*
+ POINTS: A3 A1 A2
+ FOCUS: v:v:sub|kure-POT-NEG*+v:v:sub|kure-POT:contr-NEG*+v:c:sub|moraw-POT-NEG*
+ POINTS: A5 A1 A2
+ FOCUS: v:*|*POT-ASP-NEG*+v:*|*POT:contr-ASP-NEG*
+ POINTS: A1 A1 A2
+ FOCUS: v:*|*POT-NEG*+v:*|*POT:contr-NEG*
+ POINTS: A1 A2
+
+# tabe(ra)remasu  A2 A2
+# tabe(ra)remasen  B1 A1 A2 A2
+### FOCUS: *POT-POL-NEG*
+ FOCUS: v:v:sub|i-POT-POL-NEG:n&PRES=ASP+v:v:sub|i-POT:contr-POL-NEG:n&PRES=ASP
+ POINTS: B1 A1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-POL-NEG:n&PRES=come+v:c:sub|ik-POT-POL-NEG:n&PRES=go
+ POINTS: B1 A2 A1 A2 A2
+ FOCUS: v:v:sub|age-POT-POL-NEG:n&PRES=give+v:v:sub|age-POT:contr-POL-NEG:n&PRES=give+v:v:sub|mi-POT-POL-NEG:n&PRES=try+v:v:sub|mi-POT:contr-POL-NEG:n&PRES=try+v:c:sub|ok-POT-POL-NEG:n&PRES=put
+ POINTS: B1 A3 A1 A2 A2
+ FOCUS: v:v:sub|kure-POT-POL-NEG:n&PRES=give+v:v:sub|kure-POT:contr-POL-NEG:n&PRES=give+v:c:sub|moraw-POT-POL-NEG:n&PRES=get
+ POINTS: B1 A5 A1 A2 A2
+ FOCUS: v:*|*POT-ASP-POL-NEG:n&PRES*+v:*|*POT:contr-ASP-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A2 A2
+ FOCUS: v:*|*POT-POL-NEG:n&PRES*+v:*|*POT:contr-POL-NEG:n&PRES*
+ POINTS: B1 A1 A2 A2
+# tabe(ra)remashita  B1 A2 A2
+### FOCUS: *POT-POL-PAST*
+ FOCUS: v:v:sub|i-POT-POL-PAST=ASP+v:v:sub|i-POT:contr-POL-PAST=ASP
+ POINTS: B1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-POL-PAST=come+v:c:sub|ik-POT-POL-PAST=go
+ POINTS: B1 A2 A2 A2
+ FOCUS: v:v:sub|age-POT-POL-PAST=give+v:v:sub|age-POT:contr-POL-PAST=give+v:v:sub|mi-POT-POL-PAST=try+v:v:sub|mi-POT:contr-POL-PAST=try+v:c:sub|ok-POT-POL-PAST=put
+ POINTS: B1 A3 A2 A2
+ FOCUS: v:v:sub|kure-POT-POL-PAST=give+v:v:sub|kure-POT:contr-POL-PAST=give+v:c:sub|moraw-POT-POL-PAST=get
+ POINTS: B1 A5 A2 A2
+ FOCUS: v:*|*POT-ASP-POL-PAST*+v:*|*POT:contr-ASP-POL-PAST*
+ POINTS: B1 A1 A2 A2
+ FOCUS: v:*|*POT-POL-PAST*+v:*|*POT:contr-POL-PAST*
+ POINTS: B1 A2 A2
+# tabe(ra)remasu  B1 A2 A2
+### FOCUS: *POT-POL-PRES*
+ FOCUS: v:v:sub|i-POT-POL-PRES=ASP+v:v:sub|i-POT:contr-POL-PRES=ASP
+ POINTS: B1 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-POL-PRES=come+v:c:sub|ik-POT-POL-PRES=go
+ POINTS: B1 A2 A2 A2
+ FOCUS: v:v:sub|age-POT-POL-PRES=give+v:v:sub|age-POT:contr-POL-PRES=give+v:v:sub|mi-POT-POL-PRES=try+v:v:sub|mi-POT:contr-POL-PRES=try+v:c:sub|ok-POT-POL-PRES=put
+ POINTS: B1 A3 A2 A2
+ FOCUS: v:v:sub|kure-POT-POL-PRES=give+v:v:sub|kure-POT:contr-POL-PRES=give+v:c:sub|moraw-POT-POL-PRES=get
+ POINTS: B1 A5 A2 A2
+ FOCUS: v:*|*POT-ASP-POL-PRES*+v:*|*POT:contr-ASP-POL-PRES*
+ POINTS: B1 A1 A2 A2
+ FOCUS: v:*|*POT-POL-PRES*+v:*|*POT:contr-POL-PRES*
+ POINTS: B1 A2 A2
+# tabe(ra)remashite  B2 A2 A2
+### FOCUS *POT-POL-CONN* 
+ FOCUS: v:v:sub|i-POT-POL-CONN=ASP+v:v:sub|i-POT:contr-POL-CONN=ASP
+ POINTS: B2 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-POL-CONN=come+v:c:sub|ik-POT-POL-CONN=go
+ POINTS: B2 A2 A2 A2
+ FOCUS: v:v:sub|age-POT-POL-CONN=give+v:v:sub|age-POT:contr-POL-CONN=give+v:v:sub|mi-POT-POL-CONN=try+v:v:sub|mi-POT:contr-POL-CONN=try+v:c:sub|ok-POT-POL-CONN=put
+ POINTS: B2 A3 A2 A2
+ FOCUS: v:v:sub|kure-POT-POL-CONN=give+v:v:sub|kure-POT:contr-POL-CONN=give+v:c:sub|moraw-POT-POL-CONN=get
+ POINTS: B2 A5 A2 A2
+ FOCUS: v:*|*POT-ASP-POL-CONN=*+v:*|*POT:contr-ASP-POL-CONN=*
+ POINTS: B2 A1 A2 A2
+ FOCUS: v:*|*POT-POL-CONN=*+v:*|*POT:contr-POL-CONN=*
+ POINTS: B2 A2 A2
+# tabe(ra)remashitara B3 A2 A2
+### FOCUS *POT-POL-COND:tara* 
+ FOCUS: v:v:sub|i-POT-POL-COND:tara=ASP+v:v:sub|i-POT:contr-POL-COND:tara=ASP
+ POINTS: B3 A1 A2 A2
+ FOCUS: v:ir:sub|ku-POT-POL-COND:tara=come+v:c:sub|ik-POT-POL-COND:tara=go
+ POINTS: B3 A2 A2 A2
+ FOCUS: v:v:sub|age-POT-POL-COND:tara=give+v:v:sub|age-POT:contr-POL-COND:tara=give+v:v:sub|mi-POT-POL-COND:tara=try+v:v:sub|mi-POT:contr-POL-COND:tara=try+v:c:sub|ok-POT-POL-COND:tara=put
+ POINTS: B3 A3 A2 A2
+ FOCUS: v:v:sub|kure-POT-POL-COND:tara=give+v:v:sub|kure-POT:contr-POL-COND:tara=give+v:c:sub|moraw-POT-POL-COND:tara=get
+ POINTS: B3 A5 A2 A2
+ FOCUS: v:*|*POT-ASP-POL-COND:tara*+v:*|*POT:contr-ASP-POL-COND:tara*
+ POINTS: B3 A1 A2 A2
+ FOCUS: v:*|*POT-POL-COND:tara*+v:*|*POT:contr-POL-COND:tara*
+ POINTS: B3 A2 A2
+
+
+# tabe(ra)reru  (pot) A2
+# tabe(ra)reta  B1 A2
+### FOCUS: *POT-PAST*
+ FOCUS: v:v:sub|i-POT-PAST=ASP+v:v:sub|i-POT:contr-PAST=ASP
+ POINTS: B1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-PAST=come+v:c:sub|ik-POT-PAST=go
+ POINTS: B1 A2 A2
+ FOCUS: v:v:sub|age-POT-PAST=give+v:v:sub|age-POT:contr-PAST=give+v:v:sub|mi-POT-PAST=try+v:v:sub|mi-POT:contr-PAST=try+v:c:sub|ok-POT-PAST=put
+ POINTS: B1 A3 A2
+ FOCUS: v:v:sub|kure-POT-PAST=give+v:v:sub|kure-POT:contr-PAST=give+v:c:sub|moraw-POT-PAST=get
+ POINTS: B1 A5 A2
+ FOCUS: v:*|*POT-ASP-PAST*+v:*|*POT:contr-ASP-PAST*
+ POINTS: B1 A1 A2
+ FOCUS: v:*|*POT-PAST*+v:*|*POT:contr-PAST*
+ POINTS: B1 A2
+# tabe(ra)reru  B1 A2
+### FOCUS: *POT-PRES*
+ FOCUS: v:v:sub|i-POT-PRES=ASP+v:v:sub|i-POT:contr-PRES=ASP
+ POINTS: B1 A1 A2
+ FOCUS: v:ir:sub|ku-POT-PRES=come+v:c:sub|ik-POT-PRES=go
+ POINTS: B1 A2 A2
+ FOCUS: v:v:sub|age-POT-PRES=give+v:v:sub|age-POT:contr-PRES=give+v:v:sub|mi-POT-PRES=try+v:v:sub|mi-POT:contr-PRES=try+v:c:sub|ok-POT-PRES=put
+ POINTS: B1 A3 A2
+ FOCUS: v:v:sub|kure-POT-PRES=give+v:v:sub|kure-POT:contr-PRES=give+v:c:sub|moraw-POT-PRES=get
+ POINTS: B1 A5 A2
+ FOCUS: v:*|*POT-ASP-PRES*+v:*|*POT:contr-ASP-PRES*
+ POINTS: B1 A1 A2
+ FOCUS: v:*|*POT-PRES*+v:*|*POT:contr-PRES*
+ POINTS: B1 A2
+# tabe(ra)rete  B2  A2
+### FOCUS *POT-CONN* 
+ FOCUS: v:v:sub|i-POT-CONN=ASP+v:v:sub|i-POT:contr-CONN=ASP
+ POINTS: B2 A1 A2
+ FOCUS: v:ir:sub|ku-POT-CONN=come+v:c:sub|ik-POT-CONN=go
+ POINTS: B2 A2 A2
+ FOCUS: v:v:sub|age-POT-CONN=give+v:v:sub|age-POT:contr-CONN=give+v:v:sub|mi-POT-CONN=try+v:v:sub|mi-POT:contr-CONN=try+v:c:sub|ok-POT-CONN=put
+ POINTS: B2 A3 A2
+ FOCUS: v:v:sub|kure-POT-CONN=give+v:v:sub|kure-POT:contr-CONN=give+v:c:sub|moraw-POT-CONN=get
+ POINTS: B2 A5 A2
+ FOCUS: v:*|*POT-ASP-CONN=*+v:*|*POT:contr-ASP-CONN=*
+ POINTS: B2 A1 A2
+ FOCUS: v:*|*POT-CONN=*+v:*|*POT:contr-CONN=*
+ POINTS: B2 A2
+# tabe(ra)retara tabe(ra)rereba B3 A2
+### FOCUS *POT-COND:tara* POT-COND:ba*
+ FOCUS: v:v:sub|i-POT-COND:*+v:v:sub|i-POT:contr-COND:*
+ POINTS: B3 A1 A2
+ FOCUS: v:ir:sub|ku-POT-COND:*+v:c:sub|ik-POT-COND:*=go
+ POINTS: B3 A2 A2
+ FOCUS: v:v:sub|age-POT-COND:*+v:v:sub|age-POT:contr-COND:*+v:v:sub|mi-POT-COND:*+v:v:sub|mi-POT:contr-COND:*+v:c:sub|ok-POT-COND:*
+ POINTS: B3 A3 A2
+ FOCUS: v:v:sub|kure-POT-COND:*+v:v:sub|kure-POT:contr-COND:*+v:c:sub|moraw-POT-COND:*
+ POINTS: B3 A5 A2
+ FOCUS: v:*|*POT-ASP-COND:*+v:*|*POT:contr-ASP-COND:*
+ POINTS: B3 A1 A2
+ FOCUS: v:*|*POT-COND:*+v:*|*POT:contr-COND:*
+ POINTS: B3 A2
+# tabe(ra)recha   B4 A2
+### FOCUS *POT-CONN&wa
+ FOCUS: v:v:sub|i-POT-CONN&wa=ASP+v:v:sub|i-POT:contr-CONN&wa=ASP
+ POINTS: B4 A1
+ FOCUS: v:ir:sub|ku-POT-CONN&wa=come+v:c:sub|ik-POT-CONN&wa=go
+ POINTS: B4 A2
+ FOCUS: v:v:sub|age-POT-CONN&wa=give+v:v:sub|age-POT:contr-CONN&wa=give+v:v:sub|mi-POT-CONN&wa=try+v:v:sub|mi-POT:contr-CONN&wa=try+v:c:sub|ok-POT-CONN&wa=put
+ POINTS: B4 A3
+ FOCUS: v:v:sub|kure-POT-CONN&wa=give+v:v:sub|kure-POT:contr-CONN&wa=give+v:c:sub|moraw-POT-CONN&wa=get
+ POINTS: B4 A5
+ FOCUS: v:*|*-POT-ASP-CONN&wa*
+ POINTS: B4 A1
+ FOCUS: v:*|*-POT-CONN&wa*
+ POINTS: B4
+
+# other endings for sub-verbs  B0 A2
+### FOCUS: *v:sub*POT
+ FOCUS: v:v:sub|i-POT*+v:v:sub|i-POT:contr*
+ POINTS: A1 A2
+ FOCUS: v:ir:sub|ku-POT-*+v:ir:sub|ku&POT-*
+ POINTS: A2 A2
+ FOCUS: v:v:sub|age-POT-*+v:v:sub|age-POT:contr-*+v:v:sub|mi-POT-*+v:v:sub|mi-POT:contr-*+v:c:sub|ok-POT-*
+ POINTS: A3 A2
+ FOCUS: v:v:sub|kure-POT-*+v:v:sub|kure-POT:contr-*+v:c:sub|moraw-POT-*
+ POINTS: A5 A2
+
+ FOCUS: v*|*-POT-ASP-*
+ POINTS:  A2 A1
+ FOCUS: v*|*-POT-*
+ POINTS:  A2
+
+
+
+#################################################DESID
+# tabetai  A2
+# tabetakunakatta   B1 A1 A2
+### FOCUS: *DESID-NEG-PAST*
+ FOCUS: v:v:sub|i-DESID-NEG-PAST=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-NEG-PAST=come+v:c:sub|ik-DESID-NEG-PAST=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:v:sub|age-DESID-NEG-PAST=give+v:v:sub|mi-DESID-NEG-PAST=try+v:c:sub|ok-DESID-NEG-PAST=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:c:sub|moraw-DESID-NEG-PAST=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*ASP-DESID-NEG-PAST*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*DESID-NEG-PAST*
+ POINTS: B1 A1 A2
+# tabetakunai  B1 A1 A2
+### FOCUS: *DESID-NEG-PRES*
+ FOCUS: v:v:sub|i-DESID-NEG-PRES=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-NEG-PRES=come+v:c:sub|ik-DESID-NEG-PRES=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:v:sub|age-DESID-NEG-PRES=give+v:v:sub|mi-DESID-NEG-PRES=try+v:c:sub|ok-DESID-NEG-PRES=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:c:sub|moraw-DESID-NEG-PRES=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*ASP-DESID-NEG-PRES*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*DESID-NEG-PRES*
+ POINTS: B1 A1 A2
+# tabetakunakute  B2 A1 A2
+### FOCUS *DESID-NEG-CONN* 
+ FOCUS: v:v:sub|i-DESID-NEG-CONN=ASP
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-NEG-CONN=come+v:c:sub|ik-DESID-NEG-CONN=go
+ POINTS: B2 A2 A1 A2
+ FOCUS: v:v:sub|age-DESID-NEG-CONN=give+v:v:sub|mi-DESID-NEG-CONN=try+v:c:sub|ok-DESID-NEG-CONN=put
+ POINTS: B2 A3 A1 A2
+ FOCUS: v:c:sub|moraw-DESID-NEG-CONN=get
+ POINTS: B2 A5 A1 A2
+ FOCUS: v:*|*ASP-DESID-NEG-CONN=*
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:*|*DESID-NEG-CONN=*
+ POINTS: B2 A1 A2
+# tabetakunakaroo  B2 A1 A2
+### FOCUS *DESID-NEG-HORT*
+ FOCUS: v:v:sub|i-DESID-NEG-HORT=ASP
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-NEG-HORT=come+v:c:sub|ik-DESID-NEG-HORT=go
+ POINTS: B2 A2 A1 A2
+ FOCUS: v:v:sub|age-DESID-NEG-HORT=give+v:v:sub|mi-DESID-NEG-HORT=try+v:c:sub|ok-DESID-NEG-HORT=put
+ POINTS: B2 A3 A1 A2
+ FOCUS: v:c:sub|moraw-DESID-NEG-HORT=get
+ POINTS: B2 A5 A1 A2
+ FOCUS: v:*|*ASP-DESID-NEG-HORT*
+ POINTS: A1 B2 A1 A2
+ FOCUS: v:*|*DESID-NEG-HORT*
+ POINTS: B2 A1 A2
+# tabetakunakattara tabetakunakereba B3 A1 A2
+### FOCUS *DESID-NEG-COND:tara* DESID-NEG:COND:ba*
+ FOCUS: v:v:sub|i-DESID-NEG-COND:*
+ POINTS: B3 A1 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-NEG-COND:*+v:c:sub|ik-DESID-NEG-COND:*
+ POINTS: B3 A2 A1 A2
+ FOCUS: v:v:sub|age-DESID-NEG-COND:*+v:v:sub|mi-DESID-NEG-COND:*+v:c:sub|ok-DESID-NEG-COND:*
+ POINTS: B3 A3 A1 A2
+ FOCUS: v:c:sub|moraw-DESID-NEG-COND:*
+ POINTS: B3 A5 A1 A2
+ FOCUS: v:*|*ASP-DESID-NEG-COND:*
+ POINTS: B3 A1 A1 A2
+ FOCUS: v:*|*DESID-NEG-COND:*
+ POINTS: B3 A1 A2
+
+# other endings for sub-verbs  B0 A1 A2
+### FOCUS: *v:sub|*DESID-NEG*
+ FOCUS: v:v:sub|i-DESID-NEG*
+ POINTS: A1 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-NEG*+v:ir:sub|ku&DESID-NEG*
+ POINTS: A2 A1 A2
+ FOCUS: v:v:sub|age-DESID-NEG*+v:v:sub|mi-DESID-NEG*+v:c:sub|ok-DESID-NEG*
+ POINTS: A3 A1 A2
+ FOCUS: v:c:sub|moraw-DESID-NEG*
+ POINTS: A5 A1 A2
+
+ FOCUS: v:*|*ASP-DESID-NEG*
+ POINTS: A1 A1 A2
+ FOCUS: v:*|*-DESID-NEG*
+ POINTS: A1 A2
+
+
+# tabetakatta  B1 A2
+### FOCUS: *DESID-PAST*
+ FOCUS: v:v:sub|i-DESID-PAST=ASP
+ POINTS: B1 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-PAST=come+v:c:sub|ik-DESID-PAST=go
+ POINTS: B1 A2 A2
+ FOCUS: v:v:sub|age-DESID-PAST=give+v:v:sub|mi-DESID-PAST=try+v:c:sub|ok-DESID-PAST=put
+ POINTS: B1 A3 A2
+ FOCUS: v:v:sub|kure-DESID-PAST=give+v:c:sub|moraw-DESID-PAST=get
+ POINTS: B1 A5 A2
+ FOCUS: v:*|*ASP-DESID-PAST*
+ POINTS: B1 A1 A2
+ FOCUS: v:*|*DESID-PAST*
+ POINTS: B1 A2
+# tabetai  B1 A2
+### FOCUS: *DESID-PRES*
+ FOCUS: v:v:sub|i-DESID-PRES=ASP
+ POINTS: B1 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-PRES=come+v:c:sub|ik-DESID-PRES=go
+ POINTS: B1 A2 A2
+ FOCUS: v:v:sub|age-DESID-PRES=give+v:v:sub|mi-DESID-PRES=try+v:c:sub|ok-DESID-PRES=put
+ POINTS: B1 A3 A2
+ FOCUS: v:c:sub|moraw-DESID-PRES=get
+ POINTS: B1 A5 A2
+ FOCUS: v:*|*ASP-DESID-PRES*
+ POINTS: B1 A1 A2
+ FOCUS: v:*|*DESID-PRES*
+ POINTS: B1 A2
+# tabetakute  B2  A2
+### FOCUS *DESID-CONN* 
+ FOCUS: v:v:sub|i-DESID-CONN=ASP
+ POINTS: B2 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-CONN=come+v:c:sub|ik-DESID-CONN=go
+ POINTS: B2 A2 A2
+ FOCUS: v:v:sub|age-DESID-CONN=give+v:v:sub|mi-DESID-CONN=try+v:c:sub|ok-DESID-CONN=put
+ POINTS: B2 A3 A2
+ FOCUS: v:c:sub|moraw-DESID-CONN=get
+ POINTS: B2 A5 A2
+ FOCUS: v:*|*ASP-DESID-CONN=*
+ POINTS: B2 A2
+ FOCUS: v:*|*DESID-CONN=*
+ POINTS: B2 A2
+# tabetakattara tabetakereba B3 A2
+### FOCUS *DESID-COND:tara* DESID-COND:ba*
+ FOCUS: v:v:sub|i-DESID-COND:*
+ POINTS: B3 A1 A2
+ FOCUS: v:ir:sub|ku-DESID-COND:*+v:c:sub|ik-DESID-COND:*
+ POINTS: B3 A2 A2
+ FOCUS: v:v:sub|age-DESID-COND:*+v:v:sub|mi-DESID-COND:*+v:c:sub|ok-DESID-COND:*
+ POINTS: B3 A3 A2
+ FOCUS: v:c:sub|moraw-DESID-COND:*
+ POINTS: B3 A5 A2
+ FOCUS: v:*|*ASP-DESID-COND:*
+ POINTS: B3 A1 A2
+ FOCUS: v:*|*DESID-COND:*
+ POINTS: B3 A2
+
+# other endings for sub-verbs  B0
+### FOCUS: *v:sub*DESID
+ FOCUS: v:v:sub|i-DESID*
+ POINTS: A1 A2
+ FOCUS: v:ir:sub|ku-DESID*
+ POINTS: A2 A2
+ FOCUS: v:v:sub|age-DESID*+v:v:sub|mi-DESID*+v:c:sub|ok-DESID*
+ POINTS: A3 A2
+ FOCUS: v:v:sub|kure-DESID*+v:c:sub|moraw-DESID*
+ POINTS: A5 A2
+
+ FOCUS: v*|*ASP-DESID*
+ POINTS:  A2 A1
+ FOCUS: v*|*DESID*
+ POINTS:  A2
+
+
+################################################## COMPL
+# tabechawanakatta   B1 A1 A1 A1
+### FOCUS: *COMPL-NEG-PAST*
+ FOCUS: v:v:sub|i-COMPL-NEG-PAST=ASP
+ POINTS: B1 A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG-PAST=come+v:c:sub|ik-COMPL-NEG-PAST=go
+ POINTS: B1 A2 A1 A1
+ FOCUS: v:ir:sub|ar-COMPL-NEG-PAST=be+v:v:sub|age-COMPL-NEG-PAST=give+v:v:sub|mi-COMPL-NEG-PAST=try+v:c:sub|ok-COMPL-NEG-PAST=put
+ POINTS: B1 A3 A1 A1
+ FOCUS: v:v:sub|kure-COMPL-NEG-PAST=give+v:c:sub|moraw-COMPL-NEG-PAST=get
+ POINTS: B1 A5 A1 A1
+ FOCUS: v:*|*COMPL-ASP-NEG-PAST*
+ POINTS: B1 A1 A1 A1
+ FOCUS: v:*|*COMPL-NEG-PAST*
+ POINTS: B1 A1 A1
+# tabechawanai  B1 A1 A1
+### FOCUS: *COMPL-NEG-PRES*
+ FOCUS: v:v:sub|i-COMPL-NEG-PRES=ASP
+ POINTS: B1 A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG-PRES=come+v:c:sub|ik-COMPL-NEG-PRES=go
+ POINTS: B1 A2 A1 A1
+ FOCUS: v:ir:sub|ar&COMPL-NEG-PRES=be+v:v:sub|age-COMPL-NEG-PRES=give+v:v:sub|mi-COMPL-NEG-PRES=try+v:c:sub|ok-COMPL-NEG-PRES=put
+ POINTS: B1 A3 A1 A1
+ FOCUS: v:v:sub|kure-COMPL-NEG-PRES=give+v:c:sub|moraw-COMPL-NEG-PRES=get
+ POINTS: B1 A5 A1 A1
+ FOCUS: v:*|*COMPL-ASP-NEG-PRES*
+ POINTS: B1 A1 A1
+ FOCUS: v:*|*COMPL-NEG-PRES*
+ POINTS: B1 A1
+# tabechawanaide!  B1 A1
+### FOCUS: *COMPL-NEG-IMP:de*
+ FOCUS: v:v:sub|i-COMPL-NEG-IMP:de=ASP
+ POINTS: B1 A1  A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG-IMP:de=come+v:c:sub|ik-COMPL-NEG-IMP:de=go
+ POINTS: B1 A2 A1
+ FOCUS: v:v:sub|age-COMPL-NEG-IMP:de=give+v:v:sub|mi-COMPL-NEG-IMP:de=try+v:c:sub|ok-COMPL-NEG-IMP:de=put
+ POINTS: B1 A3 A1
+ FOCUS: v:c:sub|moraw-COMPL-NEG-IMP:de=get
+ POINTS: B1 A5 A1
+ FOCUS: v:*|*COMPL-ASP-NEG-IMP:de*
+ POINTS: B1 A1 A1 A1
+ FOCUS: v:*|*COMPL-NEG-IMP:de*
+ POINTS: B1 A1 A1
+# tabechawanakute  B2 A1 A1
+### FOCUS *COMPL-NEG-CONN* 
+ FOCUS: v:v:sub|i-COMPL-NEG-CONN=ASP
+ POINTS: B2 A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG-CONN=come+v:c:sub|ik-COMPL-NEG-CONN=go
+ POINTS: B2 A2 A1 A1
+ FOCUS: v:ir:sub|ar&COMPL-NEG-CONN=be+v:v:sub|age-COMPL-NEG-CONN=give+v:v:sub|mi-COMPL-NEG-CONN=try+v:c:sub|ok-COMPL-NEG-CONN=put
+ POINTS: B2 A3 A1 A1
+ FOCUS: v:v:sub|kure-COMPL-NEG-CONN=give+v:c:sub|moraw-COMPL-NEG-CONN=get
+ POINTS: B2 A5 A1 A1
+ FOCUS: v:*|*COMPL-ASP-NEG-CONN=*
+ POINTS: B2 A1 A1 A1
+ FOCUS: v:*|*COMPL-NEG-CONN=*
+ POINTS: B2 A1 A1
+# tabechawanakaroo  B2 A1 A1
+### FOCUS *COMPL-NEG-HORT*
+ FOCUS: v:v:sub|i-COMPL-NEG-HORT=ASP
+ POINTS: B2 A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG-HORT=come+v:c:sub|ik-COMPL-NEG-HORT=go
+ POINTS: B2 A2 A1 A1
+ FOCUS: v:v:sub|age-COMPL-NEG-HORT=give+v:v:sub|mi-COMPL-NEG-HORT=try+v:c:sub|ok-COMPL-NEG-HORT=put
+ POINTS: B2 A3 A1 A1
+ FOCUS: v:c:sub|moraw-COMPL-NEG-HORT=get
+ POINTS: B2 A5 A1 A1
+ FOCUS: v:*|*COMPL-ASP-NEG-HORT*
+ POINTS: B2 A1 A1 A1
+ FOCUS: v:*|*COMPL-NEG-HORT*
+ POINTS: B2 A1 A1
+# tabechawanakattara tabechaenakereba B3 A1 A1
+### FOCUS *COMPL-NEG-COND:tara* COMPL-NEG:COND:ba*
+ FOCUS: v:v:sub|i-COMPL-NEG-COND:*
+ POINTS: B3 A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG-COND:*+v:c:sub|ik-COMPL-NEG-COND:*=go
+ POINTS: B3 A2 A1 A1
+ FOCUS: v:ir:sub|ar&COMPL-NEG-COND:*=be+v:v:sub|age-COMPL-NEG-COND:*+v:v:sub|mi-COMPL-NEG-COND:*+v:c:sub|ok-COMPL-NEG-COND:*
+ POINTS: B3 A3 A1 A1
+ FOCUS: v:v:sub|kure-COMPL-NEG-COND:*+v:c:sub|moraw-COMPL-NEG-COND:*
+ POINTS: B3 A5 A1 A1
+ FOCUS: v:*|*COMPL-ASP-NEG-COND:*
+ POINTS: B3 A1 A1 A1
+ FOCUS: v:*|*COMPL-NEG-COND:*
+ POINTS: B3 A1 A1
+# tabechawanakucha (ikenai)     B4 A1
+### FOCUS *COMPL-NEG-CONN&wa
+ FOCUS: v:v:sub|i-COMPL-NEG-CONN&wa=ASP
+ POINTS: B4 A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG-CONN&wa=come+v:c:sub|ik-COMPL-NEG-CONN&wa=go
+ POINTS: B4 A2 A1 A1
+ FOCUS: v:ir:sub|ar&COMPL-NEG-CONN&wa=be+v:v:sub|age-COMPL-NEG-CONN&wa=give+v:v:sub|mi-COMPL-NEG-CONN&wa=try+v:c:sub|ok-COMPL-NEG-CONN&wa=put
+ POINTS: B4 A3 A1 A1
+ FOCUS: v:v:sub|kure-COMPL-NEG-CONN&wa=give+v:c:sub|moraw-COMPL-NEG-CONN&wa=get
+ POINTS: B4 A5 A1 A1
+ FOCUS: v:*|*COMPL-ASP-NEG-CONN&wa*
+ POINTS: B4 A1 A1 A1
+ FOCUS: v:*|*COMPL-NEG-CONN&wa*
+ POINTS: B4 A1 A1
+# tabechawanaide!     B4 A1  
+### FOCUS *COMPL-NEG&IMP:de
+ FOCUS: v:v:sub|i-COMPL-NEG&IMP:de=ASP
+ POINTS: B4 A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG&IMP:de=come+v:c:sub|ik-COMPL-NEG&IMP:de=go
+ POINTS: B4 A2 A1 A1
+ FOCUS: v:ir:sub|ar&COMPL-NEG&IMP:de=be+v:v:sub|age-COMPL-NEG&IMP:de=give+v:v:sub|mi-COMPL-NEG&IMP:de=try+v:c:sub|ok-COMPL-NEG&IMP:de=put
+ POINTS: B4 A3 A1 A1
+ FOCUS: v:v:sub|kure-COMPL-NEG&IMP:de=give+v:c:sub|moraw-COMPL-NEG&IMP:de=get
+ POINTS: B4 A5 A1 A1
+ FOCUS: v:*|*COMPL-ASP-NEG&IMP:de*
+ POINTS: B4 A1 A1 A1
+ FOCUS: v:*|*COMPL-NEG&IMP:de*
+ POINTS: B4 A1 A1
+# tabechawanakucha!     B5 A1 A1
+### FOCUS *COMPL-NEG&OBL*
+ FOCUS: v:v:sub|i-COMPL-NEG&OBL=ASP
+ POINTS: B5 A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG&OBL=come+v:c:sub|ik-COMPL-NEG&OBL=go
+ POINTS: B5 A2 A1 A1
+ FOCUS: v:ir:sub|ar&COMPL-NEG&OBL=be+v:v:sub|age-COMPL-NEG&OBL=give+v:v:sub|mi-COMPL-NEG&OBL=try+v:c:sub|ok-COMPL-NEG&OBL=put
+ POINTS: B5 A3 A1 A1
+ FOCUS: v:v:sub|kure-COMPL-NEG&OBL=give+v:c:sub|moraw-COMPL-NEG&OBL=get
+ POINTS: B5 A5 A1 A1
+ FOCUS: v:*|*COMPL-ASP-NEG&OBL*
+ POINTS: B5 A1 A1 A1
+ FOCUS: v:*|*COMPL-NEG&OBL*
+ POINTS: B5 A1 A1
+
+# other endings for sub-verbs  B0 A1 A1
+### FOCUS: *v:sub|*COMPL-NEG*
+ FOCUS: v:v:sub|i-COMPL-NEG*
+ POINTS: A1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-NEG*+v:ir:sub|ku&COMPL-NEG*
+ POINTS: A2 A1 A1
+ FOCUS: v:ir:sub|ar-COMPL-NEG*+v:ir:sub|ar&COMPL-NEG*+v:v:sub|age-COMPL-NEG*+v:v:sub|mi-COMPL-NEG*+v:c:sub|ok-COMPL-NEG*
+ POINTS: A3 A1 A1
+ FOCUS: v:v:sub|kure-COMPL-NEG*+v:c:sub|moraw-COMPL-NEG*
+ POINTS: A5 A1 A1
+ FOCUS: v:*|*-COMPL-ASP-NEG*
+ POINTS: A1 A1 A1
+ FOCUS: v:*|*-COMPL-NEG*
+ POINTS: A1 A1
+
+
+# tabechaimasen  B1 A1 A1 A2
+### FOCUS: *COMPL-POL-NEG*
+ FOCUS: v:v:sub|i-COMPL-POL-NEG:n&PRES=ASP
+ POINTS: B1 A1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-COMPL-POL-NEG:n&PRES=come+v:c:sub|ik-COMPL-POL-NEG:n&PRES=go
+ POINTS: B1 A2 A1 A1 A2
+ FOCUS: v:ir:sub|ar-COMPL-POL-NEG:n&PRES=be+v:v:sub|age-COMPL-POL-NEG:n&PRES=give+v:v:sub|mi-COMPL-POL-NEG:n&PRES=try+v:c:sub|ok-COMPL-POL-NEG:n&PRES=put
+ POINTS: B1 A3 A1 A1 A2
+ FOCUS: v:v:sub|kure-COMPL-POL-NEG:n&PRES=give+v:c:sub|moraw-COMPL-POL-NEG:n&PRES=get
+ POINTS: B1 A5 A1 A1 A2
+ FOCUS: v:*|*COMPL-ASP-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A1 A2
+ FOCUS: v:*|*COMPL-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A2
+# tabechaimashita  B1 A1 A1 A2
+### FOCUS: *COMPL-POL-PAST*
+ FOCUS: v:v:sub|i-COMPL-POL-PAST=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-COMPL-POL-PAST=come+v:c:sub|ik-COMPL-POL-PAST=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:ir:sub|ar-COMPL-POL-PAST=be+v:v:sub|age-COMPL-POL-PAST=give+v:v:sub|mi-COMPL-POL-PAST=try+v:c:sub|ok-COMPL-POL-PAST=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:v:sub|kure-COMPL-POL-PAST=give+v:c:sub|moraw-COMPL-POL-PAST=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*COMPL-ASP-POL-PAST*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*COMPL-POL-PAST*
+ POINTS: B1 A1 A2
+# tabechaimasu  B1 A1 A2
+### FOCUS: *COMPL-POL-PRES*
+ FOCUS: v:v:sub|i-COMPL-POL-PRES=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-COMPL-POL-PRES=come+v:c:sub|ik-COMPL-POL-PRES=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:v:sub|age-COMPL-POL-PRES=give+v:v:sub|mi-COMPL-POL-PRES=try+v:c:sub|ok-COMPL-POL-PRES=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:v:sub|kure-COMPL-POL-PRES=give+v:c:sub|moraw-COMPL-POL-PRES=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*COMPL-ASP-POL-PRES*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*COMPL-POL-PRES*
+ POINTS: B1 A1 A2
+# tabechaimashite  B2  A1 A2
+### FOCUS *COMPL-POL-CONN* 
+ FOCUS: v:v:sub|i-COMPL-POL-CONN=ASP
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:ir:sub|ku-COMPL-POL-CONN=come+v:c:sub|ik-COMPL-POL-CONN=go
+ POINTS: B2 A2 A1 A2
+ FOCUS: v:v:sub|age-COMPL-POL-CONN=give+v:v:sub|mi-COMPL-POL-CONN=try+v:c:sub|ok-COMPL-POL-CONN=put
+ POINTS: B2 A3 A1 A2
+ FOCUS: v:v:sub|kure-COMPL-POL-CONN=give+v:c:sub|moraw-COMPL-POL-CONN=get
+ POINTS: B2 A5 A1 A2
+ FOCUS: v:*|*COMPL-ASP-POL-CONN=*
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:*|*COMPL-POL-CONN=*
+ POINTS: B2 A1 A2
+# tabechaimashoo  B2 A1 A2
+### FOCUS *COMPL-POL-HORT*
+ FOCUS: v:v:sub|i-COMPL-POL-HORT=ASP
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:ir:sub|ku-COMPL-POL-HORT=come+v:c:sub|ik-COMPL-POL-HORT=go
+ POINTS: B2 A2 A1 A2
+ FOCUS: v:v:sub|age-COMPL-POL-HORT=give+v:v:sub|mi-COMPL-POL-HORT=try+v:c:sub|ok-COMPL-POL-HORT=put
+ POINTS: B2 A3 A1 A2
+ FOCUS: v:c:sub|moraw-COMPL-POL-HORT=get
+ POINTS: B2 A5 A1 A2
+ FOCUS: v:*|*COMPL-ASP-POL-HORT*
+ POINTS: B2 A1 A1 A2
+ FOCUS: v:*|*COMPL-POL-HORT*
+ POINTS: B2 A1 A2
+# tabechaimashitara B3 A1 A2
+### FOCUS *COMPL-POL-COND:tara* 
+ FOCUS: v:v:sub|i-COMPL-POL-COND:tara=ASP
+ POINTS: B3 A1 A1 A2
+ FOCUS: v:ir:sub|ku-COMPL-POL-COND:tara=come+v:c:sub|ik-COMPL-POL-COND:tara=go
+ POINTS: B3 A2 A1 A2
+ FOCUS: v:v:sub|age-COMPL-POL-COND:tara=give+v:v:sub|mi-COMPL-POL-COND:tara=try+v:c:sub|ok-COMPL-POL-COND:tara=put
+ POINTS: B3 A3 A1 A2
+ FOCUS: v:v:sub|kure-COMPL-POL-COND:tara=give+v:c:sub|moraw-COMPL-POL-COND:tara=get
+ POINTS: B3 A5 A1 A2
+ FOCUS: v:*|*COMPL-ASP-POL-COND:tara*
+ POINTS: B3 A1 A1 A2
+ FOCUS: v:*|*COMPL-POL-COND:tara*
+ POINTS: B3 A1 A2
+
+# other endings for sub-verbs  B0 A1 A2
+### FOCUS: *v:sub*COMPL-POL*
+ FOCUS: v:v:sub|i-COMPL-POL*=ASP
+ POINTS: A1 A1 A2
+ FOCUS: v:ir:sub|ku-COMPL-POL*+v:ir:sub|ku&COMPL-POL*
+ POINTS: A2 A1 A2
+ FOCUS: v:ir:sub|ar-COMPL-POL*+v:v:sub|age-COMPL-POL*+v:v:sub|mi-COMPL-POL*+v:c:sub|ok-COMPL-POL*
+ POINTS: A3 A1 A2
+ FOCUS: v:v:sub|kure-COMPL-POL*+v:c:sub|moraw-COMPL-POL*
+ POINTS: A5 A1 A2
+
+# tabechatta  B1 A1
+### FOCUS: *COMPL-PAST*
+ FOCUS: v:v:sub|i-COMPL-PAST=ASP
+ POINTS: B1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-PAST=come+v:c:sub|ik-COMPL-PAST=go
+ POINTS: B1 A2 A1
+ FOCUS: v:v:sub|age-COMPL-PAST=give+v:v:COMPL-PAST=try+v:c:sub|ok-COMPL-PAST=put
+ POINTS: B1 A3 A1
+ FOCUS: v:v:sub|kure-COMPL-PAST=give+v:c:sub|moraw-COMPL-PAST=get
+ POINTS: B1 A5 A1
+ FOCUS: v:*|*COMPL-ASP-PAST*
+ POINTS: B1 A1 A1
+ FOCUS: v:*|*COMPL-PAST*
+ POINTS: B1 A1
+# tabechau  B1 A1
+### FOCUS: *COMPL-PRES*
+ FOCUS: v:v:sub|i-COMPL-PRES=ASP
+ POINTS: B1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-PRES=come+v:c:sub|ik-COMPL-PRES=go
+ POINTS: B1 A2 A1
+ FOCUS: v:ir:sub|ar-COMPL-PRES=be+v:v:sub|age-COMPL-PRES=give+v:v:sub|mi-COMPL-PRES=try+v:c:sub|ok-COMPL-PRES=put
+ POINTS: B1 A3 A1
+ FOCUS: v:v:sub|kure-COMPL-PRES=give+v:c:sub|moraw-COMPL-PRES=get
+ POINTS: B1 A5 A1
+ FOCUS: v:*|*COMPL-ASP-PRES*
+ POINTS: B1 A1 A1
+ FOCUS: v:*|*COMPL-PRES*
+ POINTS: B1 A1
+# tabechatte!  B1 A1 A1
+### FOCUS: *COMPL-IMP:te*
+ FOCUS: v:v:sub|i-COMPL-IMP:te=ASP
+ POINTS: B1 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-IMP:te=come+v:c:sub|ik-COMPL-IMP:te=go
+ POINTS: B1 A2 A1
+ FOCUS: v:v:sub|age-COMPL-IMP:te=give+v:v:sub|mi-COMPL-IMP:te=try+v:c:sub|ok-COMPL-IMP:te=put
+ POINTS: B1 A3 A1
+ FOCUS: v:c:sub|moraw-COMPL-IMP:te=get
+ POINTS: B1 A5 A1
+ FOCUS: v:*|*COMPL-ASP-IMP:te*
+ POINTS: B1 A1 A1
+ FOCUS: v:*|*COMPL-IMP:te*
+ POINTS: B1 A1
+# tabechae!  B5 A1 A1
+### FOCUS: *COMPL-IMP  	IMP=*
+ FOCUS: v:v:sub|i-COMPL-IMP=ASP
+ POINTS: B5 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-IMP:te=come+v:c:sub|ik-COMPL-IMP=go
+ POINTS: B5 A2 A1
+ FOCUS: v:v:sub|age-COMPL-IMP:te=give+v:v:sub|mi-COMPL-IMP:te=try+v:c:sub|ok-COMPL-IMP=put
+ POINTS: B5 A3 A1
+ FOCUS: v:c:sub|moraw-COMPL-IMP=get
+ POINTS: B5 A5 A1
+ FOCUS: v:*|*COMPL-ASP-IMP=*
+ POINTS: B5 A1 A1
+ FOCUS: v:*|*COMPL-IMP=*
+ POINTS: B5 A1
+# tabechainasai!   A1
+### FOCUS: *COMPL-IMP:nasai  	IMP=*
+ FOCUS: v:v:sub|i-COMPL-:nasai=ASP
+ POINTS: A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-IMP:nasai=come+v:c:sub|ik-COMPL-IMP:nasai=go
+ POINTS: A2 A1
+ FOCUS: v:v:sub|age-COMPL-IMP:nasai=give+v:v:sub|mi-COMPL-IMP:nasai=try+v:c:sub|ok-COMPL-IMP:nasai=put
+ POINTS: A3 A1
+ FOCUS: v:c:sub|moraw-COMPL-IMP:nasai=get
+ POINTS: A5 A1
+ FOCUS: v:*|*COMPL-ASP-IMP:nasai=*
+ POINTS: B5 A1 A1
+ FOCUS: v:*|*COMPL-IMP:nasai=*
+ POINTS: B5 A1
+# tabechatte  B2  A1
+### FOCUS *COMPL-CONN* 
+ FOCUS: v:v:sub|i-COMPL-CONN=ASP
+ POINTS: B2 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-CONN=come+v:c:sub|ik-COMPL-CONN=go
+ POINTS: B2 A2 A1
+ FOCUS: v:ir:sub|ar-COMPL-CONN=be+v:v:sub|age-COMPL-CONN=give+v:v:sub|mi-COMPL-CONN=try+v:c:sub|ok-COMPL-CONN=put
+ POINTS: B2 A3 A1
+ FOCUS: v:v:sub|kure-COMPL-CONN=give+v:c:sub|moraw-COMPL-CONN=get
+ POINTS: B2 A5 A1
+ FOCUS: v:*|*COMPL-ASP-CONN=*
+ POINTS: B2 A1 A1
+ FOCUS: v:*|*COMPL-CONN=*
+ POINTS: B2 A1
+# tabechaoo  B2 A1
+### FOCUS *COMPL-HORT*
+ FOCUS: v:v:sub|i-COMPL-HORT=ASP
+ POINTS: B2 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-HORT=come+v:c:sub|ik-COMPL-HORT=go
+ POINTS: B2 A2 A1
+ FOCUS: v:v:sub|age-COMPL-HORT=give+v:v:sub|mi-COMPL-HORT=try+v:c:sub|ok-COMPL-HORT=put
+ POINTS: B2 A3 A1
+ FOCUS: v:c:sub|moraw-COMPL-HORT=get
+ POINTS: B2 A5 A1
+ FOCUS: v:*|*COMPL-ASP-HORT*
+ POINTS: B2 A1 A1
+ FOCUS: v:*|*COMPL-HORT*
+ POINTS: B2 A1
+# tabechattara tabechaeba B3 A1
+### FOCUS *COMPL-COND:tara* COMPL-COND:ba*
+ FOCUS: v:v:sub|i-COMPL-COND:*
+ POINTS: B3 A1 A1
+ FOCUS: v:ir:sub|ku-COMPL-COND:*+v:c:sub|ik-COMPL-COND:*
+ POINTS: B3 A2 A1
+ FOCUS: v:ir:sub|ar-COMPL-COND:*+v:v:sub|age-COMPL-COND:*+v:v:sub|mi-COMPL-COND:*+v:c:sub|ok-COMPL-COND:*
+ POINTS: B3 A3 A1
+ FOCUS: v:v:sub|kure-COMPL-COND:*+v:c:sub|moraw-COMPL-COND:*
+ POINTS: B3 A5 A1
+ FOCUS: v:*|*COMPL-ASP-COND:*
+ POINTS: B3 A1 A1
+ FOCUS: v:*|*COMPL-COND:*
+ POINTS: B3 A1
+# tabechai (nagara)   A1 B4
+ FOCUS: v:*|*COMPL-ASP-GER=*
+ POINTS: A1 A1 B4
+ FOCUS: v:*|*COMPL-GER=*
+ POINTS: A1 B4
+
+# other endings for sub-verbs  B0 A1
+### FOCUS: *v:sub*COMPL
+ FOCUS: v:v:sub|i-COMPL*
+ POINTS: A1 A1
+ FOCUS: v:ir:sub|ku-COMPL*+v:ir:sub|ku&COMPL*
+ POINTS: A2 A1
+ FOCUS: v:ir:sub|ar-COMPL*+v:ir:sub|ar&COMPL*+v:v:sub|age-COMPL*+v:v:sub|mi-COMPL*+v:c:sub|ok-COMPL*
+ POINTS: A3 A1
+ FOCUS: v:v:sub|kure-COMPL*+v:c:sub|moraw-COMPL*
+ POINTS: A5 A1 
+
+ FOCUS: v*|*-COMPL-ASP-*
+ POINTS: A1 A1
+ FOCUS: v*|*-COMPL-*
+ POINTS: A1
+
+################################################## POL A2
+# tabemasen  B1 A1 A2
+### FOCUS: *POL-NEG*
+ FOCUS: v:v:sub|i-POL-NEG:n&PRES=ASP
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:ir:sub|ku-POL-NEG:n&PRES=come+v:c:sub|ik-POL-NEG:n&PRES=go
+ POINTS: B1 A2 A1 A2
+ FOCUS: v:ir:sub|ar-POL-NEG:n&PRES=be+v:v:sub|age-POL-NEG:n&PRES=give+v:v:sub|mi-POL-NEG:n&PRES=try+v:c:sub|ok-POL-NEG:n&PRES=put
+ POINTS: B1 A3 A1 A2
+ FOCUS: v:v:sub|kure-POL-NEG:n&PRES=give+v:c:sub|moraw-POL-NEG:n&PRES=get
+ POINTS: B1 A5 A1 A2
+ FOCUS: v:*|*ASP-POL-NEG:n&PRES*
+ POINTS: B1 A1 A1 A2
+ FOCUS: v:*|*POL-NEG:n&PRES*
+ POINTS: B1 A1 A2
+# tabemashita  B1 A2
+### FOCUS: *POL-PAST*
+ FOCUS: v:v:sub|i-POL-PAST=ASP
+ POINTS: B1 A1 A2
+ FOCUS: v:ir:sub|ku-POL-PAST=come+v:c:sub|ik-POL-PAST=go
+ POINTS: B1 A2 A2
+ FOCUS: v:ir:sub|ar-POL-PAST=be+v:v:sub|age-POL-PAST=give+v:v:sub|mi-POL-PAST=try+v:c:sub|ok-POL-PAST=put
+ POINTS: B1 A3 A2
+ FOCUS: v:v:sub|kure-POL-PAST=give+v:c:sub|moraw-POL-PAST=get
+ POINTS: B1 A5 A2
+ FOCUS: v:*|*ASP-POL-PAST*
+ POINTS: B1 A1 A2
+ FOCUS: v:*|*POL-PAST*
+ POINTS: B1 A2
+# tabemasu  B1
+### FOCUS: *POL-PRES*
+ FOCUS: v:v:sub|i-POL-PRES=ASP
+ POINTS: B1 A1 A2
+ FOCUS: v:ir:sub|ku-POL-PRES=come+v:c:sub|ik-POL-PRES=go
+ POINTS: B1 A2 A2
+ FOCUS: v:ir:sub|ar-POL-PRES=be+v:v:sub|age-POL-PRES=give+v:v:sub|mi-POL-PRES=try+v:c:sub|ok-POL-PRES=put
+ POINTS: B1 A3 A2
+ FOCUS: v:v:sub|kure-POL-PRES=give+v:c:sub|moraw-POL-PRES=get
+ POINTS: B1 A5 A2
+ FOCUS: v:c|*ASP-POL-PRES*+v:v|*ASP-POL-PRES*+v:ir|*ASP-POL-PRES*+v:ir:sub|su*ASP-POL-PRES*
+ POINTS: B1 A1 A2
+ FOCUS: v:c|*POL-PRES*+v:v|*POL-PRES*+v:ir|*POL-PRES*+v:ir:sub|su*POL-PRES*+v:cop|da&POL-PRES=be
+ POINTS: B1 A2
+# tabemashite  B2 
+### FOCUS *POL-CONN* 
+ FOCUS: v:v:sub|i-POL-CONN=ASP
+ POINTS: B2 A1 A2
+ FOCUS: v:ir:sub|ku-POL-CONN=come+v:c:sub|ik-POL-CONN=go
+ POINTS: B2 A2 A2
+ FOCUS: v:ir:sub|ar-POL-CONN=be+v:v:sub|age-POL-CONN=give+v:v:sub|mi-POL-CONN=try+v:c:sub|ok-POL-CONN=put
+ POINTS: B2 A3 A2
+ FOCUS: v:v:sub|kure-POL-CONN=give+v:c:sub|moraw-POL-CONN=get
+ POINTS: B2 A5 A2
+ FOCUS: v:*|*ASP-POL-CONN=*
+ POINTS: B2 A1 A2
+ FOCUS: v:*|*POL-CONN=*
+ POINTS: B2 A2
+# tabemashoo  B2 A2
+### FOCUS *POL-HORT*
+ FOCUS: v:v:sub|i-POL-HORT=ASP
+ POINTS: B2 A1 A2
+ FOCUS: v:ir:sub|ku-POL-HORT=come+v:c:sub|ik-POL-HORT=go
+ POINTS: B2 A2 A2
+ FOCUS: v:v:sub|age-POL-HORT=give+v:v:sub|mi-POL-HORT=try+v:c:sub|ok-POL-HORT=put
+ POINTS: B2 A3 A2
+ FOCUS: v:c:sub|moraw-POL-HORT=get
+ POINTS: B2 A5 A2
+ FOCUS: v:v|*ASP-POL-HORT*+v:c|*ASP-POL-HORT*+v:ir|*ASP-POL-HORT*+v:ir:sub|su*ASP-POL-HORT*
+ POINTS: B2 A1 A2
+ FOCUS: v:v|*POL-HORT*+v:c|*POL-HORT*+v:ir|*POL-HORT*+v:ir:sub|su*POL-HORT=do+v:cop|da&POL-HORT=be
+ POINTS: B2 A2
+# tabemashitara B3 A2
+### FOCUS *POL-COND:tara* 
+ FOCUS: v:v:sub|i-POL-COND:tara=ASP
+ POINTS: B3 A1 A2
+ FOCUS: v:ir:sub|ku-POL-COND:tara=come+v:c:sub|ik-POL-COND:tara=go
+ POINTS: B3 A2 A2
+ FOCUS: v:ir:sub|ar-POL-COND:tara=be+v:v:sub|age-POL-COND:tara=give+v:v:sub|mi-POL-COND:tara=try+v:c:sub|ok-POL-COND:tara=put
+ POINTS: B3 A3 A2
+ FOCUS: v:v:sub|kure-POL-COND:tara=give+v:c:sub|moraw-POL-COND:tara=get
+ POINTS: B3 A5 A2
+ FOCUS: v:v|*ASP-POL-COND:tara*+v:c|*ASP-POL-COND:tara*+v:ir|*ASP-POL-COND:tara*+v:ir:sub|su*ASP-POL-COND:tara*
+ POINTS: B3 A1 A2
+ FOCUS: v:v|*POL-COND:tara*+v:c|*POL-COND:tara*+v:ir|*POL-COND:tara*+v:ir:sub|su*POL-COND:tara*+v:cop|da&POL-COND:tara=be
+ POINTS: B3 A2
+# other endings for sub-verbs  B0 A2
+### FOCUS: *v:sub*POL*
+ FOCUS: v:v:sub|i-POL*
+ POINTS: A1 A2
+ FOCUS: v:ir:sub|ku-POL*+v:ir:sub|ku&POL*
+ POINTS: A2 A2
+ FOCUS: v:ir:sub|ar-POL*=be+v:v:sub|age-POL*+v:v:sub|mi-POL*+v:c:sub|ok-POL*
+ POINTS: A3 A2
+ FOCUS: v:v:sub|kure-POL*+v:c:sub|moraw-POL*
+ POINTS: A5 A2
+
+
+################################################## NEG
+# tabenakatta   B1 A1
+### FOCUS: *NEG-PAST*
+ FOCUS: v:v:sub|i-NEG-PAST=ASP
+ POINTS: B1 A1 A1
+ FOCUS: v:ir:sub|ku-NEG-PAST=come+v:c:sub|ik-NEG-PAST=go
+ POINTS: B1 A2 A1
+ FOCUS: v:ir:sub|ar-NEG-PAST=be+v:v:sub|age-NEG-PAST=give+v:v:sub|mi-NEG-PAST=try+v:c:sub|ok-NEG-PAST=put
+ POINTS: B1 A3 A1
+ FOCUS: v:v:sub|kure-NEG-PAST=give+v:c:sub|moraw-NEG-PAST=get
+ POINTS: B1 A5 A1
+ FOCUS: v:v|*ASP-NEG-PAST*+v:c|*ASP-NEG-PAST*+v:ir|*ASP-NEG-PAST*+v:ir:sub|su*ASP-NEG-PAST*
+ POINTS: B1 A1 A1
+ FOCUS: v:v|*NEG-PAST*+v:c|*NEG-PAST*+v:ir|*NEG-PAST*+v:ir:sub|su*NEG-PAST*+v:cop|de&wa-NEG-PAST=be
+ POINTS: B1 A1
+# tabenai  B1 A1
+### FOCUS: *NEG-PRES*
+ FOCUS: v:v:sub|i-NEG-PRES=ASP
+ POINTS: B1 A1 A1
+ FOCUS: v:ir:sub|ku-NEG-PRES=come+v:c:sub|ik-NEG-PRES=go
+ POINTS: B1 A2 A1
+ FOCUS: v:ir:sub|ar&NEG-PRES=be+v:v:sub|age-NEG-PRES=give+v:v:sub|mi-NEG-PRES=try+v:c:sub|ok-NEG-PRES=put
+ POINTS: B1 A3 A1
+ FOCUS: v:v:sub|kure-NEG-PRES=give+v:c:sub|moraw-NEG-PRES=get
+ POINTS: B1 A5 A1
+ FOCUS: v:v|*ASP-NEG-PRES*+v:c|*ASP-NEG-PRES*+v:ir|*ASP-NEG-PRES*+v:ir:sub|su*ASP-NEG-PRES=do
+ POINTS: B1 A1 A1
+ FOCUS: v:v|*NEG-PRES*+v:c|*NEG-PRES*+v:ir|*NEG-PRES*+v:ir:sub|su*NEG-PRES=do+v:cop|de&wa-NEG-PRES=be
+ POINTS: B1 A1
+# tabenaide!  B1 A1
+### FOCUS: *NEG-IMP:de*
+ FOCUS: v:v:sub|i-NEG-IMP:de=ASP
+ POINTS: B1 A1  A1
+ FOCUS: v:ir:sub|ku-NEG-IMP:de=come+v:c:sub|ik-NEG-IMP:de=go
+ POINTS: B1 A2 A1
+ FOCUS: v:v:sub|age-NEG-IMP:de=give+v:v:sub|mi-NEG-IMP:de=try+v:c:sub|ok-NEG-IMP:de=put
+ POINTS: B1 A3 A1
+ FOCUS: v:c:sub|moraw-NEG-IMP:de=get
+ POINTS: B1 A5 A1
+ FOCUS: v:*|*ASP-NEG-IMP:de*
+ POINTS: B1 A1 A1
+ FOCUS: v:*|*NEG-IMP:de*
+ POINTS: B1 A1
+# tabenakute  B2 A1
+### FOCUS *NEG-CONN* 
+ FOCUS: v:v:sub|i-NEG-CONN=ASP
+ POINTS: B2 A1 A1
+ FOCUS: v:ir:sub|ku-NEG-CONN=come+v:c:sub|ik-NEG-CONN=go
+ POINTS: B2 A2 A1
+ FOCUS: v:ir:sub|ar&NEG-CONN=be+v:v:sub|age-NEG-CONN=give+v:v:sub|mi-NEG-CONN=try+v:c:sub|ok-NEG-CONN=put
+ POINTS: B2 A3 A1
+ FOCUS: v:v:sub|kure-NEG-CONN=give+v:c:sub|moraw-NEG-CONN=get
+ POINTS: B2 A5 A1
+ FOCUS: v:v|*ASP-NEG-CONN=*+v:c|*ASP-NEG-CONN=*+v:ir|*ASP-NEG-CONN=*+v:ir:sub|su*ASP-NEG-CONN=do
+ POINTS: B2 A1 A1
+ FOCUS: v:v|*NEG-CONN=*+v:c|*NEG-CONN=*+v:ir|*NEG-CONN=*+v:ir:sub|su*NEG-CONN=do+v:cop|de&wa-NEG-CONN=be
+ POINTS: B2 A1
+# tabenakaroo  B2 A1
+### FOCUS *NEG-HORT*
+ FOCUS: v:v:sub|i-NEG-HORT=ASP
+ POINTS: B2 A1 A1
+ FOCUS: v:ir:sub|ku-NEG-HORT=come+v:c:sub|ik-NEG-HORT=go
+ POINTS: B2 A2 A1
+ FOCUS: v:v:sub|age-NEG-HORT=give+v:v:sub|mi-NEG-HORT=try+v:c:sub|ok-NEG-HORT=put
+ POINTS: B2 A3 A1
+ FOCUS: v:c:sub|moraw-NEG-HORT=get
+ POINTS: B2 A5 A1
+ FOCUS: v:*|*ASP-NEG-HORT*
+ POINTS: B2 A1 A1
+ FOCUS: v:*|*NEG-HORT*
+ POINTS: B2 A1
+# tabenakattara tabenakereba B3 A1
+### FOCUS *NEG-COND:tara* *NEG:COND:ba*
+ FOCUS: v:v:sub|i-NEG-COND:*
+ POINTS: B3 A1 A1
+ FOCUS: v:ir:sub|ku-NEG-COND:*+v:c:sub|ik-NEG-COND:*
+ POINTS: B3 A2 A1
+ FOCUS: v:ir:sub|ar&NEG-COND:*+v:v:sub|age-NEG-COND:*+v:v:sub|mi-NEG-COND:*+v:c:sub|ok-NEG-COND:*
+ POINTS: B3 A3 A1
+ FOCUS: v:v:sub|kure-NEG-COND:*+v:c:sub|moraw-NEG-COND:*
+ POINTS: B3 A5 A1
+ FOCUS: v:v|*ASP-NEG-COND:*+v:c|*ASP-NEG-COND:*+v:ir|*ASP-NEG-COND:*+v:ir:sub|su*ASP-NEG-COND:*
+ POINTS: B3 A1 A1
+ FOCUS: v:v|*NEG-COND:*+v:c|*NEG-COND:*+v:ir|*NEG-COND:*+v:ir:sub|su*NEG-COND:*+v:cop|de&wa-NEG-COND:*=be
+ POINTS: B3 A1
+# tabenakucha (ikenai)     B4 A1
+### FOCUS *NEG-CONN&wa
+ FOCUS: v:v:sub|i-NEG-CONN&wa=ASP
+ POINTS: B4 A1 A1
+ FOCUS: v:ir:sub|ku-NEG-CONN&wa=come+v:c:sub|ik-NEG-CONN&wa=go
+ POINTS: B4 A2 A1
+ FOCUS: v:ir:sub|ar&NEG-CONN&wa=be+v:v:sub|age-NEG-CONN&wa=give+v:v:sub|mi-NEG-CONN&wa=try+v:c:sub|ok-NEG-CONN&wa=put
+ POINTS: B4 A3 A1
+ FOCUS: v:v:sub|kure-NEG-CONN&wa=give+v:c:sub|moraw-NEG-CONN&wa=get
+ POINTS: B4 A5 A1
+ FOCUS: v:v|*ASP-NEG-CONN&wa*+v:c|*ASP-NEG-CONN&wa*+v:ir|*ASP-NEG-CONN&wa*+v:ir:sub|su*ASP-NEG-CONN&wa=do
+ POINTS: B4 A1
+ FOCUS: v:v|*NEG-CONN&wa*+v:c|*NEG-CONN&wa*+v:ir|*NEG-CONN&wa*+v:ir:sub|su*NEG-CONN&wa=do
+ POINTS: B4 A1
+# tabenaide!     B4 A1
+### FOCUS *NEG&IMP:de
+ FOCUS: v:v:sub|i-NEG&IMP:de=ASP
+ POINTS: B4 A1 A1
+ FOCUS: v:ir:sub|ku-NEG&IMP:de=come+v:c:sub|ik-NEG&IMP:de=go
+ POINTS: B4 A2 A1
+ FOCUS: v:ir:sub|ar&NEG&IMP:de=be+v:v:sub|age-NEG&IMP:de=give+v:v:sub|mi-NEG&IMP:de=try+v:c:sub|ok-NEG&IMP:de=put
+ POINTS: B4 A3 A1
+ FOCUS: v:v:sub|kure-NEG&IMP:de=give+v:c:sub|moraw-NEG&IMP:de=get
+ POINTS: B4 A5 A1
+ FOCUS: v:*|*ASP-NEG&IMP:de*
+ POINTS: B4 A1 A1
+ FOCUS: v:*|*NEG&IMP:de*
+ POINTS: B4 A1
+# tabenakucha!     B5 A1
+### FOCUS *NEG&OBL*
+ FOCUS: v:v:sub|i-NEG&OBL=ASP
+ POINTS: B5 A1 A1
+ FOCUS: v:ir:sub|ku-NEG&OBL=come+v:c:sub|ik-NEG&OBL=go
+ POINTS: B5 A2 A1
+ FOCUS: v:ir:sub|ar&NEG&OBL=be+v:v:sub|age-NEG&OBL=give+v:v:sub|mi-NEG&OBL=try+v:c:sub|ok-NEG&OBL=put
+ POINTS: B5 A3 A1
+ FOCUS: v:v:sub|kure-NEG&OBL=give+v:c:sub|moraw-NEG&OBL=get
+ POINTS: B5 A5 A1
+ FOCUS: v:*|*ASP-NEG&OBL*
+ POINTS: B5 A1 A1
+ FOCUS: v:*|*NEG&OBL*
+ POINTS: B5 A1
+
+# other endings for sub-verbs  B0 A1
+### FOCUS: *v:sub|*NEG*
+ FOCUS: v:v:sub|i-NEG*
+ POINTS: A1 A1
+ FOCUS: v:ir:sub|ku-NEG*+v:ir:sub|ku&NEG*
+ POINTS: A2 A1
+ FOCUS: v:ir:sub|ar-NEG*+v:ir:sub|ar&NEG*+v:v:sub|age-NEG*+v:v:sub|mi-NEG*+v:c:sub|ok-NEG*
+ POINTS: A3 A1
+ FOCUS: v:v:sub|kure-NEG*+v:c:sub|moraw-NEG*
+ POINTS: A5 A1
+ FOCUS: v:v|*ASP-NEG*+v:c|*ASP-NEG*+v:ir|*ASP-NEG*+v:ir:sub|su*ASP-NEG*
+ POINTS: A1 A1
+ FOCUS: v:v|*-NEG*+v:c|*-NEG*+v:ir|*-NEG*+v:ir:sub|su*-NEG*
+ POINTS: A1
+
+#############################################################################
+#    verb last inflection  B  ### 
+###############################################################################
+RULENAME: vlast
+# tabeta  B1
+### FOCUS: *PAST*
+ FOCUS: v:v:sub|i-PAST=ASP
+ POINTS: B1 A1
+ FOCUS: v:ir:sub|ku-PAST=come+v:c:sub|ik-PAST=go
+ POINTS: B1 A2
+ FOCUS: v:ir:sub|ar-PAST=be+v:v:sub|age-PAST=give+v:v:sub|mi-PAST=try+v:c:sub|ok-PAST=put
+ POINTS: B1 A3
+ FOCUS: v:v:sub|kure-PAST=give+v:c:sub|moraw-PAST=get
+ POINTS: B1 A5
+ FOCUS: v:v|*ASP-PAST*+v:c|*ASP-PAST*+v:ir|*ASP-PAST*+v:ir:sub|su-ASP-PAST=do
+ POINTS: B1 A1
+ FOCUS: v:v|*PAST*+v:c|*PAST*+v:ir|*PAST*+v:ir:sub|su*PAST*
+ POINTS: B1
+# taberu  B1
+### FOCUS: *PRES*
+ FOCUS: v:v:sub|i-PRES=ASP
+ POINTS: B1 A1
+ FOCUS: v:ir:sub|ku-PRES=come+v:c:sub|ik-PRES=go
+ POINTS: B1 A2
+ FOCUS: v:ir:sub|ar-PRES=be+v:v:sub|age-PRES=give+v:v:sub|mi-PRES=try+v:c:sub|ok-PRES=put
+ POINTS: B1 A3
+ FOCUS: v:v:sub|kure-PRES=give+v:c:sub|moraw-PRES=get
+ POINTS: B1 A5
+ FOCUS: v:v|*ASP-PRES=*+v:c|*ASP-PRES=*+v:ir|*ASP-PRES=*+v:ir:sub|su-ASP-PRES=do
+ POINTS: B1 A1
+ FOCUS: v:v|*PRES=*+v:c|*PRES=*+v:ir|*PRES=*+v:ir:sub|su*PRES=do
+ POINTS: B1
+# tabe (okaeri ni naru, tabe nagara)   B4
+### FOCUS: *GER*
+ FOCUS: v:v:sub|i&GER=ASP
+ POINTS: B1 A1 B4
+ FOCUS: v:ir:sub|ku&GER=go+v:c:sub|ik-GER=go
+ POINTS: B1 A2 B4
+ FOCUS: v:ir:sub|ar-GER=be+v:v:sub|age&GER=give+v:v:sub|mi&GER=try+v:c:sub|ok-GER=put
+ POINTS: B1 A3 B4
+ FOCUS: v:v:sub|kure&GER=give+v:c:sub|moraw-GER=get
+ POINTS: B1 A5 B4
+ FOCUS: v:*|*&GER=*
+ POINTS: B1 B4
+# tabete!  B1
+### FOCUS: *IMP:te*
+ FOCUS: v:v:sub|i-IMP:te=ASP
+ POINTS: B1 A1
+ FOCUS: v:ir:sub|ku-IMP:te=come+v:c:sub|ik-IMP:te=go
+ POINTS: B1 A2
+ FOCUS: v:v:sub|age-IMP:te=give+v:v:sub|mi-IMP:te=try+v:c:sub|ok-IMP:te=put
+ POINTS: B1 A3
+ FOCUS: v:c:sub|moraw-IMP:te=get
+ POINTS: B1 A5
+ FOCUS: v:*|*ASP-IMP:te*
+ POINTS: B1 A1
+ FOCUS: v:*|*IMP:te*
+ POINTS: B1
+# tabero!  B1
+### FOCUS: *IMP    IMP=*
+ FOCUS: v:v:sub|i-IMP=ASP
+ POINTS: B1 A1
+ FOCUS: v:ir:sub|ku-IMP=come+v:c:sub|ik-IMP=go
+ POINTS: B1 A2
+ FOCUS: v:v:sub|age-IMP=give+v:v:sub|mi-IMP=try+v:c:sub|ok-IMP=put
+ POINTS: B1 A3
+ FOCUS: v:c:sub|moraw-IMP=get
+ POINTS: B1 A5
+ FOCUS: v:*|*ASP-IMP=*
+ POINTS: B1 A1
+ FOCUS: v:*|*IMP=*
+ POINTS: B1
+# tabete  B2 
+### FOCUS *CONN* 
+ FOCUS: v:v:sub|i-CONN=ASP
+ POINTS: B2 A1
+ FOCUS: v:ir:sub|ku-CONN=come+v:c:sub|ik-CONN=go
+ POINTS: B2 A2
+ FOCUS: v:ir:sub|ar-CONN=be+v:v:sub|age-CONN=give+v:v:sub|mi-CONN=try+v:c:sub|ok-CONN=put
+ POINTS: B2 A3
+ FOCUS: v:v:sub|kure-CONN=give+v:c:sub|moraw-CONN=get
+ POINTS: B2 A5
+ FOCUS: v:*|*ASP-CONN=*+v:v|*ASP-CONN=*+v:c|*ASP-CONN=*+v:ir|*ASP-CONN=*+v:ir:sub|su-ASP-CONN=do
+ POINTS: B2 A1
+ FOCUS: v:*|*CONN=*+v:v|*CONN=*+v:c|*CONN=*+v:ir|*CONN=*+v:ir:sub|su*CONN=do
+ POINTS: B2
+# tabeyoo  B2
+### FOCUS *HORT*
+ FOCUS: v:v:sub|i-HORT=ASP
+ POINTS: B2 A1
+ FOCUS: v:ir:sub|ku-HORT=come+v:c:sub|ik-HORT=go
+ POINTS: B2 A2
+ FOCUS: v:v:sub|age-HORT=give+v:v:sub|mi-HORT=try+v:c:sub|ok-HORT=put
+ POINTS: B2 A3
+ FOCUS: v:c:sub|moraw-HORT=get
+ POINTS: B2 A5
+ FOCUS: v:*|*ASP-HORT=*+v:v|*ASP-HORT=*+v:c|*ASP-HORT=*+v:ir|*ASP-HORT=*+v:ir:sub|su-ASP-HORT=do
+ POINTS: B2 A1
+ FOCUS: v:*|*HORT=*+v:v|*HORT=*+v:c|*HORT=*+v:ir|*HORT=*+v:ir:sub|su*HORT=*+v:cop|da-HORT=be
+ POINTS: B2
+# tabetara tabereba B3
+### FOCUS *COND:tara* COND:ba*
+ FOCUS: v:v:sub|i-COND:*
+ POINTS: B3 A1
+ FOCUS: v:ir:sub|ku-COND:*+v:c:sub|ik-COND:*
+ POINTS: B3 A2
+ FOCUS: v:ir:sub|ar-COND:*+v:v:sub|age-COND:*v:v:sub|mi-COND:*+v:c:sub|ok-COND:*
+ POINTS: B3 A3
+ FOCUS: v:v:sub|kure-COND:*+v:c:sub|moraw-COND:*
+ POINTS: B3 A5
+ FOCUS: v:v|*COND:*+v:c|*COND:*+v:ir|*COND:*+v:ir:sub|su*COND:*+v:cop|da*CONN:*=be
+ POINTS: B3
+# tabecha   B4
+### FOCUS *CONN&wa
+ FOCUS: v:v:sub|i-CONN&wa=ASP
+ POINTS: B4 A1
+ FOCUS: v:ir:sub|ku-CONN&wa=come+v:c:sub|ik-CONN&wa=go
+ POINTS: B4 A2
+ FOCUS: v:ir:sub|ar-CONN&wa=be+v:v:sub|age-CONN&wa=give+v:v:sub|mi-CONN&wa=try+v:c:sub|ok-CONN&wa=put
+ POINTS: B4 A3
+ FOCUS: v:v:sub|kure-CONN&wa=give+v:c:sub|moraw-CONN&wa=get
+ POINTS: B4 A5
+ FOCUS: v:*|*ASP-CONN&wa=*+v:v|*ASP-CONN&wa=*+v:c|*ASP-CONN&wa=*+v:ir|*ASP-CONN&wa=*+v:ir:sub|su-ASP-CONN&wa=do
+ POINTS: B4 A1
+ FOCUS: v:*|*CONN&wa=*+v:v|*CONN&wa=*+v:c|*CONN&wa=*+v:ir|*CONN&wa=*+v:ir:sub|su*CONN&wa=*
+ POINTS: B4
+# other endings for sub-verbs  B0
+### FOCUS: *v:sub*
+ FOCUS: v:v:sub|i-*
+ POINTS: A1
+ FOCUS: v:ir:sub|ku-*+v:ir:sub|ku&*
+ POINTS: A2
+ FOCUS: v:ir:sub|ar-*+v:ir:sub|ar&*+v:v:sub|age-*+v:v:sub|mi-*+v:c:sub|ok-*
+ POINTS: A3
+ FOCUS: v:v:sub|kure-*+v:c:sub|moraw-*
+ POINTS: A5
+
+################################################### 
+# verbal adjectives C   #   doppelt bepunktet   (in NP) 
+###############################################################################
+RULENAME: vadj
+# oishikatta  C4    
+ FOCUS: adj|*-PAST*
+ POINTS: C4
+#  oishikunai oishiku C3                     
+ FOCUS: adj|*-NEG-PRES*+adj|*-ADV*+adj:mot|-NEG-PRES+adj:mot|-ADV*
+ POINTS: C3 
+# oishii  C1
+ FOCUS: adj|*-PRES*
+ POINTS: C1
+# okkii  C1
+ FOCUS: adj:*|*-PRES*
+ POINTS: C1
+
+###############################################################################
+#  adjectival nouns  D        # 
+###############################################################################
+RULENAME: adjnoun
+# AN da  AN ni  AN na  D4
+ FOCUS: n:an|*^v:cop|da&PRES=be+n:an|*^v:cop|ni&ADV=be+n:an|*^v:cop|da&PRES:na=be
+ POINTS: D4
+
+###############################################################################
+#  copula  D
+###############################################################################
+RULENAME: cop
+# da  D1
+ FOCUS: v:cop|da&PRES=be+v:cop|ya&PRES=be
+ POINTS: D1
+# janai de  D3
+ FOCUS: v:cop|de&wa-NEG-PRES=be+v:cop|de&CONN=be
+ POINTS: D3
+# datta na ni  D4
+ FOCUS: v:cop|da-PAST=be+v:cop|ya-PAST=be+v:cop|da&PRES:na=be+v:cop|ni&ADV=be
+ POINTS: D4
+# ja  D5
+ FOCUS: v:cop|de&CONN&wa=be
+ POINTS: D5
+
+###############################################################################
+#  formal nouns  F       # 
+###############################################################################
+RULENAME: smod
+# hoo F5
+ FOCUS: n:fml|hoo=side
+ POINTS: F5
+# koto  F4
+ FOCUS: n:fml|koto=fact
+ POINTS: F4
+###############################################################################
+#  compounds  F #   
+###############################################################################
+RULENAME: comp
+# N+N   aka+juusu   F1
+ FOCUS: n|*n|*n|*
+ POINTS: F1
+# Nprop+N  Tatchan+eki      
+ FOCUS: n|*n:prop|*n|*
+ POINTS: F5
+# N+VGER  ekaki   F5
+ FOCUS: n*|*n|*v:*|*GER=*
+ POINTS: F5 
+# N+VGER  ekaki   F5
+ FOCUS: v*|*n|*v:*|*GER=*
+ POINTS: F5 B4
+
+## final infl on V+V  F5
+# V+V  tabe+owatta tabe+owaru tabe+owatte      F5 B1
+ FOCUS: v:*|*v:*|*v:*|*-PAST=*+v:*|*v:*|*v:*|*-PRES=*+v:*|*v:*|*v:*|*-IMP:te=*
+ POINTS: F5 B1
+# V+V  tabe+owaroo tabe+owatte  F5 B2    
+ FOCUS: v:*|*v:*|*v:*|*-HORT=*+v:*|*v:*|*v:*|*-CONN=*
+ POINTS: F5 B2
+# V+V  tabe+owattara   F5 B3 
+ FOCUS: v:*|*v:*|*v:*|*-COND:tara=*
+ POINTS: F5 B3
+# V+V  tabe+owatcha tabe+owari tabe+owaranaide   F5 B4
+ FOCUS: v:*|*v:*|*v:*|*-CONN&wa=*+v:*|*v:*|*v:*|*GER=*+v:*|*v:*|*v:*|*-NEG&IMP:de=*
+ POINTS: F5 B4
+# V+V  tabe+oware tabe+owaranakya   F5 B5
+ FOCUS: v:*|*v:*|*v:*|*-IMP=*+v:*|*v:*|*v:*|*-NEG&OBL=*
+ POINTS: F5 B5
+
+###############################################################################
+#  case & focus & quotation particles  G    
+###############################################################################
+RULENAME: case-foc-quot-ptl
+# ga ni wa mo  G1
+ FOCUS: ptl:case|ga=NOM+ptl:post|ni=POST+ptl:top|wa=TOP+ptl:foc|mo=too
+ POINTS: G1
+# to de tteQ G2
+ FOCUS: ptl:post|to=with+ptl:post|de=POST+ptl:quot|tte=QUOT
+ POINTS: G2
+# kara o dake toQ G3
+ FOCUS: ptl:post|kara=from+ptl:case|o=ACC+ptl:foc|dake=only+ptl:quot|to=QUOT
+ POINTS: G3
+# made kurai shika G5
+ FOCUS: ptl:post|made=until+ptl:foc|kurai=about+ptl:foc|shika=only
+ POINTS: G5
+
+
+###############################################################################
+#  final particles  J       # 
+###############################################################################
+RULENAME: final-ptl
+# yo-ne kke J4
+ FOCUS: ptl:fina|yo=ASSERT^ptl:fina|ne=TAG+ptl:fina|kke=WONDER
+ POINTS: J4
+# no-yo  J3
+ FOCUS: ptl:fina|no=FINA^ptl:fina|yo=ASSERT
+ POINTS: J3
+# kanaa mon ka naa J2
+ FOCUS: ptl:fina|kanaa=DOUBT+ptl:fina|mon=ASSERT+ptl:fina|ka=Q+ptl:fina|naa=TAG
+ POINTS: J2
+# yo ne no  J1
+ FOCUS: ptl:fina|yo=ASSERT+ptl:fina|ne=TAG+ptl:fina|no=FINA
+ POINTS: J1
+
+###############################################################################
+#  adverbs  H       # 
+###############################################################################
+RULENAME: adv
+# yappari sakki  H5
+ FOCUS: adv|yahari=as_thought+adv|sakki=a_little_while_ago
+ POINTS: H5
+# ichiban nanka sugu  H4
+ FOCUS: adv|ichiban=most+adv:deic:indef|nanka=somehow+adv|sugu=soon
+ POINTS: H4
+# mada chotto ippai  H3
+ FOCUS: adv|mada=still+adv|chotto=a_bit+adv|ippai=plenty
+ POINTS: H3
+# mata motto moo  H2
+ FOCUS: adv|motto=more+adv|moo=already+adv|mata=again
+ POINTS: H2
+
+###############################################################################
+#  smodalizers  I       # 
+###############################################################################
+RULENAME: smod
+#  jan yoo I5
+ FOCUS: smod|jan=isnt_it+smod|yoo=apparently
+ POINTS: I5
+#  mitai deshoo  I4
+ FOCUS: smod|mitai=looks_like+smod|deshoo&POL=dont_you_think
+ POINTS: I4
+#  desu I3
+ FOCUS: smod|desu=POL
+ POINTS: I3
+
+###############################################################################
+#  conjunctions & conjunctive particles  E    
+###############################################################################
+RULENAME: conj
+# demo  E5  
+ FOCUS: conj|demo=but
+ POINTS: E5
+# noni shi  datte ja sorede de dakara E4
+ FOCUS: ptl:conj|noni=in_spite_of+ptl:conj|shi=also+conj|datte=but+conj|ja=well+conj|sorede=and_then+conj|de=and_then+conj|dakara=therefore
+ POINTS: E4
+# to kara(temporal) kedo    E3  
+ FOCUS: ptl:conj|to=when+ptl:conj|kara=after+ptl:conj|kedo=although
+ POINTS: E3
+# kara(causal)   E2 
+ FOCUS: ptl:conj|kara=because
+ POINTS: E2
+###############################################################################
+

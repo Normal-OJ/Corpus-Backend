@@ -1,0 +1,121 @@
+@UTF8
+dss +l0
+ipsyn +l0
+% Lines preceded by % are comments
+
+% Each search string starts with '+' for including or '-' for excluding
+% Each label for the columns in the output is surrounded by either " or '
+% Rules can be specified in long form "+|n +|n:*" or short form "+|n,|n:*"
+% These markers specify the nature of the following string
+% # prefix marker
+% | part-of-speech marker
+% r stem of the word marker
+% - suffix marker
+% & nonconcatenated morpheme marker
+% = English translation for the stem marker
+% @ replacement word preceding [: ...] code marker
+% * error code inside [* ...] code marker
+% o all other elements not specified by user
+% followed by - or + and/or the following
+%	*		find any match
+%	%		erase any match
+%	string		find "string"
+% , the comma separates alternative elements 
+% Exception:
+%   ~ postclitic OR $ preclitic
+% followed by
+%     Morpho-elements 	find words with preclitic OR postclitic Morpho elements
+%     % 		if preclitic OR postclitic is present, then erase it
+
+
++|adj	"adj"
++|adj:num	"adj:num"
++|adv	"adv"
++|conj	"conj"
++|conj:neven	"conj:neven"
++|conj:onder	"conj:onder"
++|det	"det"
++|det:def	"det:def"
++|det:indef	"det:indef"
++|det:num	"det:num"
++|interj	"interj"
++|n	"n"
++|n:m/f	"n:m/f"
++|n:m/f/o	"n:m/f/o"
++|n:o	"n:o"
++|n:prop	"n:prop"
++|n:prop:m/f	"n:prop:m/f"
++|n:prop:m/f/o	"n:prop:m/f/o"
++|n:prop:o	"n:prop:o"
++|prep	"prep"
++|prep:fin	"prep:fin"
++|prep:init	"prep:init"
++|pro	"pro"
++|pro:dem	"pro:dem"
++|pro:dem:det	"pro:dem:det"
++|pro:dem:loc	"pro:dem:loc"
++|pro:dem:pron	"pro:dem:pron"
++|pro:excl	"pro:excl"
++|pro:excl:det	"pro:excl:det"
++|pro:excl:pron	"pro:excl:pron"
++|pro:indef	"pro:indef"
++|pro:indef:det	"pro:indef:det"
++|pro:indef:grad	"pro:indef:grad"
++|pro:indef:loc	"pro:indef:loc"
++|pro:indef:pron	"pro:indef:pron"
++|pro:pers	"pro:pers"
++|pro:poss	"pro:poss"
++|pro:pr	"pro:pr"
++|pro:q:det	"pro:q:det"
++|pro:q:loc	"pro:q:loc"
++|pro:q:pron	"pro:q:pron"
++|pro:recip	"pro:recip"
++|pro:ref	"pro:ref"
++|spec:achter	"spec:achter"
++|spec:afgebr	"spec:afgebr"
++|spec:afk	"spec:afk"
++|spec:comment	"spec:comment"
++|spec:deeleigen	"spec:deeleigen"
++|spec:meta	"spec:meta"
++|spec:onverst	"spec:onverst"
++|spec:symb	"spec:symb"
++|spec:vreemd	"spec:vreemd"
+
+
+
++-AGR	"-AGR"
++-BIJZ	"-BIJZ"
++-CONJ	"-CONJ"
++-CP	"-CP"
++-DAT	"-DAT"
++-DECL	"-DECL"
++-DIAL	"-DIAL"
++-DIM	"-DIM"
++-E	"-E"
++-EVF	"-EVF"
++-EVMO	"-EVMO"
++-EVON	"-EVON"
++-EVZ	"-EVZ"
++-FIN	"-FIN"
++-INF	"-INF"
++-MN	"-MN"
++-MV	"-MV"
++-NOM	"-NOM"
++-OBL	"-OBL"
++-PAST	"-PAST"
++-PASTP	"-PASTP"
++-PL	"-PL"
++-POSS	"-POSS"
++-POST	"-POST"
++-PRE	"-PRE"
++-PRES	"-PRES"
++-PRESP	"-PRESP"
++-REST	"-REST"
++-S	"-S"
++-SP	"-SP"
++-T	"-T"
++-VERSM	"-VERSM"
++-VRIJ	"-VRIJ"
+
+
+

@@ -1,0 +1,24 @@
+lXs Special Text file saves all fonts LxS
+@Font:	CAfont:13:0
+@UTF8
+# coder mode commands:
+# ESC-e  = toggle between coders and text editing modes
+# ESC-c  = move to top codes level, if already there, then move to tier code level
+# CTRL-T = finish coding current speaker and move to code the next speaker
+#
+# coder mode options:
+# +bN: set number of commands and words before auto-save
+# +d : do NOT create backup file
+# +fS: specify fixed-width font S (example: +fCAfont)
+# +lN: re-order (0 -leave as is, 1 -move to top, 2 -move one step up)
+# +s1: program will make identical copies of codes across branches
+# +tS: set CTRL-T command's next speaker to S (+t*FAT) (default: any speaker)
+#
+\ +b50 +d +l1 +s1 +fCAfont
+%spa:	
+ " $MOT
+  :POS
+   :Que
+   :Res
+  :NEG
+ " $CHI
