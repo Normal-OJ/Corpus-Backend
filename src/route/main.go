@@ -15,8 +15,9 @@ import (
 func MltRequestHandler(context *gin.Context) {
 	cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
 	// i did not open any service :P
-	cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
+	//cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
 
+	print("cmdFolderLoc:", cmdFolderLoc, "\n")
 	defer func() {
 		err := recover()
 		if err != nil {
