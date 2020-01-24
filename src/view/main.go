@@ -1,37 +1,18 @@
-package route
+package view
 
 import (
 	"net/http"
 	"os"
 	"os/exec"
-	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"main.main/src/utils"
 )
 
-// MltRequestHandler is like what it said :P
-func MltRequestHandler(context *gin.Context) {
-	cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
-	// i did not open any service :P
-	cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
-
-	defer func() {
-		err := recover()
-		if err != nil {
-			context.String(http.StatusBadRequest, "request body missing")
-			return
-		}
-	}()
-	_, fileheader, _ := context.Request.FormFile("data")
-	opts := context.Request.FormValue("opts")
-	multi, _ := strconv.ParseBool(context.Request.FormValue("multi"))
-	excel, _ := strconv.ParseBool(context.Request.FormValue("excel"))
-	if excel == true || multi == true {
-		context.String(http.StatusBadRequest, "not implemented :P\n")
-		return
-	}
+// RequestHandler is like what it said :P
+func RequestHandler(context *gin.Context) {
+	filename := context.Param("name")
 
 	defer func() {
 		err := recover()
@@ -40,6 +21,19 @@ func MltRequestHandler(context *gin.Context) {
 			return
 		}
 	}()
+
+	if ioutil.IsDir(filename) {
+		files, err := ioutil.ReadDir(filename)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		for _, f := range files {
+				fmt.Println(f.Name())
+		}
+	} else {
+
+	}
 
 	folderName := "/tmp/Req" + time.Now().Format("20060102150405")
 	os.Mkdir(folderName, 0777)
