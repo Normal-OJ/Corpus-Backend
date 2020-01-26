@@ -1,6 +1,7 @@
 package route
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 	"os/exec"
@@ -15,16 +16,19 @@ import (
 func MltRequestHandler(context *gin.Context) {
 	cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
 	// i did not open any service :P
-	//cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
+
+	if cmdFolderLoc == "" {
+		cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
+	}
 
 	print("cmdFolderLoc:", cmdFolderLoc, "\n")
-	defer func() {
+	/*defer func() {
 		err := recover()
 		if err != nil {
 			context.String(http.StatusBadRequest, "request body missing")
 			return
 		}
-	}()
+	}()*/
 	_, fileheader, _ := context.Request.FormFile("data")
 	opts := context.Request.FormValue("opts")
 	multi, _ := strconv.ParseBool(context.Request.FormValue("multi"))
@@ -38,11 +42,12 @@ func MltRequestHandler(context *gin.Context) {
 		err := recover()
 		if err != nil {
 			context.String(http.StatusInternalServerError, "internal server error")
+			fmt.Println("Recovered in f", err)
 			return
 		}
 	}()
 
-	folderName := "/tmp/Req" + time.Now().Format("20060102150405")
+	folderName := "/Users/chenzhangling/Desktop/languageDB/BackEnd/Req" + time.Now().Format("20060102150405")
 	os.Mkdir(folderName, 0777)
 	// save file
 	filename := "data.cha"

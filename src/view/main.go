@@ -1,18 +1,23 @@
 package view
 
 import (
+	"fmt"
+	"github.com/gin-gonic/gin"
+	"io/ioutil"
 	"net/http"
 	"os"
-	"os/exec"
-	"time"
-
-	"github.com/gin-gonic/gin"
-	"main.main/src/utils"
 )
+
+// Check error
+func Check(err error) {
+	if err != nil {
+		fmt.Println(err)
+	}
+}
 
 // RequestHandler is like what it said :P
 func RequestHandler(context *gin.Context) {
-	filename := context.Param("name")
+	filename := context.Query("file")
 
 	defer func() {
 		err := recover()
@@ -22,42 +27,54 @@ func RequestHandler(context *gin.Context) {
 		}
 	}()
 
-	if ioutil.IsDir(filename) {
-		files, err := ioutil.ReadDir(filename)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		for _, f := range files {
-				fmt.Println(f.Name())
-		}
-	} else {
-
-	}
-
-	folderName := "/tmp/Req" + time.Now().Format("20060102150405")
-	os.Mkdir(folderName, 0777)
-	// save file
-	filename := "data.cha"
-	if multi == true {
-		filename = "data.zip"
-	}
-	context.SaveUploadedFile(fileheader, folderName+"/"+filename)
-	var cmd *exec.Cmd
-	if multi == true {
-		//  extract then execute(WIP)
-		utils.Unzip(folderName+filename, folderName)
-		cmd = exec.Command(cmdFolderLoc+"/mlt", opts, "*.cha")
-	} else {
-		cmd = exec.Command(cmdFolderLoc+"/mlt", opts, folderName+"/"+filename)
-	}
-	output, err := cmd.Output()
+	fi, err := os.Stat(filename)
 	if err != nil {
-		print(err.Error())
-		context.String(http.StatusInternalServerError, "command error")
+		context.String(http.StatusNotFound, "The file does not exist")
 		return
 	}
-	os.RemoveAll(folderName)
-	context.String(http.StatusOK, string(output))
-	return
+
+	if fi.IsDir() {
+		files, err := ioutil.ReadDir(filename)
+		Check(err)
+
+		var dirCount = 0
+		var fileCount = 0
+
+		for _, f := range files {
+			fi, err := os.Stat(filename + "/" + f.Name())
+			Check(err)
+
+			if fi.IsDir() {
+				dirCount++
+			} else {
+				fileCount++
+			}
+		}
+
+		var folderNames = make([]string, dirCount)
+		var fileNames = make([]string, fileCount)
+
+		dirCount = 0
+		fileCount = 0
+
+		for _, f := range files {
+			fi, err := os.Stat(filename + "/" + f.Name())
+			Check(err)
+
+			if fi.IsDir() {
+				folderNames[dirCount] = f.Name()
+				dirCount++
+			} else {
+				fileNames[fileCount] = f.Name()
+				fileCount++
+			}
+		}
+
+		context.JSON(http.StatusOK, gin.H{"folders": folderNames, "files": fileNames})
+	} else {
+		var dat, err = ioutil.ReadFile(filename)
+		Check(err)
+
+		context.JSON(http.StatusOK, gin.H{"context": string(dat)})
+	}
 }
