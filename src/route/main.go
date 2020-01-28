@@ -10,14 +10,28 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"main.main/src/utils"
+	"main.main/src/view"
 )
+
+//RegisterRouter register all the required router
+func RegisterRouter(engine *gin.Engine) {
+
+	// register authenticated required funcs
+	//not done yet :P
+
+	//register function routers
+	engine.POST("/api/mlt", MltRequestHandler)
+
+	//register view routers
+	engine.GET("/api/view", view.RequestHandler)
+}
 
 // MltRequestHandler is like what it said :P
 func MltRequestHandler(context *gin.Context) {
 	cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
-	// i did not open any service :P
 
 	if cmdFolderLoc == "" {
+		// someone's home dir :P
 		cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
 	}
 
