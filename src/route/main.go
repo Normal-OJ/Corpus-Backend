@@ -2,15 +2,13 @@ package route
 
 import (
 	"fmt"
-	"net/http"
-	"os"
-	"os/exec"
-	"strconv"
-	"time"
-
 	"github.com/gin-gonic/gin"
 	"main.main/src/utils"
 	"main.main/src/view"
+	"net/http"
+	"os"
+	"strconv"
+	"time"
 )
 
 //RegisterRouter register all the required router
@@ -32,7 +30,7 @@ func MltRequestHandler(context *gin.Context) {
 
 	if cmdFolderLoc == "" {
 		// someone's home dir :P
-		cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
+		cmdFolderLoc = "/home/asef18766/桌面/LanguageDB/BackEnd/unix-clan/unix/bin"
 	}
 
 	print("cmdFolderLoc:", cmdFolderLoc, "\n")
@@ -61,7 +59,7 @@ func MltRequestHandler(context *gin.Context) {
 		}
 	}()
 
-	folderName := "/Users/chenzhangling/Desktop/languageDB/BackEnd/Req" + time.Now().Format("20060102150405")
+	folderName := "/tmp/Req" + time.Now().Format("20060102150405")
 	os.Mkdir(folderName, 0777)
 	// save file
 	filename := "data.cha"
@@ -69,21 +67,22 @@ func MltRequestHandler(context *gin.Context) {
 		filename = "data.zip"
 	}
 	context.SaveUploadedFile(fileheader, folderName+"/"+filename)
-	var cmd *exec.Cmd
-	if multi == true {
-		//  extract then execute(WIP)
-		utils.Unzip(folderName+filename, folderName)
-		cmd = exec.Command(cmdFolderLoc+"/mlt", opts, "*.cha")
+	var cmdOpts []string
+	if opts != "" {
+		cmdOpts = append(cmdOpts, opts)
+	}
+	if multi {
+		print("into multi\n")
+		utils.Unzip(folderName+"/"+filename, folderName)
+		cmdOpts = append(cmdOpts, "*.cha")
 	} else {
-		cmd = exec.Command(cmdFolderLoc+"/mlt", opts, folderName+"/"+filename)
+		cmdOpts = append(cmdOpts, folderName+"/"+filename)
 	}
-	output, err := cmd.Output()
-	if err != nil {
-		print(err.Error())
-		context.String(http.StatusInternalServerError, "command error")
-		return
-	}
-	os.RemoveAll(folderName)
+	print("argc:", len(cmdOpts), "\n")
+	fmt.Printf("exec command: %s %v\n", cmdFolderLoc+"/mlt", cmdOpts)
+
+	var output = utils.RunCmd(cmdFolderLoc+"/mlt", cmdOpts)
+	//os.RemoveAll(folderName)
 	context.String(http.StatusOK, string(output))
 	return
 }
