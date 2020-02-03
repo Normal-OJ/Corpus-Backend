@@ -2,13 +2,16 @@ package route
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"main.main/src/utils"
-	"main.main/src/view"
 	"net/http"
 	"os"
+	"runtime"
 	"strconv"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"main.main/src/modify"
+	"main.main/src/utils"
+	"main.main/src/view"
 )
 
 //RegisterRouter register all the required router
@@ -22,6 +25,8 @@ func RegisterRouter(engine *gin.Engine) {
 
 	//register view routers
 	engine.GET("/api/view", view.RequestHandler)
+
+	engine.PUT("/mod/edit", modify.EditRequestHandler)
 }
 
 // MltRequestHandler is like what it said :P
@@ -30,7 +35,11 @@ func MltRequestHandler(context *gin.Context) {
 
 	if cmdFolderLoc == "" {
 		// someone's home dir :P
-		cmdFolderLoc = "/home/asef18766/桌面/LanguageDB/BackEnd/unix-clan/unix/bin"
+		if runtime.GOOS == "darwin" {
+			cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
+		} else {
+			cmdFolderLoc = "/home/asef18766/桌面/LanguageDB/BackEnd/unix-clan/unix/bin"
+		}
 	}
 
 	print("cmdFolderLoc:", cmdFolderLoc, "\n")
