@@ -15,5 +15,9 @@ RUN apt install wget && \
     export PATH=$PATH:/usr/local/go/bin && \
     go get -u -v github.com/gin-gonic/gin
 
+# install golang uuid package
+RUN export PATH=$PATH:/usr/local/go/bin && \
+    go get -u -v "github.com/satori/go.uuid"
+
 CMD tail -f /dev/null
 EXPOSE 8787
