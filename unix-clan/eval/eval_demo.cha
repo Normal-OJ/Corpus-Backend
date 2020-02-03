@@ -1,0 +1,39 @@
+@UTF8
+@Begin
+@Languages:	eng
+@Participants:	PAR EVALdemo Participant, INV Investigator
+@ID:	eng|EVALdemo|PAR|55;06.|male|Anomic||Participant|||
+@ID:	eng|EVALdemo|INV|||||Investigator|||
+@G:	Sandwich
+*INV:	tell me how you would make a peanut butter and jelly
+	sandwich .
+%mor:	v|tell pro:obj|me adv:int|how pro:per|you mod|will&COND v|make
+	det:art|a n|peanut n|butter coord|and n|jelly n|sandwich .
+%gra:	1|0|ROOT 2|1|OBJ 3|6|LINK 4|6|SUBJ 5|6|AUX 6|1|COMP 7|9|DET 8|9|MOD
+	9|6|OBJ 10|9|CONJ 11|12|MOD 12|10|COORD 13|1|PUNCT
+*PAR:	take two pieces of bread and separate them .
+%mor:	v|take det:num|two n|piece-PL prep|of n|bread coord|and v|separate
+	pro:obj|them .
+%gra:	1|0|ROOT 2|3|QUANT 3|1|OBJ 4|3|NJCT 5|4|POBJ 6|1|CONJ 7|6|COORD 8|7|OBJ
+	9|1|PUNCT
+*PAR:	on one place [*] of bread spread peener@n [*]
+	butter .
+%mor:	prep|on det:num|one n|place prep|of n|bread part|spread&PASTP
+	neo|peener n|butter .
+%gra:	1|0|INCROOT 2|3|QUANT 3|1|POBJ 4|3|NJCT 5|4|POBJ 6|1|XJCT 7|8|MOD
+	8|6|OBJ 9|1|PUNCT
+*PAR:	on [//] and on the other peats@n [*] of bread &sp
+	spread some jelly .
+%mor:	coord|and prep|on det:art|the qn|other neo|peats prep|of n|bread
+	part|spread&PASTP qn|some n|jelly .
+%gra:	1|0|INCROOT 2|1|COORD 3|4|DET 4|5|QUANT 5|2|POBJ 6|5|JCT 7|6|POBJ
+	8|5|XJCT 9|10|QUANT 10|8|OBJ 11|1|PUNCT
+*PAR:	and put the two peazits@n [*] of bread tagetter@n [*] .
+%mor:	coord|and v|put&ZERO det:art|the det:num|two neo|peazits prep|of
+	n|bread neo|tagetter .
+%gra:	1|2|LINK 2|0|ROOT 3|4|DET 4|2|OBJ 5|4|POSTMOD 6|5|JCT 7|8|MOD 8|6|POBJ
+	9|2|PUNCT
+*PAR:	pinter@n [*] butter jelly make . [+ *]
+%mor:	neo|pinter n|butter n|jelly v|make .
+%gra:	1|3|MOD 2|3|MOD 3|4|SUBJ 4|0|ROOT 5|4|PUNCT
+@End

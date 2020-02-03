@@ -1,0 +1,53 @@
+@UTF8
+@Begin
+@Languages:	eng
+@Participants:	PAR eval_demo02a Participant, INV Investigator
+@ID:	eng|Eval|PAR|65;08.|male|Anomic||Participant|||
+@ID:	eng|Eval|INV|||||Investigator|||
+@Date:	05-APR-2012
+@G:	Umbrella
+@Time Duration:	00:01:03
+*PAR:	mother [//] him [*] is going with the boy [/] boy
+	and go out . [+ *]
+%mor:	pro:obj|him aux|be&3S part|go-PRESP prep|with det:art|the n|boy
+	coord|and v|go adv|out .
+%gra:	1|3|SUBJ 2|3|AUX 3|0|ROOT 4|3|JCT 5|6|DET 6|4|POBJ 7|3|CONJ 8|7|COORD
+	9|8|JCT 10|3|PUNCT
+*PAR:	he's dreder@n [*] to go .
+%mor:	pro:sub|he~aux|be&3S neo|dreder inf|to v|go .
+%gra:	1|2|SUBJ 2|0|ROOT 3|2|PRED 4|5|INF 5|3|XCOMP 6|2|PUNCT
+*PAR:	he point [//] show [//] she [/] she +...
+%mor:	pro:sub|he pro:sub|she +...
+%gra:	1|2|SUBJ 2|0|ROOT 3|2|PUNCT
+*PAR:	she it tries to show it the boy . [+ *]
+%mor:	pro:sub|she pro:per|it v|try-3S inf|to v|show pro:per|it
+	det:art|the n|boy .
+%gra:	1|3|LINK 2|3|SUBJ 3|0|ROOT 4|5|INF 5|3|XCOMP 6|5|OBJ 7|8|DET 8|5|OBJ
+	9|3|PUNCT
+*PAR:	he didn't take it from him [*] .
+%mor:	pro:sub|he mod|do&PAST~neg|not v|take pro:per|it prep|from
+	pro:obj|him .
+%gra:	1|4|SUBJ 2|4|AUX 3|2|NEG 4|0|ROOT 5|4|OBJ 6|4|JCT 7|6|POBJ 8|4|PUNCT
+*PAR:	so he left home .
+%mor:	co|so pro:sub|he v|leave&PAST n|home .
+%gra:	1|3|COM 2|3|SUBJ 3|0|ROOT 4|3|JCT 5|3|PUNCT
+*PAR:	he's [//] it's dry [*] and he [//] it [//] it's raining .
+%mor:	pro:per|it~cop|be&3S adj|dry coord|and pro:per|it~aux|be&3S
+	part|rain-PRESP .
+%gra:	1|2|SUBJ 2|0|ROOT 3|2|PRED 4|7|LINK 5|7|SUBJ 6|7|AUX 7|2|CJCT 8|2|PUNCT
+*PAR:	look at her [*]  .
+%mor:	cop|look prep|at pro:obj|her .
+%gra:	1|0|ROOT 2|1|JCT 3|2|POBJ 4|1|PUNCT
+*PAR:	then [/] hen [*] she [*] was home .
+%mor:	n|hen pro:sub|she cop|be&PAST&13S adv|home .
+%gra:	1|3|LINK 2|3|SUBJ 3|0|ROOT 4|3|JCT 5|3|PUNCT
+*PAR:	mother was mad .
+%mor:	n|mother cop|be&PAST&13S adj|mad .
+%gra:	1|2|SUBJ 2|0|ROOT 3|2|PRED 4|2|PUNCT
+*PAR:	then again he took a burla@n [*] .
+%mor:	adv:tem|then adv|again pro:sub|he v|take&PAST det:art|a neo|burla .
+%gra:	1|4|JCT 2|4|JCT 3|4|SUBJ 4|0|ROOT 5|6|DET 6|4|OBJ 7|4|PUNCT
+*PAR:	and on hin@n [*] head . [+ *]
+%mor:	coord|and adv|on neo|hin n|head .
+%gra:	1|4|LINK 2|4|JCT 3|4|MOD 4|0|INCROOT 5|4|PUNCT
+@End

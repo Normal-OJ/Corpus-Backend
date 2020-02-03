@@ -1,0 +1,53 @@
+@UTF8
+@Begin
+@Languages:	eng
+@Participants:	PAR eval_demo02b Participant, INV Investigator
+@ID:	eng|Eval|PAR|65;11.|male|Anomic||Participant|||
+@ID:	eng|Eval|INV|||||Investigator|||
+@Date:	10-JUL-2012
+@G:	Umbrella
+@Time Duration:	00:00:46
+*PAR:	well <the boy is having some> [//] he doesn't
+	think he needs a umbrella .
+%mor:	co|well pro:sub|he mod|do&3S~neg|not v|think pro:sub|he v|need-3S
+	det:art|a n|umbrella .
+%gra:	1|5|COM 2|5|SUBJ 3|5|AUX 4|3|NEG 5|0|ROOT 6|7|SUBJ 7|5|COMP 8|9|DET
+	9|7|OBJ 10|5|PUNCT
+*PAR:	and her [*] [//] his mom thinks he does .
+%mor:	coord|and det:poss|his n|mom v|think-3S pro:sub|he v|do&3S .
+%gra:	1|4|LINK 2|3|MOD 3|4|SUBJ 4|0|ROOT 5|6|SUBJ 6|4|COMP 7|4|PUNCT
+*PAR:	but <he's going to take on> [//] take
+	[//] he's going to go outside and [//] without the umbrella .
+%mor:	conj|but pro:sub|he~aux|be&3S part|go-PRESP inf|to v|go adv|outside
+	prep|without det:art|the n|umbrella .
+%gra:	1|4|LINK 2|4|SUBJ 3|4|AUX 4|0|ROOT 5|6|INF 6|4|XCOMP 7|6|JCT 8|6|JCT
+	9|10|DET 10|8|POBJ 11|4|PUNCT
+*PAR:	and he goes outside .
+%mor:	coord|and pro:sub|he v|go-3S adv|outside .
+%gra:	1|3|LINK 2|3|SUBJ 3|0|ROOT 4|3|JCT 5|3|PUNCT
+*PAR:	and it's rain . [+ *]
+%mor:	coord|and pro:per|it~cop|be&3S n|rain .
+%gra:	1|3|LINK 2|3|SUBJ 3|0|ROOT 4|3|PRED 5|3|PUNCT
+*PAR:	and it's raining a little bit more .
+%mor:	coord|and pro:per|it~aux|be&3S part|rain-PRESP det:art|a adj|little
+	n|bit pro:indef|more .
+%gra:	1|4|LINK 2|4|SUBJ 3|4|AUX 4|0|ROOT 5|7|DET 6|7|MOD 7|4|OBJ 8|7|OBJ
+	9|4|PUNCT
+*PAR:	he goes back inside to his mom .
+%mor:	pro:sub|he v|go-3S adv|back adv|inside prep|to det:poss|his n|mom .
+%gra:	1|2|SUBJ 2|0|ROOT 3|2|JCT 4|2|JCT 5|2|JCT 6|7|MOD 7|5|POBJ 8|2|PUNCT
+*PAR:	and he knows <he doesn't> [//]  he didn't have a burla@n [*] .
+%mor:	coord|and pro:sub|he v|know-3S pro:sub|he mod|do&PAST~neg|not
+	v|have det:art|a neo|burla .
+%gra:	1|3|LINK 2|3|SUBJ 3|0|ROOT 4|7|SUBJ 5|7|AUX 6|5|NEG 7|3|COMP 8|9|DET
+	9|7|OBJ 10|3|PUNCT
+*PAR:	and so his [/] his mom hands him one .
+%mor:	coord|and co|so det:poss|his n|mom v|hand-3S pro:obj|him
+	pro:indef|one .
+%gra:	1|5|LINK 2|5|COM 3|4|MOD 4|5|SUBJ 5|0|ROOT 6|5|OBJ 7|5|OBJ 8|5|PUNCT
+*PAR:	and then he goes outside with his umbrella .
+%mor:	coord|and adv:tem|then pro:sub|he v|go-3S adv|outside prep|with
+	det:poss|his n|umbrella .
+%gra:	1|4|LINK 2|4|JCT 3|4|SUBJ 4|0|ROOT 5|4|JCT 6|4|JCT 7|8|MOD 8|6|POBJ
+	9|4|PUNCT
+@End
