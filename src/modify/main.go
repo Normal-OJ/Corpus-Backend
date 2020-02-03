@@ -1,16 +1,15 @@
 package modify
 
 import (
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
-
-	"github.com/gin-gonic/gin"
 )
 
 // File is like a file
 type File struct {
-	Name    string `form:"name"`
-	Content string `form:"content"`
+	Name    string
+	Content string
 }
 
 // EditRequestHandler is like what it said :P
