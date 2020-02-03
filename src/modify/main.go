@@ -43,3 +43,15 @@ func EditRequestHandler(context *gin.Context) {
 
 	context.JSON(http.StatusOK, gin.H{"result": "success"})
 }
+
+// DeleteRequestHandler is like what it said :P
+func DeleteRequestHandler(context *gin.Context) {
+	filename := context.Query("file")
+	err := os.Remove(filename)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"result": "can't delete file"})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"result": "success"})
+}
