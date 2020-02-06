@@ -3,8 +3,10 @@ package main
 import (
 	"database/sql"
 
+	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
 	"main.main/src/db"
+	"main.main/src/route"
 )
 
 func main() {
@@ -14,10 +16,9 @@ func main() {
 	}
 	err = db.Init(data)
 	if err != nil {
-		print("error wheen initialize db:", err.Error())
+		print("error when initialize db:", err.Error())
 	}
-	/*
-		engine := gin.Default()
-		route.RegisterRouter(engine)
-		engine.Run(":8787")*/
+	engine := gin.Default()
+	route.RegisterRouter(engine)
+	engine.Run(":8787")
 }
