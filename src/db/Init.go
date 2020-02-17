@@ -7,14 +7,14 @@ import (
 
 var dbSchema = `CREATE TABLE IF NOT EXISTS cha (
 	cha_id integer primary key, 
-	path varchar(20), 
+	path TEXT, 
 	age integer,
 	sex integer
   );
   
   CREATE TABLE IF NOT EXISTS context (
 	context_id integer primary key, 
-	name varchar(20)
+	name TEXT
   );
   
   CREATE TABLE IF NOT EXISTS map (
@@ -45,13 +45,14 @@ VALUES (1, 2);
 INSERT INTO map(cha_id, context_id)
 VALUES (2, 2);
 `
-var db_ins *sql.DB = nil
+var dbIns *sql.DB = nil
 
+//Init is used for initialization of whole db module
 func Init(database *sql.DB) error {
-	if db_ins != nil {
+	if dbIns != nil {
 		return nil
 	}
-	db_ins = database
+	dbIns = database
 	_, err := database.Exec(dbSchema)
 	if err != nil {
 		println("error when creating schema:", err.Error())
@@ -60,14 +61,18 @@ func Init(database *sql.DB) error {
 	return nil
 }
 
-var InstanceNotExisted = errors.New("DB instance not created yet")
+//ErrInstanceNotExisted just like what it said , need to run Init before use
+var ErrInstanceNotExisted = errors.New("DB instance not created yet")
 
+//GetDBIns accquire an instance of db from module
 func GetDBIns() (*sql.DB, error) {
-	if db_ins == nil {
-		return nil, InstanceNotExisted
+	if dbIns == nil {
+		return nil, ErrInstanceNotExisted
 	}
-	return db_ins, nil
+	return dbIns, nil
 }
+
+//AddTestSample creates same test sample , will be removed in the future
 func AddTestSample() {
 	database, err := GetDBIns()
 	if err != nil {

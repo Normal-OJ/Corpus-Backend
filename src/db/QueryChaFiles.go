@@ -43,6 +43,8 @@ func constructQueryCmd(agesCount int, sexsCount int, contextsCount int) string {
 	var fullCmd = fmt.Sprintf(chaQueryCmd, condition)
 	return fullCmd
 }
+
+//QueryChaFiles querys db to find the target file base on the condition it given
 func QueryChaFiles(ages [][]int, sexs []int, contexts []string) []string {
 
 	database, err := GetDBIns()
