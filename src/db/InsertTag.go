@@ -6,26 +6,26 @@ import (
 	"main.main/src/utils"
 )
 
-var stm *sql.Stmt = nil
-var queryString = `
+var insertTagStmt *sql.Stmt = nil
+var insertTagQueryString = `
 INSERT INTO context(context_id, name)
 VALUES (?,?);
 `
 
 //InsertTag insert tags into database
 func InsertTag(tags []string) error {
-	if stm == nil {
+	if insertTagStmt == nil {
 		database, err := GetDBIns()
 		if err != nil {
 			return err
 		}
-		stm, err = database.Prepare(queryString)
+		insertTagStmt, err = database.Prepare(insertTagQueryString)
 		if err != nil {
 			return err
 		}
 	}
 	for i, str := range tags {
-		_, err := stm.Exec(utils.CreateID(str), str)
+		_, err := insertTagStmt.Exec(utils.CreateID(str), str)
 		if err != nil {
 			println("err in index:", i)
 			return err
