@@ -15,7 +15,7 @@ type Tag struct {
 	Tags []string `json:"tag"`
 }
 
-var tagPattern = "@Comment:\t{.*}"
+var tagPattern = "@Comment:\t{.*?}"
 
 //ExtractTag extracts tags inside the file
 func ExtractTag(fileSrc string) []string {
