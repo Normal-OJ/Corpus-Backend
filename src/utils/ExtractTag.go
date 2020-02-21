@@ -10,9 +10,9 @@ import (
 	"strings"
 )
 
-//Tag struct is use for storing the info about  json type string from file
-type Tag struct {
-	Tags []string `json:"tag"`
+//Context struct is use for storing the info about  json type string from file
+type Context struct {
+	Contexts []string `json:"context"`
 }
 
 var tagPattern = "@Comment:\t{.*?}"
@@ -34,12 +34,12 @@ func ExtractTag(fileSrc string) []string {
 		}
 
 		txt = strings.Replace(txt, "@Comment:\t", "", 1)
-		var filetag Tag
+		var filetag Context
 		err := json.Unmarshal([]byte(txt), &filetag)
 		if err != nil {
 			fmt.Println("JsonStrToTag err: ", err)
 		}
-		return filetag.Tags
+		return filetag.Contexts
 	}
 
 	if err := scanner.Err(); err != nil {
