@@ -24,6 +24,7 @@ func RegisterRouter(engine *gin.Engine) {
 	engine.POST("/api/mlt", MltRequestHandler)
 
 	engine.GET("/api/view", view.RequestHandler)
+	engine.POST("/mod", modify.UploadRequestHandler)
 	engine.PUT("/mod", modify.EditRequestHandler)
 	engine.DELETE("/mod", modify.DeleteRequestHandler)
 }
