@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 
+	"path/filepath"
+
 	"github.com/gin-gonic/gin"
 	"main.main/src/db"
 	"main.main/src/utils"
@@ -25,20 +27,22 @@ func UploadRequestHandler(context *gin.Context) {
 		return
 	}
 
+	dirName := filepath.Dir(filename)
+	os.MkdirAll(dirName, os.ModePerm)
 	out, err := os.Create(filename)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"result": "can't create file"})
 		return
 	}
 
-	/*defer func() {
+	defer func() {
 		err := recover()
 		if err != nil {
 			context.String(http.StatusInternalServerError, "internal server error")
 			return
 		}
 		out.Close()
-	}()*/
+	}()
 
 	_, err = io.Copy(out, file)
 	if err != nil {
@@ -62,7 +66,21 @@ func UploadRequestHandler(context *gin.Context) {
 	}
 
 	tags := utils.ExtractTag(filename)
-	err = db.InsertTag(tags)
+	var newTags = make([]string, 0)
+	tagIDMap, err := db.QueryTagID()
+	if err != nil {
+		print(err.Error())
+	}
+
+	for _, tag := range tags {
+		_, ok := tagIDMap[tag]
+		if ok {
+			newTags = append(newTags, tag)
+		}
+	}
+
+	err = db.InsertTag(newTags)
+
 	if err != nil {
 		print(err.Error())
 	}
