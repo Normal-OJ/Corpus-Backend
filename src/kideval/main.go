@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"runtime"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -19,20 +18,14 @@ func execute(speakers []string, files []string) (string, string, error) {
 	cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
 	chaCache := os.Getenv("CHA_CACHE")
 
-	if cmdFolderLoc == "" {
-		// someone's home dir :P
-		if runtime.GOOS == "darwin" {
-			cmdFolderLoc = "/Users/chenzhangling/Desktop/unix-clan/unix/bin"
-		} else {
-			cmdFolderLoc = "/home/asef18766/桌面/LanguageDB/BackEnd/unix-clan/unix/bin"
-		}
-	}
-
 	cmdOpts := []string{"+lzho"}
 	for _, speaker := range speakers {
 		cmdOpts = append(cmdOpts, "+t*"+speaker)
 	}
 	for _, file := range files {
+		if !utils.PathChecker(file) {
+			return "", "", errors.New("unallowed path")
+		}
 		cmdOpts = append(cmdOpts, file)
 	}
 
@@ -160,14 +153,14 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 	var request uploadRequest
 	err = context.ShouldBind(&request)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": "invalid input"})
+		context.JSON(http.StatusBadRequest, gin.H{"message": "invalid input"})
 		return
 	}
 
 	defer func() {
 		err := recover()
 		if err != nil {
-			context.String(http.StatusBadRequest, "internal server error")
+			context.String(http.StatusInternalServerError, "internal server error")
 			return
 		}
 	}()
@@ -176,7 +169,7 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 
 	tmpFile, err := os.Create(filename)
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
+		context.JSON(http.StatusInternalServerError, gin.H{"result": err.Error})
 		return
 	}
 
@@ -195,6 +188,7 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 	ret := makeRespone(name, out, request.Indicator)
 	print(request.Indicator)
 	print(request.Speaker)
+	os.Remove(filename)
 
 	context.JSON(http.StatusOK, ret)
 }
