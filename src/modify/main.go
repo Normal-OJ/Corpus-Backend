@@ -84,7 +84,7 @@ func UploadRequestHandler(context *gin.Context) {
 	filename := context.Query("file")
 	file, _, err := context.Request.FormFile("file")
 	if err != nil {
-		context.String(http.StatusBadRequest, "Bad request")
+		context.JSON(http.StatusBadRequest, gin.H{"message": "file not found"})
 		return
 	}
 

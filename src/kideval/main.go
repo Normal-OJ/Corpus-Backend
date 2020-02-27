@@ -3,12 +3,12 @@ package kideval
 import (
 	"net/http"
 	"os"
-	"os/exec"
 	"runtime"
 
 	"github.com/gin-gonic/gin"
 	"main.main/src/db"
 	"main.main/src/modify"
+	"main.main/src/utils"
 )
 
 func execute(speakers []string, files []string) string {
@@ -31,9 +31,7 @@ func execute(speakers []string, files []string) string {
 		cmdOpts = append(cmdOpts, file)
 	}
 
-	cmd := exec.Command(cmdFolderLoc+"/kideval", cmdOpts...)
-	out, _ := cmd.CombinedOutput()
-	//var output = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
+	var out = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
 	return string(out)
 }
 
@@ -46,8 +44,8 @@ type pathRequest struct {
 
 // PathKidevalRequestHandler is like what it said :P
 func PathKidevalRequestHandler(context *gin.Context) {
-	//var request pathRequest
-	//context.ShouldBind(&request)
+	var request pathRequest
+	context.ShouldBind(&request)
 
 	defer func() {
 		err := recover()
@@ -57,13 +55,13 @@ func PathKidevalRequestHandler(context *gin.Context) {
 		}
 	}()
 
-	//out := execute(request.Speaker, request.File)
-	context.Writer.WriteHeader(http.StatusOK)
+	out := execute(request.Speaker, request.File)
+	/*context.Writer.WriteHeader(http.StatusOK)
 	context.Header("Content-Disposition", "attachment; filename=hello.txt")
 	context.Header("Content-Type", "multipart/mixed; boundary='@@@'")
-	context.File("data.cha")
+	context.File("data.cha")*/
 	//context.Writer.Write([]byte("@@@"))
-	context.JSON(http.StatusOK, gin.H{"result": "success"})
+	context.JSON(http.StatusOK, gin.H{"result": out})
 }
 
 type optionRequest struct {
@@ -93,11 +91,16 @@ type uploadRequest struct {
 
 // UploadKidevalRequestHandler is like what it said :P
 func UploadKidevalRequestHandler(context *gin.Context) {
-	file, _, _ := context.Request.FormFile("file")
+	file, _, err := context.Request.FormFile("file")
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "file not found"})
+		return
+	}
+
 	var request uploadRequest
 	context.ShouldBind(&request)
 
-	err := modify.Upload(file, "data.cha")
+	err = modify.Upload(file, "data.cha")
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
 		return
