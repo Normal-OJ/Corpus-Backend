@@ -1,9 +1,12 @@
 package kideval
 
 import (
+	"io/ioutil"
 	"net/http"
 	"os"
 	"runtime"
+	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"main.main/src/db"
@@ -32,14 +35,19 @@ func execute(speakers []string, files []string) string {
 	}
 
 	var out = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
-	return string(out)
+	file := strings.Split(out, "<?xml")[1]
+	file = "<?xml" + strings.Split(file, "</Workbook>")[0] + "</Workbook>"
+
+	id := utils.CreateID(file)
+	ioutil.WriteFile("/tmp/kideval"+strconv.FormatInt(id, 10)+".xls", []byte(file), 0644)
+
+	return file
 }
 
 type pathRequest struct {
 	File      []string
 	Speaker   []string
 	Indicator []bool
-	Download  bool
 }
 
 // PathKidevalRequestHandler is like what it said :P
@@ -56,12 +64,16 @@ func PathKidevalRequestHandler(context *gin.Context) {
 	}()
 
 	out := execute(request.Speaker, request.File)
-	/*context.Writer.WriteHeader(http.StatusOK)
-	context.Header("Content-Disposition", "attachment; filename=hello.txt")
-	context.Header("Content-Type", "multipart/mixed; boundary='@@@'")
-	context.File("data.cha")*/
+
+	context.Writer.WriteHeader(http.StatusOK)
+	context.Header("Content-Disposition", "attachment; filename=kideval.xls")
+	context.Writer.Write([]byte(out))
+
+	/*
+		context.Header("Content-Type", "multipart/mixed; boundary='@@@'")
+		context.File("data.cha")*/
 	//context.Writer.Write([]byte("@@@"))
-	context.JSON(http.StatusOK, gin.H{"result": out})
+
 }
 
 type optionRequest struct {
@@ -70,7 +82,6 @@ type optionRequest struct {
 	Context   []string
 	Speaker   []string
 	Indicator []bool
-	Download  bool
 }
 
 // OptionKidevalRequestHandler is like what it said :P
@@ -85,8 +96,7 @@ func OptionKidevalRequestHandler(context *gin.Context) {
 }
 
 type uploadRequest struct {
-	Speaker  []string
-	Download bool
+	Speaker []string
 }
 
 // UploadKidevalRequestHandler is like what it said :P

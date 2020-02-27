@@ -42,6 +42,7 @@ func ExtractXMLInfo(bs []byte) {
 	if err != nil {
 		println("error in init row extraction")
 	}
+	//res := [][]interface{}
 	rows := regRow.FindAll(bs, -1)
 	fmt.Printf("found %d row\n", len(rows))
 	for i, r := range rows {
