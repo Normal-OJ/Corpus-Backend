@@ -37,15 +37,17 @@ func extractCell(bs []byte) []interface{} {
 }
 
 //ExtractXMLInfo extract xml contents and process it
-func ExtractXMLInfo(bs []byte) {
+func ExtractXMLInfo(bs []byte) [][]interface{} {
 	regRow, err := regexp.Compile(`(?s)<Row>(.*?)</Row>`)
 	if err != nil {
 		println("error in init row extraction")
 	}
 	rows := regRow.FindAll(bs, -1)
+	res := make([][]interface{}, len(rows))
 	fmt.Printf("found %d row\n", len(rows))
 	for i, r := range rows {
 		println("line", i)
-		extractCell(r)
+		res[i] = extractCell(r)
 	}
+	return res
 }
