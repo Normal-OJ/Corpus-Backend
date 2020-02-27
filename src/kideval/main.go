@@ -1,21 +1,23 @@
 package kideval
 
 import (
+	"errors"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"runtime"
-	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	uuid "github.com/satori/go.uuid"
 	"main.main/src/db"
 	"main.main/src/utils"
 )
 
-func execute(speakers []string, files []string) string {
+func execute(speakers []string, files []string) (string, string, error) {
 	cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
+	chaCache := os.Getenv("CHA_CACHE")
 
 	if cmdFolderLoc == "" {
 		// someone's home dir :P
@@ -35,18 +37,23 @@ func execute(speakers []string, files []string) string {
 	}
 
 	var out = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
+	if !strings.Contains(out, "<?xml") {
+		return "", "", errors.New("Error: " + out)
+	}
+
 	file := strings.Split(out, "<?xml")[1]
 	file = "<?xml" + strings.Split(file, "</Workbook>")[0] + "</Workbook>"
 
-	id := utils.CreateID(file)
-	ioutil.WriteFile("/tmp/kideval"+strconv.FormatInt(id, 10)+".xls", []byte(file), 0644)
+	filename := chaCache + "/kideval" + uuid.NewV4().String() + ".xls"
+	ioutil.WriteFile(filename, []byte(file), 0644)
 
-	return file
+	return filename, file, nil
 }
 
-func makeRespone(file string, indicator []string) map[string][]interface{} {
+func makeRespone(filename string, file string, indicator []string) map[string][]interface{} {
 	data := utils.ExtractXMLInfo([]byte(file))
 	ret := make(map[string][]interface{})
+	ret["filename"] = []interface{}{filename}
 
 	for _, key := range indicator {
 		ret[key] = make([]interface{}, 0)
@@ -74,7 +81,11 @@ type pathRequest struct {
 // PathKidevalRequestHandler is like what it said :P
 func PathKidevalRequestHandler(context *gin.Context) {
 	var request pathRequest
-	context.ShouldBind(&request)
+	err := context.ShouldBind(&request)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "invalid input"})
+		return
+	}
 
 	defer func() {
 		err := recover()
@@ -84,8 +95,13 @@ func PathKidevalRequestHandler(context *gin.Context) {
 		}
 	}()
 
-	out := execute(request.Speaker, request.File)
-	ret := makeRespone(out, request.Indicator)
+	name, out, err := execute(request.Speaker, request.File)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
+	}
+
+	ret := makeRespone(name, out, request.Indicator)
 
 	context.JSON(http.StatusOK, ret)
 
@@ -102,11 +118,28 @@ type optionRequest struct {
 // OptionKidevalRequestHandler is like what it said :P
 func OptionKidevalRequestHandler(context *gin.Context) {
 	var request optionRequest
-	context.ShouldBind(&request)
+	err := context.ShouldBind(&request)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "invalid input"})
+		return
+	}
+
+	defer func() {
+		err := recover()
+		if err != nil {
+			context.String(http.StatusInternalServerError, "internal server error")
+			return
+		}
+	}()
 
 	var files = db.QueryChaFiles(request.Age, request.Sex, request.Context)
-	out := execute(request.Speaker, files)
-	ret := makeRespone(out, request.Indicator)
+	name, out, err := execute(request.Speaker, files)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
+	}
+
+	ret := makeRespone(name, out, request.Indicator)
 
 	context.JSON(http.StatusOK, ret)
 }
@@ -125,9 +158,23 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 	}
 
 	var request uploadRequest
-	context.ShouldBind(&request)
+	err = context.ShouldBind(&request)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "invalid input"})
+		return
+	}
 
-	tmpFile, err := os.Create("/tmp/a.xls")
+	defer func() {
+		err := recover()
+		if err != nil {
+			context.String(http.StatusBadRequest, "internal server error")
+			return
+		}
+	}()
+
+	filename := "/tmp/" + uuid.NewV4().String() + ".cha"
+
+	tmpFile, err := os.Create(filename)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
 		return
@@ -139,8 +186,13 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 		return
 	}
 
-	out := execute(request.Speaker, []string{"/tmp/a.xls"})
-	ret := makeRespone(out, request.Indicator)
+	name, out, err := execute(request.Speaker, []string{filename})
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
+	}
+
+	ret := makeRespone(name, out, request.Indicator)
 	print(request.Indicator)
 	print(request.Speaker)
 
