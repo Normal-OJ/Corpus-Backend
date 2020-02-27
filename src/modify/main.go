@@ -2,6 +2,7 @@ package modify
 
 import (
 	"io"
+	"mime/multipart"
 	"net/http"
 	"os"
 
@@ -18,42 +19,27 @@ type File struct {
 	Content string
 }
 
-// UploadRequestHandler is like what it said :P
-func UploadRequestHandler(context *gin.Context) {
-	filename := context.Query("file")
-	file, _, err := context.Request.FormFile("file")
-	if err != nil {
-		context.String(http.StatusBadRequest, "Bad request")
-		return
-	}
-
+// Upload uploads a file
+func Upload(file multipart.File, filename string) error {
 	dirName := filepath.Dir(filename)
 	os.MkdirAll(dirName, os.ModePerm)
 	out, err := os.Create(filename)
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"result": "can't create file"})
-		return
+		return err
 	}
 
 	defer func() {
-		err := recover()
-		if err != nil {
-			context.String(http.StatusInternalServerError, "internal server error")
-			return
-		}
 		out.Close()
 	}()
 
 	_, err = io.Copy(out, file)
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"result": "can't write file"})
-		return
+		return err
 	}
 
 	info, err := utils.ExtractChaID(filename)
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"result": "wrong file type"})
-		return
+		return err
 	}
 
 	id, err := utils.CreateFileID(filename)
@@ -61,8 +47,7 @@ func UploadRequestHandler(context *gin.Context) {
 	err = db.InsertFile(id, info.Speaker, info.Age, info.Gender)
 
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error()})
-		return
+		return err
 	}
 
 	tags := utils.ExtractTag(filename)
@@ -91,6 +76,31 @@ func UploadRequestHandler(context *gin.Context) {
 	}
 
 	db.InsertRelation(id, tagIDs)
+	return nil
+}
+
+// UploadRequestHandler is like what it said :P
+func UploadRequestHandler(context *gin.Context) {
+	filename := context.Query("file")
+	file, _, err := context.Request.FormFile("file")
+	if err != nil {
+		context.String(http.StatusBadRequest, "Bad request")
+		return
+	}
+
+	err = Upload(file, filename)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error()})
+		return
+	}
+
+	defer func() {
+		err := recover()
+		if err != nil {
+			context.String(http.StatusInternalServerError, "internal server error")
+			return
+		}
+	}()
 
 	context.JSON(http.StatusOK, gin.H{"result": "success"})
 }
