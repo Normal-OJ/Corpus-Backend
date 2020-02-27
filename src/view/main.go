@@ -8,9 +8,8 @@ import (
 	"path/filepath"
 
 	"github.com/gin-gonic/gin"
+	"main.main/src/utils"
 )
-
-var CHADIR = os.Getenv("CHA_DIR")
 
 // Check error
 func Check(err error) {
@@ -19,22 +18,10 @@ func Check(err error) {
 	}
 }
 
-func dirChecker(path string) bool {
-	p, err := filepath.Rel(CHADIR, path)
-	if err != nil {
-		return false
-	}
-
-	if filepath.IsAbs(p) {
-		return false
-	}
-	return true
-}
-
 // RequestHandler is like what it said :P
 func RequestHandler(context *gin.Context) {
 	filename := context.Query("file")
-	filename = filepath.Clean(CHADIR + "/" + filename)
+	filename = filepath.Clean(utils.CHADIR + "/" + filename)
 	defer func() {
 		err := recover()
 		if err != nil {
@@ -43,7 +30,7 @@ func RequestHandler(context *gin.Context) {
 		}
 	}()
 
-	if !dirChecker(filename) {
+	if !utils.PathChecker(filename) {
 		context.String(http.StatusForbidden, "invaild path")
 	}
 
