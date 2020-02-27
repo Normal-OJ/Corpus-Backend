@@ -32,6 +32,7 @@ func RequestHandler(context *gin.Context) {
 
 	if !utils.PathChecker(filename) {
 		context.String(http.StatusForbidden, "invaild path")
+		return
 	}
 
 	fi, err := os.Stat(filename)
@@ -64,17 +65,21 @@ func RequestHandler(context *gin.Context) {
 			content, err := ioutil.ReadFile(filename + "/description.json")
 			if err != nil {
 				context.String(http.StatusInternalServerError, "error when reading description")
+				return
 			}
 			description = string(content)
 		}
 
 		context.JSON(http.StatusOK, gin.H{"folders": dirs, "files": chas, "description": description})
+		return
 	} else {
 		var dat, err = ioutil.ReadFile(filename)
 		Check(err)
 		if err != nil {
 			context.String(http.StatusInternalServerError, "error when reading file")
+			return
 		}
 		context.JSON(http.StatusOK, gin.H{"content": string(dat)})
+		return
 	}
 }

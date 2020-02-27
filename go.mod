@@ -7,5 +7,6 @@ require (
 	github.com/extrame/xls v0.0.1
 	github.com/gin-gonic/gin v1.5.0
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible
+	github.com/satori/go.uuid v1.2.0
 	github.com/tealeg/xlsx v1.0.5
 )

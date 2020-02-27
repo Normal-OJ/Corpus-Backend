@@ -2,13 +2,16 @@ package route
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"main.main/src/utils"
-	"main.main/src/view"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"main.main/src/cache"
+	"main.main/src/download"
+	"main.main/src/utils"
+	"main.main/src/view"
 )
 
 //RegisterRouter register all the required router
@@ -22,6 +25,12 @@ func RegisterRouter(engine *gin.Engine) {
 
 	//register view routers
 	engine.GET("/api/view", view.RequestHandler)
+
+	//register download routers
+	engine.GET("/api/download", download.RequestHandler)
+
+	//register zipping routers
+	engine.POST("/api/zip", cache.RequestHandler)
 }
 
 // MltRequestHandler is like what it said :P
