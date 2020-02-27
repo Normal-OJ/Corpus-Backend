@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"main.main/src/cache"
+	"main.main/src/download"
 	"main.main/src/kideval"
 	"main.main/src/modify"
 	"main.main/src/utils"
@@ -26,11 +28,15 @@ func RegisterRouter(engine *gin.Engine) {
 
 	engine.GET("/api/view", view.RequestHandler)
 	engine.POST("/mod", modify.UploadRequestHandler)
-	engine.PUT("/mod", modify.EditRequestHandler)
-	engine.DELETE("/mod", modify.DeleteRequestHandler)
 	engine.POST("/api/option_kideval", kideval.OptionKidevalRequestHandler)
 	engine.POST("/api/path_kideval", kideval.PathKidevalRequestHandler)
 	engine.POST("/api/upload_kideval", kideval.UploadKidevalRequestHandler)
+
+	//register download routers
+	engine.GET("/api/download", download.RequestHandler)
+
+	//register zipping routers
+	engine.POST("/api/zip", cache.RequestHandler)
 }
 
 // MltRequestHandler is like what it said :P
