@@ -1,6 +1,7 @@
 package kideval
 
 import (
+	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -10,7 +11,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"main.main/src/db"
-	"main.main/src/modify"
 	"main.main/src/utils"
 )
 
@@ -44,10 +44,31 @@ func execute(speakers []string, files []string) string {
 	return file
 }
 
+func makeRespone(file string, indicator []string) map[string][]interface{} {
+	data := utils.ExtractXMLInfo([]byte(file))
+	ret := make(map[string][]interface{})
+
+	for _, key := range indicator {
+		ret[key] = make([]interface{}, 0)
+	}
+
+	for _, row := range data[1:] {
+		for index, val := range row {
+			key := data[0][index].(string)
+			_, ok := ret[key]
+			if ok {
+				ret[key] = append(ret[key], val)
+			}
+		}
+	}
+
+	return ret
+}
+
 type pathRequest struct {
 	File      []string
 	Speaker   []string
-	Indicator []bool
+	Indicator []string
 }
 
 // PathKidevalRequestHandler is like what it said :P
@@ -64,15 +85,9 @@ func PathKidevalRequestHandler(context *gin.Context) {
 	}()
 
 	out := execute(request.Speaker, request.File)
+	ret := makeRespone(out, request.Indicator)
 
-	context.Writer.WriteHeader(http.StatusOK)
-	context.Header("Content-Disposition", "attachment; filename=kideval.xls")
-	context.Writer.Write([]byte(out))
-
-	/*
-		context.Header("Content-Type", "multipart/mixed; boundary='@@@'")
-		context.File("data.cha")*/
-	//context.Writer.Write([]byte("@@@"))
+	context.JSON(http.StatusOK, ret)
 
 }
 
@@ -81,7 +96,7 @@ type optionRequest struct {
 	Sex       []int
 	Context   []string
 	Speaker   []string
-	Indicator []bool
+	Indicator []string
 }
 
 // OptionKidevalRequestHandler is like what it said :P
@@ -91,12 +106,14 @@ func OptionKidevalRequestHandler(context *gin.Context) {
 
 	var files = db.QueryChaFiles(request.Age, request.Sex, request.Context)
 	out := execute(request.Speaker, files)
+	ret := makeRespone(out, request.Indicator)
 
-	context.JSON(http.StatusOK, gin.H{"result": out})
+	context.JSON(http.StatusOK, ret)
 }
 
 type uploadRequest struct {
-	Speaker []string
+	Speaker   []string
+	Indicator []string
 }
 
 // UploadKidevalRequestHandler is like what it said :P
@@ -110,13 +127,22 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 	var request uploadRequest
 	context.ShouldBind(&request)
 
-	err = modify.Upload(file, "data.cha")
+	tmpFile, err := os.Create("/tmp/a.xls")
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
 		return
 	}
 
-	out := execute(request.Speaker, []string{"data.cha"})
+	_, err = io.Copy(tmpFile, file)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
+		return
+	}
 
-	context.JSON(http.StatusOK, gin.H{"result": out})
+	out := execute(request.Speaker, []string{"/tmp/a.xls"})
+	ret := makeRespone(out, request.Indicator)
+	print(request.Indicator)
+	print(request.Speaker)
+
+	context.JSON(http.StatusOK, ret)
 }
