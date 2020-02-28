@@ -88,6 +88,13 @@ func UploadRequestHandler(context *gin.Context) {
 		return
 	}
 
+	filename = filepath.Clean(utils.CHADIR + "/" + filename)
+
+	if !utils.PathChecker(filename) {
+		context.JSON(http.StatusBadRequest, gin.H{"result": "unallowed path"})
+		return
+	}
+
 	err = Upload(file, filename)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error()})

@@ -22,6 +22,6 @@ services:
 $ docker-compose up -d # and wait for a year :P
 $ docker-compose exec backend /bin/bash
 $ cd app
-$ sh run.sh
+$ sh start.sh
  ```
 5. done , enjoy :P
