@@ -34,7 +34,7 @@ func execute(speakers []string, files []string) (string, string, error) {
 
 	var out = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
 	if !strings.Contains(out, "<?xml") {
-		return "", "", errors.New("command error")
+		return "", "", errors.New(out)
 	}
 
 	file := strings.Split(out, "<?xml")[1]
