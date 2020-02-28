@@ -24,7 +24,7 @@ func execute(speakers []string, files []string) (string, string, error) {
 		cmdOpts = append(cmdOpts, "+t*"+speaker)
 	}
 	for _, file := range files {
-		file = filepath.Clean(utils.CHADIR + "/" + file)
+		file = filepath.Clean(file)
 
 		if !utils.PathChecker(file) {
 			return "", "", errors.New("unallowed path")
