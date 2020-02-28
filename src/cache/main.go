@@ -12,13 +12,18 @@ import (
 func RequestHandler(context *gin.Context) {
 	target := context.Query("file")
 	target = filepath.Clean(utils.CHADIR + "/" + target)
+	target, err := filepath.Abs(target)
+	if err != nil {
+		context.String(http.StatusBadRequest, "invaild path")
+		return
+	}
 	if !utils.PathChecker(target) {
 		context.String(http.StatusForbidden, "invaild path")
 		return
 	}
 	tmpFid := uuid.NewV4()
 
-	err := utils.Zip(target, utils.CHACACHE+"/tmp"+tmpFid.String()+".zip")
+	err = utils.Zip(target, utils.CHACACHE+"/tmp"+tmpFid.String()+".zip")
 	if err != nil {
 		context.String(http.StatusInternalServerError, "error while creating zip")
 		return

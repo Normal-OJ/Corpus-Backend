@@ -10,25 +10,28 @@ var CHACACHE = os.Getenv("CHA_CACHE")
 
 //PathChecker is an util for checking vaild path
 func PathChecker(path string) bool {
-	println("checking path:", path)
-	p, err := filepath.Rel(CHADIR, path)
+	path, err := filepath.Abs(path)
 	if err != nil {
 		return false
 	}
-	println("rel p:", p)
-	println("is abs:", filepath.IsAbs(p))
-	return filepath.IsAbs(p)
+	println("checking path:", path)
+	m, err := filepath.Match(CHADIR+"/*", path)
+	if err != nil && path != CHADIR {
+		return false
+	}
+	return m || path == CHADIR
 }
 
 //ChaCachePathChecker is a checker for checking cache request path
 func ChaCachePathChecker(path string) bool {
-	p, err := filepath.Rel(CHACACHE, path)
+	path, err := filepath.Abs(path)
 	if err != nil {
 		return false
 	}
-
-	if filepath.IsAbs(p) {
+	println("checking path:", path)
+	m, err := filepath.Match(CHACACHE+"/*", path)
+	if err != nil && path != CHACACHE {
 		return false
 	}
-	return true
+	return m || path == CHACACHE
 }

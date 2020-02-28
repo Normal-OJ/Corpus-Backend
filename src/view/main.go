@@ -22,6 +22,11 @@ func Check(err error) {
 func RequestHandler(context *gin.Context) {
 	filename := context.Query("file")
 	filename = filepath.Clean(utils.CHADIR + "/" + filename)
+	filename, err := filepath.Abs(filename)
+	if err != nil {
+		context.String(http.StatusBadRequest, "invaild path")
+		return
+	}
 	defer func() {
 		err := recover()
 		if err != nil {
