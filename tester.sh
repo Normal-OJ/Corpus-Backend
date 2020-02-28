@@ -1,1 +1,0 @@
-curl -X POST http://127.0.0.1:8787/api/mlt -F "data=@${PWD}/unix-clan/sample.cha"  -F "opts=\"\"" -F "multi=False" -F "excel=False" -H "Content-Type: multipart/form-data" -o output.txt
