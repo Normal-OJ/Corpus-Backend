@@ -18,7 +18,7 @@ func RequestHandler(context *gin.Context) {
 		context.String(http.StatusBadRequest, "invaild path")
 		return
 	}
-	if !utils.PathChecker(target) {
+	if !utils.ChaCachePathChecker(target) {
 		context.String(http.StatusForbidden, "invaild path")
 		return
 	}
