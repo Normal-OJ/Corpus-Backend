@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -23,6 +24,8 @@ func execute(speakers []string, files []string) (string, string, error) {
 		cmdOpts = append(cmdOpts, "+t*"+speaker)
 	}
 	for _, file := range files {
+		file = filepath.Clean(utils.CHADIR + "/" + file)
+
 		if !utils.PathChecker(file) {
 			return "", "", errors.New("unallowed path")
 		}
@@ -31,7 +34,7 @@ func execute(speakers []string, files []string) (string, string, error) {
 
 	var out = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
 	if !strings.Contains(out, "<?xml") {
-		return "", "", errors.New("Error: " + out)
+		return "", "", errors.New("command error")
 	}
 
 	file := strings.Split(out, "<?xml")[1]
