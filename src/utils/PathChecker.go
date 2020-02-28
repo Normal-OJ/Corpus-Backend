@@ -19,6 +19,9 @@ func PathChecker(path string) bool {
 	if err != nil && path != CHADIR {
 		return false
 	}
+	println("path check not error")
+	println("m:", m)
+	println("same path:", path == CHADIR)
 	return m || path == CHADIR
 }
 
