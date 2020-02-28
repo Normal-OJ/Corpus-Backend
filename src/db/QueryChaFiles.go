@@ -66,7 +66,7 @@ func QueryChaFiles(ages [][]int, sexs []int, contexts []string) []string {
 		i[len(ages)*2+len(sexs)+ct] = contexts[ct]
 	}
 	qStr := constructQueryCmd(len(ages), len(sexs), len(contexts))
-	// println("QueryString:", qStr)
+	println("QueryString:", qStr)
 	rows, err := database.Query(qStr, i...)
 	if err == sql.ErrNoRows {
 		return nil
