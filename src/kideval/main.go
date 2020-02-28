@@ -129,6 +129,11 @@ func OptionKidevalRequestHandler(context *gin.Context) {
 	}()
 
 	var files = db.QueryChaFiles(request.Age, request.Sex, request.Context)
+	if len(files) == 0 {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "filtered files' size is 0"})
+		return
+	}
+
 	name, out, err := execute(request.Speaker, files)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
