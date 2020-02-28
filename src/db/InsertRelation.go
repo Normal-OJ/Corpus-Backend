@@ -6,7 +6,7 @@ var insertRelationToMap = `insert into map(cha_id , context_id) values(?,?)`
 var insertRelationToMapStmt *sql.Stmt = nil
 
 //InsertRelation insert the relation between cha file and tags into database
-func InsertRelation(chaID uint64, tagID []uint64) error {
+func InsertRelation(chaID int64, tagID []int64) error {
 	if insertRelationToMapStmt == nil {
 		database, err := GetDBIns()
 		if err != nil {

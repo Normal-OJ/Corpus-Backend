@@ -1,4 +1,3 @@
-*p.s.: please edit src/route/main.go to rewrite the path of unix clang first , since i am too lazy to change my code*
 # How To Use This Sh*t
 1. download it
 2. create a docker-compose file
@@ -7,13 +6,15 @@
 version: '3'
 
 services:
-
    backend:
       build: ./BackEnd
       volumes:
         - ./BackEnd:/app
-      env_file: 
+        - ./somefolder:/cha_store # some folder to store cha files
+      env_file:
       - ./BackEnd/.env
+      ports:
+      - 8787:8787
 
 ```
 3. run the following command

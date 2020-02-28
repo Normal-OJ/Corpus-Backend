@@ -8,7 +8,7 @@ var insertFileToCha = `insert into cha(cha_id, path,age,sex) values (?,?,?,?)`
 var insertFileToChaStmt *sql.Stmt = nil
 
 //InsertFile insert file information into database
-func InsertFile(chaID uint64, src string, age int, sex int) error {
+func InsertFile(chaID int64, src string, age int, sex int) error {
 	if insertFileToChaStmt == nil {
 		database, err := GetDBIns()
 		if err != nil {

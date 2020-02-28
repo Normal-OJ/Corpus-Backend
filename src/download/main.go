@@ -13,6 +13,11 @@ import (
 func RequestHandler(context *gin.Context) {
 	target := context.Query("file")
 	target = filepath.Clean(utils.CHACACHE + "/" + target)
+	target, err := filepath.Abs(target)
+	if err != nil {
+		context.String(http.StatusBadRequest, "invaild path")
+		return
+	}
 	if !utils.PathChecker(target) {
 		context.String(http.StatusForbidden, "invaild path")
 		return

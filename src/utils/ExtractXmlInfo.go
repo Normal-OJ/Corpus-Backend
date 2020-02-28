@@ -27,7 +27,7 @@ func extractCell(bs []byte) []interface{} {
 		if d[0] == "String" {
 			ret[i] = d[1]
 		} else if d[0] == "Number" {
-			ret[i], err = strconv.Atoi(d[1])
+			ret[i], err = strconv.ParseFloat(d[1], 64)
 			if err != nil {
 				println("error  in conversion:", err.Error())
 			}
@@ -42,6 +42,7 @@ func ExtractXMLInfo(bs []byte) [][]interface{} {
 	if err != nil {
 		println("error in init row extraction")
 	}
+	//res := [][]interface{}
 	rows := regRow.FindAll(bs, -1)
 	res := make([][]interface{}, len(rows))
 	fmt.Printf("found %d row\n", len(rows))
