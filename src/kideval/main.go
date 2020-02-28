@@ -40,8 +40,8 @@ func execute(speakers []string, files []string) (string, string, error) {
 	file := strings.Split(out, "<?xml")[1]
 	file = "<?xml" + strings.Split(file, "</Workbook>")[0] + "</Workbook>"
 
-	filename := chaCache + "/kideval" + uuid.NewV4().String() + ".xls"
-	ioutil.WriteFile(filename, []byte(file), 0644)
+	filename := "kideval" + uuid.NewV4().String() + ".xls"
+	ioutil.WriteFile(chaCache+"/"+filename, []byte(file), 0644)
 
 	return filename, file, nil
 }
