@@ -24,7 +24,7 @@ func execute(speakers []string, files []string) (string, string, error) {
 		cmdOpts = append(cmdOpts, "+t*"+speaker)
 	}
 	for _, file := range files {
-		file = filepath.Clean(utils.CHADIR + "/" + file)
+		file = filepath.Clean(file)
 
 		if !utils.PathChecker(file) {
 			return "", "", errors.New("unallowed path")
@@ -34,14 +34,14 @@ func execute(speakers []string, files []string) (string, string, error) {
 
 	var out = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
 	if !strings.Contains(out, "<?xml") {
-		return "", "", errors.New("command error")
+		return "", "", errors.New(out)
 	}
 
 	file := strings.Split(out, "<?xml")[1]
 	file = "<?xml" + strings.Split(file, "</Workbook>")[0] + "</Workbook>"
 
-	filename := chaCache + "/kideval" + uuid.NewV4().String() + ".xls"
-	ioutil.WriteFile(filename, []byte(file), 0644)
+	filename := "kideval" + uuid.NewV4().String() + ".xls"
+	ioutil.WriteFile(chaCache+"/"+filename, []byte(file), 0644)
 
 	return filename, file, nil
 }
@@ -129,6 +129,11 @@ func OptionKidevalRequestHandler(context *gin.Context) {
 	}()
 
 	var files = db.QueryChaFiles(request.Age, request.Sex, request.Context)
+	if len(files) == 0 {
+		context.JSON(http.StatusNotFound, gin.H{"message": "filtered files' size is 0"})
+		return
+	}
+
 	name, out, err := execute(request.Speaker, files)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})

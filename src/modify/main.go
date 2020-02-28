@@ -44,7 +44,7 @@ func Upload(file multipart.File, filename string) error {
 
 	id, err := utils.CreateFileID(filename)
 
-	err = db.InsertFile(id, info.Speaker, info.Age, info.Gender)
+	err = db.InsertFile(id, filename, info.Age, info.Gender)
 
 	if err != nil {
 		return err
@@ -59,7 +59,7 @@ func Upload(file multipart.File, filename string) error {
 
 	for _, tag := range tags {
 		_, ok := tagIDMap[tag]
-		if ok {
+		if !ok {
 			newTags = append(newTags, tag)
 		}
 	}

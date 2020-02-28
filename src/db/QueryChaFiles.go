@@ -16,24 +16,36 @@ var contextFilter = "context.name in (%s)"
 
 func constructQueryCmd(agesCount int, sexsCount int, contextsCount int) string {
 	var opts = []string{}
+
 	// construct age filter
-	for i := 0; i != agesCount; i++ {
-		opts = append(opts, ageFilter)
+	if agesCount > 0 {
+		opts = append(
+			opts,
+			"("+ageFilter+strings.Repeat(
+				fmt.Sprintf(" OR %s", ageFilter), agesCount-1,
+			)+")",
+		)
 	}
+
 	// construct sex filter
-	for i := 0; i != sexsCount; i++ {
-		opts = append(opts, sexFilter)
+	if sexsCount > 0 {
+		opts = append(
+			opts,
+			"("+sexFilter+strings.Repeat(
+				fmt.Sprintf(" OR %s", sexFilter), sexsCount-1,
+			)+")",
+		)
 	}
 	// construct context filter
 	if contextsCount != 0 {
 		var o = "?" + strings.Repeat(",?", contextsCount-1)
-		opts = append(opts, fmt.Sprintf(contextFilter, o))
+		opts = append(opts, "("+fmt.Sprintf(contextFilter, o)+")")
 	}
 	// construct whole cmd
 	var condition = ""
 	if len(opts) != 0 {
 		condition = "where %s"
-		c := "%s" + strings.Repeat(" OR %s", len(opts)-1)
+		c := "%s" + strings.Repeat(" AND %s", len(opts)-1)
 		i := make([]interface{}, len(opts))
 		for ct := 0; ct != len(opts); ct++ {
 			i[ct] = opts[ct]
@@ -66,7 +78,7 @@ func QueryChaFiles(ages [][]int, sexs []int, contexts []string) []string {
 		i[len(ages)*2+len(sexs)+ct] = contexts[ct]
 	}
 	qStr := constructQueryCmd(len(ages), len(sexs), len(contexts))
-	// println("QueryString:", qStr)
+	println("QueryString:", qStr)
 	rows, err := database.Query(qStr, i...)
 	if err == sql.ErrNoRows {
 		return nil
