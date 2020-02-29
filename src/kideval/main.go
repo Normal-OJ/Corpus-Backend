@@ -84,6 +84,24 @@ type pathRequest struct {
 	Indicator []string
 }
 
+func getFiles(filename string) []string {
+	finfo, _ := os.Stat(filename)
+	ret := []string{}
+
+	if finfo.IsDir() {
+		files, _ := ioutil.ReadDir(filename)
+		for _, file := range files {
+			ret = append(ret, getFiles(filename+"/"+file.Name())...)
+		}
+	} else {
+		if strings.Contains(finfo.Name(), ".cha") {
+			ret = append(ret, filename)
+		}
+	}
+
+	return ret
+}
+
 // PathKidevalRequestHandler is like what it said :P
 func PathKidevalRequestHandler(context *gin.Context) {
 	var request pathRequest
@@ -101,17 +119,21 @@ func PathKidevalRequestHandler(context *gin.Context) {
 		}
 	}()
 
+	files := []string{}
+
 	for index, filename := range request.File {
 		request.File[index] = utils.CHADIR + "/" + filename
 
-		finfo, err := os.Stat(request.File[index])
-		if err != nil || finfo.IsDir() {
+		_, err := os.Stat(request.File[index])
+		if err != nil {
 			context.JSON(http.StatusNotFound, gin.H{"message": "file: " + filename + " not found"})
 			return
 		}
+
+		files = append(files, getFiles(request.File[index])...)
 	}
 
-	name, out, err := execute(request.Speaker, request.File)
+	name, out, err := execute(request.Speaker, files)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
 		return
