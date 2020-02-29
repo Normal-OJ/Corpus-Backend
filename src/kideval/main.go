@@ -19,7 +19,7 @@ func execute(speakers []string, files []string) (string, string, error) {
 	cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
 	chaCache := os.Getenv("CHA_CACHE")
 
-	cmdOpts := []string{"+lzho"}
+	cmdOpts := []string{"+lzho", "-f"}
 	for _, speaker := range speakers {
 		cmdOpts = append(cmdOpts, "+t*"+speaker)
 	}
@@ -90,6 +90,16 @@ func PathKidevalRequestHandler(context *gin.Context) {
 			return
 		}
 	}()
+
+	for index, filename := range request.File {
+		request.File[index] = utils.CHADIR + "/" + filename
+
+		finfo, err := os.Stat(request.File[index])
+		if err != nil || finfo.IsDir() {
+			context.JSON(http.StatusNotFound, gin.H{"message": "file: " + filename + " not found"})
+			return
+		}
+	}
 
 	name, out, err := execute(request.Speaker, request.File)
 	if err != nil {
