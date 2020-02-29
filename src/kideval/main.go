@@ -19,7 +19,7 @@ func execute(speakers []string, files []string) (string, string, error) {
 	cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
 	chaCache := os.Getenv("CHA_CACHE")
 
-	cmdOpts := []string{"+lzho", "-f"}
+	cmdOpts := []string{"+lzho"}
 	for _, speaker := range speakers {
 		cmdOpts = append(cmdOpts, "+t*"+speaker)
 	}
