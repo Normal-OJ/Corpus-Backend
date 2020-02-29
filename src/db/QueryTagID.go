@@ -6,7 +6,7 @@ var queryTagFromContext = `select context_id,name from context`
 var queryTagFromContextStmt *sql.Stmt = nil
 
 //QueryTagID query all the exsisted tag and tagID inside database
-func QueryTagID() (map[string]uint64, error) {
+func QueryTagID() (map[string]int64, error) {
 	if queryTagFromContextStmt == nil {
 		database, err := GetDBIns()
 		if err != nil {
@@ -26,11 +26,11 @@ func QueryTagID() (map[string]uint64, error) {
 		return nil, err
 	}
 
-	ret := make(map[string]uint64)
+	ret := make(map[string]int64)
 
 	for rows.Next() {
 		var tag string = ""
-		var id uint64 = 0
+		var id int64 = 0
 		rows.Scan(&id, &tag)
 		ret[tag] = id
 
