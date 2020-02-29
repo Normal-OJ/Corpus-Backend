@@ -5,6 +5,7 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
+	"strings"
 
 	"path/filepath"
 
@@ -20,12 +21,17 @@ type File struct {
 }
 
 // Upload uploads a file
-func Upload(file multipart.File, filename string) error {
+func Upload(file multipart.File, filename string) (string, error) {
 	dirName := filepath.Dir(filename)
+	ret := dirName + "/" + strings.ReplaceAll(filename, "/", "_")
+
+	dirName = utils.CHADIR + "/" + dirName
+	filename = utils.CHADIR + "/" + ret
+
 	os.MkdirAll(dirName, os.ModePerm)
 	out, err := os.Create(filename)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	defer func() {
@@ -34,12 +40,12 @@ func Upload(file multipart.File, filename string) error {
 
 	_, err = io.Copy(out, file)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	info, err := utils.ExtractChaID(filename)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	id, err := utils.CreateFileID(filename)
@@ -47,7 +53,7 @@ func Upload(file multipart.File, filename string) error {
 	err = db.InsertFile(id, filename, info.Age, info.Gender)
 
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	tags := utils.ExtractTag(filename)
@@ -76,7 +82,7 @@ func Upload(file multipart.File, filename string) error {
 	}
 
 	db.InsertRelation(id, tagIDs)
-	return nil
+	return ret, nil
 }
 
 // UploadRequestHandler is like what it said :P
@@ -88,14 +94,12 @@ func UploadRequestHandler(context *gin.Context) {
 		return
 	}
 
-	filename = filepath.Clean(utils.CHADIR + "/" + filename)
-
-	if !utils.PathChecker(filename) {
+	if !utils.PathChecker(utils.CHADIR + "/" + filename) {
 		context.JSON(http.StatusBadRequest, gin.H{"result": "unallowed path"})
 		return
 	}
 
-	err = Upload(file, filename)
+	out, err := Upload(file, filename)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error()})
 		return
@@ -109,7 +113,7 @@ func UploadRequestHandler(context *gin.Context) {
 		}
 	}()
 
-	context.JSON(http.StatusOK, gin.H{"result": "success"})
+	context.JSON(http.StatusOK, gin.H{"result": "success upload " + out})
 }
 
 // EditRequestHandler is like what it said :P
