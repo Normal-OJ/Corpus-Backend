@@ -65,6 +65,16 @@ func makeRespone(filename string, file string, indicator []string) map[string][]
 		}
 	}
 
+	for k, v := range ret {
+		if k == "filename" {
+			continue
+		}
+		mean, n := utils.Mean(v)
+		sd, _ := utils.SD(v)
+
+		ret[k] = []interface{}{mean, sd, float64(n)}
+	}
+
 	return ret
 }
 
