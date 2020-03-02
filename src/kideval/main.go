@@ -94,7 +94,7 @@ func getFiles(filename string) []string {
 			ret = append(ret, getFiles(filename+"/"+file.Name())...)
 		}
 	} else {
-		if strings.Contains(finfo.Name(), ".cha") {
+		if strings.HasSuffix(finfo.Name(), ".cha") {
 			ret = append(ret, filename)
 		}
 	}
@@ -127,6 +127,11 @@ func PathKidevalRequestHandler(context *gin.Context) {
 		_, err := os.Stat(request.File[index])
 		if err != nil {
 			context.JSON(http.StatusNotFound, gin.H{"message": "file: " + filename + " not found"})
+			return
+		}
+
+		if !utils.PathChecker(filepath.Clean(request.File[index])) {
+			context.JSON(http.StatusBadRequest, gin.H{"message": "unallowed path"})
 			return
 		}
 
