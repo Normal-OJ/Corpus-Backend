@@ -151,7 +151,7 @@ func PathKidevalRequestHandler(context *gin.Context) {
 }
 
 type optionRequest struct {
-	Age       [][]int
+	Ages      [][]int
 	Sex       []int
 	Context   []string
 	Speaker   []string
@@ -175,7 +175,7 @@ func OptionKidevalRequestHandler(context *gin.Context) {
 		}
 	}()
 
-	var files = db.QueryChaFiles(request.Age, request.Sex, request.Context)
+	var files = db.QueryChaFiles(request.Ages, request.Sex, request.Context)
 	if len(files) == 0 {
 		context.JSON(http.StatusNotFound, gin.H{"message": "filtered files' size is 0"})
 		return
