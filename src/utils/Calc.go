@@ -1,6 +1,8 @@
 package utils
 
-import "math"
+import (
+	"math"
+)
 
 func cleanData(data []interface{}) []float64 {
 	nums := []float64{}
@@ -20,6 +22,8 @@ func cleanData(data []interface{}) []float64 {
 	}
 	return nums
 }
+
+// Mean 可以取平均
 func Mean(data []interface{}) (float64, int) {
 	nums := cleanData(data)
 	if len(nums) == 0 {
@@ -32,6 +36,8 @@ func Mean(data []interface{}) (float64, int) {
 	}
 	return sum / float64(len(nums)), len(nums)
 }
+
+// SD 可以算出標準差
 func SD(data []interface{}) (float64, int) {
 	nums := cleanData(data)
 	if len(nums) == 0 {
@@ -45,4 +51,18 @@ func SD(data []interface{}) (float64, int) {
 	vars /= float64(len(nums))
 	vars = math.Sqrt(vars)
 	return vars, len(nums)
+}
+
+// ToFloat cast number to float64
+func ToFloat(num interface{}) float64 {
+	switch i := num.(type) {
+	case float64:
+		return i
+	case float32:
+		return float64(i)
+	case int:
+		return float64(i)
+	default:
+		return math.NaN()
+	}
 }

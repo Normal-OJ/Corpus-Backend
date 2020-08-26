@@ -21,6 +21,7 @@ func RegisterRouter(engine *gin.Engine) {
 	engine.POST("/api/option_kideval", kideval.OptionKidevalRequestHandler)
 	engine.POST("/api/path_kideval", kideval.PathKidevalRequestHandler)
 	engine.POST("/api/upload_kideval", kideval.UploadKidevalRequestHandler)
+	engine.POST("/api/upload_detailed_kideval", kideval.UploadDetailedKidevalRequestHandler)
 
 	//register download routers
 	engine.GET("/api/download", download.RequestHandler)

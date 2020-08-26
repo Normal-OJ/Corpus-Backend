@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -27,7 +28,7 @@ func execute(speakers []string, files []string) (string, string, error) {
 	for _, file := range files {
 		file = filepath.Clean(file)
 
-		if !utils.PathChecker(file) {
+		if !utils.PathChecker(file) && !utils.ChaCachePathChecker(file) {
 			return "", "", errors.New("unallowed path")
 		}
 		cmdOpts = append(cmdOpts, file)
@@ -79,7 +80,7 @@ func makeRespone(filename string, file string, indicator []string) map[string][]
 	return ret
 }
 
-func makeDetailedRespone(filename string, file string) map[string]interface{} {
+func makeDetailedRespone(filename string, file string, chaFilename string) map[string]interface{} {
 	data := utils.ExtractXMLInfo([]byte(file))
 	ret := make(map[string]interface{})
 	ret["filename"] = filename
@@ -101,22 +102,23 @@ func makeDetailedRespone(filename string, file string) map[string]interface{} {
 			val = ret["FREQ_types"].(float64) / math.Sqrt(ret["FREQ_tokens"].(float64)*2)
 		case "adj":
 			cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
-			chaCache := os.Getenv("CHA_CACHE")
-			cmdOpts := []string{"+t%mor +s\"adj|*\"", chaCache + "/" + filename, "+t*CHI +d3 -f"}
+			cmdOpts := []string{"+t%mor", "+s\"adj|*\"", chaFilename, "+t*CHI", "+d4"}
 
 			out := utils.RunCmd(cmdFolderLoc+"/freq", cmdOpts)
-			file := strings.Split(out, "<?xml")[1]
-			file = "<?xml" + strings.Split(file, "</Workbook>")[0] + "</Workbook>"
-			data := utils.ExtractXMLInfo([]byte(file))
-			val = data[0][12]
+			val, _ = strconv.Atoi(strings.Split(out, "\n")[7][:5])
 		case "n_percentage":
+			fallthrough
 		case "v_percentage":
+			fallthrough
 		case "adj_percentage":
+			fallthrough
 		case "adv_percentage":
+			fallthrough
 		case "conj_percentage":
+			fallthrough
 		case "cl_percentage":
-			word := strings.Split(key, "-")[0]
-			val = ret[word].(float64) / ret["mor_Words"].(float64)
+			word := strings.Split(key, "_")[0]
+			val = utils.ToFloat(ret[word]) / utils.ToFloat(ret["mor_Words"])
 		}
 		ret[key] = val
 	}
@@ -341,7 +343,7 @@ func UploadDetailedKidevalRequestHandler(context *gin.Context) {
 		return
 	}
 
-	ret := makeDetailedRespone(name, out)
+	ret := makeDetailedRespone(name, out, filename)
 	print(request.Speaker)
 	os.Remove(filename)
 
