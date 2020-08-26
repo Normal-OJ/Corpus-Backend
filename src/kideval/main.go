@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io"
 	"io/ioutil"
+	"math"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -73,6 +74,51 @@ func makeRespone(filename string, file string, indicator []string) map[string][]
 		sd, _ := utils.SD(v)
 
 		ret[k] = []interface{}{mean, sd, float64(n)}
+	}
+
+	return ret
+}
+
+func makeDetailedRespone(filename string, file string) map[string]interface{} {
+	data := utils.ExtractXMLInfo([]byte(file))
+	ret := make(map[string]interface{})
+	ret["filename"] = filename
+
+	for _, row := range data[1:] {
+		for index, val := range row {
+			key := data[0][index].(string)
+			ret[key] = val
+		}
+	}
+
+	neededKeys := []string{"CTTR", "n_percentage", "v_percentage", "adj", "adj_percentage",
+		"adv_percentage", "conj_percentage", "cl_percentage"}
+
+	for _, key := range neededKeys {
+		var val interface{}
+		switch key {
+		case "CTTR":
+			val = ret["FREQ_types"].(float64) / math.Sqrt(ret["FREQ_tokens"].(float64)*2)
+		case "adj":
+			cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
+			chaCache := os.Getenv("CHA_CACHE")
+			cmdOpts := []string{"+t%mor +s\"adj|*\"", chaCache + "/" + filename, "+t*CHI +d3 -f"}
+
+			out := utils.RunCmd(cmdFolderLoc+"/freq", cmdOpts)
+			file := strings.Split(out, "<?xml")[1]
+			file = "<?xml" + strings.Split(file, "</Workbook>")[0] + "</Workbook>"
+			data := utils.ExtractXMLInfo([]byte(file))
+			val = data[0][12]
+		case "n_percentage":
+		case "v_percentage":
+		case "adj_percentage":
+		case "adv_percentage":
+		case "conj_percentage":
+		case "cl_percentage":
+			word := strings.Split(key, "-")[0]
+			val = ret[word].(float64) / ret["mor_Words"].(float64)
+		}
+		ret[key] = val
 	}
 
 	return ret
@@ -242,6 +288,60 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 
 	ret := makeRespone(name, out, request.Indicator)
 	print(request.Indicator)
+	print(request.Speaker)
+	os.Remove(filename)
+
+	context.JSON(http.StatusOK, ret)
+}
+
+type uploadDetailedRequest struct {
+	Speaker []string
+}
+
+// UploadDetailedKidevalRequestHandler is like what it said :P
+func UploadDetailedKidevalRequestHandler(context *gin.Context) {
+	file, _, err := context.Request.FormFile("file")
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "file not found"})
+		return
+	}
+
+	var request uploadDetailedRequest
+	err = context.ShouldBind(&request)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "invalid input"})
+		return
+	}
+
+	defer func() {
+		err := recover()
+		if err != nil {
+			context.String(http.StatusInternalServerError, "internal server error")
+			return
+		}
+	}()
+
+	filename := "/tmp/" + uuid.NewV4().String() + ".cha"
+
+	tmpFile, err := os.Create(filename)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"result": err.Error})
+		return
+	}
+
+	_, err = io.Copy(tmpFile, file)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
+		return
+	}
+
+	name, out, err := execute(request.Speaker, []string{filename})
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
+	}
+
+	ret := makeDetailedRespone(name, out)
 	print(request.Speaker)
 	os.Remove(filename)
 
