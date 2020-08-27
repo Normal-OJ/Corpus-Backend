@@ -102,10 +102,10 @@ func makeDetailedRespone(filename string, file string, chaFilename string) map[s
 			val = ret["FREQ_types"].(float64) / math.Sqrt(ret["FREQ_tokens"].(float64)*2)
 		case "adj":
 			cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
-			cmdOpts := []string{"+t%mor", "+s\"adj|*\"", chaFilename, "+t*CHI", "+d4"}
+			cmdOpts := []string{"+t%mor", "+sadj|*", chaFilename, "+t*CHI", "+d4"}
 
 			out := utils.RunCmd(cmdFolderLoc+"/freq", cmdOpts)
-			val, _ = strconv.Atoi(strings.Split(out, "\n")[7][:5])
+			val, _ = strconv.Atoi(strings.Trim(strings.Split(out, "\n")[6][:5], " "))
 		case "n_percentage":
 			fallthrough
 		case "v_percentage":
