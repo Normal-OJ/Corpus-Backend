@@ -4,9 +4,11 @@ import (
 	"errors"
 	"io"
 	"io/ioutil"
+	"math"
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -26,7 +28,7 @@ func execute(speakers []string, files []string) (string, string, error) {
 	for _, file := range files {
 		file = filepath.Clean(file)
 
-		if !utils.PathChecker(file) {
+		if !utils.PathChecker(file) && !utils.ChaCachePathChecker(file) {
 			return "", "", errors.New("unallowed path")
 		}
 		cmdOpts = append(cmdOpts, file)
@@ -73,6 +75,52 @@ func makeRespone(filename string, file string, indicator []string) map[string][]
 		sd, _ := utils.SD(v)
 
 		ret[k] = []interface{}{mean, sd, float64(n)}
+	}
+
+	return ret
+}
+
+func makeDetailedRespone(filename string, file string, chaFilename string) map[string]interface{} {
+	data := utils.ExtractXMLInfo([]byte(file))
+	ret := make(map[string]interface{})
+	ret["filename"] = filename
+
+	for _, row := range data[1:] {
+		for index, val := range row {
+			key := data[0][index].(string)
+			ret[key] = val
+		}
+	}
+
+	neededKeys := []string{"CTTR", "n_percentage", "v_percentage", "adj", "adj_percentage",
+		"adv_percentage", "conj_percentage", "cl_percentage"}
+
+	for _, key := range neededKeys {
+		var val interface{}
+		switch key {
+		case "CTTR":
+			val = ret["FREQ_types"].(float64) / math.Sqrt(ret["FREQ_tokens"].(float64)*2)
+		case "adj":
+			cmdFolderLoc := os.Getenv("CLANG_CMD_FOLDER")
+			cmdOpts := []string{"+t%mor", "+sadj|*", chaFilename, "+t*CHI", "+d4"}
+
+			out := utils.RunCmd(cmdFolderLoc+"/freq", cmdOpts)
+			val, _ = strconv.Atoi(strings.Trim(strings.Split(out, "\n")[6][:5], " "))
+		case "n_percentage":
+			fallthrough
+		case "v_percentage":
+			fallthrough
+		case "adj_percentage":
+			fallthrough
+		case "adv_percentage":
+			fallthrough
+		case "conj_percentage":
+			fallthrough
+		case "cl_percentage":
+			word := strings.Split(key, "_")[0]
+			val = utils.ToFloat(ret[word]) / utils.ToFloat(ret["mor_Words"])
+		}
+		ret[key] = val
 	}
 
 	return ret
@@ -242,6 +290,60 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 
 	ret := makeRespone(name, out, request.Indicator)
 	print(request.Indicator)
+	print(request.Speaker)
+	os.Remove(filename)
+
+	context.JSON(http.StatusOK, ret)
+}
+
+type uploadDetailedRequest struct {
+	Speaker []string
+}
+
+// UploadDetailedKidevalRequestHandler is like what it said :P
+func UploadDetailedKidevalRequestHandler(context *gin.Context) {
+	file, _, err := context.Request.FormFile("file")
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "file not found"})
+		return
+	}
+
+	var request uploadDetailedRequest
+	err = context.ShouldBind(&request)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "invalid input"})
+		return
+	}
+
+	defer func() {
+		err := recover()
+		if err != nil {
+			context.String(http.StatusInternalServerError, "internal server error")
+			return
+		}
+	}()
+
+	filename := "/tmp/" + uuid.NewV4().String() + ".cha"
+
+	tmpFile, err := os.Create(filename)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"result": err.Error})
+		return
+	}
+
+	_, err = io.Copy(tmpFile, file)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
+		return
+	}
+
+	name, out, err := execute(request.Speaker, []string{filename})
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
+	}
+
+	ret := makeDetailedRespone(name, out, filename)
 	print(request.Speaker)
 	os.Remove(filename)
 
