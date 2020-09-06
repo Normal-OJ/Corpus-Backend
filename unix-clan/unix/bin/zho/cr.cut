@@ -1,0 +1,119 @@
+@UTF8
+% ******************************************************
+% CONCATENATION RULES  for Putonghua
+% ******************************************************
+
+RULENAME: misc-start
+CTYPE: START
+ if
+NEXTCAT = [scat OR bab chi dia fam n:let \
+	neo on phon meta L2 sing sign sas test uni wp unk beg end cm \
+	adv:wh asp cl cleft co co:int conj det int link manner \
+	neg nom num obj on poss prep sfp stative tag \
+	0adj 0adv 0aux 0cl 0conj 0det 0loc 0n 0num 0poss 0post 0prep 0pro 0quant 0v 0zero]
+ then
+ RESULTCAT = NEXTCAT
+ RULEPACKAGE = {}
+
+RULENAME: adv-adj-start
+CTYPE: START
+ if
+ NEXTCAT = [scat OR adj adj:v adv]
+ then
+ RESULTCAT = NEXTCAT
+ RULEPACKAGE = {adv-adj-suffix, d-suffix}
+
+RULENAME: adv-adj-suffix
+CTYPE:	-
+% first blocking
+ if
+ STARTCAT = [scat OR adj adj:v]
+ NEXTCAT = [scat OR adjsuffix advsuffix]
+ MATCHCAT [block]
+ then
+ RESULTCAT = ADD [scat pfx]
+ RULEPACKAGE = {}
+if
+STARTCAT = [scat OR adj adj:v]
+NEXTCAT = [scat adjsuffix]
+then
+RESULTCAT = STARTCAT
+RULEPACKAGE = {}
+if
+STARTCAT = [scat OR adj adj:v]
+NEXTCAT = [scat advsuffix]
+then
+RESULTCAT = ADD [scat adv]
+RULEPACKAGE = {}
+
+RULENAME: npfx
+CTYPE: START
+% first blocking , but this is not working yet for 老虎
+ if
+ STARTCAT = [pcat n]
+ NEXTCAT = [scat OR n num]
+ MATCHCAT [block]
+ then
+ RESULTCAT = ADD [scat pfx]
+ RULEPACKAGE = {}
+ if
+ NEXTCAT = [scat npfx]
+ then
+ RESULTCAT = NEXTCAT
+ RULEPACKAGE = {n-pfx}
+
+RULENAME: n-pfx
+CTYPE: #
+ if
+ NEXTCAT = [scat OR n n:geo n:let n:name n:prop n:relat n:tm num], ![block pfx]
+ then
+ RESULTCAT = NEXTCAT
+ RULEPACKAGE = {n-suffix}
+
+RULENAME: n-start
+CTYPE: START
+ if
+ NEXTCAT = [scat OR num n n:geo n:let n:prop n:relat n:tm pro:dem pro:per pro:wh ]
+ then
+ RESULTCAT = NEXTCAT
+ RULEPACKAGE = {n-suffix, d-suffix, adv-adj-suffix}
+
+RULENAME: n-suffix
+CTYPE:	-
+if
+NEXTCAT = [scat nsuffix]
+then
+RESULTCAT = STARTCAT
+RULEPACKAGE = {n-suffix}
+
+RULENAME: v-start
+CTYPE: START
+ if
+ NEXTCAT = [scat OR v v:cop v:aux v:resc v:dirc v:seg]
+ then
+ RESULTCAT = NEXTCAT
+ RULEPACKAGE = {d-suffix, adv-adj-suffix}
+
+RULENAME: other-start
+CTYPE: START
+ if
+ NEXTCAT = [scat OR cl conj post prep quant]
+ then
+ RESULTCAT = NEXTCAT
+ RULEPACKAGE = {d-suffix}
+
+RULENAME: d-suffix
+CTYPE:	-
+if
+NEXTCAT = [scat dsuffix]
+then
+RESULTCAT = STARTCAT
+RULEPACKAGE = {}
+
+RULENAME: misc-end
+ CTYPE: END
+ if
+ STARTCAT =  ![scat OR pfx qq], ![block OR aa di lao]
+ then
+ RESULTCAT = STARTCAT
+ RULEPACKAGE = {}

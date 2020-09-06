@@ -1,0 +1,104 @@
+@UTF8
+# CLASS/V => CL
+qn|* cl|*^v|*^* => qn|* cl|*
+
+#对|
+cl|dui4=pair^adj|dui4=correct^prep|dui4=toward^v|dui4=adjust beg|beg => adj|dui4=correct beg|beg
+adv|bu4=not cl|dui4=pair^adj|dui4=correct^prep|dui4=toward^v|dui4=adjust => adv|bu4=not adj|dui4=correct
+
+# 得 as stative after verbs
+# 走 得 快
+v|* v:resc|de2=get^v:aux|dei3=should_be^stative|de=be_able_to => v|* stative|de=be_able_to
+adv|*^v|* v:resc|de2=get^v:aux|dei3=should_be^stative|de=be_able_to => v|* stative|de=be_able_to
+
+# 够 as verb before v:resc 到
+adv|gou4=enough^v|gou4=reach v:resc|dao4=arrive => v|gou4=reach v:resc|dao4=arrive
+adv|gou4=enough^v|gou4=reach *|* v:resc|dao4=arrive => v|gou4=reach *|* v:resc|dao4=arrive
+
+#过
+# 过 去
+adv|guo4=excessively^v:dirc|guo4=pass^asp|guo4 v:dirc|*^* => v:dirc|guo4=pass v:dirc|*
+
+#比
+prep|bi3=compared_with^v|bi3=compare n|* => v|bi3=compare n|*
+prep|bi3=compared_with^v|bi3=compare *^* adj|* => prep|bi3=compared_with *^* adj|*
+
+# 不 用 害怕
+n|yong4=use^prep|yong4=with^v|yong4=use v|* => v|yong4=use v|*
+
+# ASP/V
+# 这 件 事 了 了.
+v|*^asp|*^* v|*^asp|* => v|* asp|*
+# the rest
+v|*^asp|* => asp|*
+
+# AUX/V
+# v|*^v:aux|*^* *^* v|* => v:aux|* *^* v|*   # removed for posttrain
+v:resc|*^v:aux|*^* *^* v|* => v:aux|* *^* v|*
+v:resc|*^v:aux|*^* *^* n|* => v:resc|* *^* n|*
+
+#ADV/V => ADV
+# 我 在 跟 他 说话 .
+adv|*^v|*^prep|* prep|*^v|*^* *^* v|*^* => adv|* prep|* *^* v|*
+# 我 在 玩 手机 .
+adv|*^v|*^prep|* v|*^* => adv|* v|*
+# 他 够 好看的 了 .
+adv|*^v|*^* adj|*^* => adv|* adj|*
+adv|*^v:*|*^* adj|*^* => adv|* adj|*
+# 还 不 是 你 的 .
+adv|*^v|* adv|* v:*|* => adv|* adv|* v:*|*
+adv|*^v|* adv|* v|* => adv|* adv|* v|*
+# 还 讲 故事 .
+# adv|*^v|* v:*|* => adv|* v:*|*
+adv|*^v|* v|* => adv|* v|*
+# 还 书 .
+adv|*^v|* n|* => v|* n|*
+# 小 狗 在 .
+adv|zai4=currently^prep|zai4=at^v|zai4=exist $e => v|zai4=exist $e
+
+#ADV/V/PREP => PREP
+# 我 在 学校 里 .
+adv|*^prep|*^v|* *^* post|*^* => prep|* *^* post|*
+# 你 在 哪儿 ?
+adv|*^prep|*^v|* pro:*|*^* => prep|* pro:*|*
+# 他 在 外头 .
+adv|*^prep|*^v|* n|* => prep|* n|*
+#躺 在 这儿
+v|* adv|zai4=currently^prep|zai4=at^v|zai4=exist => v|* prep|zai4=at
+
+# PREP/V => PREP
+#end|end
+prep|*^v|*^* *^* end|end v|* => v|* *^* end|end v|*
+#拿 着 它 玩
+prep|*^v|*^* v:resc|zhao2=make^asp|zhe *^* v|*^* => v|* asp|zhe *^* v|*
+#拿 在 手 里 吃
+prep|*^v|*^* prep|* n|*^* post|* v|*^* => v|* prep|* n|* post|* v|*
+# 把 他 给 打 了
+prep|*^v|*^* *^* prep|*^v|*^* *^* v|*^* => prep|* *^* prep|* *^* v|*
+# 给 你 钱包 玩
+v:aux|gei3=passive^prep|gei3=for^v|gei3=give pro:per|* n|* v|* => v|gei3=give pro:per|* n|* v|*
+# 给 小 猫咪 洗澡
+prep|*^v|*^* *^* v|* => prep|* *^* v|*
+# 对 我 的 一 种 尊重
+prep|*^v|*^cl|*^adj|* *^* cleft|de^poss|de^nom|de adv|yi1=just_as^num|yi1=one v|*^cl|* => prep|* *^* cleft|de num|yi1=one cl|*
+#奖励 给 你
+prep|*^v|*^* *^* n|*^v|*^* => prep|* *^* v|*
+# 拿 书 给 他
+prep|*^v|*^* *^* prep|*^v|*^* => prep|* *^* v|*
+# 给 我 一 本 书
+prep|*^v|* *^* n|* => v|* *^* n|*
+# 拿 出 去
+prep|*^v|* v:*|* => v|* v:*|*
+# 买 给 你
+v|*^* v:aux|gei3=passive^prep|gei3=for^v|gei3=give => v|* prep|gei3=for
+# the rest
+# prep|*^v|*^* => v|*
+
+# PREP/ADJ => PREP
+# 对 他 说话
+prep|*^adj|*^* *^* v|*^* => prep|* *^* v|*
+
+# DET/PRO => DET
+det|*^pro:dem|*^* cl|ge4 => det|* cl|ge4
+
+

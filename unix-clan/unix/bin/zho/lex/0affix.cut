@@ -1,0 +1,19 @@
+@UTF8
+%suffixes
+们 {[scat nsuffix]} "PL" == % men
+% 子 {[scat nsuffix]}  "NOM" ==
+者 {[scat nsuffix]} "NOM"  % zhe3
+% 头 {[scat nsuffix]} "NOM" 
+% 性 {[scat nsuffix]} "NOM"
+儿 {[scat dsuffix]} "DIA" ==
+地 {[scat advsuffix][block ly]} "LY" ==
+的 {[scat adjsuffix][block ish]} "ISH" ==
+% 然 as in 赫然 盎然
+% 性 as in 攻擊性, 爆炸性
+% 化 hua as in
+%  prefixes
+阿 {[scat npfx][pcat n][block aa]} "familiar"
+第 {[scat npfx][pcat num][block di]} "di4" =ordinal=
+老 {[scat npfx][pcat n][block lao]} "lao3" =people_name=
+初 {[scat npfx][pcat num][block di]} "di4" =lunar_calendar_date=
+

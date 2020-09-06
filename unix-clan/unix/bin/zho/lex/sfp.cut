@@ -1,0 +1,24 @@
+@UTF8
+啊 {[scat sfp]} "a1" == %certainly
+啊啊 {[scat sfp]} "a1a1" == %certainly
+吧 {[scat sfp]} "ba" == %suggestion
+哒 {[scat sfp]} "da1" == %suggestion
+伐 {[scat sfp]} "fa2" == %question
+好伐 {[scat sfp]} "hao3fa" =okay=
+乎 {[scat sfp]} "hu1" == %question
+啦 {[scat sfp]} "la1" == %excited
+嘞 {[scat sfp]} "le1" == %exclamation
+哩 {[scat sfp]} "li" ==
+咧 {[scat sfp]} "lie1" == %exclamation
+咯 {[scat sfp]} "lo" == %emphatic
+喽 {[scat sfp]} "lou" == %suggestion
+啰 {[scat sfp]} "luo" == %emphatic
+嘛 {[scat sfp]} "ma" == %persuasion
+吗 {[scat sfp]} "ma" == %question
+么 {[scat sfp]} "me" == %question
+呐 {[scat sfp]} "na" ==
+呢 {[scat sfp]} "ne" == %additional
+捏 {[scat sfp]} "ne1" ==
+哦 {[scat sfp]} "o1" == %agreement
+什么的 {[scat sfp]} "shen2me1de" =and_whatnots=
+呀 {[scat sfp]} "ya" == %exclamation

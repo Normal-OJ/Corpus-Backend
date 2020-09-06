@@ -282,6 +282,10 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 		return
 	}
 
+	//mor have bug that can not support
+	chaWithMor := uuid.NewV4().String() + ".cha"
+	os.Create(chaWithMor)
+	mor(filename, chaWithMor)
 	name, out, err := execute(request.Speaker, []string{filename})
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
@@ -323,20 +327,25 @@ func UploadDetailedKidevalRequestHandler(context *gin.Context) {
 		}
 	}()
 
-	filename := "/tmp/" + uuid.NewV4().String() + ".cha"
-
+	//NOTE: mor has bug that can not support any relative or absolute path
+	filename := uuid.NewV4().String() + ".cha"
 	tmpFile, err := os.Create(filename)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"result": err.Error})
 		return
 	}
-
 	_, err = io.Copy(tmpFile, file)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
 		return
 	}
-
+	mor(filename, filename)
+	err = utils.MoveFile(filename, utils.CHACACHE+"/"+filename)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"result": err.Error()})
+		return
+	}
+	filename = utils.CHACACHE + "/" + filename
 	name, out, err := execute(request.Speaker, []string{filename})
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
@@ -346,6 +355,5 @@ func UploadDetailedKidevalRequestHandler(context *gin.Context) {
 	ret := makeDetailedRespone(name, out, filename)
 	print(request.Speaker)
 	os.Remove(filename)
-
 	context.JSON(http.StatusOK, ret)
 }

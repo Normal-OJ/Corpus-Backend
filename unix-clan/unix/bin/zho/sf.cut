@@ -1,0 +1,24 @@
+@UTF8
+*@b	{[scat bab]}
+*@c	{[scat chi]}
+*@d	{[scat dia]}
+*@f	{[scat fam]}
+*@g	skip
+*@i	{[scat co]}
+*@k	{[scat n:let] [allo n0]}
+*@l	{[scat n:let] [allo n0]}
+*@n	{[scat neo]}
+*@o	{[scat on]}
+*@p	{[scat phon]}
+*@q	{[scat meta]}
+*@s	{[scat L2]}
+*@s:*	{[scat L2]}
+*@s$*	{[scat L2]}
+*@si	{[scat sing]}
+*@sl	{[scat sign]}
+*@sas	{[scat sas]}
+*@t	{[scat test]}
+*@u	{[scat uni]}
+*@wp	{[scat wplay]}
+*@x	{[scat unk]}
+*@z:*	{[scat unk]}

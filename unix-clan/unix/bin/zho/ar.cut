@@ -1,0 +1,182 @@
+@UTF8
+% *************************************************
+%   AlloRules for Putonghua
+% *************************************************
+
+X = .*   % anything
+Y =  . % any one thing
+Z =  .  % any one thing
+
+% need to add "v了v"(e.g., 想了想)
+
+RULENAME:   adj-adv-mono
+LEX-ENTRY:
+LEXSURF =  $Y
+LEXCAT = [scat OR adj adv], ![dup no]
+ALLO:
+ALLOSURF = $Y
+ALLOCAT = LEXCAT
+ALLO:
+ALLOSURF = $Y$Y
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y不$Y
+ALLOCAT = LEXCAT, ADD [gen QUE]
+
+RULENAME:  adj-adv-bi
+LEX-ENTRY:
+LEXSURF = $Y$Z
+LEXCAT = [scat OR adj adv], ![dup no]
+ALLO:
+ALLOSURF = $Y$Z
+ALLOCAT = LEXCAT
+ALLO:
+ALLOSURF = $Y$Y$Z$Z
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y不$Y$Z
+ALLOCAT = LEXCAT, ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y$Z不$Y$Z
+ALLOCAT = LEXCAT, ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y$Z没$Y$Z
+ALLOCAT = LEXCAT, ADD [gen QUE]
+
+RULENAME:   cl-dup
+LEX-ENTRY:
+LEXSURF =  $Y
+LEXCAT = [scat cl]
+ALLO:
+ALLOSURF = $Y
+ALLOCAT = LEXCAT
+ALLO:
+ALLOSURF = $Y$Y
+ALLOCAT = LEXCAT, ADD [gen DIST]
+
+RULENAME:   v-mono
+LEX-ENTRY:
+LEXSURF =  $Y
+LEXCAT = [scat OR v v:aux v:dirc v:resc v:cop]
+ALLO:
+ALLOSURF = $Y
+ALLOCAT = LEXCAT
+ALLO:
+ALLOSURF = $Y$Y
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y不$Y	% 看不看
+ALLOCAT = LEXCAT, ADD [gen DIM], ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y没$Y	% 有没有
+ALLOCAT = LEXCAT, ADD [gen DIM], ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y一$Y	% 看一看
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y呀$Y	% 走呀走
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y着$Y着	% 跑着跑着
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y啊$Y	% 走啊走
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y了$Y	% 看了看
+ALLOCAT = LEXCAT, ADD [gen ASP]
+ALLO:
+ALLOSURF = $Y$Y看	% 说说看
+ALLOCAT = LEXCAT, ADD [gen KAN]
+ALLO:
+ALLOSURF = $Y来$Y去	%移来移去
+ALLOCAT = LEXCAT, ADD [gen DIM]
+
+RULENAME:  v-bi
+LEX-ENTRY:
+LEXSURF = $Y$Z
+LEXCAT = [scat OR v v:aux v:dirc]
+ALLO:
+ALLOSURF = $Y$Z
+ALLOCAT = LEXCAT
+ALLO:
+ALLOSURF = $Y$Z$Y$Z      %讨论 to 讨论讨论
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y$Z$Z       % 洗澡 to 洗澡澡
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y$Y$Z       % 说话 to 说说话
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y个$Z       % 说话 to 说个话
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y下$Z       % 睡觉 to 睡下觉
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y不$Y$Z	% 可不可以
+ALLOCAT = LEXCAT, ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y$Z不$Y$Z	% 喜欢不喜欢
+ALLOCAT = LEXCAT, ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y没$Y$Z	% 睡没睡觉
+ALLOCAT = LEXCAT, ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y没$Y$Z	% 注没注意
+ALLOCAT = LEXCAT, ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y$Y$Z$Z	% 蹦蹦跳跳
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y了$Z	% 离了婚
+ALLOCAT = LEXCAT, ADD [gen ASP]
+ALLO:
+ALLOSURF = $Y过$Z	% 吃过饭
+ALLOCAT = LEXCAT, ADD [gen ASP]
+ALLO:
+ALLOSURF = $Y着$Z	% 生着气
+ALLOCAT = LEXCAT, ADD [gen ASP]
+ALLO:
+ALLOSURF = $Y得$Z	% 放得走
+ALLOCAT = LEXCAT, ADD [gen ASP]
+ALLO:
+ALLOSURF = $Y不$Z	% 打不开
+ALLOCAT = LEXCAT, ADD [gen QUE]
+
+
+RULENAME:   other-mono
+LEX-ENTRY:
+LEXSURF =  $Y
+LEXCAT = [scat OR adv co loc n n:relat on post], ![dup no]
+ALLO:
+ALLOSURF = $Y
+ALLOCAT = LEXCAT
+ALLO:
+ALLOSURF = $Y$Y
+ALLOCAT = LEXCAT, ADD [gen DIM]
+
+RULENAME:   other-bi
+LEX-ENTRY:
+LEXSURF =  $Y$Z
+LEXCAT = [scat OR adv n], ![dup no]
+ALLO:
+ALLOSURF = $Y$Z
+ALLOCAT = LEXCAT
+ALLO:
+ALLOSURF = $Y$Y$Z$Z
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y$Z$Z
+ALLOCAT = LEXCAT, ADD [gen DIM]
+ALLO:
+ALLOSURF = $Y$Z不$Y$Z
+ALLOCAT = LEXCAT, ADD [gen QUE]
+ALLO:
+ALLOSURF = $Y$Z没$Y$Z
+ALLOCAT = LEXCAT, ADD [gen QUE]
+
+RULENAME: default
+LEX-ENTRY:
+ALLO:

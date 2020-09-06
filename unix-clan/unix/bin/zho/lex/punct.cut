@@ -1,0 +1,9 @@
+@UTF8
+„ {[scat end]} "end"
+‡ {[scat beg]} "beg"
+, {[scat cm]} "cm"
+“ {[scat bq]} "bq"
+” {[scat eq]} "eq"
+‘ {[scat bq]} "bq2"
+’ {[scat eq]} "eq2"
+

@@ -1,0 +1,18 @@
+@UTF8
+prep|na2=with^v|na2=hold n|* => v|na2=hold n|*
+prep|na2=with^v|na2=hold pro:*|*^* => v|na2=hold pro:*|*
+adj|hao3=good adj|* => adv|hao3=very adj|*
+adj|lao3=old v|* => adv|lao3=always v|*
+n:relat|* nom|de => n:relat|* poss|de
+n:prop|* nom|de => n:prop|* poss|de
+v|yao4=want v|* => v:aux|yao4=should v|*
+v|gei3=give pro:*|* v|* => prep|gei3=for pro:*|* v|*
+adv|yi1=just_as cl|* => num|yi1=one cl|*
+adv|yi1=just_as n|* => num|yi1=one n|*
+v|yao=want v|* => v:aux|yao4=should v|*
+v|* nom|de => v|* cleft|de
+v|* poss|de => v|* cleft|de
+v|yao4=want v:*|* => v:aux|yao4=should v:*|*
+v|* cl|xia4 =>v|* v:dirc|xia4=go_down
+v|yao4&DIM=want v:*|* => v:aux|yao4&DIM=should v:*|*
+n|* v:dirc|shang4=go_up => n|* post|shang4=above

@@ -1,0 +1,6 @@
+% these should appear with & as in &嗯 and are therefore not words
+呃 {[scat co]} "e1" =e=额 {[scat co]} "e1" =e=
+% also this one, although not when it is SFP
+啊 {[scat co]} "a1" =uh=
+% also this one is tagged as a filler in the COPA
+嗯 {[scat co]} "en1" =okay=
