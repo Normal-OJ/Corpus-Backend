@@ -26,3 +26,11 @@ func mor(inFile string, outFile string) {
 	println(res)
 	ioutil.WriteFile(outFile, []byte(res), 0666)
 }
+
+// check checks if a file's format is correct
+func check(file string) bool {
+	res := utils.RunCmd(cmdFolder+"/check", []string{file})
+	println("raw res:")
+	println(res)
+	return !strings.Contains(res, "File")
+}

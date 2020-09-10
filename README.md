@@ -10,6 +10,7 @@ services:
       build: ./BackEnd
       volumes:
         - ./BackEnd:/app
+        - ./BackEnd/unix-clan/lib:/var/lib/unixclan/lib
         - ./somefolder:/cha_store # some folder to store cha files
       env_file:
       - ./BackEnd/.env

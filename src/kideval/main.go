@@ -282,6 +282,11 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 		return
 	}
 
+	if !check(filename) {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "File format error"})
+		return
+	}
+
 	//mor have bug that can not support
 	chaWithMor := uuid.NewV4().String() + ".cha"
 	os.Create(chaWithMor)
@@ -337,6 +342,10 @@ func UploadDetailedKidevalRequestHandler(context *gin.Context) {
 	_, err = io.Copy(tmpFile, file)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"result": err.Error})
+		return
+	}
+	if !check(filename) {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "File format error"})
 		return
 	}
 	mor(filename, filename)
