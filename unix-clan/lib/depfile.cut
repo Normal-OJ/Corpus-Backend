@@ -12,7 +12,7 @@
 		Text Media PlayRole LENA
 		Justice Attorney Doctor Nurse Student Teacher
 		Host Guest Leader Member Narrator Speaker Audience
-@Options:	heritage IPA CA CA-Unicode multi bullets notarget dummy mismatch
+@Options:	heritage IPA CA CA-Unicode multi bullets notarget dummy
 @ID:	@d<yy;> @d<yy;mm.> @d<yy;mm.dd>
 	@e<White> @e<Black> @e<Latino> @e<Asian> @e<Pacific> @e<Native> @e<Multiple>  @e<Unknown>
 	@s<WC> @s<UC> @s<MC> @s<LI>
@@ -35,6 +35,7 @@
 @Time Start:	@t<hh:mm:ss> @t<mm:ss>
 @Transcriber:	*
 @Transcription:	eye_dialect partial full detailed coarse checked anonymized
+@Types:	*
 @Videos:	*
 @Warning:	* [*] "*
 
