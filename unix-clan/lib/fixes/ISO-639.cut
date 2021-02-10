@@ -3,6 +3,9 @@
 # List one language code separated by tab,
 # at the end followed by Capitalized language name.
 # Language name can have spaces in it, for example: Manado Malay
+tel	Telugu
+dcc	Deccan
+ltz	Luxembourgish
 jam	Jamaican Creole
 mar	Marathi
 dyo	Jola-Fonyi

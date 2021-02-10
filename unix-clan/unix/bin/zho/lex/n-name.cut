@@ -1,5 +1,12 @@
 @UTF8
-@Window:	137_205_461_1108_0_0_62_1_62_1
+@Window:	157_1429_677_700_-1_-1_3_0_3_0
+龚美荣 {[scat n:prop]} "gong1mei3rong2" ==
+龚雪糖 {[scat n:prop]} "gong1xue3tang2" ==
+龚雪 {[scat n:prop]} "gong1xue3" ==
+龚 {[scat n:prop]} "gong1" ==
+朱玲熙 {[scat n:prop]} "zhu1ling2xi1" ==
+朱玲 {[scat n:prop]} "zhu1ling2" ==
+姨夫 {[scat n:prop]} "yi2fu1" ==
 阿顺 {[scat n:prop]} "a1shun4" =AShun=
 拉比 {[scat n:prop]} "la1bi3" =Rabi=
 阿尔丁 {[scat n:prop]} "a1er3ding1" == 
@@ -92,7 +99,7 @@
 蔡欣雨 {[scat n:prop]} "cai4xin1yu3" ==
 蔡芝萱 {[scat n:prop]} "cai4zhi1xuan1" ==
 燦羽 {[scat n:prop]} "can4yu3" ==
-苍映丫姬 {[scat n:prop]} "cang1ying4ya1ji1" =Japanese_name=
+苍映丫姬 {[scat n:prop]} "cang1ying4ya1ji1" =Japanese_prop=
 曹博 {[scat n:prop]} "cao2bo2" ==
 曹嘉洋 {[scat n:prop]} "cao2jiao1yang2" ==
 曹侃恩 {[scat n:prop]} "cao2kan3en1" == 
@@ -101,10 +108,10 @@
 曹昕洋 {[scat n:prop]} "cao2xin1yang2" ==
 曹烨 {[scat n:prop]} "cao2ye4" ==
 曹亦辰 {[scat n:prop]} "cao2yi4chen2" == 
-长岗府子 {[scat n:prop]} "chang2gang3fu3mei3zi3" =Japanese_name=
-长岗府美子 {[scat n:prop]} "chang2gang3fu3mei3zi3" =Japanese_name=
+长岗府子 {[scat n:prop]} "chang2gang3fu3mei3zi3" =Japanese_prop=
+长岗府美子 {[scat n:prop]} "chang2gang3fu3mei3zi3" =Japanese_prop=
 常欣怡 {[scat n:prop]} "chang2xin1yi2" ==
-长野俊成 {[scat n:prop]} "chang2ye3jun4cheng2" =Japanese_name=
+长野俊成 {[scat n:prop]} "chang2ye3jun4cheng2" =Japanese_prop=
 长平 {[scat n:prop]} "chang3Ping2" == 
 唱唱 {[scat n:prop]} "chang4chang4" == 
 畅畅 {[scat n:prop]} "chang4chang4" == 
@@ -152,7 +159,7 @@
 楚楚 {[scat n:prop]} "chu3chu3" == 
 楚月 {[scat n:prop]} "chu3yue4" == 
 楚月月 {[scat n:prop]} "chu3yue4yue4" == 
-川岛元界 {[scat n:prop]} "chuan1dao3yuan2jie4" =Japanese_name=
+川岛元界 {[scat n:prop]} "chuan1dao3yuan2jie4" =Japanese_prop=
 纯颖 {[scat n:prop]} "chun2ying3" == 
 次郎 {[scat n:prop]} "ci4lang2" == 
 丛丛 {[scat n:prop]} "cong2cong2" == 
@@ -162,11 +169,11 @@
 崔蒂  {[scat n:prop]} "cui1di4" ==
 崔珺哲 {[scat n:prop]} "cui1jun1zhe2" ==
 翠比 {[scat n:prop]} "cui4bi3" == 
-村野由纪 {[scat n:prop]} "cun1ye3you2ji4" =Japanese_name=
+村野由纪 {[scat n:prop]} "cun1ye3you2ji4" =Japanese_prop=
 达轩 {[scat n:prop]} "da2xuan1" ==
-大次郎 {[scat n:prop]} "da4ci4lang2" =Japanese_name=
-大吉贵成 {[scat n:prop]} "da4ji2gui4cheng2" =Japanese_name=
-大寺卫西野 {[scat n:prop]} "da4si4wei4xi1ye3" =Japanese_name=
+大次郎 {[scat n:prop]} "da4ci4lang2" =Japanese_prop=
+大吉贵成 {[scat n:prop]} "da4ji2gui4cheng2" =Japanese_prop=
+大寺卫西野 {[scat n:prop]} "da4si4wei4xi1ye3" =Japanese_prop=
 大婷 {[scat n:prop]} "da4ting2" =Dating=
 大洋 {[scat n:prop]} "da4yang2" ==
 代家琪 {[scat n:prop]} "dai4jia1qi" == 
@@ -243,7 +250,7 @@
 冯浩宇 {[scat n:prop]} "feng2hao4yu3" ==
 冯羽心 {[scat n:prop]} "feng2yu3xin1" ==
 凤姨 {[scat n:prop]} "feng4yi2" =Auntie_Feng=
-福井山太郎 {[scat n:prop]} "fu2jing3shan1tai4lang2" =Japanese_name=
+福井山太郎 {[scat n:prop]} "fu2jing3shan1tai4lang2" =Japanese_prop=
 扶罗 {[scat n:prop]} "fu2luo1" == 
 伏芷嫣 {[scat n:prop]} "fu2zhi3yan1" == 
 傅恩庭 {[scat n:prop]} "fu4en1ting2" ==
@@ -252,7 +259,7 @@
 付子逸 {[scat n:prop]} "fu4zi3yi4"=fu_zi_yi=
 盖茨 {[scat n:prop]} "gai4ci2" ==
 甘主任 {[scat n:prop]} "gan1zhu3ren4" ==
-冈田博道 {[scat n:prop]} "gang1tian2bo2dao4" =Japanese_name=
+冈田博道 {[scat n:prop]} "gang1tian2bo2dao4" =Japanese_prop=
 港仔 {[scat n:prop]} "gang2zai2" == 
 高巴 {[scat n:prop]} "gao1ba1" ==
 高德森 {[scat n:prop]} "gao1de2sen1" ==
@@ -260,7 +267,7 @@
 高恺源 {[scat n:prop]} "gao1kai3yuan2" == 
 高乐高 {[scat n:prop]} "gao1le4gao1" ==
 高龙睿祺 {[scat n:prop]} "gao1long2rui4qi2" ==
-高桥亚成 {[scat n:prop]} "gao1qiao2ya4cheng2" =Japanese_name=
+高桥亚成 {[scat n:prop]} "gao1qiao2ya4cheng2" =Japanese_prop=
 高扬 {[scat n:prop]} "gao1yang2" ==
 高艺媛 {[scat n:prop]} "gao1yi4yuan2" ==
 珞珞 {[scat n:prop]} "ge2ge2" ==
@@ -270,7 +277,7 @@
 龚宇骋 {[scat n:prop]} "gong1yu2cheng3" ==
 龚宇聘 {[scat n:prop]} "gong1yu2pin4" =gong_yupin=
 龚佳妮  {[scat n:prop]} "gong3jia1ni1" == 
-谷口美千子 {[scat n:prop]} "gu3kou3mei3qian1zi3" =Japanese_name=
+谷口美千子 {[scat n:prop]} "gu3kou3mei3qian1zi3" =Japanese_prop=
 古拉 {[scat n:prop]} "gu3la1" ==
 古利 {[scat n:prop]} "gu3li4" ==
 古丽菲亚 {[scat n:prop]} "gu3li4fei1ya4" ==
@@ -317,9 +324,9 @@
 皓皓 {[scat n:prop]} "hao4hao4" ==
 浩南 {[scat n:prop]} "hao4nan2" ==
 昊宇 {[scat n:prop]} "hao4yu3" ==
-何菲儿 {[scat n:prop]} "he2fei1er" =Japanese_name=
+何菲儿 {[scat n:prop]} "he2fei1er" =Japanese_prop=
 何和 {[scat n:prop]} "he2he2" ==
-和合秋叶 {[scat n:prop]} "he2he2qiu1ye4" =Japanese_name=
+和合秋叶 {[scat n:prop]} "he2he2qiu1ye4" =Japanese_prop=
 何家意 {[scat n:prop]} "he2jia1yi4" ==
 何妍辰 {[scat n:prop]} "he2yan2chen2" ==
 何一洁 {[scat n:prop]} "he2yi1jie2" ==
@@ -363,8 +370,8 @@
 惠珍 {[scat n:prop]} "hui4zhen1" ==
 基卜 {[scat n:prop]} "ji1bu3" ==
 几米 {[scat n:prop]} "ji1mi3" == 
-吉村原香 {[scat n:prop]} "ji2cun1yuan2xiang1" =Japanese_name=
-吉渠将 {[scat n:prop]} "ji2qu2jiang4" =Japanese_name=
+吉村原香 {[scat n:prop]} "ji2cun1yuan2xiang1" =Japanese_prop=
+吉渠将 {[scat n:prop]} "ji2qu2jiang4" =Japanese_prop=
 季玥彤 {[scat n:prop]} "ji4yue4tong2" == 
 佳俊 {[scat n:prop]} "Jia_Jun" == 
 嘉 {[scat n:prop]} "jia1" == 
@@ -602,7 +609,7 @@
 闵晨宇 {[scat n:prop]} "min3chen2yu3" == 
 敏敏 {[scat n:prop]} "min3min3" ==
 明 {[scat n:prop]} "ming2" ==
-明喜会 {[scat n:prop]} "ming2xi3hui4" =Japanese_name=
+明喜会 {[scat n:prop]} "ming2xi3hui4" =Japanese_prop=
 明泽 {[scat n:prop]} "ming2ze2" ==
 默默 {[scat n:prop]} "mo4mo" == 
 莫特 {[scat n:prop]} "mo4te4" =Mott=
@@ -616,8 +623,8 @@
 娜菲莎 {[scat n:prop]} "na4fei1sha1" ==
 娜娜 {[scat n:prop]} "na4na4" 
 南哥 {[scat n:prop]} "nan2ge2" == 
-南角 {[scat n:prop]} "nan2jiao3" =Japanese_name=
-南角贵元 {[scat n:prop]} "nan2jiao3gui4yuan2" =Japanese_name=
+南角 {[scat n:prop]} "nan2jiao3" =Japanese_prop=
+南角贵元 {[scat n:prop]} "nan2jiao3gui4yuan2" =Japanese_prop=
 楠楠 {[scat n:prop]} "nan2nan2" ==
 南南 {[scat n:prop]} "nan2nan2" == 
 南亦 {[scat n:prop]} "nan2yi4" == 
@@ -652,7 +659,7 @@
 彭翊韩 {[scat n:prop]} "peng2yu4han2" ==
 皮洁 {[scat n:prop]} "pi2jie2" ==
 皮诸葛 {[scat n:prop]} "pi2zhu1ge3" ==
-片岗新 {[scat n:prop]} "pian4gang3xin1" =Japanese_name=
+片岗新 {[scat n:prop]} "pian4gang3xin1" =Japanese_prop=
 瓶瓶 {[scat n:prop]} "ping2ping2" == 
 浦叶奕 {[scat n:prop]} "pu3ye4yi4" ==
 戚佳怡 {[scat n:prop]} "qi1jia2yi2" ==
@@ -675,13 +682,13 @@
 乔子桐 {[scat n:prop]} "qiao2zi3tong2" ==
 勤勤  {[scat n:prop]} "qin2qin2" ==
 琴琴 {[scat n:prop]} "qin2qin2" == 
-青鸪丽娜 {[scat n:prop]} "qing1gu3li4na4" =Japanese_name=
+青鸪丽娜 {[scat n:prop]} "qing1gu3li4na4" =Japanese_prop=
 晴晴 {[scat n:prop]} "qing2qing2" == 
 琼琼 {[scat n:prop]} "qiong2qiong2" ==
 邱添 {[scat n:prop]} "qiu1tian1" == 
 瞿玥宸 {[scat n:prop]} "qu2yue4chen2" ==
 曲成 {[scat n:prop]} "qu3cheng2" == 
-泉井花 {[scat n:prop]} "quan2jing3hua1" =Japanese_name=
+泉井花 {[scat n:prop]} "quan2jing3hua1" =Japanese_prop=
 然然 {[scat n:prop]} "ran2ran2" == 
 荛荛 {[scat n:prop]} "rao2rao2" ==
 热娜提 {[scat n:prop]} "re4na4ti2" ==
@@ -702,12 +709,12 @@
 赛菲娜 {[scat n:prop]} "sai4fei1na4" ==
 萨姆斯娅 {[scat n:prop]} "sai4mu3si1ya4" ==
 赛伊尔 {[scat n:prop]} "sai4yi1er3" ==
-桑斌真由美 {[scat n:prop]} "sang1bin1zhen1you2mei43" =Japanese_name=
+桑斌真由美 {[scat n:prop]} "sang1bin1zhen1you2mei43" =Japanese_prop=
 莎莎 {[scat n:prop]} "sha1sha1" == 
 傻三 {[scat n:prop]} "sha3san1" == 
 珊宝 {[scat n:prop]} "shan1bao3" ==
-山本庞 {[scat n:prop]} "shan1ben3pang2" =Japanese_name=
-山江新一郎 {[scat n:prop]} "shan1jiang1xin1yi1lang2" =Japanese_name=
+山本庞 {[scat n:prop]} "shan1ben3pang2" =Japanese_prop=
+山江新一郎 {[scat n:prop]} "shan1jiang1xin1yi1lang2" =Japanese_prop=
 珊珊 {[scat n:prop]} "shan1shan1" ==
 山山 {[scat n:prop]} "shan1shan1" == 
 扇扇 {[scat n:prop]} "shan4shan4" == 
@@ -783,7 +790,7 @@
 天祥 {[scat n:prop]} "tian1xiang2" ==
 天笑 {[scat n:prop]} "tian1xiao4" ==
 田心 {[scat n:prop]} "tian1xin1" ==
-田多莉娜 {[scat n:prop]} "tian2duo1li4na4" =Japanese_name=
+田多莉娜 {[scat n:prop]} "tian2duo1li4na4" =Japanese_prop=
 田家炳 {[scat n:prop]} "tian2jia1bing3" == 
 恬恬 {[scat n:prop]} "tian2tian2" ==
 甜甜 {[scat n:prop]} "tian2tian2" == 
@@ -906,7 +913,7 @@
 吴煜华 {[scat n:prop]} "wu2yu4hua2" ==
 吴泽凡 {[scat n:prop]} "wu2ze2fan2" ==
 吴正阳  {[scat n:prop]} "wu2zheng4yang2" == 
-五圣惠美 {[scat n:prop]} "wu3sheng4hui4mei3" =Japanese_name=
+五圣惠美 {[scat n:prop]} "wu3sheng4hui4mei3" =Japanese_prop=
 志娟 {[scat n:prop]} "xhi4juan1" ==
 希卜凯迪 {[scat n:prop]} "xi1bu3kai3di2" ==
 西尔维娅伯安妮 {[scat n:prop]} "xi1er3wei2ya4bo2an1ni2" =Sylvia_Browne=
@@ -921,11 +928,11 @@
 夏夏 {[scat n:prop]} "xia2xia2" ==
 霞霞 {[scat n:prop]} "xia2xia2" ==
 夏静怡 {[scat n:prop]} "xia4jing4yi2" ==
-夏目漱石 {[scat n:prop]} "xia4mu4su4shi2" =Japanese_name=
+夏目漱石 {[scat n:prop]} "xia4mu4su4shi2" =Japanese_prop=
 夏仁豪 {[scat n:prop]} "xia4ren2hao2" == 
 夏小 {[scat n:prop]} "xia4xiao3" ==
 夏叶灵 {[scat n:prop]} "xia4ye4ling2" 
-复珍附子 {[scat n:prop]} "xia4zhen1fu4zi3" =Japanese_name=
+复珍附子 {[scat n:prop]} "xia4zhen1fu4zi3" =Japanese_prop=
 湘君 {[scat n:prop]} "xiang1jun1" == 
 祥祥 {[scat n:prop]} "xiang2xiang2" ==
 翔翔 {[scat n:prop]} "xiang2xiang2" ==
@@ -938,7 +945,7 @@
 宵宵 {[scat n:prop]} "xiao1xiao1" == 
 萧阳阳 {[scat n:prop]} "xiao1yang2yang2" ==
 小小 {[scat n:prop]} "xiao2xiao3" =little_little=
-小百合 {[scat n:prop]} "xiao3bai3he2" =Japanese_name=
+小百合 {[scat n:prop]} "xiao3bai3he2" =Japanese_prop=
 小宝 {[scat n:prop]} "xiao3bao3" =cartoon=
 小波 {[scat n:prop]} "xiao3bo1" ==
 小曹 {[scat n:prop]} "xiao3cao2" == 
@@ -969,7 +976,7 @@
 小雷 {[scat n:prop]} "xiao3lei2" ==
 小力 {[scat n:prop]} "xiao3li4" == 
 小丽 {[scat n:prop]} "xiao3li4" == 
-小量藏之助 {[scat n:prop]} "xiao3liang4zang4zhi1zhu4" =Japanese_name=
+小量藏之助 {[scat n:prop]} "xiao3liang4zang4zhi1zhu4" =Japanese_prop=
 小龙  {[scat n:prop]} "xiao3long2" ==
 小伦 {[scat n:prop]} "xiao3lun2" ==
 小倫 {[scat n:prop]} "xiao3lun2" ==
@@ -1024,19 +1031,19 @@
 小珍 {[scat n:prop]} "xiao3zhen1" ==
 小政 {[scat n:prop]} "xiao3zheng4" == 
 小政哥 {[scat n:prop]} "xiao3zheng4ge1" == 
-小志 {[scat n:prop]} "xiao3zhi4" =Japanese_name=
+小志 {[scat n:prop]} "xiao3zhi4" =Japanese_prop=
 小茱 {[scat n:prop]} "xiao3zhu1" ==
 小竹 {[scat n:prop]} "xiao3zhu2" ==
-孝光真尤 {[scat n:prop]} "xiao4guang1zhen1you2" =Japanese_name=
+孝光真尤 {[scat n:prop]} "xiao4guang1zhen1you2" =Japanese_prop=
 笑笑 {[scat n:prop]} "xiao4xiao4" == 
 谢浩泽 {[scat n:prop]} "xie4hao4ze2" ==
 谢嘉魁 {[scat n:prop]} "xie4jia1kui2" ==
 谢天谣 {[scat n:prop]} "xie4tian1yao2" ==
-新次 {[scat n:prop]} "xin1ci4" =Japanese_name=
+新次 {[scat n:prop]} "xin1ci4" =Japanese_prop=
 馨维 {[scat n:prop]} "xin1wei2" == 
 馨馨 {[scat n:prop]} "xin1xin1" ==
 鑫鑫 {[scat n:prop]} "xin1xin1" == 
-欣欣 {[scat n:prop]} "xin1xin1" =nickname=
+欣欣 {[scat n:prop]} "xin1xin1" =nickprop=
 新雅 {[scat n:prop]} "xin1ya3" ==
 欣怡 {[scat n:prop]} "xin1yi2" ==
 欣宜 {[scat n:prop]} "xin1yi2" ==
@@ -1120,7 +1127,7 @@
 舜尧 {[scat n:prop]} "yao1shun4" =two_wise_emperors=
 姚明 {[scat n:prop]} "yao2ming2" ==
 姚姚 {[scat n:prop]} "yao2yao2" == 
-野田西带子 {[scat n:prop]} "ye3tian2xi1dai4zi0" =Japanese_name=
+野田西带子 {[scat n:prop]} "ye3tian2xi1dai4zi0" =Japanese_prop=
 叶婧力  {[scat n:prop]} "ye4jing4li4" == 
 叶老师 {[scat n:prop]} "ye4lao3shi1" ==
 夜摩西 {[scat n:prop]} "ye4mo2xi1" ==
@@ -1139,7 +1146,7 @@
 宜婷  {[scat n:prop]} "yi2ting2" ==
 怡文 {[scat n:prop]} "yi2wen2" =Kendra=
 怡希 {[scat n:prop]} "yi2xi1" =sweet_hope=
-宜姚 {[scat n:prop]} "yi2yao2" =nameer_beautiful=
+宜姚 {[scat n:prop]} "yi2yao2" =proper_beautiful=
 乙祥 {[scat n:prop]} "yi3xiang2" ==
 意 {[scat n:prop]} "yi4" ==
 弈 {[scat n:prop]} "yi4" ==
@@ -1264,7 +1271,7 @@
 甄素惠 {[scat n:prop]} "zhen1su4hui4" ==
 珍珍 {[scat n:prop]} "zhen1zhen1" ==
 真真 {[scat n:prop]} "zhen1zhen1" == 
-贞子雅子 {[scat n:prop]} "zhen1zi3ya3zi3" =Japanese_name=
+贞子雅子 {[scat n:prop]} "zhen1zi3ya3zi3" =Japanese_prop=
 郑书妍 {[scat n:prop]} "zheng4shu1yan2" ==
 郑雨欣 {[scat n:prop]} "zheng4yu3xin1" ==
 郑雨萱 {[scat n:prop]} "zheng4yu3xuan1" ==
@@ -1308,5 +1315,5 @@
 祖丽葩尔 {[scat n:prop]} "zu3li4pa1er3" ==
 祖力皮卡尔 {[scat n:prop]} "zu3li4pi2ka2er3" ==
 祝灏佳 {[scat n:prop]} "zu4hao4jia1" ==
-左步浩太郎 {[scat n:prop]} "zuo3bu4hao4tai4lang2" =Japanese_name=
-佐藤光一 {[scat n:prop]} "zuo3teng2guang1yi1" =Japanese_name=
+左步浩太郎 {[scat n:prop]} "zuo3bu4hao4tai4lang2" =Japanese_prop=
+佐藤光一 {[scat n:prop]} "zuo3teng2guang1yi1" =Japanese_prop=

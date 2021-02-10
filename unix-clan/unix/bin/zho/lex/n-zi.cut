@@ -1,5 +1,6 @@
 @UTF8
-@Window:	137_205_461_1108_0_0_0_0_0_0
+@Window:	88_1928_677_700_-1_-1_2929_0_2929_0
+娘子 {[scat n]} "niang2zi" =lady=
 布子 {[scat n]} "bu4zi" =cloth=
 虾爬子 {[scat n]} "xia1pa2zi" =shrimp_crawler=
 滚子 {[scat n]} "gun3zi" =rolling_pulley=
@@ -89,6 +90,7 @@
 管子 {[scat n]} "guan3zi3" =tube=
 罐子 {[scat n]} "guan4zi" =jug=
 柜子 {[scat n]} "gui4zi" =cupboard=
+龟子 {[scat n]} "gui1zi" =tortoise=
 辊子 {[scat n]} "gun3zi" =roller=
 棍子 {[scat n]} "gun4zi" =rod=
 锅子 {[scat n]} "guo1zi" =pot=

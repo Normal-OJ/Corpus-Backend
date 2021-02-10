@@ -54,15 +54,16 @@
 N  = |n,|n:prop,|n:pt
 V  = |v,|cop,|aux
 AMC = |aux,|mod,|cop
-PRO   = |pro:per,|pro:indef,|pro:refl,|pro:obj,|pro:sub
+PRO   = |pro:per,|pro:indef,|pro:refl,|pro:obj,|pro:sub,|pro:int
 MOD += |adj,|det:art,|det:poss,|det:num,|det:dem,|qn
 ART = |det:art
 DET = |det:dem
-ADV   = |adv,|adv:loc,|adv:tem,|adv:int
-MODPAST = could + might + should
+ADV   = |adv,|adv:tem
 NP   = $N + $PRO + ($MOD ^ $N) + ($DET ^ $N) + ($ART ^ $N) + ($ART ^ $MOD ^ $N) + ($DET ^ $MOD ^ $N)
 
 RULENAME: N1
+ADD:	1 IF N7 = 1
+ADD:	2 IF N7 = 2
 if
 INCLUDE:	$N
 DIFFERENT_STEMS:		1
@@ -74,10 +75,17 @@ DIFFERENT_STEMS:		1
 
 RULENAME: N3
 if
-INCLUDE:	$MOD + $DET
+INCLUDE:	$MOD
+EXCLUDE:	$b ^ $MOD ^ $e
 DIFFERENT_STEMS:		1
 
 RULENAME: N4
+ADD:	1 IF N6 = 1
+ADD:	2 IF N6 = 2
+ADD:	1 IF N8 = 1
+ADD:	2 IF N8 = 2
+ADD:	1 IF N9 = 1
+ADD:	2 IF N9 = 2
 if
 INCLUDE:	$MOD ^ $N
 DIFFERENT_STEMS:		>1
@@ -96,40 +104,52 @@ RULENAME: N7
 if
 INCLUDE:	$N,-PL
 DIFFERENT_STEMS:		1
-if
-POINT:	2
-INCLUDE:	$N,-PL + |n:pt
-DIFFERENT_STEMS:		1
 
 RULENAME: N8
 if
-INCLUDE:	$MOD ^ $N ^ $V
+INCLUDE:	($MOD ^ $N ^ $V) + ($MOD ^ $N ^ |mod)
 DIFFERENT_STEMS:		>2
 
 RULENAME: N9
 if
-INCLUDE:	$MOD ^ $MOD ^ $N
+INCLUDE:	($MOD ^ $MOD ^ $N) + ($MOD ^ $MOD ^ $PRO)
 DIFFERENT_STEMS:		>2
 
 RULENAME: N10
 if
-INCLUDE:	($ADV ^ $MOD)
-DIFFERENT_STEMS:		>1
+INCLUDE:	(|adv ^ |adj) + (|adv ^ |n,;here) + (|adv ^ |n,;there) + (|adv ^ |part)
+EXCLUDE:	all ^ done
+DIFFERENT_STEMS_POS:	1
+
 
 RULENAME: N11
 if
-INCLUDE:	|n,-* + |adj,-* + |n,#* + |adj,#*
-EXCLUDE:	-POSS + -PL
-DIFFERENT_STEMS:		1
-
+INCLUDE:	|n,-* + |adj,-* + |n,#* + |adj,#* + |co,-*
+EXCLUDE:	-POSS + -PL + -Y
+DIFFERENT_STEMS:	1
+if
+POINT:	2
+INCLUDE:	|adj*,-Y
 
 RULENAME: V1
+ADD:	1 IF V4 = 1
+ADD:	2 IF V4 = 2
+ADD:	1 IF V7 = 1
+ADD:	2 IF V7 = 2
+ADD:	1 IF V10 = 1
+ADD:	2 IF V10 = 2
+ADD:	1 IF V12 = 1
+ADD:	2 IF V12 = 2
+ADD:	1 IF V16 = 1	% secondary
+ADD:	2 IF V16 = 2	% secondary
 if
 INCLUDE:	$V
 EXCLUDE:	look + stop
 DIFFERENT_STEMS:	1
 
 RULENAME: V2
+ADD:	1 IF V3 = 1
+ADD:	2 IF V3 = 2
 if
 INCLUDE:	|prep
 DIFFERENT_STEMS:	1
@@ -137,15 +157,15 @@ DIFFERENT_STEMS:	1
 RULENAME: V3
 if
 INCLUDE:	|prep ^ $NP
-EXCLUDE:	(lookit ^ this) + (in ^ there) + (on ^ there)
 DIFFERENT_STEMS_POS:	1
-if
-POINT:	2
-INCLUDE:	(in ^ there) + (on ^ there)
 
 RULENAME: V4
+ADD:	1 IF V151 = 1
+ADD:	2 IF V151 = 2
+ADD:	1 IF V16 = 1
+ADD:	2 IF V16 = 2
 if
-INCLUDE:	$NP ^ |cop ^ ($NP + $MOD)
+INCLUDE:	($NP + |pro:dem) ^ |cop ^ ($NP + $MOD)
 EXCLUDE:	how ^ are ^ you ^ ?
 DIFFERENT_STEMS:	>1
 if
@@ -153,17 +173,31 @@ POINT:	2
 INCLUDE:	|*,~|cop
 
 RULENAME: V5
+ADD:	1 IF V6 = 1
+ADD:	2 IF V6 = 2
+ADD:	1 IF V9 = 1
+ADD:	2 IF V9 = 2
+ADD:	1 IF V11 = 1	% secondary 
+ADD:	2 IF V11 = 2	% secondary 
+ADD:	1 IF V13 = 1	% secondary 
+ADD:	2 IF V13 = 2	% secondary 
+ADD:	1 IF S8 = 1
+ADD:	2 IF S8 = 2
 if
 INCLUDE:	(|mod:aux ^ $V)
 DIFFERENT_STEMS:	>1
 
 RULENAME: V6
+ADD:	1 IF V13 = 1
+ADD:	2 IF V13 = 2
+ADD:	1 IF V152 = 1
+ADD:	2 IF V152 = 2
 if
-INCLUDE:	(|aux ^ $V) + (|aux ^|neg ^ $V) + (|aux ^*^ |part)
+INCLUDE:	(|aux ^ $V) + (|aux ^|neg ^ $V) + (|aux ^*^ |part) + (|mod,;do ^ $V) + (|mod,;do ^ $NP)
 DIFFERENT_STEMS:	>1
 if
 POINT:	2
-INCLUDE:	don't
+INCLUDE:	|mod,;do^~|neg
 
 RULENAME: V7
 if
@@ -171,30 +205,35 @@ INCLUDE:	|part,-PRESP
 DIFFERENT_STEMS:	1
 
 RULENAME: V8
+ADD:	1 IF N10 = 1
+ADD:	2 IF N10 = 2
+ADD:	1 IF V8 = 1
+ADD:	2 IF V8 = 2
 if
 INCLUDE:	$ADV
 EXCLUDE:	(I ^ think ^ so) + here + there
 DIFFERENT_STEMS:	>1
 
 RULENAME: V9
+ADD:	1 IF V11 = 1
+ADD:	2 IF V11 = 2
+ADD:	1 IF V153 = 1
+ADD:	2 IF V153 = 2
 if
 INCLUDE:	|mod ^ $V
 EXCLUDE:	(I ^ think ^ so) + here + there
 DIFFERENT_STEMS:	1
-if
-POINT:	2
-INCLUDE:	can't + won't
 
 RULENAME: V10
 if
-INCLUDE:	|v,-3S
+INCLUDE:	|v,-3S 
 EXCLUDE:	does + says
 DIFFERENT_STEMS:	1
 
 RULENAME: V11
 if
-INCLUDE:	$MODPAST
-DIFFERENT_STEMS:	1
+INCLUDE:	(|mod,;could + |mod,;might + |mod,;should + |mod,;will,&COND) ^ |*
+DIFFERENT_STEMS:	>1
 
 RULENAME: V12
 if
@@ -204,23 +243,34 @@ DIFFERENT_STEMS:	1
 RULENAME: V13
 if
 INCLUDE:	(|aux,-PAST) + (|aux,&PAST) + did + didn't
+EXCLUDE:	|aux,;get
 DIFFERENT_STEMS:	1
 
 RULENAME: V14
 if
-INCLUDE:	$ADV ^ $V
-DIFFERENT_STEMS:	>1
+INCLUDE:	($ADV ^ $V) + ($ADV ^ |adj) + (right ^ (here + there)) + ($V ^ $ADV)
+EXCLUDE:	($b ^ $ADV) + ($ADV ^ $e) + (|adv,;all ^ |part,;do,&PASTP)
+DIFFERENT_STEMS_POS:	1
 
-RULENAME: V15
+RULENAME: V151    % copula
 if
-INCLUDE:	can + is + do + did
+INCLUDE:	($b ^ $NP ^ |cop ^ $e) + ($b ^ |* ^ $NP ^ |cop ^ $e)
 DIFFERENT_STEMS:	1
-EXCLUDE:	(|aux) + (|v) + (I ^ can't)
+
+RULENAME: V152    % auxiliary
+if
+INCLUDE:	($b ^ $NP ^ |aux ^ $e) + ($b ^ |* ^ $NP ^ |aux ^ $e)
+DIFFERENT_STEMS:	1
+
+RULENAME: V153    % modal
+if
+INCLUDE:	|mod ^ $e
+DIFFERENT_STEMS:	1
 
 RULENAME: V16
 if
-INCLUDE:	|cop,&PAST
-DIFFERENT_STEMS:	1
+INCLUDE:	|cop,&PAST ^ *
+DIFFERENT_STEMS_POS:	2
 
 RULENAME: V17
 if
@@ -229,86 +279,135 @@ EXCLUDE:	hardly + really
 DIFFERENT_STEMS:	1
 
 RULENAME: Q1
+ADD:	1 IF Q4 = 1
 ADD:	2 IF Q4 = 2
+ADD:	1 IF Q8 = 1
 ADD:	2 IF Q8 = 2
+ADD:	1 IF Q9 = 1
+ADD:	2 IF Q9 = 2
+ADD:	1 IF Q10 = 1
+ADD:	2 IF Q10 = 2
+ADD:	1 IF Q6 = 1	% secondary
+ADD:	2 IF Q6 = 2	% secondary
+ADD:	1 IF Q11 = 1	% secondary
+ADD:	2 IF Q11 = 2	% secondary
 if
 % INCLUDE:	(* ^*^ ?)
 DIFFERENT_STEMS:	>1
 
 RULENAME: Q2
+ADD:	1 IF Q4 = 1
 ADD:	2 IF Q4 = 2
+ADD:	1 IF Q8 = 1
 ADD:	2 IF Q8 = 2
+ADD:	1 IF Q10 = 1
+ADD:	2 IF Q10 = 2
+ADD:	1 IF Q6 = 1	% secondary
+ADD:	2 IF Q6 = 2	% secondary
+ADD:	1 IF Q11 = 1	% secondary
+ADD:	2 IF Q11 = 2	% secondary
 if
-INCLUDE:	(why ?) + (where ^*^ going ?) + (what this ?) + (who else ?)
+INCLUDE:	(why ^ ?) + (where ^*^ going ^ ?) + (what ^ this ^ ?) + (who ^ else ^ ?)
 DIFFERENT_STEMS:	>1
 
 RULENAME: Q3
+ADD:	1 IF Q5 = 1
+ADD:	2 IF Q5 = 2
 if
 INCLUDE:	|neg,;not + |qn,;no
 DIFFERENT_STEMS:	>1
 
 RULENAME: Q4
+ADD:	1 IF Q6 = 1
+ADD:	2 IF Q6 = 2
+ADD:	1 IF Q11 = 1	% secondary
+ADD:	2 IF Q11 = 2	% secondary
 if
-INCLUDE:	(|pro:int ^*^ |v) + (|adv:int ^*^ |v)
+INCLUDE:	$b ^ |pro:int ^*^ |v
 DIFFERENT_STEMS:	>1
 
 RULENAME: Q5
+ADD:	1 IF Q7 = 1
+ADD:	2 IF Q7 = 2
+ADD:	1 IF Q11 = 1	% secondary
+ADD:	2 IF Q11 = 2	% secondary
 if
-INCLUDE:	($NP ^*^ |neg ^ |v)
+INCLUDE:	($NP ^*^ |neg ^ |v) + ($NP ^*^ ~|neg ^ |v)
+EXCLUDE:	I ^ don't ^ know
 DIFFERENT_STEMS:	>1
 if
 POINT:	2
-INCLUDE:	I don't know
+INCLUDE:	I ^ don't ^ know
 
 RULENAME: Q6
+ADD:	1 IF Q11 = 1
+ADD:	2 IF Q11 = 2
 if
-INCLUDE:	(|pro:int + |adv:int) ^ (|aux + |mod + |cop) 
-DIFFERENT_STEMS:	1
-if
-POINT:	2
-INCLUDE:	how are you ?
+INCLUDE:	(|pro:int ^ $AMC) + (|pro:int,~|*)
+EXCLUDE:	(how ^ are) + (what ^ is)
+DIFFERENT_STEMS:	>1
 
 RULENAME: Q7
+ADD:	1 IF Q11 = 1
+ADD:	2 IF Q11 = 2
 if
-INCLUDE:	((|cop + |mod + |aux) ^ |neg) + ((|cop + |mod + |aux) ^ ~|neg,;not)
-EXCLUDE:	how are you
-DIFFERENT_STEMS:	1
+INCLUDE:	($AMC ^ |neg ^ |v) + ($AMC ^ ~|neg ^ |v) + ($AMC ^ |neg ^ |part) + ($AMC ^ ~|neg ^ |part)
+EXCLUDE:	|mod,;do ^ ~|neg,;not ^ |v,;know
+DIFFERENT_STEMS:	>1
 if
 POINT:	2
 INCLUDE:	$NP ^ (don't + can't) ^ |v
 
 RULENAME: Q8
+ADD:	1 IF Q11 = 1
+ADD:	2 IF Q11 = 2
 if
-INCLUDE:	(|cop + |mod + |aux) ^ $NP
+INCLUDE:	($b ^ $AMC ^ $NP) + ($b ^ |conj ^ $AMC ^ $NP) 
 DIFFERENT_STEMS:	>1
 
 RULENAME: Q9
 if
-INCLUDE:	why + when + which + whose
+INCLUDE:	$b ^ (|pro:int,;why + |pro:int,;when + |pro:int,;which + |pro:int,;whose)
 DIFFERENT_STEMS:	1
 
 RULENAME: Q10
 if
-INCLUDE:	„
+INCLUDE:	|end,;end ^ *
+DIFFERENT_STEMS:	1
 
 RULENAME: Q11
 if
-INCLUDE:	((|cop + |mod + |aux) ^ |neg ^ $NP) + ((|cop + |mod + |aux) ^ ~|neg,;not ^ $NP)
+INCLUDE:	(($b + ($b ^ |pro:int)) ^ $AMC ^ |neg ^ $N) + (($b + ($b ^ |pro:int)) ^ $AMC ^ ~|neg,;not ^ $NP)
+EXCLUDE:	|end,;end
 DIFFERENT_STEMS:	1
 
 RULENAME: S1
+ADD:	1 IF S2 = 1
+ADD:	2 IF S2 = 2
+ADD:	1 IF S3 = 1
+ADD:	2 IF S3 = 2
+ADD:	1 IF S6 = 1
+ADD:	2 IF S6 = 2
+ADD:	1 IF S7 = 1
+ADD:	2 IF S7 = 2
 if
 INCLUDE:	|* ^ |*
 DIFFERENT_STEMS:	1
 
 RULENAME: S2
+ADD:	1 IF S4 = 1
+ADD:	2 IF S4 = 2
 if
 INCLUDE:	0|SUBJ ^*^ |v
 DIFFERENT_STEMS:	1
 
 RULENAME: S3
+ADD:	1 IF S4 = 1
+ADD:	2 IF S4 = 2
+ADD:	1 IF S14 = 1
+ADD:	2 IF S14 = 2
 if
-INCLUDE:	|v ^ $NP
+INCLUDE:	|v ^ $N
 DIFFERENT_STEMS:	1
 
 RULENAME: S4
@@ -317,58 +416,97 @@ INCLUDE:	$NP ^ |v ^ $NP
 DIFFERENT_STEMS:	1
 
 RULENAME: S5
+ADD:	1 IF S7 = 1
+ADD:	2 IF S7 = 2
+ADD:	1 IF S10 = 1
+ADD:	2 IF S10 = 2
+ADD:	1 IF S12 = 1
+ADD:	2 IF S12 = 2
 if
-INCLUDE:	and + or
+INCLUDE:	|conj + |coord
 DIFFERENT_STEMS:	1
 
 RULENAME: S6
+ADD:	1 IF S8 = 1
+ADD:	2 IF S8 = 2
+ADD:	1 IF S9 = 1
+ADD:	2 IF S9 = 2
+ADD:	1 IF S11 = 1
+ADD:	2 IF S11 = 2
+ADD:	1 IF S12 = 1
+ADD:	2 IF S12 = 2
+ADD:	1 IF S13 = 1
+ADD:	2 IF S13 = 2
+ADD:	1 IF S15 = 1
+ADD:	2 IF S15 = 2
+ADD:	1 IF S16 = 1
+ADD:	2 IF S16 = 2
+ADD:	1 IF S19 = 1
+ADD:	2 IF S19 = 2
+ADD:	1 IF S17 = 1	% secondary
+ADD:	2 IF S17 = 2	% secondary
 if
 INCLUDE:	|v ^*^ |v
 DIFFERENT_STEMS:	1
 
 RULENAME: S7
 if
-INCLUDE:	($NP ^ |coord ^ $NP) + (|adj ^ |coord ^ |adj) + (|v ^*^ |conj ^*^ |v)
+INCLUDE:	|* ^ |coord ^ |*
+EXCLUDE:	$b ^ |coord ^ |*
 DIFFERENT_STEMS:	>1
 
 RULENAME: S8
+ADD:	1 IF S17 = 1
+ADD:	2 IF S17 = 2
 if
-INCLUDE:	|v^|inf
+INCLUDE:	$V ^*^ |inf ^ |v
+EXCLUDE:	~|inf,;to
+
 
 RULENAME: S9
 if
-INCLUDE:	((let + let's) ^*^ |v) + ((make + help + watch) ^ $NP)
+INCLUDE:	($b ^ (let + let's) ^*^ |v) + ($b ^ |adv:* ^ (let + let's) ^*^ |v) + ($b ^ (make + help + watch) ^ $NP)
 DIFFERENT_STEMS:	1
 
 RULENAME: S10
+ADD:	1 IF S13 = 1
+ADD:	2 IF S13 = 2
 if
-INCLUDE:	$b^|conj
+INCLUDE:	|conj
+EXCLUDE:	$b ^ |conj
 DIFFERENT_STEMS:	>1
 
 RULENAME: S11
+ADD:	1 IF S20 = 1
+ADD:	2 IF S20 = 2
 if
-INCLUDE:	0|COMP
+INCLUDE:	($NP ^ (|v,;think + |v,;say) ^ that) + ($NP ^ (|v,;think + |v,;say) ^ $NP)
 DIFFERENT_STEMS:	1
 
 RULENAME: S12
 if
-INCLUDE:	0|SUBJ ^*^ |conj ^*^ 0|SUBJ
+INCLUDE:	0|CJCT
 DIFFERENT_STEMS:	1
 
 RULENAME: S13
 if
-INCLUDE:	(where ^ $NP) + (if ^ $NP)
+INCLUDE:	(if ^ $NP) + ($V ^ |pro:int)
+EXCLUDE:	($V ^ |pro:int,;what ^ $e)
 DIFFERENT_STEMS:	1
 
 RULENAME: S14
 if
-INCLUDE:	(|v ^ $NP ^ $NP) + (|v ^ $NP ^ to ^ $NP) + (|v ^ $NP ^ for ^ $NP)
+INCLUDE:	0|OBJ2
+EXCLUDE:	|v,;give,~|pro:obj,;me
 DIFFERENT_STEMS:	1
+if
+POINT:	2	
+INCLUDE:	|v,;give,~|pro:obj,;me
 
 RULENAME: S15
 if
-INCLUDE:	(|v + |part) ^*^ (|v + |part) ^*^ (|v + |part)
-DIFFERENT_STEMS:	1
+INCLUDE:	|v ^*^ |v ^*^ |v
+DIFFERENT_STEMS:	>1
 
 RULENAME: S16
 if
@@ -377,7 +515,7 @@ DIFFERENT_STEMS:	1
 
 RULENAME: S17
 if
-INCLUDE:	0|COMP
+INCLUDE:	($N + |pro:obj) ^ |inf ^ |v
 DIFFERENT_STEMS:	>1
 
 RULENAME: S18
@@ -387,14 +525,14 @@ DIFFERENT_STEMS:	1
 
 RULENAME: S19
 if
-INCLUDE:	($b^|conj)+($b^the^one)
+INCLUDE:	$b ^ |conj
+EXCLUDE:	$b ^ (|conj,;but + |conj,;because)
 DIFFERENT_STEMS:	1
 
 RULENAME: S20
 if
-INCLUDE:	(|aux ^*^ |part,-PASTP) + (|aux ^*^ |part,&PASTP)+ (I ^ guess) + (I ^ imagine)
+INCLUDE:	(|aux ^*^ |part,-PASTP ^*^ |prep,;by) + (|aux ^*^ |part,&PASTP ^*^ |prep,;by)
 DIFFERENT_STEMS:	1
-
 
 % Rules sums
 + N = N*
