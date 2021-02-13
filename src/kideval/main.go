@@ -288,9 +288,12 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 	}
 
 	//mor have bug that can not support
-	chaWithMor := uuid.NewV4().String() + ".cha"
-	os.Create(chaWithMor)
-	mor(filename, chaWithMor)
+	chaWithCommands := uuid.NewV4().String() + ".cha"
+	os.Create(chaWithCommands)
+	mor(chaWithCommands, chaWithCommands)
+	post(chaWithCommands, chaWithCommands)
+	postmortem(chaWithCommands, chaWithCommands)
+	megrasp(chaWithCommands, chaWithCommands)
 	name, out, err := execute(request.Speaker, []string{filename})
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
@@ -349,6 +352,9 @@ func UploadDetailedKidevalRequestHandler(context *gin.Context) {
 		return
 	}
 	mor(filename, filename)
+	post(filename, filename)
+	postmortem(filename, filename)
+	megrasp(filename, filename)
 	err = utils.MoveFile(filename, utils.CHACACHE+"/"+filename)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"result": err.Error()})

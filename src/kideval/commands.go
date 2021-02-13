@@ -27,6 +27,39 @@ func mor(inFile string, outFile string) {
 	ioutil.WriteFile(outFile, []byte(res), 0666)
 }
 
+func post(inFile string, outFile string) {
+	libopt := "-d" + libraryPath + "/post.db"
+	taropt := inFile
+
+	res := utils.RunCmd(cmdFolder+"/post", []string{libopt, taropt})
+	res = res[strings.Index(res, "@UTF8"):]
+	println("raw res:")
+	println(res)
+	ioutil.WriteFile(outFile, []byte(res), 0666)
+}
+
+func postmortem(inFile string, outFile string) {
+	libopt := "-l" + libraryPath
+	taropt := inFile
+
+	res := utils.RunCmd(cmdFolder+"/postmortem", []string{libopt, taropt})
+	res = res[strings.Index(res, "@UTF8"):]
+	println("raw res:")
+	println(res)
+	ioutil.WriteFile(outFile, []byte(res), 0666)
+}
+
+func megrasp(inFile string, outFile string) {
+	libopt := "-l" + libraryPath
+	taropt := inFile
+
+	res := utils.RunCmd(cmdFolder+"/megrasp", []string{libopt, taropt})
+	res = res[strings.Index(res, "@UTF8"):]
+	println("raw res:")
+	println(res)
+	ioutil.WriteFile(outFile, []byte(res), 0666)
+}
+
 // check checks if a file's format is correct
 func check(file string) bool {
 	res := utils.RunCmd(cmdFolder+"/check", []string{file})
