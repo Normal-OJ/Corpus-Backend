@@ -17,7 +17,7 @@ var cmdFolder string = os.Getenv("CLANG_CMD_FOLDER")
 	[NOTE]: mor command DOES NOT SUPPORT either relative or absolute path(inFile param)
 */
 func mor(inFile string, outFile string) {
-	libopt := "-l" + libraryPath
+	libopt := "-L" + libraryPath
 	taropt := inFile
 
 	res := utils.RunCmd(cmdFolder+"/mor", []string{libopt, taropt})
@@ -39,7 +39,7 @@ func post(inFile string, outFile string) {
 }
 
 func postmortem(inFile string, outFile string) {
-	libopt := "-l" + libraryPath
+	libopt := "-L" + libraryPath
 	taropt := inFile
 
 	res := utils.RunCmd(cmdFolder+"/postmortem", []string{libopt, taropt})
@@ -50,7 +50,7 @@ func postmortem(inFile string, outFile string) {
 }
 
 func megrasp(inFile string, outFile string) {
-	libopt := "-l" + libraryPath
+	libopt := "-L" + libraryPath
 	taropt := inFile
 
 	res := utils.RunCmd(cmdFolder+"/megrasp", []string{libopt, taropt})
