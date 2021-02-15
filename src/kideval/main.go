@@ -34,7 +34,12 @@ func execute(speakers []string, files []string) (string, string, error) {
 		cmdOpts = append(cmdOpts, file)
 	}
 
-	var out = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
+	utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
+	dat, err := ioutil.ReadFile(files[0][:len(files[0])-3] + "kideval.xls")
+	if err != nil {
+		return "", "", err
+	}
+	var out = string(dat)
 	if !strings.Contains(out, "<?xml") {
 		return "", "", errors.New(out)
 	}
