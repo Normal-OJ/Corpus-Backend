@@ -1,7 +1,6 @@
 package kideval
 
 import (
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -16,15 +15,24 @@ var cmdFolder string = os.Getenv("CLANG_CMD_FOLDER")
 
 	[NOTE]: mor command DOES NOT SUPPORT either relative or absolute path(inFile param)
 */
-func mor(inFile string, outFile string) {
-	libopt := "-l" + libraryPath
-	taropt := inFile
+func mor(inFile string) {
+	libopt := "-L" + libraryPath
+	utils.RunCmd(cmdFolder+"/mor", []string{libopt, inFile})
+}
 
-	res := utils.RunCmd(cmdFolder+"/mor", []string{libopt, taropt})
-	res = res[strings.Index(res, "@UTF8"):]
-	println("raw res:")
-	println(res)
-	ioutil.WriteFile(outFile, []byte(res), 0666)
+func post(inFile string) {
+	libopt := "-d" + libraryPath + "/post.db"
+	utils.RunCmd(cmdFolder+"/post", []string{libopt, inFile})
+}
+
+func postmortem(inFile string) {
+	libopt := "-L" + libraryPath
+	utils.RunCmd(cmdFolder+"/postmortem", []string{libopt, inFile})
+}
+
+func megrasp(inFile string) {
+	libopt := "-L" + libraryPath
+	utils.RunCmd(cmdFolder+"/megrasp", []string{libopt, inFile})
 }
 
 // check checks if a file's format is correct

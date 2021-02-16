@@ -34,7 +34,12 @@ func execute(speakers []string, files []string) (string, string, error) {
 		cmdOpts = append(cmdOpts, file)
 	}
 
-	var out = utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
+	utils.RunCmd(cmdFolderLoc+"/kideval", cmdOpts)
+	dat, err := ioutil.ReadFile(files[0][:len(files[0])-3] + "kideval.xls")
+	if err != nil {
+		return "", "", err
+	}
+	var out = string(dat)
 	if !strings.Contains(out, "<?xml") {
 		return "", "", errors.New(out)
 	}
@@ -287,10 +292,11 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 		return
 	}
 
-	//mor have bug that can not support
-	chaWithMor := uuid.NewV4().String() + ".cha"
-	os.Create(chaWithMor)
-	mor(filename, chaWithMor)
+	//mor have bug that can not support ???
+	mor(filename)
+	post(filename)
+	postmortem(filename)
+	megrasp(filename)
 	name, out, err := execute(request.Speaker, []string{filename})
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
@@ -348,7 +354,10 @@ func UploadDetailedKidevalRequestHandler(context *gin.Context) {
 		context.JSON(http.StatusBadRequest, gin.H{"message": "File format error"})
 		return
 	}
-	mor(filename, filename)
+	mor(filename)
+	post(filename)
+	postmortem(filename)
+	megrasp(filename)
 	err = utils.MoveFile(filename, utils.CHACACHE+"/"+filename)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"result": err.Error()})
