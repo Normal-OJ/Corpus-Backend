@@ -36,12 +36,14 @@ $ sh start.sh
 ```
 
 ## How to remove existed database data
+This may need the root permission
 ```bash
 $ sh remove_db.sh
 ```
-After taht, restart the backend (see above)
+After that, restart the backend (see above)
 
 ## How to upload data
+This can be done in your computer.
 ```bash
 $ python3 corpus_upload.py <source folder>
 ```
