@@ -39,11 +39,11 @@ $ sh start.sh
 ```bash
 $ sh remove_db.sh
 ```
-Restart backend (see above)
+After taht, restart the backend (see above)
 
 ## How to upload data
 ```bash
-python3 corpus_upload.py <source folder>
+$ python3 corpus_upload.py <source folder>
 ```
 
 After that, go to cha_store folder, then go to every folders under it, add description.json for each of them.
