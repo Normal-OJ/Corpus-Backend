@@ -19,10 +19,44 @@ services:
 
 ```
 3. run the following command
- ```bash
+```bash
 $ docker-compose up -d # and wait for a year :P
 $ docker-compose exec backend /bin/bash
 $ cd app
 $ sh start.sh
- ```
+```
 5. done , enjoy :P
+
+## How to restart backend
+```bash
+$ docker-compose restart backend
+$ docker-compose exec backend /bin/bash
+$ cd app
+$ sh start.sh
+```
+
+## How to remove existed database data
+```bash
+$ sh remove_db.sh
+```
+Restart backend (see above)
+
+## How to upload data
+```bash
+python3 corpus_upload.py <source folder>
+```
+
+After that, go to cha_store folder, then go to every folders under it, add description.json for each of them.
+description.json looks like this:
+```json
+{
+  "provider": "XXX教授",
+  "introduction": [
+        "情境:玩玩具敘說",
+        "語料筆數:24",
+        "幼兒年齡:3-6 歲",
+        "橫斷式語料"
+  ],
+  "quoteInfo":"Chang, C. (1998). The development of autonomy in preschool Mandarin\nChinese-speaking children’s play narratives. Narrative Inquiry, 8(1), 77-111."
+}
+```
