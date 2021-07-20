@@ -22,7 +22,7 @@ services:
 ```bash
 $ docker-compose up -d # and wait for a year :P
 $ docker-compose exec backend /bin/bash
-$ cd app
+$ cd /app
 $ sh start.sh
 ```
 5. done , enjoy :P
@@ -31,7 +31,7 @@ $ sh start.sh
 ```bash
 $ docker-compose restart backend
 $ docker-compose exec backend /bin/bash
-$ cd app
+$ cd /app
 $ sh start.sh
 ```
 
