@@ -12,6 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"main.main/src/db"
 	"main.main/src/utils"
+	"main.main/src/zhoseg"
 )
 
 // File is like a file
@@ -71,6 +72,7 @@ func Upload(file multipart.File, filename string) (string, error) {
 	}
 
 	err = db.InsertTag(newTags)
+	zhoseg.Call(filename)
 
 	if err != nil {
 		print(err.Error())
@@ -112,7 +114,7 @@ func UploadRequestHandler(context *gin.Context) {
 			return
 		}
 	}()
-
+	zhoseg.Call(filename)
 	context.JSON(http.StatusOK, gin.H{"result": "success upload " + out})
 }
 

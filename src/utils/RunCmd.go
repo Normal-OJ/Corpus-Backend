@@ -9,7 +9,14 @@ import (
 //RunCmd run a specify command and get its stdout as return
 //note: it's a blocking function and non-thread safe
 func RunCmd(cmd string, opts []string) string {
+	return RunCmdDir(cmd, opts, "")
+}
+
+func RunCmdDir(cmd string, opts []string, dir string) string {
 	cmdobj := exec.Command(cmd, opts...)
+	if dir != "" {
+		cmdobj.Dir = dir
+	}
 	println("running cmd:")
 	fmt.Printf("%+v %+v\n", cmd, opts)
 	cmdobj.Stdin = os.Stdin

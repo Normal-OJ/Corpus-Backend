@@ -15,6 +15,7 @@ import (
 	uuid "github.com/satori/go.uuid"
 	"main.main/src/db"
 	"main.main/src/utils"
+	"main.main/src/zhoseg"
 )
 
 func execute(speakers []string, files []string) (string, string, error) {
@@ -293,6 +294,7 @@ func UploadKidevalRequestHandler(context *gin.Context) {
 	}
 
 	//mor have bug that can not support ???
+	zhoseg.Call(filename)
 	mor(filename)
 	post(filename)
 	postmortem(filename)
@@ -354,6 +356,7 @@ func UploadDetailedKidevalRequestHandler(context *gin.Context) {
 		context.JSON(http.StatusBadRequest, gin.H{"message": "File format error"})
 		return
 	}
+	zhoseg.Call(filename)
 	mor(filename)
 	post(filename)
 	postmortem(filename)

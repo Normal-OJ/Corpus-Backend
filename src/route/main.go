@@ -7,6 +7,7 @@ import (
 	"main.main/src/kideval"
 	"main.main/src/modify"
 	"main.main/src/view"
+	"main.main/src/zhoseg"
 )
 
 //RegisterRouter register all the required router
@@ -28,4 +29,6 @@ func RegisterRouter(engine *gin.Engine) {
 
 	//register zipping routers
 	engine.POST("/api/zip", cache.RequestHandler)
+
+	engine.POST("/api/segment", zhoseg.UploadSegmentHandler)
 }
