@@ -1,21 +1,32 @@
-FROM golang:1.17.3
+FROM ubuntu:jammy
 
-RUN apt update && \
-    export PATH=$PATH:/usr/local/go/bin && \
-    apt install -y ca-certificates libgnutls30 
-    #RUN apt install sqlite3 build-essential && \
-    RUN go get -u -v github.com/gin-gonic/gin
-    RUN curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
-    RUN apt update
-    RUN apt-get install --yes nodejs
-    RUN apt-get install -y libc6-i386
-    #RUN dpkg --add-architecture i386 && \
-    #apt-get update
-    RUN apt-get install -y gcc-multilib
-    #RUN apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386
-    #RUN apt-get install libstdc++6:i386
-    RUN apt-get update
-    RUN apt-get install libstdc++6
+RUN apt-get update && \
+    apt-get install -y wget
 
-CMD tail -f /dev/null
+# setup go 1.22
+# see: https://github.com/docker-library/golang/blob/d5ba02dca99c1a2d221c4a20e45eedc0f0380f31/1.22/bookworm/Dockerfile
+RUN set -eux; \
+    sha256="aab8e15785c997ae20f9c88422ee35d962c4562212bb0f879d052a35c8307c7f"; \
+    wget https://go.dev/dl/go1.22.1.linux-amd64.tar.gz -O go.tgz; \
+    echo "$sha256 *go.tgz" | sha256sum -c -; \
+    tar -C /usr/local -xzf go.tgz; \
+    rm go.tgz;
+ENV PATH /usr/local/go/bin:$PATH
+
+# setup node 16
+RUN curl --silent --location https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get update && \
+    apt-get install -y nodejs
+
+RUN apt-get install -y ca-certificates libgnutls30 libc6-i386 gcc-multilib libstdc++6
+
 EXPOSE 8787
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY src ./
+RUN go build .
+
+COPY . .
+CMD [ "./main.main" ]
