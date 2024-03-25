@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  backend:
+    build: .
+    volumes:
+      - .:/app
+      - .unix-clan/lib:/var/lib/unixclan/lib
+      - ./path/to/cha_store:/cha_store # cha files storage
+    env_file:
+      - .env
+    ports:
+      - 8787:8787

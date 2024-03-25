@@ -8,6 +8,7 @@ import (
 	"main.main/src/modify"
 	"main.main/src/view"
 	"main.main/src/zhoseg"
+	"main.main/src/maps"
 )
 
 //RegisterRouter register all the required router
@@ -23,7 +24,9 @@ func RegisterRouter(engine *gin.Engine) {
 	engine.POST("/api/path_kideval", kideval.PathKidevalRequestHandler)
 	engine.POST("/api/upload_kideval", kideval.UploadKidevalRequestHandler)
 	engine.POST("/api/upload_detailed_kideval", kideval.UploadDetailedKidevalRequestHandler)
-
+	engine.GET("/api/maps_test", maps.TestRequestHandler)
+	engine.POST("/api/maps_analysis", maps.UploadMapsRequestHandler)
+	
 	//register download routers
 	engine.GET("/api/download", download.RequestHandler)
 
