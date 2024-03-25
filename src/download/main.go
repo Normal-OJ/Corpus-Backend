@@ -30,6 +30,5 @@ func RequestHandler(context *gin.Context) {
 	context.Writer.Header().Add("Content-Disposition", fmt.Sprintf("attachment; filename=%s", filepath.Base(target))) //fmt.Sprintf("attachment; filename=%s", filename)对下载的文件重命名
 	context.Writer.Header().Add("Content-Type", "application/octet-stream")
 	context.File(target)
-	context.String(http.StatusOK, "OK")
 	return
 }
