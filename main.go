@@ -10,10 +10,10 @@ import (
 	"syscall"
 	"time"
 
-	"main.main/src/db"
-	"main.main/src/route"
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
+	"main.main/src/db"
+	"main.main/src/route"
 )
 
 func main() {
@@ -59,4 +59,5 @@ func main() {
 	}
 
 	log.Println("Server exiting")
+
 }
