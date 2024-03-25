@@ -18,20 +18,19 @@ RUN curl --silent --location https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get update && \
     apt-get install -y nodejs
 
-RUN apt-get -y install python3.9
+RUN apt-get install -y ca-certificates libgnutls30 libc6-i386 gcc-multilib libstdc++6
+
 RUN apt-get install -y python3.9 python3-pip
 RUN pip3 install pandas
-
-RUN apt-get install -y ca-certificates libgnutls30 libc6-i386 gcc-multilib libstdc++6
 
 EXPOSE 8787
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY src ./
+COPY src ./src
 COPY main.go ./
-RUN go build .
+RUN go build
 
 COPY . .
 CMD [ "./main.main" ]
