@@ -32,7 +32,7 @@ func main() {
 	route.RegisterRouter(engine)
 
 	srv := &http.Server{
-		Addr:    ":8080",
+		Addr:    ":8787",
 		Handler: engine,
 	}
 
