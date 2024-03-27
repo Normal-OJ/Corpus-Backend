@@ -81,7 +81,7 @@ func UploadMapsRequestHandler(context *gin.Context) {
 
 	//NOTE: mor has bug that can not support any relative or absolute path
 	// ext := filepath.Ext(header.Filename)
-	oriFilename := uuid.NewV4().String() + "txt"
+	oriFilename := uuid.NewV4().String() + ".txt"
 	tmpFile, err := os.Create(oriFilename)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"result": err.Error})
@@ -99,10 +99,9 @@ func UploadMapsRequestHandler(context *gin.Context) {
 	var stderr bytes.Buffer
 
 	resultFilename := "maps" + uuid.NewV4().String() + ".csv"
-	cmd := exec.Command("python3", "src/maps/test.py", oriFilename, resultFilename)
+	cmd := exec.Command("python3", "src/maps/KIDEVAL.py", oriFilename, resultFilename)
 	cmd.Stdout = &jsonOutput
 	cmd.Stderr = &stderr
-
 	err = cmd.Run()
 	if err != nil {
 		fmt.Println(stderr.String())
