@@ -38,5 +38,5 @@ COPY main.go ./
 RUN go build -o main main.go
 COPY . .
 
-CMD tail -f /dev/null
-# CMD [ "./main" ]
+# CMD tail -f /dev/null
+CMD [ "./main" ]
