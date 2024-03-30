@@ -335,7 +335,7 @@ if __name__ == "__main__":
     f = loadFile(inputFilePath)
     for line in f:
         inputSTR = re.sub(r'[^\u4e00-\u9fa5]', '', line)
-        if inputSTR == "":
+        if inputSTR == "" or inputSTR == "\n":
                 continue
         resultDICT = execLoki(content=inputSTR, splitLIST=splitLIST, refDICT=refDICT,filterLIST=filterLIST) 
         sentencesLIST =[str(count),inputSTR]
@@ -370,7 +370,7 @@ if __name__ == "__main__":
     ppLIST =[0,0]
     sLIST =[0,0]
     sumLIST = [itemScoreSum,categoryScoreSum]
-    print(itemScoreDICT)
+
     for key,value in itemScoreDICT.items():
         if key in ['量-個','量-特','X的','X的Y','方位']:
             npLIST[0]+= value
@@ -388,7 +388,7 @@ if __name__ == "__main__":
             continue
         scoreLIST = [value,categoryScoreDICT[key]]
         outputData["Scores"].append(scoreLIST)
-    print(outputData["Scores"])
+
     calLIST = [npLIST,vpLIST,ppLIST,sLIST,sumLIST]
     for l in calLIST:
         outputData["Scores"].append(l)
