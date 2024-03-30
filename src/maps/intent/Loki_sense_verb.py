@@ -81,6 +81,12 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
         else:
             resultDICT["感知/心理狀態"].append(1)
             
+    if utterance == "我想玩這個玩具":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["感知/心理狀態"].append(1) 
+
     if utterance == "猜看看":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)

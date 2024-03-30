@@ -87,6 +87,24 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
         else:
             resultDICT["量-個"].append(1)
 
+    if utterance == "下個月":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["量-個"].append(1)
+
+    if utterance == "下個禮拜二來":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["量-個"].append(1)
+
+    if utterance == "兩個別的":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["量-個"].append(1)
+
     if utterance == "那個":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)

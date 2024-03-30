@@ -331,10 +331,12 @@ if __name__ == "__main__":
     sentencesLIST = []
     itemScoreDICT ={}
     inputFilePath , outputFilePath= sys.argv[1] , sys.argv[2]
+    
     f = loadFile(inputFilePath)
-
     for line in f:
         inputSTR = re.sub(r'[^\u4e00-\u9fa5]', '', line)
+        if inputSTR == "":
+                continue
         resultDICT = execLoki(content=inputSTR, splitLIST=splitLIST, refDICT=refDICT,filterLIST=filterLIST) 
         sentencesLIST =[str(count),inputSTR]
         for key,value in resultDICT.items():
@@ -368,6 +370,7 @@ if __name__ == "__main__":
     ppLIST =[0,0]
     sLIST =[0,0]
     sumLIST = [itemScoreSum,categoryScoreSum]
+    print(itemScoreDICT)
     for key,value in itemScoreDICT.items():
         if key in ['量-個','量-特','X的','X的Y','方位']:
             npLIST[0]+= value
@@ -381,12 +384,15 @@ if __name__ == "__main__":
         if key in ['把字句','被字句','存現句','連謂/兼語','帶連詞複句','緊縮複句','感知/心理狀態']:
             sLIST[0]+= value
             sLIST[1]+= categoryScoreDICT[key]
+        if key == 'msg':
+            continue
         scoreLIST = [value,categoryScoreDICT[key]]
         outputData["Scores"].append(scoreLIST)
+    print(outputData["Scores"])
     calLIST = [npLIST,vpLIST,ppLIST,sLIST,sumLIST]
-    for list in calLIST:
-        outputData["Scores"].append(list)
-    
+    for l in calLIST:
+        outputData["Scores"].append(l)
+
     generateReportCsv(outputData,outputFilePath)
     
     # "output.json"

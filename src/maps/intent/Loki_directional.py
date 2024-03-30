@@ -19,6 +19,18 @@
 from random import sample
 import json
 import os
+from ArticutAPI import Articut
+BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+try:
+    accountInfo = json.load(open(os.path.join(BASE_PATH, "account.info"), encoding="utf-8"))
+    USERNAME = accountInfo["username"]
+    API_KEY = accountInfo["api_key"]
+except Exception as e:
+    print("[ERROR] AccountInfo => {}".format(str(e)))
+    USERNAME = ""
+    API_KEY = ""
+
+articut = Articut(USERNAME, API_KEY)
 
 DEBUG = False
 CHATBOT_MODE = False
@@ -55,9 +67,28 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
-            resultDICT["方位"].append(1)
+            try:
+                resultPOS = articut.parse(inputSTR)["result_pos"][0]
+                if resultPOS.startswith("<ENTITY") or resultPOS.startswith("<LOCATION"):
+                    resultDICT["方位"].append(1)
+                else:
+                    pass
+            except:
+                pass
             
     if utterance == "這裡":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["方位"].append(1)
+            
+    if utterance == "是這裡的嗎":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["方位"].append(1)
+            
+    if utterance == "嗯這下頭":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:

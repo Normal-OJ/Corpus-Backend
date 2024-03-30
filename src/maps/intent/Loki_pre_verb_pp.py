@@ -56,97 +56,131 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "在睡前刷牙":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "在這邊休息":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "用腳踢":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "用這個看":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "用這個跟你打":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "用這邊當桌":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "再重新蓋一個":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "往前面蓋":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "從綠色開始":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "用來量體溫":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "用圓柱體這樣蓋上去":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     if utterance == "跟媽媽一樣":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
+
+    if utterance == "他要跟他結婚":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["動前介詞"].append(1)
+
+    if utterance == "然後你從前面做過來的時候要往上蓋":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["動前介詞"].append(1)
+
+    if utterance == "然後在河的另一端":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["動前介詞"].append(1)
+
+    if utterance == "那那你叫媽媽來然後你叫媽媽陪在醫院陪你":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["動前介詞"].append(1)
+
+    if utterance == "從這裡排隊":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["動前介詞"].append(1)
+
+    if utterance == "給你吃藥":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["動前介詞"].append(1)
+
+    if utterance == "從臭臭的地方跑出來":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["動前介詞"].append(1)
+
+    if utterance == "跟姐姐吃飯":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["動前介詞"].append(1)
 
     if utterance == "跟你講":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["動前介詞"].append(1)
-            pass
 
     return resultDICT
