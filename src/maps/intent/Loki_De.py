@@ -81,6 +81,30 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
         else:
             resultDICT["X的"].append(1)
             
+    if utterance == "我的只有":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+           resultDICT["X的"].append(1)
+
+    if utterance == "我的有":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["X的"].append(1)
+
+    if utterance == "我的這樣":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["X的"].append(1)
+
+    if utterance == "用掉的你知道嗎":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["X的"].append(1)
+
     if utterance == "長長的收進去":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)

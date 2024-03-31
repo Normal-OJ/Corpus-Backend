@@ -56,13 +56,13 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["結果補語"].append(1)
-            
+
     if utterance == "固定起來":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["結果補語"].append(1)
-        
+
     if utterance == "收好了":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
@@ -117,16 +117,167 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT, pattern=""):
         else:
             resultDICT["結果補語"].append(1)
 
-    if utterance == "收起來":
+    if utterance == "倒出來":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            pass
+        
+    if utterance == "戴得了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            pass
+        
+    if utterance == "曡完":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             resultDICT["結果補語"].append(1)
-            
+
+    if utterance == "聽不到":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "聽到":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "聽到了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "連起來":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "閉上":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "開過了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "倒下來":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "做過來":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "夾住":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "弄完了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "我要放好":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "暈倒了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "發動了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "發燒了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            pass
+        
+    if utterance == "說錯了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+
+    if utterance == "醒來":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
     if utterance == "換下一個":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
             pass
         
+    if utterance == "夾起來":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "打針完":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "擦好藥了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "放大":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
+    if utterance == "用倒":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            pass
+        
+    if utterance == "倒了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            pass
+        
+    if utterance == "完成了":
+        if CHATBOT_MODE:
+            resultDICT["response"] = getResponse(utterance, args)
+        else:
+            resultDICT["結果補語"].append(1)
+
     return resultDICT
